@@ -5,7 +5,6 @@ project_type: flutter
 workflows:
   _setup:
     steps:
-      - activate-ssh-key@4: {}
       - git-clone@8: {}
       - flutter-installer@0: {}
   _ending:
