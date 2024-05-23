@@ -1,0 +1,70 @@
+---
+format_version: '13'
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: flutter
+workflows:
+  _setup:
+    steps:
+      - activate-ssh-key@4: {}
+      - git-clone@8: {}
+      - flutter-installer@0: {}
+  _ending:
+    steps:
+      - deploy-to-bitrise-io@2: {}
+  deploy-azure:
+    description: 'Deploy on Web Azure Static Web Apps'
+    before_run:
+      - _setup
+    after_run:
+      - _ending
+    steps:
+      - script@1:
+          inputs:
+            - script_file_path:
+            - content: |-
+                #!/usr/bin/env bash
+                # fail if any commands fails
+                set -e
+                # make pipelines' return status equal the last command to exit with a non-zero status, or zero if all commands exit successfully
+                set -o pipefail
+                # debug log
+                set -x
+                
+                # write your script here
+                sudo apt-get update
+                sudo apt-get install -y nodejs npm
+                npm install -g @azure/static-web-apps-cli
+                
+                flutter pub get
+                cd widgets_demo
+                flutter pub get
+                
+                flutter build linux --release --build-number=$BITRISE_BUILD_NUMBER || true
+                flutter build web --release --build-number=$BITRISE_BUILD_NUMBER
+                
+                cd build
+                zip -r web-prod-release.zip ./web
+                cp web-prod-release.zip $BITRISE_DEPLOY_DIR
+                
+                swa deploy ./web --deployment-token $BITRISEIO_AZURE_STATIC_WEB_APPS_TOKEN --env production
+                
+                # or run a script from your repository, like:
+                # bash ./path/to/script.sh
+                # not just bash, e.g.:
+                # ruby ./path/to/script.rb
+    meta:
+      bitrise.io:
+        stack: linux-docker-android-22.04
+        machine_type_id: standard
+meta:
+  bitrise.io:
+    stack: osx-xcode-edge
+    machine_type_id: g2-m1.4core
+app:
+  envs:
+    - opts:
+        is_expand: false
+      BITRISE_FLUTTER_PROJECT_LOCATION: "."
+trigger_map:
+  - push_branch: main
+    workflow: deploy-azure
