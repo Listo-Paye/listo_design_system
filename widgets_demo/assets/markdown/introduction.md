@@ -2,26 +2,18 @@
 
 Le Listo Design System est une bibliothèque de composants UI/UX pour l'application de gestion de la paie Listo Paye.
 
-## Comment Utiliser le Projet
+## Comment Utiliser notre Widgetbook ?
 
-### Installation
+Vous pouvez l'utiliser directement à cette adresse. Voyagez entre les catégories et les composants pour découvrir notre design system.
 
-Pour utiliser le package `listo_design_system`, ajoutez-le comme dépendance dans votre fichier `pubspec.yaml` :
+Quelques définissions :
+- **Widget** : Un widget est un élément d'interface utilisateur qui peut être affiché à l'écran. Les widgets sont des éléments de base de Flutter et sont utilisés pour créer des interfaces utilisateur.
+- **Widgetbook** : Un widgetbook est un outil qui permet de visualiser et d'interagir avec les widgets d'une application Flutter. Il est utile pour explorer et tester les composants d'une application.
+- **Device** : A droite de votre écran, vous pouvez choisir le device sur lequel vous souhaitez visualiser votre application. Il existe un large choix qui donne un aperçu de la plupart des devices existants.
+- **Knob** : Un knob est un paramètre d'un widget qui peut être modifié pour changer son apparence ou son comportement. Les knobs sont utilisés pour tester les différentes variantes d'un widget.
+- **Story** : Une story est une collection de widgets qui sont regroupés pour former un composant plus complexe. Les stories sont utilisées pour tester les interactions entre les widgets.
+- **Code** : Le code d'un widget est affiché dans la partie inférieure de l'écran. Il peut être copié et collé dans votre projet Flutter pour une utilisation ultérieure.
 
-```yaml
-dependencies:
-  listo_design_system:
-```
-
-Copier cette dépendance telle quelle dans votre fichier `pubspec.yaml`. L'utilisateur associé n'a que le droit de lecture sur le contenu du repository.
-
-## Lancement du Widgetbook
-
-Pour lancer le projet Widgetbook :
-
-1. Naviguez vers le dossier du design system.
-2. Entrez dans le sous répertoire `widgetbook`.
-3. Exécutez la commande `flutter run -d chrome`.
 
 ## Design Moléculaire
 
@@ -169,31 +161,3 @@ Rive est un outil puissant pour créer des animations et des graphiques interact
 - **Documentation** : Visitez la [documentation de Rive](https://docs.rive.app/) pour des guides détaillés.
 
 En suivant ces lignes directrices et en tirant parti des ressources disponibles, vous pouvez créer des animations impressionnantes qui améliorent l'expérience utilisateur de votre application Flutter.
-
-
-## Contribution au Design System
-
-### Ajout de Composants
-
-Pour ajouter des éléments à Widgetbook sans utiliser le générateur de code, suivez ces étapes :
-
-1. [Expliquer le processus d'ajout manuel].
-2. [Détails spécifiques au projet].
-
-### Règles de Commit
-
-Utilisez le format de message suivant pour les commits liés au design system :
-
-```
-feat(design): [Description courte du changement]
-```
-
-#### Types de Commit
-
-- **feat**: Ajout d'une nouvelle fonctionnalité.
-- **fix**: Correction d'un bug.
-- **docs**: Modification de la documentation.
-- **style**: Modification du style du code.
-- **refactor**: Modification du code sans ajouter de fonctionnalité ni corriger de bug.
-- **perf**: Modification du code pour améliorer les performances.
-- **book**: Ajout ou modification de la partie WidgetBook (comportement général).
