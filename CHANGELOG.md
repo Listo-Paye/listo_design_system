@@ -1,3 +1,6 @@
+## 0.0.10
+* Add Gitlab URL to pubspec
+
 ## 0.0.9
 * Move from Gitlab to Github
 
