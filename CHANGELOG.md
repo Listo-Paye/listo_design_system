@@ -1,3 +1,6 @@
+## 0.0.11
+* Changed text styles to use `TextStyle` instead of `TextStyles` class
+
 ## 0.0.10
 * Add Gitlab URL to pubspec
 

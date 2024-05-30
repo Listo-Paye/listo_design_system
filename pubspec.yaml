@@ -1,6 +1,6 @@
 name: listo_design_system
 description: "Package contenant tout le système UX et UI de Listo Paye. Utilisez le sous-projet widgets_demo pour tester les widgets."
-version: 0.0.10
+version: 0.0.11
 homepage: https://design.listo.pro
 repository: https://github.com/Listo-Paye/listo_design_system
 
@@ -20,3 +20,16 @@ dev_dependencies:
   flutter_lints: ^4.0.0
 flutter:
   uses-material-design: true
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: lib/fonts/Inter-Regular.ttf
+          weight: 400
+        - asset: lib/fonts/Inter-Medium.ttf
+          weight: 500
+        - asset: lib/fonts/Inter-SemiBold.ttf
+          weight: 600
+        - asset: lib/fonts/Inter-Bold.ttf
+          weight: 700
+        - asset: lib/fonts/Inter-ExtraBold.ttf
+          weight: 800

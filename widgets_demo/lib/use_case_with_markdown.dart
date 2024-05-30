@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:listo_design_system/themes/text_style.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:widgetbook/widgetbook.dart';
 
@@ -74,16 +75,8 @@ class _CardWithMarkdownState extends State<CardWithMarkdown> {
             shrinkWrap: true,
             data: mdData,
             styleSheet: MarkdownStyleSheet(
-              p: GoogleFonts.lato(
-                fontSize: 12,
-                fontWeight: FontWeight.normal,
-                color: Colors.black,
-              ),
-              strong: GoogleFonts.lato(
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
+              p: TextStyles.bodyMedium,
+              strong: TextStyles.bodyMediumSemibold,
               code: GoogleFonts.lato(
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
@@ -94,46 +87,14 @@ class _CardWithMarkdownState extends State<CardWithMarkdown> {
                 color: Colors.grey[900],
                 borderRadius: BorderRadius.circular(5.0),
               ),
-              checkbox: GoogleFonts.lato(
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-              h1: GoogleFonts.lato(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-              h2: GoogleFonts.lato(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-              h3: GoogleFonts.lato(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-              h4: GoogleFonts.lato(
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-              h5: GoogleFonts.lato(
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-              h6: GoogleFonts.lato(
-                fontSize: 10,
-                fontStyle: FontStyle.italic,
-                color: Colors.black,
-              ),
-              listBullet: GoogleFonts.lato(
-                fontSize: 12,
-                color: Colors.black,
-                fontStyle: FontStyle.normal,
-              ),
+              checkbox: TextStyles.bodyMediumSemibold,
+              h1: TextStyles.headingLarge,
+              h2: TextStyles.headingMediumSemibold,
+              h3: TextStyles.headingMedium,
+              h4: TextStyles.bodyLargeSemibold,
+              h5: TextStyles.bodyLarge,
+              h6: TextStyles.bodyMediumSemibold,
+              listBullet: TextStyles.bodyMedium,
             ),
             onTapLink: (text, url, title) {
               if (url != null) {

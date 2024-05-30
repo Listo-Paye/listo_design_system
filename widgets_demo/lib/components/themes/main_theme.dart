@@ -3,13 +3,19 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:widgets_demo/use_case_with_markdown.dart';
 
 import ' components/colors_browser.dart';
+import ' components/text_style.dart';
 
 WidgetbookComponent mainTheme(BuildContext context) {
   return WidgetbookComponent(name: "Principal", useCases: [
     usercaseWithMarkdown(
-      "Couleurs",
+      "ListoColors",
       (context) => const ColorsBrowser(),
       "markdown/theme_main_colors.md",
+    ),
+    usercaseWithMarkdown(
+      "TexteStyles",
+      (context) => const TextsBrowser(),
+      "markdown/text_styles.md",
     ),
   ]);
 }
