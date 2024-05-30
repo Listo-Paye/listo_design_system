@@ -1,3 +1,6 @@
+## 0.0.12
+* Automate publishing to pub.dev
+
 ## 0.0.11
 * Changed text styles to use `TextStyle` instead of `TextStyles` class
 

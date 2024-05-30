@@ -49,12 +49,12 @@ class Button extends StatelessWidget {
         ButtonType.filled => FilledButton(
             onPressed: onPressedOrNull,
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.resolveWith(
+              backgroundColor: WidgetStateProperty.resolveWith(
                 (states) => enabled
                     ? ListoMainColors.primary.base
                     : ListoMainColors.neutral.shade200,
               ),
-              foregroundColor: MaterialStateProperty.all(Colors.white),
+              foregroundColor: WidgetStateProperty.all(Colors.white),
             ),
             child: getContent(),
           ),
