@@ -1,3 +1,7 @@
+## 0.0.16
+* Automate deploy to design.listo.pro
+* Add Status badge to README.md
+
 ## 0.0.14
 * Automate publishing to pub.dev
 
