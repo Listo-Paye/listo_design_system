@@ -2,7 +2,11 @@ library listo_design_system;
 
 import 'package:flutter/material.dart';
 
-import 'main_theme.dart';
+import 'themes/main_theme.dart';
+
+export 'atoms/atoms_module.dart';
+export 'molecules/molecules_module.dart';
+export 'themes/themes_module.dart';
 
 class ListoDesignSystem {
   static Themes themes = Themes();
