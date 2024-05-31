@@ -41,5 +41,18 @@ jobs:
       - name: Run analyzer
         run: flutter analyze
 
+      - name: Format code
+        run: dart format --fix .
+
+      - name: Format code
+        run: dart format --fix ./widgets_demo
+
+      - name: Check Publish Warnings
+        run: dart pub publish --dry-run
+
       - name: Publish
-        run: dart pub publish --force
+        uses: k-paxian/dart-package-publisher@v1.5.1
+        with:
+          credentialJson: ${{ secrets.CREDENTIAL_JSON }}
+          flutter: true
+          skipTests: true
