@@ -42,19 +42,17 @@ jobs:
         run: flutter analyze
 
       - name: Format code
-        run: dart format --fix .
+        run: flutter format --fix .
 
       - name: Format code
-        run: dart format --fix ./widgets_demo
+        run: flutter format --fix ./widgets_demo
 
       - name: Check Publish Warnings
-        run: |
-          echo "${{ secrets.CREDENTIAL_JSON }}" > ~/.config/dart/pub-credentials.json
-          dart pub publish --dry-run
+        run: dart pub publish --dry-run
 
-#      - name: Publish
-#        uses: k-paxian/dart-package-publisher@v1.5.1
-#        with:
-#          credentialJson: ${{ secrets.CREDENTIAL_JSON }}
-#          flutter: true
-#          skipTests: true
+      - name: Publish
+        uses: k-paxian/dart-package-publisher@v1.5.1
+        with:
+          credentialJson: ${{ secrets.CREDENTIAL_JSON }}
+          flutter: true
+          skipTests: true
