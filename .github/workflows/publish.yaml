@@ -1,4 +1,9 @@
-name: Publish to pub.dev
+name: Publish to pub.dev & web
+
+env:
+  APP_LOCATION: "/" # location of your client code
+  APP_ARTIFACT_LOCATION: "widgets_demo/build/web" # location of client code build output
+  AZURE_STATIC_WEB_APPS_API_TOKEN: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }} # secret containing deployment token for your static web app
 
 on:
   push:
@@ -41,12 +46,6 @@ jobs:
       - name: Run analyzer
         run: flutter analyze
 
-      - name: Format code
-        run: flutter format --fix .
-
-      - name: Format code
-        run: flutter format --fix ./widgets_demo
-
       - name: Check Publish Warnings
         run: dart pub publish --dry-run
 
@@ -56,3 +55,18 @@ jobs:
           credentialJson: ${{ secrets.CREDENTIAL_JSON }}
           flutter: true
           skipTests: true
+
+      - name: Build Web
+        run: |
+          cd widgets_demo  
+          flutter build web
+
+      - name: Deploy to SWA
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ env.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: "upload"
+          app_location: ${{ env.APP_LOCATION }}
+          app_artifact_location: ${{ env.APP_ARTIFACT_LOCATION }}
+
