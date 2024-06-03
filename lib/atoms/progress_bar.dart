@@ -1,37 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:listo_design_system/listo_design_system.dart';
 
-class ProgressBar extends StatelessWidget {
-  final double progress;
+class ListoProgressBar extends StatelessWidget {
+  final double? progress;
+  late final Color backgroundColor;
+  late final Color progressColor;
+  late final Color errorColor;
+  final bool error;
 
-  const ProgressBar({super.key, required this.progress});
+  ListoProgressBar({
+    super.key,
+    this.progress,
+    backgroundColor,
+    progressColor,
+    errorColor,
+    this.error = false,
+  }) {
+    this.backgroundColor = backgroundColor ?? ListoMainColors.neutral.shade100;
+    this.progressColor = progressColor ?? ListoMainColors.neutral.shade400;
+    this.errorColor = errorColor ?? ListoMainColors.error.medium;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 352,
-      height: 20,
-      clipBehavior: Clip.antiAlias,
-      decoration: ShapeDecoration(
-        color: Color(0xFFE5E8E8),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(50),
-        ),
-      ),
-      child: Stack(
-        children: [
-          Container(
-            width: 352 * (progress.clamp(0.0, 1.0)), // Clamp pour éviter le débordement
-            height: 20,
-            clipBehavior: Clip.antiAlias,
-            decoration: ShapeDecoration(
-              color: Color(0xFF808D90),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(50),
-              ),
-            ),
-          ),
-        ],
-      ),
+    return LinearProgressIndicator(
+      value: progress,
+      backgroundColor: backgroundColor,
+      valueColor:
+          AlwaysStoppedAnimation<Color>(error ? errorColor : progressColor),
+      borderRadius: BorderRadius.circular(50),
     );
   }
 }
