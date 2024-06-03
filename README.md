@@ -56,6 +56,6 @@ class App extends StatelessWidget {
 Pour lancer le projet Widgetbook :
 
 1. Naviguez vers le dossier du design system.
-2. Entrez dans le sous répertoire `widgetbook`.
+2. Entrez dans le sous répertoire `widgets_demo`.
 3. Exécutez la commande `flutter run -d chrome`.
 
