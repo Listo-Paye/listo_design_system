@@ -12,10 +12,12 @@ WidgetbookComponent searchbarAtom(BuildContext context) {
           child: ListoSearchAnchor(
         hintText: 'Placeholder',
         onChanged: (String value) {
+          // ignore: avoid_print
           print(value);
         },
         onClear: () {},
         onSearch: (String value) {
+          // ignore: avoid_print
           print('Search $value');
         },
         enabled: true,
@@ -29,6 +31,7 @@ WidgetbookComponent searchbarAtom(BuildContext context) {
         enabled: false,
         hintText: 'Placeholder',
         onChanged: (String value) {
+          // ignore: avoid_print
           print(value);
         },
         onClear: () {},

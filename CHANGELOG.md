@@ -1,3 +1,8 @@
+## 0.0.18
+* Update Theme with spacing and radius
+* Add ProgressBar
+* Add SearchBar
+
 ## 0.0.17
 * Update README.md
 
