@@ -1,6 +1,6 @@
 ### Quelques règles
 
-Le `ListoNavigationRail` est un widget qui permet de créer un menu de navigation latéral. Il est composé de plusieurs éléments de navigation appelés `DestinationData`. Chaque `DestinationData` est composé d'une icône, d'une icône sélectionnée, d'un label, d'une liste d'enfants permettant de créer un menu déroulant et d'un indicateur de positionnement (en haut ou en bas du menu).
+Le `ListoNavigationRail` est un widget qui permet de créer un menu de navigation latéral. Il est composé de plusieurs éléments de navigation appelés `DestinationData`. Chaque `DestinationData` est composé d'une icône, d'une icône sélectionnée, d'un label et d'une liste d'enfants permettant de créer un menu déroulant.
 
 Le principe d'affichage est différent selon le device :
 - Sur mobile, seul le bouton de menu est affiché par défaut. Le click sur le bouton de menu affiche le menu de navigation.
@@ -29,7 +29,6 @@ Chaque `DestinationData` est composé des éléments suivants :
 - `selectedIcon` : l'icône de l'élément de navigation lorsqu'il est sélectionné
 - `label` : le label de l'élément de navigation
 - `children` : la liste des enfants de l'élément de navigation
-- `extended` : un booléen permettant de déterminer si le menu est étendu ou non
 
 ```dart
 class NavigationRailPresenter extends StatelessWidget {
@@ -43,8 +42,6 @@ class NavigationRailPresenter extends StatelessWidget {
           icon: Icons.home,
           selectedIcon: Icons.home,
           label: 'Home',
-          children: [],
-          extended: false,
         ),
         DestinationData(
           icon: Icons.settings,
@@ -55,18 +52,13 @@ class NavigationRailPresenter extends StatelessWidget {
               icon: Icons.notifications,
               selectedIcon: Icons.notifications,
               label: 'Notifications',
-              children: [],
-              extended: false,
             ),
             DestinationData(
               icon: Icons.account_circle,
               selectedIcon: Icons.account_circle,
               label: 'Profile',
-              children: [],
-              extended: false,
             ),
           ],
-          extended: false,
         ),
       ],
     );
