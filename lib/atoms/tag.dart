@@ -18,7 +18,7 @@ class Tag extends StatelessWidget {
           color: backgroundColor[200],
           borderRadius: const BorderRadius.all(Radius.circular(Radiuses.md)),
         ),
-        child: Text(label, style: TextStyles.bodyMedium.copyWith(color: textColor[700]))
+        child: Text(label, style: TextStyles.bodyMedium.copyWith(color: textColor[800]))
     );
   }
 }
