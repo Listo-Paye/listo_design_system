@@ -12,7 +12,7 @@ dependencies:
   animations: ^2.0.11
   flutter:
     sdk: flutter
-  rive: ^0.13.5
+  rive: ^0.13.7
 
 dev_dependencies:
   flutter_test:
