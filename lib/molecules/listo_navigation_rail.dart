@@ -1,7 +1,10 @@
 import 'dart:ui';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:listo_design_system/listo_design_system.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:listo_design_system/themes/spacing.dart';
+import 'package:listo_design_system/themes/themes_module.dart';
 
 var septeoLogo = SvgPicture.string("""
   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -20,12 +23,14 @@ var septeoLogo = SvgPicture.string("""
 
 class DestinationData {
   final IconData icon;
-  final IconData selectedIcon;
   final String label;
-  final bool expendable;
+  final List? children;
+  // final bool expendable;
 
-  DestinationData({required this.icon, required this.selectedIcon, required this.label, required this.expendable});
+  DestinationData({required this.icon, required this.label, this.children});
 }
+
+
 
 class ListoNavigationRail extends StatefulWidget {
   const ListoNavigationRail({super.key, required this.destinationData});
@@ -43,9 +48,25 @@ class ListoNavigationRailState extends State<ListoNavigationRail> {
   bool showLeading = false;
   bool showTrailing = false;
   double groupAlignment = -1.0;
+  List<bool> _isExtendedList = [];
+  List<NavigationRailDestination> _destinations = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _isExtendedList = List.filled(widget.destinationData.length, false);
+    _destinations = _buildCustomDestinations();
+  }
+
+  void _updateDestinations(int selectedIndex) {
+    setState(() {
+      _destinations = _buildCustomDestinations(selectedIndex: selectedIndex);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    debugPrint('_selectedIndex $_selectedIndex');
     var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(),
@@ -55,14 +76,19 @@ class ListoNavigationRailState extends State<ListoNavigationRail> {
           child: SizedBox(
             height: size.height,
             child: NavigationRail(
-              useIndicator: true, // Forme de l'indicateur
+              useIndicator: true,
+              indicatorColor: Colors.transparent,
               selectedIndex: _selectedIndex,
-              destinations: _buildDestinations(),
+              destinations: _destinations,
               extended: extended,
               onDestinationSelected: (int index) {
                 setState(() {
                   _selectedIndex = index;
+                  if (widget.destinationData[index].children != null) {
+                    _isExtendedList[index] = !_isExtendedList[index];
+                  }
                 });
+                _updateDestinations(index);
               },
               leading: NavigationRailLeading(onPressed: () {
                 setState(() {
@@ -82,15 +108,69 @@ class ListoNavigationRailState extends State<ListoNavigationRail> {
     );
   }
 
-  List<NavigationRailDestination> _buildDestinations() {
-    return widget.destinationData.map((data) {
-      return NavigationRailDestination(
-        icon: Icon(data.icon),
-        selectedIcon: Icon(data.selectedIcon),
-        label: Text(data.label, style: TextStyles.bodyMedium),
+  List<NavigationRailDestination> _buildCustomDestinations({int? selectedIndex}) {
+    List<NavigationRailDestination> destinations = [];
+
+    for(int index = 0; index < widget.destinationData.length; index++) {
+      var data = widget.destinationData[index];
+      bool isExtendable = data.children != null;
+      bool isExtended = _isExtendedList[index];
+
+      // Add the main destination
+      var destination = NavigationRailDestination(
+        icon: _buildDestinationIcon(data.icon, index == _selectedIndex),
+        label: isExtendable
+            ? Row(
+          children: [
+            Text(data.label, style: TextStyles.bodyMedium),
+            const SizedBox(width: Spacings.md),
+            Icon(
+              isExtended ? Icons.expand_more : Icons.expand_less,
+            ),
+          ],
+        )
+            : Text(data.label, style: TextStyles.bodyMedium),
         padding: const EdgeInsets.symmetric(vertical: Spacings.xs),
       );
-    }).toList();
+      destinations.add(destination);
+
+      // Add children destinations if extended
+      if (isExtended && data.children != null) {
+        data.children!.asMap().forEach((childIndex, childData) {
+          destinations.add(NavigationRailDestination(
+            icon: const SizedBox.shrink(),
+            label: Transform.translate(
+              offset: const Offset(-Spacings.md, 0),
+              child: Text(childData.label, style: TextStyles.bodyMedium),
+            ),
+            padding: const EdgeInsets.symmetric(vertical: Spacings.xs),
+          ));
+        });
+      }
+    }
+
+    debugPrint('destinations in Build $destinations');
+    return destinations;
+  }
+
+  Widget _buildDestinationIcon(IconData icon, bool isSelected) {
+    return Stack(
+      children: [
+        if (isSelected)
+          Positioned(
+            left: 0,
+            top: 0,
+            bottom: 0,
+            child: Container(
+              width: 4.0,
+              color: ListoMainColors.primary,
+            ),
+          ),
+        Center(
+          child: Icon(icon),
+        ),
+      ],
+    );
   }
 }
 
@@ -105,55 +185,56 @@ class NavigationRailLeading extends StatelessWidget {
     return AnimatedBuilder(
       animation: animation,
       builder: (BuildContext context, Widget? child) {
-        // The extended fab has a shorter height than the regular fab.
         return Container(
-          height: 56,
-          // padding: animation.value == 0
-          //     ? EdgeInsets.symmetric(
-          //   vertical: lerpDouble(0, 6, animation.value)!,
-          // )
-          //     : EdgeInsets.zero,
-          child: animation.value == 0
-              ? MouseRegion(
-            cursor: SystemMouseCursors.click,
-            child: GestureDetector(
-              onTap: onPressed,
-              child: Center(
-                child: septeoLogo,
-              ),
-            ),
-          )
-              : Container(
-            margin: const EdgeInsetsDirectional.only(
-                start: Spacings.md, top: 0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: FadeTransition(
-                      opacity: animation,
-                      child: const Icon(Icons.arrow_back),
+          height: 60,
+          child: Stack(
+            children: [
+              if (animation.value < 0.5)
+                Padding(padding: const EdgeInsets.only(top: Spacings.sm, left: 10, right: 10), child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        onTap: onPressed,
+                        child: septeoLogo,
+                      ),
                     ),
-                  ),
-                ),
-                MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: GestureDetector(
-                    onTap: onPressed,
-                    child: Container(
-                      margin: const EdgeInsetsDirectional.only(
-                          end: 20, top: 0),
-                      child: septeoLogo,
+                  ],
+                ))
+                // )
+              else
+                Padding(padding: const EdgeInsets.only(top: Spacings.sm, left: 10, right: 10), child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: FadeTransition(
+                          opacity: animation,
+                          child: const Icon(Icons.arrow_back),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              ],
-            ),
+                    MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        onTap: onPressed,
+                        child: Container(
+                          margin: const EdgeInsetsDirectional.only(
+                              end: Spacings.sm),
+                          child: septeoLogo,
+                        ),
+                      ),
+                    ),
+                  ],
+                ))
+            ],
           ),
         );
       },
@@ -206,7 +287,7 @@ class _NavigationRailTrailingState extends State<NavigationRailTrailing> with Si
         return MouseRegion(
           cursor: SystemMouseCursors.click,
           child: Padding(
-            padding: const EdgeInsets.only(left: Spacings.lg, bottom: Spacings.md),
+            padding: const EdgeInsets.only(left: 26, bottom: Spacings.md),
             child: animation.value < 1 ? const Row(
               children: [
                 Icon(Icons.settings_outlined),
