@@ -21,6 +21,7 @@ WidgetbookComponent searchbarAtom(BuildContext context) {
           print('Search $value');
         },
         enabled: true,
+        items: const <String>['Item 1', 'Item 2', 'Item 3'],
       )),
       "markdown/atome_searchbar.md",
     ),

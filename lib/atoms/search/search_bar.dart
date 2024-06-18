@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../themes/colors.dart';
+import 'package:listo_design_system/listo_design_system.dart';
 
 class ListoSearchBar extends StatefulWidget {
   const ListoSearchBar({
@@ -81,7 +80,7 @@ class _ListoSearchBarState extends State<ListoSearchBar> {
       backgroundColor: WidgetStatePropertyAll(ListoMainColors.neutral[50]),
       elevation: WidgetStateProperty.all(0),
       shape: WidgetStateProperty.all(RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(6),
+        borderRadius: BorderRadius.circular(Radiuses.xs),
       )),
       enabled: widget.enabled,
       hintText: widget.hintText,
