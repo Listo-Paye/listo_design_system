@@ -32,3 +32,27 @@ class ListoProgressBar extends StatelessWidget {
     );
   }
 }
+
+
+// class TagColors {
+//   final Color backgroundColor;
+//   final Color textColor;
+//
+//   const TagColors({required this.backgroundColor, required this.textColor});
+// }
+//
+// enum TagVariant {
+//   ghost(
+//     TagColors(backgroundColor: Colors.white, textColor: Colors.black),
+//   ),
+//   defaultt(
+//   TagColors(backgroundColor: ListoMainColors.materialColor(), textColor: Color(0xFF424242)),
+//   ),
+//   danger(
+//   TagColors(backgroundColor: Color(0xFFFFCDD2), textColor: Colors.white),
+//   );
+//
+//   final TagColors colors;
+//
+//   const TagVariant(this.colors);
+// }

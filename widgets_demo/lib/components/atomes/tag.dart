@@ -15,11 +15,41 @@ WidgetbookComponent tagAtom(BuildContext context) {
               initialValue: 'Tag',
             );
 
-            return Center(
-              child: Tag(
-                backgroundColor: Colors.blue,
-                textColor: Colors.blue,
-                label: label,
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              child: Row(
+                mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+                children: [
+                  Tag(
+                    type: TagTypes.defaultType,
+                    label: 'Default',
+                  ),
+                  const SizedBox(width: 8),
+                  Tag(
+                    type: TagTypes.ghost,
+                    label: 'Ghost',
+                  ),
+                  const SizedBox(width: 8),
+                  Tag(
+                    type: TagTypes.success,
+                    label: "Success",
+                  ),
+                  const SizedBox(width: 8),
+                  Tag(
+                    type: TagTypes.info,
+                    label: "Info",
+                  ),
+                  const SizedBox(width: 8),
+                  Tag(
+                    type: TagTypes.danger,
+                    label: "Danger",
+                  ),
+                  const SizedBox(width: 8),
+                  Tag(
+                    type: TagTypes.warning,
+                    label: "Warning",
+                  ),
+                ],
               ),
             );
           },
