@@ -7,8 +7,8 @@ import 'layout/layout.dart';
 
 List<WidgetbookCategory> componentCategories(BuildContext context) {
   return [
-    getLayoutCategory(context),
+    layoutCategory(context),
     formsCategory(context),
-    getIndicatorsCategory(context),
+    indicatorsCategory(context),
   ];
 }

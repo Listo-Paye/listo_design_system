@@ -26,7 +26,7 @@ class HotReload extends StatelessWidget {
         ]),
       ],
       directories: [
-        WidgetbookComponent(name: "", useCases: [
+        WidgetbookComponent(name: "Accueil", useCases: [
           usercaseWithMarkdown(
             "README",
             null,
