@@ -105,19 +105,21 @@ class ListoColor extends ColorSwatch<ListoSwatch> {
           50: _primaryLighterThan(ListoSwatch.ultraLight)
               ? Color(value)
               : this[ListoSwatch.ultraLight]!,
-          100: _primaryBetween(ListoSwatch.medium, ListoSwatch.ultraLight)
+          100: _primaryBetween(ListoSwatch.light, ListoSwatch.ultraLight)
               ? Color(value)
               : this[ListoSwatch.ultraLight]!,
-          200: this[ListoSwatch.medium]!,
-          300: _primaryBetween(ListoSwatch.dark, ListoSwatch.medium)
+          200: this[ListoSwatch.light]!,
+          300: _primaryBetween(ListoSwatch.medium, ListoSwatch.light)
+              ? Color(value)
+              : this[ListoSwatch.light]!,
+          400: this[ListoSwatch.medium]!,
+          500: _primaryBetween(ListoSwatch.dark, ListoSwatch.medium)
               ? Color(value)
               : this[ListoSwatch.medium]!,
-          400: this[ListoSwatch.dark]!,
-          500: this[ListoSwatch.dark]!,
-          600: _primaryBetween(ListoSwatch.darker, ListoSwatch.dark)
+          600: this[ListoSwatch.dark]!,
+          700: _primaryBetween(ListoSwatch.darker, ListoSwatch.dark)
               ? Color(value)
               : this[ListoSwatch.dark]!,
-          700: this[ListoSwatch.darker]!,
           800: this[ListoSwatch.darker]!,
           900: _primaryDarkerThan(ListoSwatch.darker)
               ? Color(value)

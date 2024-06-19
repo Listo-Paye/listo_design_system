@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:listo_design_system/atoms/search/search_anchor.dart';
+import 'package:listo_design_system/listo_design_system.dart';
 import 'package:widgetbook/widgetbook.dart';
-
-import '../../use_case_with_markdown.dart';
+import 'package:widgets_demo/use_case_with_markdown.dart';
 
 WidgetbookComponent searchbarAtom(BuildContext context) {
   return WidgetbookComponent(name: "Searchbar", useCases: [
