@@ -7,54 +7,50 @@ WidgetbookComponent tagAtom(BuildContext context) {
   return WidgetbookComponent(
     name: 'Tag',
     useCases: [
-      usercaseWithMarkdown(
-          'Tag',
-              (context) {
-            final label = context.knobs.string(
-              label: 'Text',
-              initialValue: 'Tag',
-            );
+      usercaseWithMarkdown('Tag', (context) {
+        final label = context.knobs.string(
+          label: 'Text',
+          initialValue: 'Tag',
+        );
 
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20),
-              child: Row(
-                mainAxisAlignment:MainAxisAlignment.spaceEvenly,
-                children: [
-                  Tag(
-                    type: TagTypes.defaultType,
-                    label: 'Default',
-                  ),
-                  const SizedBox(width: 8),
-                  Tag(
-                    type: TagTypes.ghost,
-                    label: 'Ghost',
-                  ),
-                  const SizedBox(width: 8),
-                  Tag(
-                    type: TagTypes.success,
-                    label: "Success",
-                  ),
-                  const SizedBox(width: 8),
-                  Tag(
-                    type: TagTypes.info,
-                    label: "Info",
-                  ),
-                  const SizedBox(width: 8),
-                  Tag(
-                    type: TagTypes.danger,
-                    label: "Danger",
-                  ),
-                  const SizedBox(width: 8),
-                  Tag(
-                    type: TagTypes.warning,
-                    label: "Warning",
-                  ),
-                ],
+        return const Padding(
+          padding: EdgeInsets.symmetric(vertical: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Tag(
+                type: TagColors.base,
+                label: 'Base',
               ),
-            );
-          },
-          "markdown/atome_tag.md"
-      ),
+              SizedBox(width: 8),
+              Tag(
+                type: TagColors.ghost,
+                label: 'Ghost',
+              ),
+              SizedBox(width: 8),
+              Tag(
+                type: TagColors.success,
+                label: "Success",
+              ),
+              SizedBox(width: 8),
+              Tag(
+                type: TagColors.info,
+                label: "Info",
+              ),
+              SizedBox(width: 8),
+              Tag(
+                type: TagColors.danger,
+                label: "Danger",
+              ),
+              SizedBox(width: 8),
+              Tag(
+                type: TagColors.warning,
+                label: "Warning",
+              ),
+            ],
+          ),
+        );
+      }, "markdown/atome_tag.md"),
     ],
   );
 }
