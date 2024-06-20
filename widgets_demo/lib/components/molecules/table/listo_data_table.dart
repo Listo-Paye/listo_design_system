@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:listo_design_system/listo_design_system.dart';
-import 'package:listo_design_system/molecules/table/listo_data_table.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgets_demo/use_case_with_markdown.dart';
 
@@ -97,7 +96,6 @@ final formattedValues = <String, Widget Function(JourFerieTravaille)>{
         Text('Journée de solidarité', style: TextStyles.bodyMediumSemibold)
       ]);
     }
-    ;
 
     return Tag(
       label: item.jourTravaille ? 'Oui' : 'Non',

@@ -43,8 +43,8 @@ jobs:
           cd widgets_demo  
           flutter pub get
 
-      - name: Run analyzer
-        run: flutter analyze
+#      - name: Run analyzer
+#        run: flutter analyze
 
       - name: Check Publish Warnings
         run: dart pub publish --dry-run

@@ -56,14 +56,15 @@ class NavigationMenu extends StatefulWidget {
 class NavigationMenuState extends State<NavigationMenu> {
   NavigationMenuCollapseState _isCollapsed = NavigationMenuCollapseState.none;
   bool _showRail = false;
-  List<DestinationData> _destinations = [];
-
+  final List<MenuTile> _menuTiles = [];
   bool get isExpanded => _isCollapsed == NavigationMenuCollapseState.expanded;
 
   @override
   void initState() {
     super.initState();
-    _destinations = widget.destinations;
+    for (var destination in widget.destinations) {
+      _menuTiles.add(MenuTile(destination: destination));
+    }
     _showRail = widget.showRail;
     _isCollapsed = _showRail
         ? NavigationMenuCollapseState.collapsed

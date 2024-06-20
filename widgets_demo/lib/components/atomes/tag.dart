@@ -8,11 +8,6 @@ WidgetbookComponent tagAtom(BuildContext context) {
     name: 'Tag',
     useCases: [
       usercaseWithMarkdown('Tag', (context) {
-        final label = context.knobs.string(
-          label: 'Text',
-          initialValue: 'Tag',
-        );
-
         return const Padding(
           padding: EdgeInsets.symmetric(vertical: 20),
           child: Row(

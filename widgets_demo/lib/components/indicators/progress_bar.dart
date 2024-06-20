@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:listo_design_system/atoms/progress_bar.dart';
 import 'package:listo_design_system/listo_design_system.dart';
 import 'package:widgetbook/widgetbook.dart';
 
