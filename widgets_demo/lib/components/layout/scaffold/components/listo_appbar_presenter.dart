@@ -14,14 +14,29 @@ class ListoAppBarPresenter extends StatelessWidget {
     final lastName =
         context.knobs.stringOrNull(label: "Last name", initialValue: "Doe");
 
-    return Center(
-      child: ListoAppBar(
-        email: email,
-        firstName: firstName,
-        lastName: lastName,
-        onLogout: () {
-          // Add your logout logic here
-        },
+    return Padding(
+      padding: const EdgeInsets.all(12),
+      child: Container(
+        height: 700,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: ListoDesignSystem.themes.main.primaryColor,
+            width: 3,
+          ),
+        ),
+        child: Scaffold(
+          appBar: ListoAppBar(
+            email: email,
+            firstName: firstName,
+            lastName: lastName,
+            onLogout: () {
+              // Add your logout logic here
+            },
+          ),
+          body: Container(
+            color: ListoMainColors.primary.ultraLight,
+          ),
+        ),
       ),
     );
   }
