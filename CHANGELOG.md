@@ -1,3 +1,10 @@
+## 0.0.19
+* Update Theme with spacing and radius
+* Reorganize components
+* Add AddBar
+* Add NavigationBar
+* Add DataTable
+
 ## 0.0.18
 * Update Theme with spacing and radius
 * Add ProgressBar
