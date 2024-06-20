@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:widgets_demo/components/molecules/molecules.dart';
+import 'package:widgets_demo/components/tables_and_lists/tables_and_lists.dart';
 
 import 'forms/forms.dart';
 import 'indicators/indicators.dart';
@@ -11,6 +11,6 @@ List<WidgetbookCategory> componentCategories(BuildContext context) {
     layoutCategory(context),
     formsCategory(context),
     indicatorsCategory(context),
-    moleculesCategory(context),
+    tablesAndListsCategory(context),
   ];
 }
