@@ -31,7 +31,6 @@ class ProfileSubmenuButton extends StatelessWidget {
   }
 
   String getInitials() {
-
     if (isNullOrEmpty(firstName) && isNullOrEmpty(lastName)) {
       return getFirstXCharacters(2, email);
     }

@@ -8,10 +8,10 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 WidgetbookUseCase usercaseWithMarkdown(
-    String title,
-    Widget? Function(BuildContext)? builder,
-    String? mdAssetPath,
-    ) {
+  String title,
+  Widget? Function(BuildContext)? builder,
+  String? mdAssetPath,
+) {
   return WidgetbookUseCase(
     name: title,
     builder: (BuildContext context) {
@@ -52,8 +52,8 @@ class _CardWithMarkdownState extends State<CardWithMarkdown> {
       rootBundle
           .loadString("${kDebugMode ? "" : "assets/"}${widget.mdAssetPath}")
           .then((value) => setState(() {
-        mdData = value;
-      }));
+                mdData = value;
+              }));
     }
   }
 

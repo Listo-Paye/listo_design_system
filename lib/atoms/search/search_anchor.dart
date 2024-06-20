@@ -28,7 +28,6 @@ class ListoSearchAnchor extends StatefulWidget {
 }
 
 class _ListoSearchAnchorState extends State<ListoSearchAnchor> {
-
   Iterable<Widget> _buildSuggestions(
       BuildContext context, SearchController controller) {
     if (!widget.showSuggestions) return <Widget>[];
