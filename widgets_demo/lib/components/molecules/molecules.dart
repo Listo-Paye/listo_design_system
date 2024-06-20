@@ -5,6 +5,6 @@ import './table/listo_data_table.dart';
 
 WidgetbookCategory moleculesCategory(BuildContext context) {
   return WidgetbookCategory(name: "Molécules", children: [
-    ListoDataTableMolecule(context),
+    listoDataTableMolecule(context),
   ]);
 }

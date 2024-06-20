@@ -108,6 +108,7 @@ class Tag extends StatelessWidget {
           borderRadius: const BorderRadius.all(Radius.circular(Radiuses.md)),
         ),
         child: Text(label,
-            style: TextStyles.labelLarge.copyWith(color: type.textColor, fontSize: 14)));
+            style: TextStyles.labelLarge
+                .copyWith(color: type.textColor, fontSize: 14)));
   }
 }
