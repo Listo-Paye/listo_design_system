@@ -17,74 +17,53 @@ WidgetbookComponent listoDataTableMolecule(BuildContext context) {
 
 // Exemple de classe de données
 class JourFerieTravaille {
-  final String context;
-  final String id;
-  final String type;
-  final String etablissement;
   final DateTime date;
   final String nom;
   final bool solidarite;
   final bool jourTravaille;
-  final String jourFerieId;
 
   JourFerieTravaille({
-    required this.context,
-    required this.id,
-    required this.type,
-    required this.etablissement,
     required this.date,
     required this.nom,
     required this.solidarite,
     required this.jourTravaille,
-    required this.jourFerieId,
   });
 }
 
 final List<JourFerieTravaille> data = [
   JourFerieTravaille(
-    context: "/api/contexts/JourFerieTravaille",
-    id: "/api/jour_ferie_travailles/8fba51aa-1d57-4d98-94cd-2d0c1cde070b",
-    type: "JourFerieTravaille",
-    etablissement: "/api/etablissements/55036c03-6d3f-4053-9547-c08a32ac9aca",
     date: DateTime.parse("2024-05-22T00:00:00+00:00"),
     nom: "Lundi de Pentecôte",
     solidarite: true,
     jourTravaille: true,
-    jourFerieId: "8fba51aa-1d57-4d98-94cd-2d0c1cde070b",
   ),
   JourFerieTravaille(
-    context: "/api/contexts/JourFerieTravaille",
-    id: "/api/jour_ferie_travailles/sssssaa-1d57-4d98-94cd-2d0c1cde070b",
-    type: "JourFerieTravaille",
-    etablissement: "/api/etablissements/55036c03-6d3f-4053-9547-c08a32ac9aca",
     date: DateTime.parse("2024-05-20T00:00:00+00:00"),
     nom: "Mardi gras",
     solidarite: false,
     jourTravaille: true,
-    jourFerieId: "8fba51aa-1d57-4d98-94cd-2d0c1cde070b",
   ),
   JourFerieTravaille(
-    context: "/api/contexts/JourFerieTravaille",
-    id: "/api/jour_ferie_travailles/8fffffaa-1d57-4d98-94cd-2d0c1cde070b",
-    type: "JourFerieTravaille",
-    etablissement: "/api/etablissements/55036c03-6d3f-4053-9547-c08a32ac9aca",
     date: DateTime.parse("2023-04-20T00:00:00+00:00"),
     nom: "Toussaint",
     solidarite: false,
     jourTravaille: false,
-    jourFerieId: "8fba51aa-1d57-4d98-94cd-2d0c1cde070b",
   ),
 ];
 
 final formattedValues = <String, Widget Function(JourFerieTravaille)>{
-  'Nom du jour férié': (JourFerieTravaille item) => Text(
-        item.nom,
-        style: TextStyles.bodyMediumSemibold
-            .copyWith(color: ListoMainColors.neutral[900]),
-      ),
-  'Jour réel': (JourFerieTravaille item) => Text(item.date.toIso8601String(),
-      style:
-          TextStyles.bodyMedium.copyWith(color: ListoMainColors.neutral[900])),
+  'Nom du jour férié': (JourFerieTravaille item) {
+    return Text(
+      item.nom,
+      style: TextStyles.bodyMediumSemibold
+          .copyWith(color: ListoMainColors.neutral[900]),
+    );
+  },
+  'Jour réel': (JourFerieTravaille item) {
+    return Text(item.date.toIso8601String(),
+        style: TextStyles.bodyMedium
+            .copyWith(color: ListoMainColors.neutral[900]));
+  },
   'Jour travaillé': (JourFerieTravaille item) {
     if (item.solidarite) {
       return Row(children: [
@@ -110,12 +89,15 @@ final sortableExtractors = <String, Comparator<JourFerieTravaille>>{
   'Jour travaillé': (itemA, itemB) => itemA.jourTravaille ? 1 : -1,
 };
 
+const title = 'Jours fériés travaillés';
+
 class ListoDataTablePresenter extends StatelessWidget {
   const ListoDataTablePresenter({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ListoDataTable<JourFerieTravaille>(
+      title: title,
       data: data,
       formattedValues: formattedValues,
       sortableValues: sortableExtractors,
