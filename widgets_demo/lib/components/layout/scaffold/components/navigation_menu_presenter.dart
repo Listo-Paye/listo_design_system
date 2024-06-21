@@ -25,6 +25,7 @@ class NavigationMenuPresenter extends StatelessWidget {
             DestinationData(icon: Icons.home, label: "Accueil", action: () {}),
           ],
           showRail: true,
+          showMenuIcon: true,
         ),
       ),
     );

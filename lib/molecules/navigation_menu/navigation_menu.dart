@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:listo_design_system/svg/septeo_logo.dart';
 import 'package:listo_design_system/themes/spacing.dart';
 
+import 'collapse_state.dart';
 import 'destination_data.dart';
+import 'menu_icon.dart';
+import 'menu_tile.dart';
 
 class NavigationMenu extends StatefulWidget {
+  final bool showMenuIcon;
   final bool showRail;
   final Widget body;
   final List<DestinationData> destinations;
@@ -13,10 +16,15 @@ class NavigationMenu extends StatefulWidget {
     required this.destinations,
     required this.body,
     this.showRail = false,
+    this.showMenuIcon = false,
   });
 
   @override
   State<NavigationMenu> createState() => NavigationMenuState();
+
+  static NavigationMenuState? maybeOf(BuildContext context) {
+    return context.findAncestorStateOfType<NavigationMenuState>();
+  }
 
   static NavigationMenuState of(BuildContext context) {
     final NavigationMenuState? result =
@@ -55,18 +63,23 @@ class NavigationMenu extends StatefulWidget {
 
 class NavigationMenuState extends State<NavigationMenu> {
   NavigationMenuCollapseState _isCollapsed = NavigationMenuCollapseState.none;
-  bool _showRail = false;
   final List<MenuTile> _menuTiles = [];
+  final List<Widget> _header = [];
+
   bool get isExpanded => _isCollapsed == NavigationMenuCollapseState.expanded;
+  bool get isCollapsed => _isCollapsed == NavigationMenuCollapseState.collapsed;
+  bool get isHidden => _isCollapsed == NavigationMenuCollapseState.none;
 
   @override
   void initState() {
     super.initState();
+    if (widget.showMenuIcon) {
+      _header.add(const MenuIcon());
+    }
     for (var destination in widget.destinations) {
       _menuTiles.add(MenuTile(destination: destination));
     }
-    _showRail = widget.showRail;
-    _isCollapsed = _showRail
+    _isCollapsed = widget.showRail
         ? NavigationMenuCollapseState.collapsed
         : NavigationMenuCollapseState.none;
   }
@@ -79,7 +92,7 @@ class NavigationMenuState extends State<NavigationMenu> {
 
   void closeMenu() {
     setState(() {
-      _isCollapsed = _showRail
+      _isCollapsed = widget.showRail
           ? NavigationMenuCollapseState.collapsed
           : NavigationMenuCollapseState.none;
     });
@@ -111,9 +124,10 @@ class NavigationMenuState extends State<NavigationMenu> {
             duration: const Duration(milliseconds: 300),
             width: _isCollapsed.width,
             curve: Curves.fastOutSlowIn,
-            child: const Column(
+            child: Column(
               children: [
-                MenuIcon(),
+                ..._header,
+                ..._menuTiles,
               ],
             ),
             onEnd: () {
@@ -129,73 +143,4 @@ class NavigationMenuState extends State<NavigationMenu> {
       ],
     );
   }
-}
-
-class MenuTile extends StatelessWidget {
-  final DestinationData destination;
-  const MenuTile({super.key, required this.destination});
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(left: Spacings.xs),
-          child: Container(
-            alignment: Alignment.centerLeft,
-            child: InkWell(
-              onTap: () {
-                var menu = NavigationMenu.of(context);
-                if (menu.isExpanded) {
-                  menu.closeMenu();
-                } else {
-                  menu.openMenu();
-                }
-              },
-              child: septeoLogo,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class MenuIcon extends StatelessWidget {
-  const MenuIcon({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(left: Spacings.xs),
-          child: Container(
-            alignment: Alignment.centerLeft,
-            child: InkWell(
-              onTap: () {
-                var menu = NavigationMenu.of(context);
-                if (menu.isExpanded) {
-                  menu.closeMenu();
-                } else {
-                  menu.openMenu();
-                }
-              },
-              child: septeoLogo,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-enum NavigationMenuCollapseState {
-  none(0.0),
-  collapsed(72.0),
-  expanded(262);
-
-  const NavigationMenuCollapseState(this.width);
-
-  final double width;
 }

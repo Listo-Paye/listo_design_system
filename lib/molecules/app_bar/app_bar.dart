@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:listo_design_system/svg/septeo_logo.dart';
+import 'package:listo_design_system/molecules/navigation_menu/menu_icon.dart';
 import 'package:listo_design_system/themes/spacing.dart';
 
 import 'profile_submenu_button.dart';
@@ -32,18 +32,10 @@ class ListoAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.white,
       leading: Builder(
         builder: (context) {
-          return onMenuClick == null
-              ? Padding(
-                  padding: const EdgeInsets.only(left: Spacings.xs),
-                  child: septeoLogo,
-                )
-              : InkWell(
-                  onTap: onMenuClick,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: Spacings.xs),
-                    child: septeoLogo,
-                  ),
-                );
+          return const Padding(
+            padding: EdgeInsets.only(left: Spacings.sm),
+            child: MenuIcon(),
+          );
         },
       ),
       title: Row(
