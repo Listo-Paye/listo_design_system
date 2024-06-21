@@ -27,7 +27,7 @@ abstract final class TextStyles {
     fontSize: 16,
     height: 1.5,
     fontFamily: 'Inter',
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w400,
     color: ListoMainColors.neutral[700],
   );
   static final TextStyle bodyLargeSemibold = TextStyle(
