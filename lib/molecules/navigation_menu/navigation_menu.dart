@@ -11,12 +11,16 @@ class NavigationMenu extends StatefulWidget {
   final bool showRail;
   final Widget body;
   final List<DestinationData> destinations;
+  final Function(DestinationData data)? onSelected;
+  final Function()? onSettings;
   const NavigationMenu({
     super.key,
     required this.destinations,
     required this.body,
     this.showRail = false,
     this.showMenuIcon = false,
+    this.onSelected,
+    this.onSettings,
   });
 
   @override
@@ -63,25 +67,58 @@ class NavigationMenu extends StatefulWidget {
 
 class NavigationMenuState extends State<NavigationMenu> {
   NavigationMenuCollapseState _isCollapsed = NavigationMenuCollapseState.none;
-  final List<MenuTile> _menuTiles = [];
   final List<Widget> _header = [];
-
+  final List<MenuTile> _tiles = [];
   bool get isExpanded => _isCollapsed == NavigationMenuCollapseState.expanded;
   bool get isCollapsed => _isCollapsed == NavigationMenuCollapseState.collapsed;
   bool get isHidden => _isCollapsed == NavigationMenuCollapseState.none;
+  MenuTile? _settings;
 
   @override
   void initState() {
     super.initState();
     if (widget.showMenuIcon) {
-      _header.add(const MenuIcon());
-    }
-    for (var destination in widget.destinations) {
-      _menuTiles.add(MenuTile(destination: destination));
+      _header.add(const Padding(
+        padding: EdgeInsets.only(left: Spacings.md),
+        child: MenuIcon(),
+      ));
     }
     _isCollapsed = widget.showRail
         ? NavigationMenuCollapseState.collapsed
         : NavigationMenuCollapseState.none;
+    for (var destination in widget.destinations) {
+      _tiles.add(
+        MenuTile(
+          destination: destination,
+          onSelected: (data) {
+            for (var tile in _tiles) {
+              if (tile.destination.label == data.label) {
+                tile.select();
+              } else {
+                if ((tile.destination.children ?? [])
+                    .where((d) => d.label == data.label)
+                    .isNotEmpty) {
+                  tile.select(label: data.label);
+                } else {
+                  tile.deselect();
+                }
+              }
+            }
+          },
+        ),
+      );
+    }
+    if (widget.onSettings != null) {
+      _settings = MenuTile(
+        destination: DestinationData(
+          icon: Icons.settings,
+          label: "Paramètres",
+        ),
+        onSelected: (data) {
+          widget.onSettings?.call();
+        },
+      );
+    }
   }
 
   void openMenu() {
@@ -91,6 +128,7 @@ class NavigationMenuState extends State<NavigationMenu> {
   }
 
   void closeMenu() {
+    hideLabels(context);
     setState(() {
       _isCollapsed = widget.showRail
           ? NavigationMenuCollapseState.collapsed
@@ -110,16 +148,37 @@ class NavigationMenuState extends State<NavigationMenu> {
     });
   }
 
-  void showLabels() {}
+  void showLabels(BuildContext context) {
+    for (var tile in _tiles) {
+      tile.showLabel();
+    }
+    _settings?.showLabel();
+  }
 
-  void hideLabels() {}
+  void hideLabels(BuildContext context) {
+    for (var tile in _tiles) {
+      tile.deselect();
+      tile.hideLabel();
+    }
+    _settings?.hideLabel();
+  }
+
+  void selectTile(MenuTile tile) {
+    for (var t in _tiles) {
+      if (t == tile) {
+        t.select();
+      } else {
+        t.deselect();
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: Spacings.sm, left: Spacings.sm),
+          padding: const EdgeInsets.only(top: Spacings.sm),
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 300),
             width: _isCollapsed.width,
@@ -127,14 +186,19 @@ class NavigationMenuState extends State<NavigationMenu> {
             child: Column(
               children: [
                 ..._header,
-                ..._menuTiles,
+                const SizedBox(height: Spacings.sm),
+                ..._tiles,
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.bottomLeft,
+                    child: _settings ?? Container(),
+                  ),
+                ),
               ],
             ),
             onEnd: () {
               if (_isCollapsed == NavigationMenuCollapseState.expanded) {
-                showLabels();
-              } else {
-                hideLabels();
+                showLabels(context);
               }
             },
           ),

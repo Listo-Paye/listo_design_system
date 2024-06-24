@@ -18,11 +18,32 @@ class NavigationMenuPresenter extends StatelessWidget {
           ),
         ),
         child: NavigationMenu(
+          onSettings: () {
+            // ignore: avoid_print
+            print("Settings");
+          },
           body: Container(
             color: ListoMainColors.primary.ultraLight,
           ),
           destinations: [
-            DestinationData(icon: Icons.home, label: "Accueil", action: () {}),
+            DestinationData(icon: Icons.grid_view, label: "Tableau de bord"),
+            DestinationData(icon: Icons.person, label: "Employés"),
+            DestinationData(icon: Icons.content_paste, label: "Contrats"),
+            DestinationData(
+              icon: Icons.insert_chart_outlined,
+              label: "Variables",
+              children: [
+                DestinationData(
+                  icon: Icons.radar,
+                  label: "Radar",
+                ),
+              ],
+            ),
+            DestinationData(icon: Icons.euro, label: "Bulletins de paie"),
+            DestinationData(
+              icon: Icons.emoji_flags,
+              label: "Périodes clôturées",
+            ),
           ],
           showRail: true,
           showMenuIcon: true,
