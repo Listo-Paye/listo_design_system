@@ -1,3 +1,7 @@
+## 0.0.20
+* Update Navigation Bar with new design
+* Add tabs component
+
 ## 0.0.19
 * Update Theme with spacing and radius
 * Reorganize components
