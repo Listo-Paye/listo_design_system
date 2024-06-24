@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:listo_design_system/listo_design_system.dart';
 
 class ListoTabsController extends StatelessWidget {
-  static const List<Tab> myTabs = <Tab>[
-    Tab(text: 'LEFT'),
-    Tab(text: 'RIGHT'),
-  ];
+  final Map<String, Widget> tabs;
+
   const ListoTabsController({
     super.key,
+    required this.tabs,
   });
 
   @override
@@ -19,32 +18,22 @@ class ListoTabsController extends StatelessWidget {
           Align(
             alignment: Alignment.centerLeft,
             child: TabBar(
-              unselectedLabelStyle: TextStyles.bodyLarge
-                  .copyWith(color: ListoMainColors.neutral[500]),
-              labelStyle: TextStyles.bodyLargeSemibold
-                  .copyWith(color: ListoMainColors.primary),
-              dividerColor: Colors.transparent,
-              indicatorColor: ListoMainColors.primary,
-              isScrollable: true,
-              tabs: const <Widget>[
-                Tab(text: 'Absences'),
-                Tab(
-                  text: 'Planning',
-                ),
-              ],
-            ),
+                unselectedLabelStyle: TextStyles.bodyLarge
+                    .copyWith(color: ListoMainColors.neutral[500]),
+                labelStyle: TextStyles.bodyLargeSemibold
+                    .copyWith(color: ListoMainColors.primary),
+                dividerColor: Colors.transparent,
+                indicatorColor: ListoMainColors.primary,
+                isScrollable: true,
+                tabs: tabs.keys
+                    .map((key) => Tab(
+                          text: key,
+                        ))
+                    .toList()),
           ),
           Expanded(
             child: TabBarView(
-              children: myTabs.map((Tab tab) {
-                final String label = tab.text!.toLowerCase();
-                return Center(
-                  child: Text(
-                    'This is the $label tab',
-                    style: const TextStyle(fontSize: 36),
-                  ),
-                );
-              }).toList(),
+              children: tabs.values.toList(),
             ),
           ),
         ],
