@@ -66,7 +66,8 @@ class ScaffoldPresenter extends StatelessWidget {
                 label: "Périodes clôturées",
               ),
             ],
-            showRail: true,
+            showRail:
+                context.knobs.boolean(label: "Show rail", initialValue: true),
             showMenuIcon: false,
           ),
         ),
