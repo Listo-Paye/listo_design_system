@@ -29,6 +29,9 @@ class ListoAppBarPresenter extends StatelessWidget {
             email: email,
             firstName: firstName,
             lastName: lastName,
+            onChangePassword: () {
+              // Add your change password logic here
+            },
             onLogout: () {
               // Add your logout logic here
             },

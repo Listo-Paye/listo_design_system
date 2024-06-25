@@ -1,3 +1,4 @@
+// ignore_for_file: no_logic_in_create_state, must_be_immutable, library_private_types_in_public_api
 import 'package:flutter/material.dart';
 import 'package:listo_design_system/themes/spacing.dart';
 
@@ -5,6 +6,8 @@ import 'collapse_state.dart';
 import 'destination_data.dart';
 import 'menu_icon.dart';
 import 'menu_tile.dart';
+
+export 'destination_data.dart';
 
 class NavigationMenu extends StatefulWidget {
   final bool showMenuIcon;
@@ -23,16 +26,24 @@ class NavigationMenu extends StatefulWidget {
     this.onSettings,
   });
 
+  static NavigationMenuState? _state;
+
+  static void selectDestination(DestinationData destination) {
+    _state?.selectDestination(destination);
+  }
+
   @override
-  State<NavigationMenu> createState() => NavigationMenuState();
+  State<NavigationMenu> createState() {
+    _state = NavigationMenuState();
+    return _state!;
+  }
 
   static NavigationMenuState? maybeOf(BuildContext context) {
-    return context.findAncestorStateOfType<NavigationMenuState>();
+    return _state;
   }
 
   static NavigationMenuState of(BuildContext context) {
-    final NavigationMenuState? result =
-        context.findAncestorStateOfType<NavigationMenuState>();
+    final NavigationMenuState? result = _state;
     if (result != null) {
       return result;
     }
@@ -82,6 +93,7 @@ class NavigationMenuState extends State<NavigationMenu> {
         padding: EdgeInsets.only(left: Spacings.md),
         child: MenuIcon(),
       ));
+      _header.add(const SizedBox(height: Spacings.sm));
     }
     _isCollapsed = widget.showRail
         ? NavigationMenuCollapseState.collapsed
@@ -136,6 +148,14 @@ class NavigationMenuState extends State<NavigationMenu> {
     });
   }
 
+  void toggleMenu() {
+    if (isCollapsed) {
+      openMenu();
+    } else {
+      closeMenu();
+    }
+  }
+
   void openRail() {
     setState(() {
       _isCollapsed = NavigationMenuCollapseState.collapsed;
@@ -163,6 +183,16 @@ class NavigationMenuState extends State<NavigationMenu> {
     _settings?.hideLabel();
   }
 
+  void selectDestination(DestinationData destination) {
+    for (var tile in _tiles) {
+      if (tile.destination.label == destination.label) {
+        tile.select();
+      } else {
+        tile.deselect();
+      }
+    }
+  }
+
   void selectTile(MenuTile tile) {
     for (var t in _tiles) {
       if (t == tile) {
@@ -175,36 +205,38 @@ class NavigationMenuState extends State<NavigationMenu> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: Spacings.sm),
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 300),
-            width: _isCollapsed.width,
-            curve: Curves.fastOutSlowIn,
-            child: Column(
-              children: [
-                ..._header,
-                const SizedBox(height: Spacings.sm),
-                ..._tiles,
-                Expanded(
-                  child: Container(
-                    alignment: Alignment.bottomLeft,
-                    child: _settings ?? Container(),
+    return Container(
+      color: Colors.white,
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: Spacings.sm),
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 300),
+              width: _isCollapsed.width,
+              curve: Curves.fastOutSlowIn,
+              child: Column(
+                children: [
+                  ..._header,
+                  ..._tiles,
+                  Expanded(
+                    child: Container(
+                      alignment: Alignment.bottomLeft,
+                      child: _settings ?? Container(),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
+              onEnd: () {
+                if (_isCollapsed == NavigationMenuCollapseState.expanded) {
+                  showLabels(context);
+                }
+              },
             ),
-            onEnd: () {
-              if (_isCollapsed == NavigationMenuCollapseState.expanded) {
-                showLabels(context);
-              }
-            },
           ),
-        ),
-        Expanded(child: widget.body),
-      ],
+          Expanded(child: widget.body),
+        ],
+      ),
     );
   }
 }

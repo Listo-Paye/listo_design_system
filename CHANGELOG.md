@@ -1,3 +1,6 @@
+## 0.0.21
+* Update Documentation for Scaffold
+
 ## 0.0.20
 * Update Navigation Bar with new design
 * Add tabs component

@@ -9,11 +9,13 @@ class ProfileSubmenuButton extends StatelessWidget {
   final String? lastName;
   final String email;
   final VoidCallback onLogout;
+  final VoidCallback onChangePassword;
 
   const ProfileSubmenuButton({
     super.key,
     required this.email,
     required this.onLogout,
+    required this.onChangePassword,
     this.firstName,
     this.lastName,
   });
@@ -58,6 +60,16 @@ class ProfileSubmenuButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SubmenuButton(
       menuChildren: [
+        MenuItemButton(
+          leadingIcon:
+              Icon(Icons.password, color: ListoMainColors.neutral[700]),
+          style: const ButtonStyle(
+            backgroundColor: WidgetStatePropertyAll(Colors.white),
+            elevation: WidgetStatePropertyAll(0),
+          ),
+          onPressed: onChangePassword,
+          child: const Text('Changer de mot de passe'),
+        ),
         MenuItemButton(
           leadingIcon: Icon(Icons.logout, color: ListoMainColors.neutral[700]),
           style: const ButtonStyle(

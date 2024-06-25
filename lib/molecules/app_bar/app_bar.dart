@@ -12,11 +12,13 @@ class ListoAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String email;
   final VoidCallback? onMenuClick;
   final VoidCallback onLogout;
+  final VoidCallback onChangePassword;
 
   const ListoAppBar({
     super.key,
     required this.email,
     required this.onLogout,
+    required this.onChangePassword,
     this.firstName,
     this.lastName,
     this.onMenuClick,
@@ -50,6 +52,7 @@ class ListoAppBar extends StatelessWidget implements PreferredSizeWidget {
               ProfileSubmenuButton(
                 email: email,
                 onLogout: onLogout,
+                onChangePassword: onChangePassword,
                 firstName: firstName,
                 lastName: lastName,
               )
