@@ -1,101 +1,86 @@
-# Utiliser la ListoDataTable
+## Utiliser la ListoDataTable
 
 La ListoDataTable est un widget qui permet d'afficher des données sous forme de tableau. Elle est très flexible et
 permet de personnaliser l'affichage des données.
 
-## Utilisation
+### Propriétés
 
-Pour utiliser correctement la ListoDataTable il faut lui passer la `data` sous forme de `List` ainsi
-que `formattedValues` qui est un `Map` de vos colonnes et contenu de cellule
+* **title (String)**: Le titre de la table, affiché au-dessus des données.
+* **data (List<T>)**: La liste des données qui seront affichées dans le tableau.
+* **formattedValues (Map<String, Widget Function(T)>)**: Un dictionnaire où la clé est le titre de la colonne et la valeur est une fonction retournant un widget. Cette fonction prend en paramètre un élément de type T de la liste data.
+* **sortableValues (Map<String, Comparator<T>>)**: Un dictionnaire où la clé est le titre de la colonne et la valeur est un comparateur utilisé pour le tri des éléments.
 
-## Exemple
+### Exemple
+
+Voici un exemple d'utilisation de ListoDataTable avec une classe de données et des définitions personnalisées pour l'
+affichage et le tri.
+
+
+#### Pour cet exemple nous allons utiliser la classe de données à afficher suivante :
 
 ```dart
-// Exemple de classe de données
 class JourFerieTravaille {
   final String nom;
+  final DateTime date;
   final bool solidarite;
   final bool jourTravaille;
 
   JourFerieTravaille({
     required this.nom,
+    required this.date,
     required this.solidarite,
     required this.jourTravaille,
   });
 }
+```
 
+#### Voici un exemple de ListoDataTable avec des données de jours fériés travaillés :
+
+```dart
 class ListoDataTableExample extends StatelessWidget {
   const ListoDataTableExample({super.key});
-  // Exemple de données
-  final List<JourFerieTravaille> data = [
-    JourFerieTravaille(
-      solidarite: true,
-      jourTravaille: true,
-    ),
-    JourFerieTravaille(
-      nom: "Mardi gras",
-      solidarite: false,
-      jourTravaille: true,
-    ),
-    JourFerieTravaille(
-      nom: "Toussaint",
-      solidarite: false,
-      jourTravaille: false,
-    ),
-  ];
-  // Exemple de mapping colonnes/cellules
-  final formattedValues = <String, Widget Function(JourFerieTravaille)>{
-    'Nom du jour férié': (JourFerieTravaille item) =>
-        Text(
-          item.nom,
-          style: TextStyles.bodyMediumSemibold
-              .copyWith(color: ListoMainColors.neutral[900]),
-        ),
-    'Jour réel': (JourFerieTravaille item) =>
-        Text(item.date.toIso8601String(),
-            style:
-            TextStyles.bodyMedium.copyWith(color: ListoMainColors.neutral[900])),
-    'Jour travaillé': (JourFerieTravaille item) {
-      if (item.solidarite) {
-        return Row(children: [
-          Tag(
-            label: item.jourTravaille ? 'Oui' : 'Non',
-            type: item.jourTravaille ? TagColors.success : TagColors.base,
-          ),
-          const SizedBox(width: Spacings.sm),
-          Text('Journée de solidarité', style: TextStyles.bodyMediumSemibold)
-        ]);
-      }
-
-      return Tag(
-        label: item.jourTravaille ? 'Oui' : 'Non',
-        type: item.jourTravaille ? TagColors.success : TagColors.base,
-      );
-    },
-  };
-
-  // Exemple de Sort custom par colonne
-  final sortableExtractors = <String, Comparator<JourFerieTravaille>>{
-    'Nom du jour férié': (itemA, itemB) => itemA.nom.compareTo(itemB.nom),
-    'Jour réel': (itemA, itemB) => itemA.date.compareTo(itemB.date),
-    'Jour travaillé': (itemA, itemB) => itemA.jourTravaille ? 1 : -1,
-  };
-
-  const title = 'Jours fériés travaillés';
-
 
   @override
   Widget build(BuildContext context) {
+    final data = [
+      JourFerieTravaille(
+        nom: "Nouvel An",
+        date: DateTime(2024, 1, 1),
+        solidarite: false,
+        jourTravaille: false,
+      ),
+      // Autres jours fériés...
+    ];
+
     return ListoDataTable<JourFerieTravaille>(
-      title: title,
+      title: 'Jours fériés travaillés',
       data: data,
-      formattedValues: formattedValues,
-      sortableValues: sortableExtractors,
+      formattedValues: {/* Voir l'exemple suivant pour les détails */},
+      sortableValues: {/* Voir l'exemple suivant pour les détails */},
     );
   }
 }
 ```
 
+#### Configuration des cellules avec `formattedValues`
 
+```dart
+final formattedValues = <String, Widget Function(JourFerieTravaille)>{
+  'Nom du jour férié': (item) => Text(item.nom),
+  'Jour réel': (item) => Text(item.date.toIso8601String()),
+  'Jour travaillé': (item) => Tag(
+      label: item.jourTravaille ? 'Oui' : 'Non',
+      type: item.jourTravaille ? TagColors.success : TagColors.base,
+  ),
+};
+```
 
+#### Configuration du tri avec `sortableValues`
 
+```dart
+final sortableValues = <String, Comparator<JourFerieTravaille>>{
+  'Nom du jour férié': (itemA, itemB) => itemA.nom.compareTo(itemB.nom),
+  'Jour réel': (itemA, itemB) => itemA.date.compareTo(itemB.date),
+  'Jour travaillé': (itemA, itemB) => itemA.jourTravaille ? 1 : -1,
+};
+```
