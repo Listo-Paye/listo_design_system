@@ -1,19 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:listo_design_system/listo_design_system.dart';
-import 'package:widgetbook/widgetbook.dart';
-import 'package:widgets_demo/use_case_with_markdown.dart';
-
-WidgetbookComponent listoDataTableMolecule(BuildContext context) {
-  return WidgetbookComponent(
-    name: 'Data Table',
-    useCases: [
-      usercaseWithMarkdown(
-          'Data Table',
-          (context) => const ListoDataTablePresenter(),
-          "markdown/molecule_data_table.md"),
-    ],
-  );
-}
 
 // Exemple de classe de données
 class JourFerieTravaille {
