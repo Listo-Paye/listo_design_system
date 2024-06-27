@@ -107,14 +107,16 @@ class NavigationMenuState extends State<NavigationMenu> {
   }
 
   setRail(bool showRail) {
-    setState(() {
-      _showRail = showRail;
-      if (_isCollapsed != NavigationMenuCollapseState.expanded) {
-        _isCollapsed = showRail
-            ? NavigationMenuCollapseState.collapsed
-            : NavigationMenuCollapseState.none;
-      }
-    });
+    if (mounted) {
+      setState(() {
+        _showRail = showRail;
+        if (_isCollapsed != NavigationMenuCollapseState.expanded) {
+          _isCollapsed = showRail
+              ? NavigationMenuCollapseState.collapsed
+              : NavigationMenuCollapseState.none;
+        }
+      });
+    }
   }
 
   bool get showRail => _showRail;
