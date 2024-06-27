@@ -1,3 +1,6 @@
+## 0.0.22
+* Update NavigationMenu
+
 ## 0.0.21
 * Update Documentation for Scaffold
 

@@ -11,22 +11,34 @@ export 'destination_data.dart';
 
 class NavigationMenu extends StatefulWidget {
   final bool showMenuIcon;
-  final bool showRail;
   final Widget body;
   final List<DestinationData> destinations;
   final Function(DestinationData data)? onSelected;
   final Function()? onSettings;
-  const NavigationMenu({
+
+  late final bool _showRail;
+  NavigationMenu({
     super.key,
     required this.destinations,
     required this.body,
-    this.showRail = false,
+    bool? showRail,
     this.showMenuIcon = false,
     this.onSelected,
     this.onSettings,
-  });
+  }) {
+    if (showRail != null) {
+      this.showRail = showRail;
+      _showRail = showRail;
+    }
+  }
 
   static NavigationMenuState? _state;
+
+  bool get showRail => _state?.showRail ?? _showRail;
+
+  set showRail(bool showRail) {
+    _state?.setRail(showRail);
+  }
 
   static void selectDestination(DestinationData destination) {
     _state?.selectDestination(destination);
@@ -34,7 +46,7 @@ class NavigationMenu extends StatefulWidget {
 
   @override
   State<NavigationMenu> createState() {
-    _state = NavigationMenuState();
+    _state = NavigationMenuState(_showRail);
     return _state!;
   }
 
@@ -78,12 +90,23 @@ class NavigationMenu extends StatefulWidget {
 
 class NavigationMenuState extends State<NavigationMenu> {
   NavigationMenuCollapseState _isCollapsed = NavigationMenuCollapseState.none;
+  bool _showRail = false;
   final List<Widget> _header = [];
   final List<MenuTile> _tiles = [];
   bool get isExpanded => _isCollapsed == NavigationMenuCollapseState.expanded;
   bool get isCollapsed => _isCollapsed == NavigationMenuCollapseState.collapsed;
   bool get isHidden => _isCollapsed == NavigationMenuCollapseState.none;
   MenuTile? _settings;
+
+  NavigationMenuState(bool showRail) {
+    _showRail = showRail;
+  }
+
+  setRail(bool showRail) {
+    _showRail = showRail;
+  }
+
+  bool get showRail => _showRail;
 
   @override
   void initState() {
@@ -95,7 +118,7 @@ class NavigationMenuState extends State<NavigationMenu> {
       ));
       _header.add(const SizedBox(height: Spacings.sm));
     }
-    _isCollapsed = widget.showRail
+    _isCollapsed = _showRail
         ? NavigationMenuCollapseState.collapsed
         : NavigationMenuCollapseState.none;
     for (var destination in widget.destinations) {
@@ -142,7 +165,7 @@ class NavigationMenuState extends State<NavigationMenu> {
   void closeMenu() {
     hideLabels(context);
     setState(() {
-      _isCollapsed = widget.showRail
+      _isCollapsed = _showRail
           ? NavigationMenuCollapseState.collapsed
           : NavigationMenuCollapseState.none;
     });
