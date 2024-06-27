@@ -17,6 +17,7 @@ class NavigationMenu extends StatefulWidget {
   final Function()? onSettings;
 
   late final bool _showRail;
+
   NavigationMenu({
     super.key,
     required this.destinations,
@@ -93,8 +94,11 @@ class NavigationMenuState extends State<NavigationMenu> {
   bool _showRail = false;
   final List<Widget> _header = [];
   final List<MenuTile> _tiles = [];
+
   bool get isExpanded => _isCollapsed == NavigationMenuCollapseState.expanded;
+
   bool get isCollapsed => _isCollapsed == NavigationMenuCollapseState.collapsed;
+
   bool get isHidden => _isCollapsed == NavigationMenuCollapseState.none;
   MenuTile? _settings;
 
@@ -103,7 +107,14 @@ class NavigationMenuState extends State<NavigationMenu> {
   }
 
   setRail(bool showRail) {
-    _showRail = showRail;
+    setState(() {
+      _showRail = showRail;
+      if (_isCollapsed != NavigationMenuCollapseState.expanded) {
+        _isCollapsed = showRail
+            ? NavigationMenuCollapseState.collapsed
+            : NavigationMenuCollapseState.none;
+      }
+    });
   }
 
   bool get showRail => _showRail;
