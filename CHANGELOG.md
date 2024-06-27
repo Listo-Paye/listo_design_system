@@ -1,3 +1,6 @@
+## 0.0.23
+* Optimized Animations
+
 ## 0.0.22+2
 * Update NavigationMenu
 

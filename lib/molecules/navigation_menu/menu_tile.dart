@@ -21,6 +21,14 @@ class MenuTile extends StatefulWidget {
     _state?.hideLabels();
   }
 
+  void showMenuIcon() {
+    _state?.showMenuIcon();
+  }
+
+  void hideMenuIcon() {
+    _state?.hideMenuIcon();
+  }
+
   void select({String? label}) {
     _state?.select(label);
   }
@@ -111,7 +119,8 @@ class MenuTileState extends State<MenuTile> {
       height: (_isSelected && _showLabel)
           ? (widget.destination.children?.length ?? 0) * 56.0 + 56
           : 56,
-      duration: const Duration(milliseconds: 300),
+      alignment: Alignment.topLeft,
+      duration: const Duration(milliseconds: 200),
       onEnd: () {
         if (_showLabel && _isSelected) {
           List<_ChildTile> children = [];
@@ -145,66 +154,71 @@ class MenuTileState extends State<MenuTile> {
                 onTap: () {
                   widget.onSelected?.call(widget.destination);
                 },
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    left: Spacings.md,
-                    top: Spacings.sm,
-                    bottom: Spacings.sm,
-                  ),
-                  child: Row(
-                    children: [
-                      AnimatedContainer(
-                          duration: const Duration(milliseconds: 30),
-                          width: _showMenuIcon ? 10 : 0),
-                      AnimatedSwitcher(
-                        duration: const Duration(milliseconds: 300),
-                        child: _showMenuIcon
-                            ? Icon(
-                                widget.destination.icon,
-                                color: ListoMainColors.neutral.shade900,
-                              )
-                            : const SizedBox(width: 0),
-                      ),
-                      AnimatedContainer(
-                          duration: const Duration(milliseconds: 30),
-                          width: _showLabel ? 10 : 0),
-                      AnimatedSwitcher(
-                        duration: const Duration(milliseconds: 300),
-                        child: _showLabel
-                            ? Text(
-                                widget.destination.label,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium
-                                    ?.copyWith(
+                child: _showMenuIcon
+                    ? Padding(
+                        padding: const EdgeInsets.only(
+                          left: Spacings.md,
+                          top: Spacings.sm,
+                          bottom: Spacings.sm,
+                        ),
+                        child: Row(
+                          children: [
+                            AnimatedContainer(
+                                duration: const Duration(milliseconds: 10),
+                                width: _showMenuIcon ? 10 : 0),
+                            AnimatedSwitcher(
+                              duration: const Duration(milliseconds: 100),
+                              child: _showMenuIcon
+                                  ? Icon(
+                                      widget.destination.icon,
                                       color: ListoMainColors.neutral.shade900,
-                                    ),
-                              )
-                            : const SizedBox(width: 0),
-                      ),
-                      AnimatedContainer(
-                          duration: const Duration(milliseconds: 30),
-                          width: (_showLabel &&
-                                  (widget.destination.children?.isNotEmpty ??
-                                      false))
-                              ? 10
-                              : 0),
-                      AnimatedSwitcher(
-                        duration: const Duration(milliseconds: 300),
-                        child: (_showLabel &&
-                                (widget.destination.children?.isNotEmpty ??
-                                    false))
-                            ? Icon(
-                                _isSelected && _childSelected < 0
-                                    ? Icons.arrow_drop_up
-                                    : Icons.arrow_drop_down,
-                                color: ListoMainColors.neutral.shade900,
-                              )
-                            : const SizedBox(width: 0),
-                      ),
-                    ],
-                  ),
-                ),
+                                    )
+                                  : const SizedBox(width: 0),
+                            ),
+                            AnimatedContainer(
+                                duration: const Duration(milliseconds: 10),
+                                width: _showLabel ? 10 : 0),
+                            AnimatedSwitcher(
+                              duration: const Duration(milliseconds: 200),
+                              child: _showLabel
+                                  ? Text(
+                                      widget.destination.label,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium
+                                          ?.copyWith(
+                                            color: ListoMainColors
+                                                .neutral.shade900,
+                                          ),
+                                    )
+                                  : const SizedBox(width: 0),
+                            ),
+                            AnimatedContainer(
+                                duration: const Duration(milliseconds: 30),
+                                width: (_showLabel &&
+                                        (widget.destination.children
+                                                ?.isNotEmpty ??
+                                            false))
+                                    ? 10
+                                    : 0),
+                            AnimatedSwitcher(
+                              duration: const Duration(milliseconds: 30),
+                              child: (_showLabel &&
+                                      (widget.destination.children
+                                              ?.isNotEmpty ??
+                                          false))
+                                  ? Icon(
+                                      _isSelected && _childSelected < 0
+                                          ? Icons.arrow_drop_up
+                                          : Icons.arrow_drop_down,
+                                      color: ListoMainColors.neutral.shade900,
+                                    )
+                                  : const SizedBox(width: 0),
+                            ),
+                          ],
+                        ),
+                      )
+                    : const SizedBox(width: 0, height: 0),
               ),
             ],
           ),

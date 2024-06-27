@@ -110,12 +110,12 @@ class NavigationMenuState extends State<NavigationMenu> {
     if (mounted) {
       setState(() {
         _showRail = showRail;
-        if (_isCollapsed != NavigationMenuCollapseState.expanded) {
-          _isCollapsed = showRail
-              ? NavigationMenuCollapseState.collapsed
-              : NavigationMenuCollapseState.none;
-        }
       });
+      if (showRail) {
+        openRail();
+      } else {
+        closeRail();
+      }
     }
   }
 
@@ -131,9 +131,11 @@ class NavigationMenuState extends State<NavigationMenu> {
       ));
       _header.add(const SizedBox(height: Spacings.sm));
     }
-    _isCollapsed = _showRail
-        ? NavigationMenuCollapseState.collapsed
-        : NavigationMenuCollapseState.none;
+    if (_showRail) {
+      openRail();
+    } else {
+      closeRail();
+    }
     for (var destination in widget.destinations) {
       _tiles.add(
         MenuTile(
@@ -176,6 +178,9 @@ class NavigationMenuState extends State<NavigationMenu> {
   }
 
   void closeMenu() {
+    if (!_showRail) {
+      closeRail();
+    }
     hideLabels(context);
     setState(() {
       _isCollapsed = _showRail
@@ -185,10 +190,10 @@ class NavigationMenuState extends State<NavigationMenu> {
   }
 
   void toggleMenu() {
-    if (isCollapsed) {
-      openMenu();
-    } else {
+    if (_isCollapsed == NavigationMenuCollapseState.expanded) {
       closeMenu();
+    } else {
+      openMenu();
     }
   }
 
@@ -199,6 +204,10 @@ class NavigationMenuState extends State<NavigationMenu> {
   }
 
   void closeRail() {
+    for (var tile in _tiles) {
+      tile.hideMenuIcon();
+    }
+    _settings?.hideMenuIcon();
     setState(() {
       _isCollapsed = NavigationMenuCollapseState.none;
     });
@@ -251,6 +260,7 @@ class NavigationMenuState extends State<NavigationMenu> {
               duration: const Duration(milliseconds: 300),
               width: _isCollapsed.width,
               curve: Curves.fastOutSlowIn,
+              alignment: Alignment.topLeft,
               child: Column(
                 children: [
                   ..._header,
@@ -264,6 +274,13 @@ class NavigationMenuState extends State<NavigationMenu> {
                 ],
               ),
               onEnd: () {
+                if (_showRail ||
+                    _isCollapsed == NavigationMenuCollapseState.expanded) {
+                  for (var tile in _tiles) {
+                    tile.showMenuIcon();
+                  }
+                  _settings?.showMenuIcon();
+                }
                 if (_isCollapsed == NavigationMenuCollapseState.expanded) {
                   showLabels(context);
                 }

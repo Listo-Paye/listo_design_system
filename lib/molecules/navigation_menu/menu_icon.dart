@@ -20,11 +20,7 @@ class MenuIcon extends StatelessWidget {
       splashColor: ListoMainColors.primary.ultraLight,
       splashFactory: InkSparkle.splashFactory,
       onTap: () {
-        if (menu.isExpanded) {
-          menu.closeMenu();
-        } else {
-          menu.openMenu();
-        }
+        menu.toggleMenu();
       },
       child: septeoLogo,
     );
