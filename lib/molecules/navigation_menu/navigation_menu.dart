@@ -236,6 +236,7 @@ class NavigationMenuState extends State<NavigationMenu> {
         tile.deselect();
       }
     }
+    widget.onSelected?.call(destination);
   }
 
   void selectTile(MenuTile tile) {
@@ -246,6 +247,7 @@ class NavigationMenuState extends State<NavigationMenu> {
         t.deselect();
       }
     }
+    widget.onSelected?.call(tile.destination);
   }
 
   @override
