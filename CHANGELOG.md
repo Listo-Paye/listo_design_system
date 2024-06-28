@@ -1,4 +1,4 @@
-## 0.0.23
+## 0.0.23+1
 * Optimized Animations
 
 ## 0.0.22+2
