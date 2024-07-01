@@ -140,21 +140,7 @@ class NavigationMenuState extends State<NavigationMenu> {
       _tiles.add(
         MenuTile(
           destination: destination,
-          onSelected: (data) {
-            for (var tile in _tiles) {
-              if (tile.destination.label == data.label) {
-                tile.select();
-              } else {
-                if ((tile.destination.children ?? [])
-                    .where((d) => d.label == data.label)
-                    .isNotEmpty) {
-                  tile.select(label: data.label);
-                } else {
-                  tile.deselect();
-                }
-              }
-            }
-          },
+          onSelected: selectDestination,
         ),
       );
     }
@@ -233,7 +219,13 @@ class NavigationMenuState extends State<NavigationMenu> {
       if (tile.destination.label == destination.label) {
         tile.select();
       } else {
-        tile.deselect();
+        if ((tile.destination.children ?? [])
+            .where((d) => d.label == destination.label)
+            .isNotEmpty) {
+          tile.select(label: destination.label);
+        } else {
+          tile.deselect();
+        }
       }
     }
     widget.onSelected?.call(destination);
