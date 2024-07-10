@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:listo_design_system/molecules/navigation_menu/menu_icon.dart';
 import 'package:listo_design_system/themes/spacing.dart';
 
@@ -32,6 +33,7 @@ class ListoAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       toolbarHeight: 70,
       backgroundColor: Colors.white,
+      surfaceTintColor: Colors.white,
       leading: Builder(
         builder: (context) {
           return const Padding(
