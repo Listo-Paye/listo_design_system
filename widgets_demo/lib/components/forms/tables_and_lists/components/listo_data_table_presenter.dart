@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:listo_design_system/listo_design_system.dart';
+import 'package:widgetbook/widgetbook.dart';
 
 // Exemple de classe de données
 class JourFerieTravaille {
@@ -82,11 +83,24 @@ class ListoDataTablePresenter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final subtitle = context.knobs.stringOrNull(
+      label: 'Subtitle',
+      initialValue:
+          'Activer les jours fériés supplémentaires pour mon établissement',
+    );
+
+    final subtitleTagValue = context.knobs.booleanOrNull(
+      label: 'Subtitle tag',
+      initialValue: true,
+    );
+
     return ListoDataTable<JourFerieTravaille>(
       title: title,
       data: data,
       formattedValues: formattedValues,
       sortableValues: sortableExtractors,
+      subtitle: subtitle,
+      subtitleTagValue: subtitleTagValue,
     );
   }
 }

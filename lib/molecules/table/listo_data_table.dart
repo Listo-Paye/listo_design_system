@@ -6,6 +6,8 @@ class ListoDataTable<T> extends StatefulWidget {
   final Map<String, Widget Function(T)> formattedValues;
   final Map<String, Comparator<T>> sortableValues;
   final String title;
+  final String? subtitle;
+  final bool? subtitleTagValue;
 
   const ListoDataTable({
     super.key,
@@ -13,6 +15,8 @@ class ListoDataTable<T> extends StatefulWidget {
     required this.data,
     required this.formattedValues,
     required this.sortableValues,
+    this.subtitle,
+    this.subtitleTagValue,
   });
 
   @override
@@ -48,6 +52,33 @@ class _ListoDataTableState<T> extends State<ListoDataTable<T>> {
     });
   }
 
+  List<Widget> _buildSubtitle() {
+    if (widget.subtitle == null) return [];
+
+    return [
+      const SizedBox(
+        height: Spacings.sm,
+      ),
+      Row(
+        children: [
+          Text(
+            widget.subtitle!,
+            style: TextStyles.bodyMedium,
+          ),
+          const SizedBox(
+            width: Spacings.sm,
+          ),
+          if (widget.subtitleTagValue != null)
+            Tag(
+              type:
+                  widget.subtitleTagValue! ? TagColors.base : TagColors.warning,
+              label: widget.subtitleTagValue! ? "Activé" : "Désactivé",
+            ),
+        ],
+      )
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Theme(
@@ -77,6 +108,7 @@ class _ListoDataTableState<T> extends State<ListoDataTable<T>> {
                         style: TextStyles.headingMediumSemibold,
                       ),
                     ),
+                    ..._buildSubtitle(),
                     const SizedBox(
                       height: Spacings.sm,
                     ),

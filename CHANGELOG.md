@@ -1,3 +1,6 @@
+## 0.0.24
+* Added subtitle and subtitle tag to Datatable
+
 ## 0.0.23+2
 * Fixed NavigationMenu navigation
 
