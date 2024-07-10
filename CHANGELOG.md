@@ -1,4 +1,4 @@
-## 0.0.24
+## 0.0.24+2
 * Added subtitle and subtitle tag to Datatable
 
 ## 0.0.23+2
