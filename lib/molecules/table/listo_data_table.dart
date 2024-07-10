@@ -63,7 +63,7 @@ class _ListoDataTableState<T> extends State<ListoDataTable<T>> {
         children: [
           Text(
             widget.subtitle!,
-            style: TextStyles.bodyMedium,
+            style: TextStyles.bodyMediumSemibold.copyWith(color: ListoMainColors.primary),
           ),
           const SizedBox(
             width: Spacings.sm,
