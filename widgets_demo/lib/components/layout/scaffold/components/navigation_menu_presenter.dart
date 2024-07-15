@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:listo_design_system/listo_design_system.dart';
-import 'package:listo_design_system/molecules/navigation_menu/destination_data.dart';
 
 class NavigationMenuPresenter extends StatelessWidget {
   const NavigationMenuPresenter({super.key});

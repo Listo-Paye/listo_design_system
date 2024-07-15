@@ -28,8 +28,10 @@ class NavigationMenu extends StatefulWidget {
     this.onSettings,
   }) {
     if (showRail != null) {
-      this.showRail = showRail;
       _showRail = showRail;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        this.showRail = showRail;
+      });
     }
   }
 
@@ -185,7 +187,9 @@ class NavigationMenuState extends State<NavigationMenu> {
 
   void openRail() {
     setState(() {
-      _isCollapsed = NavigationMenuCollapseState.collapsed;
+      if (_isCollapsed != NavigationMenuCollapseState.expanded) {
+        _isCollapsed = NavigationMenuCollapseState.collapsed;
+      }
     });
   }
 

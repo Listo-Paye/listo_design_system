@@ -1,3 +1,7 @@
+## 0.0.25
+* Fixed adaptive design for datatable
+* Fixed navigation error
+
 ## 0.0.24+2
 * Added subtitle and subtitle tag to Datatable
 

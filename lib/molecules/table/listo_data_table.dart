@@ -61,9 +61,12 @@ class _ListoDataTableState<T> extends State<ListoDataTable<T>> {
       ),
       Row(
         children: [
-          Text(
-            widget.subtitle!,
-            style: TextStyles.bodyMediumSemibold.copyWith(color: ListoMainColors.primary),
+          Flexible(
+            child: Text(
+              widget.subtitle!,
+              style: TextStyles.bodyMediumSemibold
+                  .copyWith(color: ListoMainColors.primary),
+            ),
           ),
           const SizedBox(
             width: Spacings.sm,

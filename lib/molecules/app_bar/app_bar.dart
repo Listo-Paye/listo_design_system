@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:listo_design_system/molecules/navigation_menu/menu_icon.dart';
 import 'package:listo_design_system/themes/spacing.dart';
 
