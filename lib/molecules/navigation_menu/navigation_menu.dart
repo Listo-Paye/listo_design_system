@@ -235,17 +235,6 @@ class NavigationMenuState extends State<NavigationMenu> {
     widget.onSelected?.call(destination);
   }
 
-  void selectTile(MenuTile tile) {
-    for (var t in _tiles) {
-      if (t == tile) {
-        t.select();
-      } else {
-        t.deselect();
-      }
-    }
-    widget.onSelected?.call(tile.destination);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -262,13 +251,14 @@ class NavigationMenuState extends State<NavigationMenu> {
               child: Column(
                 children: [
                   ..._header,
-                  ..._tiles,
                   Expanded(
-                    child: Container(
-                      alignment: Alignment.bottomLeft,
-                      child: _settings ?? Container(),
+                    child: ListView(
+                      children: [
+                        ..._tiles,
+                      ],
                     ),
                   ),
+                  _settings ?? Container()
                 ],
               ),
               onEnd: () {

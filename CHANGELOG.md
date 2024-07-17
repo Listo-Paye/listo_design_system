@@ -1,3 +1,6 @@
+## 0.0.26
+* Fixed sub-menu nivigation selection
+
 ## 0.0.25
 * Fixed adaptive design for datatable
 * Fixed navigation error

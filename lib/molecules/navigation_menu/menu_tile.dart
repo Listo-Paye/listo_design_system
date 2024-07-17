@@ -63,22 +63,27 @@ class MenuTileState extends State<MenuTile> {
 
   void select(String? label) {
     setState(() {
-      _isSelected = true;
       if (label != null && widget.destination.children != null) {
+        _isSelected = true;
         _childSelected = widget.destination.children!
             .indexWhere((element) => element.label == label);
+        showChildren(_buildChildren());
       } else {
+        _isSelected = !_isSelected;
         _childSelected = -1;
+        _children.clear();
       }
     });
   }
 
   void deselect() {
-    setState(() {
-      _isSelected = false;
-      _childSelected = -1;
-      _children.clear();
-    });
+    if (mounted) {
+      setState(() {
+        _isSelected = false;
+        _childSelected = -1;
+        _children.clear();
+      });
+    }
   }
 
   void showLabels() {
@@ -113,6 +118,21 @@ class MenuTileState extends State<MenuTile> {
     });
   }
 
+  List<_ChildTile> _buildChildren() {
+    List<_ChildTile> children = [];
+    for (var child in widget.destination.children!) {
+      children.add(_ChildTile(
+        destination: child,
+        isSelected:
+            widget.destination.children!.indexOf(child) == _childSelected,
+        onSelected: (data) {
+          widget.onSelected?.call(data);
+        },
+      ));
+    }
+    return children;
+  }
+
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
@@ -123,18 +143,7 @@ class MenuTileState extends State<MenuTile> {
       duration: const Duration(milliseconds: 200),
       onEnd: () {
         if (_showLabel && _isSelected) {
-          List<_ChildTile> children = [];
-          for (var child in widget.destination.children!) {
-            children.add(_ChildTile(
-              destination: child,
-              isSelected:
-                  widget.destination.children!.indexOf(child) == _childSelected,
-              onSelected: (data) {
-                widget.onSelected?.call(data);
-              },
-            ));
-            showChildren(children);
-          }
+          showChildren(_buildChildren());
         } else {
           showChildren([]);
         }
@@ -208,7 +217,7 @@ class MenuTileState extends State<MenuTile> {
                                               ?.isNotEmpty ??
                                           false))
                                   ? Icon(
-                                      _isSelected && _childSelected < 0
+                                      _isSelected
                                           ? Icons.arrow_drop_up
                                           : Icons.arrow_drop_down,
                                       color: ListoMainColors.neutral.shade900,
@@ -235,6 +244,7 @@ class _ChildTile extends StatelessWidget {
   final DestinationData destination;
   final bool isSelected;
   final Function(DestinationData data)? onSelected;
+
   const _ChildTile({
     required this.destination,
     required this.isSelected,
