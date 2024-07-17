@@ -1,3 +1,6 @@
+## 0.0.27
+* Add ClientCard
+
 ## 0.0.26
 * Fixed sub-menu nivigation selection
 

@@ -130,10 +130,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_markdown
-      sha256: "85cc6f7daeae537844c92e2d56e2aff61b00095f8f77913b529ea4be12fc45ea"
+      sha256: "2e8a801b1ded5ea001a4529c97b1f213dcb11c6b20668e081cafb23468593514"
       url: "https://pub.dev"
     source: hosted
-    version: "0.7.2+1"
+    version: "0.7.3"
   flutter_shaders:
     dependency: transitive
     description:
@@ -208,6 +208,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
+  intl:
+    dependency: "direct main"
+    description:
+      name: intl
+      sha256: d6f56758b7d3014a48af9701c085700aac781a92a87a62b1333b46d8879661cf
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.19.0"
   json_annotation:
     dependency: transitive
     description:
@@ -254,7 +262,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.21"
+    version: "0.0.26"
   markdown:
     dependency: transitive
     description:
@@ -395,10 +403,10 @@ packages:
     dependency: transitive
     description:
       name: rive
-      sha256: "0342c9cd3c83ceeee4ad9246b98d628a2e9abd9d615acf69fa81fbbcf84a36ae"
+      sha256: "3c0047e636ebe8e4044087e239dffdd026cf839fe9aecf55d53431b255668bcf"
       url: "https://pub.dev"
     source: hosted
-    version: "0.13.8"
+    version: "0.13.9"
   rive_common:
     dependency: transitive
     description:
@@ -584,10 +592,10 @@ packages:
     dependency: "direct main"
     description:
       name: widgetbook
-      sha256: "872e7e9065ef6e85a1e93b3b41830f90af575c5a898b6c573acdc972fad0fb29"
+      sha256: de5b9887f9ad663bdcc1f957bc22aa0eb4dd7b406ac0142158bf35c0fad4a4f2
       url: "https://pub.dev"
     source: hosted
-    version: "3.8.0"
+    version: "3.8.1"
   win32:
     dependency: transitive
     description:
