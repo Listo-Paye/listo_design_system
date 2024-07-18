@@ -1,3 +1,6 @@
+## 0.0.28
+* Add TitleLine (with and without dropdown)
+
 ## 0.0.27
 * Add ClientCard
 

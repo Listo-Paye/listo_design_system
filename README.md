@@ -6,7 +6,7 @@ Le Listo Design System est une bibliothèque de composants UI/UX pour l'applicat
 
 |     Statut | [![Publish to pub.dev & web](https://github.com/Listo-Paye/listo_design_system/actions/workflows/publish.yaml/badge.svg)](https://github.com/Listo-Paye/listo_design_system/actions/workflows/publish.yaml) |
 |-----------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| WidgetBook | [demo.listo.pro](https://design.listo.pro)                                                                                                                                                                  |
+| WidgetBook | [design.listo.pro](https://design.listo.pro)                                                                                                                                                                |
 |    Pub.dev | [listo_design_system](https://pub.dev/packages/listo_design_system)                                                                                                                                         |
 
 ## Comment Utiliser le Projet
