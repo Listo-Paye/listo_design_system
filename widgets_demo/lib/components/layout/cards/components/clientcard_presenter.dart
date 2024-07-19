@@ -9,6 +9,7 @@ class ClientCardPresenter extends StatelessWidget {
   Widget build(BuildContext context) {
     var useVoid =
         context.knobs.boolean(label: "Clickable", initialValue: false);
+
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Container(

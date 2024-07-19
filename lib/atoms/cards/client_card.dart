@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:listo_design_system/listo_design_system.dart';
 
-class ClientCard extends StatelessWidget {
+import 'listo_card.dart';
+
+class ClientCard extends ListoCard {
   final String nomPrenomContrat;
   final DateTime dateDebut;
   final String typeContrat;
@@ -65,4 +67,7 @@ class ClientCard extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  String getAllText() => '$nomPrenomContrat $dateDebut $typeContrat';
 }
