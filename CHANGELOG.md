@@ -1,3 +1,6 @@
+## 0.0.29
+* Add CardList component with documentation
+
 ## 0.0.28
 * Add TitleLine (with and without dropdown)
 
