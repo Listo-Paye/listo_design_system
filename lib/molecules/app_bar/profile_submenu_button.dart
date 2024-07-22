@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:listo_design_system/atoms/adaptative_dispatcher.dart';
+import 'package:listo_design_system/atoms/adaptive/adaptative_dispatcher.dart';
 import 'package:listo_design_system/listo_design_system.dart';
 
 class ProfileSubmenuButton extends StatelessWidget {

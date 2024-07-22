@@ -1,3 +1,7 @@
+## 0.0.30
+* Add AdaptiveMasterDetails
+* Adapt ClientCard to be used for other design (close, by example)
+
 ## 0.0.29
 * Add CardList component with documentation
 

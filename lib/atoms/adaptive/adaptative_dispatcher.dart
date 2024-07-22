@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../extensions/extensions_module.dart';
+import '../../extensions/extensions_module.dart';
 
 class AdaptiveDispatcher extends StatelessWidget {
   final Widget? desktop;

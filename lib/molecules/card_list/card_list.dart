@@ -32,6 +32,7 @@ class _CardListState extends State<CardList> {
   Widget build(BuildContext context) {
     return Card(
       elevation: 0,
+      margin: EdgeInsets.zero,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(Radiuses.xs),
       ),

@@ -18,3 +18,5 @@ Center(
 
 Il est à noter que le `onSelect` est une fonction qui sera appelée lorsqu'on appuie sur la carte.
 Si celle-ci est nulle, alors la carte ne sera pas cliquable.
+
+> **UPDATE** : Ajout d'une propriété `chevron` pour remplacer le chevron droite par une autre icone

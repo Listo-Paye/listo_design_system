@@ -6,12 +6,14 @@ class ClientCard extends ListoCard {
   final String nomPrenomContrat;
   final DateTime dateDebut;
   final String typeContrat;
+  final IconData chevron;
   final void Function()? onSelect;
   const ClientCard({
     super.key,
     required this.nomPrenomContrat,
     required this.dateDebut,
     required this.typeContrat,
+    this.chevron = Icons.chevron_right,
     this.onSelect,
   });
 
@@ -23,42 +25,51 @@ class ClientCard extends ListoCard {
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(4)),
       ),
-      child: InkWell(
-        hoverColor: ListoMainColors.primary.ultraLight,
-        highlightColor: ListoMainColors.primary.light,
-        splashColor: ListoMainColors.primary.light,
-        onTap: onSelect,
-        child: Padding(
-          padding: const EdgeInsets.all(Spacings.xs),
-          child: SizedBox(
-            height: 40,
-            child: Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        nomPrenomContrat,
-                        style: TextStyles.bodyMediumSemibold
-                            .copyWith(color: Colors.black),
-                      ),
-                      Text(
-                        '${DateFormat('dd/MM/yyyy').format(dateDebut)} / $typeContrat',
-                        style: TextStyles.bodySmall
-                            .copyWith(color: ListoMainColors.neutral.shade500),
-                      ),
-                    ],
+      child: Semantics(
+        label: getAllText(),
+        button: true,
+        child: InkWell(
+          hoverColor: ListoMainColors.primary.ultraLight,
+          highlightColor: ListoMainColors.primary.light,
+          splashColor: ListoMainColors.primary.light,
+          onTap: onSelect,
+          child: Padding(
+            padding: const EdgeInsets.all(Spacings.xs),
+            child: SizedBox(
+              height: 40,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          nomPrenomContrat,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyles.bodyMediumSemibold
+                              .copyWith(color: Colors.black),
+                        ),
+                        Text(
+                          '${DateFormat('dd/MM/yyyy').format(dateDebut)} / $typeContrat',
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyles.bodySmall.copyWith(
+                              color: ListoMainColors.neutral.shade500),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  width: Spacings.xs,
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(Spacings.xs),
-                  child: Icon(Icons.chevron_right),
-                ),
-              ],
+                  const SizedBox(
+                    width: Spacings.xs,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(Spacings.xs),
+                    child: Icon(
+                      chevron,
+                      color: ListoMainColors.secondary.base,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
