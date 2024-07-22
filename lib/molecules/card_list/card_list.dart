@@ -23,46 +23,57 @@ class _CardListState extends State<CardList> {
     _filteredChildren = widget.children;
   }
 
+  Iterable<ListoCard> filterChildren(String searchText) {
+    return widget.children.where((element) =>
+        element.getAllText().toLowerCase().contains(searchText.toLowerCase()));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        ListoSearchAnchor(
-          hintText: widget.searchHintText,
-          onChanged: (searchText) {
-            setState(() {
-              _filteredChildren = widget.children
-                  .where((element) => element.getAllText().contains(searchText))
-                  .toList();
-            });
-          },
-          onClear: () {
-            setState(() {
-              _filteredChildren = widget.children;
-            });
-          },
-          onSearch: (searchText) {
-            setState(() {
-              _filteredChildren = widget.children
-                  .where((element) => element.getAllText().contains(searchText))
-                  .toList();
-            });
-          },
-          enabled: true,
-          showSuggestions: false,
+    return Card(
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(Radiuses.xs),
+      ),
+      color: Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.all(Spacings.sm),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ListoSearchAnchor(
+              hintText: widget.searchHintText,
+              onChanged: (searchText) {
+                setState(() {
+                  _filteredChildren = filterChildren(searchText).toList();
+                });
+              },
+              onClear: () {
+                setState(() {
+                  _filteredChildren = widget.children;
+                });
+              },
+              onSearch: (searchText) {
+                setState(() {
+                  _filteredChildren = filterChildren(searchText).toList();
+                });
+              },
+              enabled: true,
+              showSuggestions: false,
+            ),
+            const SizedBox(height: Spacings.xs),
+            ListView.separated(
+              separatorBuilder: (context, index) =>
+                  const SizedBox(height: Spacings.xs),
+              shrinkWrap: true,
+              itemCount: _filteredChildren.length,
+              itemBuilder: (context, index) {
+                return _filteredChildren[index];
+              },
+            ),
+          ],
         ),
-        const SizedBox(height: Spacings.xs),
-        ListView.separated(
-          separatorBuilder: (context, index) =>
-              const SizedBox(height: Spacings.xs),
-          shrinkWrap: true,
-          itemCount: _filteredChildren.length,
-          itemBuilder: (context, index) {
-            return _filteredChildren[index];
-          },
-        ),
-      ],
+      ),
     );
   }
 }
