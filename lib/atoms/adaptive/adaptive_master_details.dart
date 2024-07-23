@@ -46,8 +46,6 @@ class AdaptiveMasterDetails extends StatefulWidget {
 class AdaptiveMasterDetailsState extends State<AdaptiveMasterDetails> {
   Widget? _second;
   Widget? _third;
-  AnimationController? _controllerSecond;
-  AnimationController? _controllerThird;
   Widget empty = const Expanded(
     child: Center(
       child: Column(
