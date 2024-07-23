@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:listo_design_system/listo_design_system.dart';
 
 class AdaptiveMasterDetails extends StatefulWidget {
@@ -45,6 +46,8 @@ class AdaptiveMasterDetails extends StatefulWidget {
 class AdaptiveMasterDetailsState extends State<AdaptiveMasterDetails> {
   Widget? _second;
   Widget? _third;
+  AnimationController? _controllerSecond;
+  AnimationController? _controllerThird;
   Widget empty = const Expanded(
     child: Center(
       child: Column(
@@ -100,12 +103,7 @@ class AdaptiveMasterDetailsState extends State<AdaptiveMasterDetails> {
   Widget build(BuildContext context) => LayoutBuilder(
         builder: (context, constraints) {
           if (constraints.maxWidth < 600) {
-            return Stack(
-              children: [
-                widget.child,
-                ..._children.where((element) => element != empty),
-              ],
-            );
+            return (_third ?? _second ?? widget.child).animate().fadeIn();
           } else {
             return Row(
               children: [
@@ -119,9 +117,14 @@ class AdaptiveMasterDetailsState extends State<AdaptiveMasterDetails> {
                 Flexible(
                   flex: 2,
                   child: Row(
-                    children: [
-                      ..._children,
-                    ],
+                    children: AnimateList(
+                      interval: 100.ms,
+                      effects: [FadeEffect(duration: 500.ms)],
+                      autoPlay: true,
+                      children: [
+                        ..._children,
+                      ],
+                    ),
                   ),
                 )
               ],

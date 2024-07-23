@@ -36,7 +36,8 @@ enum TagColors {
     backgroundColor: ListoMainColors.secondary,
     textColor: ListoMainColors.secondary,
     indexBackgroundColor: 200,
-  );
+  ),
+  ;
 
   const TagColors({
     required Color backgroundColor,

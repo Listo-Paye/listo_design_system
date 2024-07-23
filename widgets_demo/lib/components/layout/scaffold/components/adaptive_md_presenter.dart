@@ -94,9 +94,12 @@ class CardListSelected extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(0),
           child: ClientCard(
             nomPrenomContrat: nomPrenomContrat,
             dateDebut: dateDebut,
@@ -108,13 +111,14 @@ class CardListSelected extends StatelessWidget {
             },
           ),
         ),
+        const SizedBox(height: Spacings.xs),
         CardList(
           searchHintText: "Rechercher",
           children: [
-            ClientCard(
-              nomPrenomContrat: "Sous liste elem1",
-              dateDebut: DateTime(2023, 01, 16),
-              typeContrat: "FIN",
+            VaInfoCard(
+              title: "brutCumuleGlissant12DerniersMois",
+              value: 3825.28,
+              type: VaInfoCardType.calculated,
               onSelect: () {
                 AdaptiveMasterDetails.show(
                     context,

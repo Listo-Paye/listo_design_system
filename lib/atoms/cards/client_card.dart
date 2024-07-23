@@ -25,6 +25,7 @@ class ClientCard extends ListoCard {
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(4)),
       ),
+      margin: EdgeInsets.zero,
       child: Semantics(
         label: getAllText(),
         button: true,
@@ -32,6 +33,7 @@ class ClientCard extends ListoCard {
           hoverColor: ListoMainColors.primary.ultraLight,
           highlightColor: ListoMainColors.primary.light,
           splashColor: ListoMainColors.primary.light,
+          borderRadius: BorderRadius.circular(4),
           onTap: onSelect,
           child: Padding(
             padding: const EdgeInsets.all(Spacings.xs),
@@ -58,9 +60,7 @@ class ClientCard extends ListoCard {
                       ],
                     ),
                   ),
-                  const SizedBox(
-                    width: Spacings.xs,
-                  ),
+                  const RowSeparator(),
                   Padding(
                     padding: const EdgeInsets.all(Spacings.xs),
                     child: Icon(
