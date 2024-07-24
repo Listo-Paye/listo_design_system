@@ -1,8 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:listo_design_system/listo_design_system.dart';
 
-class NavigationMenuPresenter extends StatelessWidget {
+class NavigationMenuPresenter extends StatefulWidget {
   const NavigationMenuPresenter({super.key});
+
+  @override
+  State<NavigationMenuPresenter> createState() => _NavigationMenuPresenterState();
+}
+
+class _NavigationMenuPresenterState extends State<NavigationMenuPresenter> {
+  late String selectedDestinationLabel;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedDestinationLabel = "Radar";
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +32,19 @@ class NavigationMenuPresenter extends StatelessWidget {
         ),
         child: NavigationMenu(
           onSettings: () {
-            // ignore: avoid_print
-            print("Settings");
+            setState(() {
+              selectedDestinationLabel = "Settings";
+            });
+          },
+          onSelected: (DestinationData data) {
+            setState(() {
+              selectedDestinationLabel = data.label;
+            });
           },
           body: Container(
             color: ListoMainColors.primary.ultraLight,
           ),
+          selectedDestinationLabel: selectedDestinationLabel,
           destinations: [
             DestinationData(icon: Icons.grid_view, label: "Tableau de bord"),
             DestinationData(icon: Icons.person, label: "Employés"),

@@ -1,3 +1,6 @@
+## 0.0.32
+* Updated NavigationMenu so it's parent control the selected Destination
+
 ## 0.0.31
 * Add VaInfoCard
 

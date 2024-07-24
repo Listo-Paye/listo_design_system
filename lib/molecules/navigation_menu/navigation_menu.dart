@@ -13,6 +13,7 @@ class NavigationMenu extends StatefulWidget {
   final bool showMenuIcon;
   final Widget body;
   final List<DestinationData> destinations;
+  final String? selectedDestinationLabel;
   final Function(DestinationData data)? onSelected;
   final Function()? onSettings;
 
@@ -22,6 +23,7 @@ class NavigationMenu extends StatefulWidget {
     super.key,
     required this.destinations,
     required this.body,
+    this.selectedDestinationLabel,
     bool? showRail,
     this.showMenuIcon = false,
     this.onSelected,
@@ -41,10 +43,6 @@ class NavigationMenu extends StatefulWidget {
 
   set showRail(bool showRail) {
     _state?.setRail(showRail);
-  }
-
-  static void selectDestination(DestinationData destination) {
-    _state?.selectDestination(destination);
   }
 
   @override
@@ -96,6 +94,7 @@ class NavigationMenuState extends State<NavigationMenu> {
   bool _showRail = false;
   final List<Widget> _header = [];
   final List<MenuTile> _tiles = [];
+  final List<MenuTileController> _tilesControllers = [];
 
   bool get isExpanded => _isCollapsed == NavigationMenuCollapseState.expanded;
 
@@ -103,6 +102,7 @@ class NavigationMenuState extends State<NavigationMenu> {
 
   bool get isHidden => _isCollapsed == NavigationMenuCollapseState.none;
   MenuTile? _settings;
+  MenuTileController? _settingsController;
 
   NavigationMenuState(bool showRail) {
     _showRail = showRail;
@@ -138,20 +138,43 @@ class NavigationMenuState extends State<NavigationMenu> {
     } else {
       closeRail();
     }
+    _handleTiles();
+  }
+
+  @override
+  void didUpdateWidget(covariant NavigationMenu oldWidget) {
+    if (oldWidget.selectedDestinationLabel != widget.selectedDestinationLabel) {
+      _handleTiles();
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  void _handleTiles() {
+    _tiles.clear();
+    _tilesControllers.clear();
     for (var destination in widget.destinations) {
+      var controller = MenuTileController();
+      _tilesControllers.add(controller);
       _tiles.add(
         MenuTile(
+          controller: controller,
           destination: destination,
-          onSelected: selectDestination,
+          selectedDestinationLabel: widget.selectedDestinationLabel,
+          onSelected: (data) {
+            widget.onSelected?.call(data);
+          },
         ),
       );
     }
     if (widget.onSettings != null) {
+      _settingsController = MenuTileController();
       _settings = MenuTile(
+        controller: _settingsController,
         destination: DestinationData(
           icon: Icons.settings,
           label: "Paramètres",
         ),
+        selectedDestinationLabel: widget.selectedDestinationLabel,
         onSelected: (data) {
           widget.onSettings?.call();
         },
@@ -194,45 +217,27 @@ class NavigationMenuState extends State<NavigationMenu> {
   }
 
   void closeRail() {
-    for (var tile in _tiles) {
+    for (var tile in _tilesControllers) {
       tile.hideMenuIcon();
     }
-    _settings?.hideMenuIcon();
+    _settingsController?.hideMenuIcon();
     setState(() {
       _isCollapsed = NavigationMenuCollapseState.none;
     });
   }
 
   void showLabels(BuildContext context) {
-    for (var tile in _tiles) {
-      tile.showLabel();
+    for (var tileController in _tilesControllers) {
+      tileController.showLabel();
     }
-    _settings?.showLabel();
+    _settingsController?.showLabel();
   }
 
   void hideLabels(BuildContext context) {
-    for (var tile in _tiles) {
-      tile.deselect();
-      tile.hideLabel();
+    for (var tileController in _tilesControllers) {
+      tileController.hideLabel();
     }
-    _settings?.hideLabel();
-  }
-
-  void selectDestination(DestinationData destination) {
-    for (var tile in _tiles) {
-      if (tile.destination.label == destination.label) {
-        tile.select();
-      } else {
-        if ((tile.destination.children ?? [])
-            .where((d) => d.label == destination.label)
-            .isNotEmpty) {
-          tile.select(label: destination.label);
-        } else {
-          tile.deselect();
-        }
-      }
-    }
-    widget.onSelected?.call(destination);
+    _settingsController?.hideLabel();
   }
 
   @override
@@ -264,10 +269,10 @@ class NavigationMenuState extends State<NavigationMenu> {
               onEnd: () {
                 if (_showRail ||
                     _isCollapsed == NavigationMenuCollapseState.expanded) {
-                  for (var tile in _tiles) {
+                  for (var tile in _tilesControllers) {
                     tile.showMenuIcon();
                   }
-                  _settings?.showMenuIcon();
+                  _settingsController?.showMenuIcon();
                 }
                 if (_isCollapsed == NavigationMenuCollapseState.expanded) {
                   showLabels(context);
