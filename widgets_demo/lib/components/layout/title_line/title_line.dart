@@ -16,13 +16,13 @@ WidgetbookComponent titleLine(BuildContext context) {
           label: 'Libellé',
           initialValue: 'Période',
         );
-        List<({String id, String value})> values = [
-          (id: "2024-07", value: "Juillet 2024 (En cours)"),
-          (id: "2024-06", value: "Juin 2024"),
-          (id: "2024-05", value: "Mai 2024"),
-          (id: "2024-04", value: "Avril 2024"),
-          (id: "2024-03", value: "Mars 2024"),
-          (id: "2024-02", value: "Février 2024"),
+        List<PeriodInput> values = [
+          const PeriodInput(id: "2024-07", value: "Juillet 2024 (En cours)"),
+          const PeriodInput(id: "2024-06", value: "Juin 2024"),
+          const PeriodInput(id: "2024-05", value: "Mai 2024"),
+          const PeriodInput(id: "2024-04", value: "Avril 2024"),
+          const PeriodInput(id: "2024-03", value: "Mars 2024"),
+          const PeriodInput(id: "2024-02", value: "Février 2024"),
         ];
         return Container(
           height: 300,

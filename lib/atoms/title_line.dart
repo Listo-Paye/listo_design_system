@@ -5,8 +5,8 @@ class TitleLine extends StatelessWidget {
   final String title;
   final String label;
   final String selectedValue;
-  final List<({String id, String value})> values;
-  final void Function(({String id, String value}))? onValueSelected;
+  final List<PeriodInput> values;
+  final void Function(PeriodInput)? onValueSelected;
   final bool forcedMobile;
 
   const TitleLine({
@@ -47,11 +47,21 @@ class TitleLine extends StatelessWidget {
   }
 }
 
+class PeriodInput {
+  final String id;
+  final String value;
+
+  const PeriodInput({
+    required this.id,
+    required this.value,
+  });
+}
+
 class _TitleLineComboMode extends StatefulWidget {
   final String label;
   final String selectedValue;
-  final List<({String id, String value})> values;
-  final void Function(({String id, String value}))? onValueSelected;
+  final List<PeriodInput> values;
+  final void Function(PeriodInput)? onValueSelected;
   const _TitleLineComboMode({
     required this.label,
     required this.selectedValue,
@@ -64,7 +74,7 @@ class _TitleLineComboMode extends StatefulWidget {
 }
 
 class _TitleLineComboModeState extends State<_TitleLineComboMode> {
-  late ({String id, String value}) selection;
+  late PeriodInput selection;
 
   @override
   void initState() {
@@ -82,7 +92,7 @@ class _TitleLineComboModeState extends State<_TitleLineComboMode> {
         borderRadius: BorderRadius.circular(4),
         color: Colors.white,
       ),
-      child: DropdownButton<({String id, String value})>(
+      child: DropdownButton<PeriodInput>(
           value: selection,
           onChanged: (data) {
             if (data != null) {
@@ -152,6 +162,7 @@ class _TitleLineLabelMode extends StatelessWidget {
           ),
           child: Text(
             '$label :',
+            overflow: TextOverflow.ellipsis,
             style: TextStyles.headingMediumSemibold.copyWith(
               color: ListoMainColors.neutral.shade400,
             ),
@@ -165,6 +176,7 @@ class _TitleLineLabelMode extends StatelessWidget {
           ),
           child: Text(
             selectedValue,
+            overflow: TextOverflow.ellipsis,
             style: TextStyles.headingMediumSemibold.copyWith(
               color: ListoMainColors.neutral.shade900,
             ),
@@ -196,6 +208,7 @@ class _DesktopContainer extends StatelessWidget {
           ),
           child: Text(
             title,
+            overflow: TextOverflow.ellipsis,
             style: TextStyles.headingLarge.copyWith(
               color: ListoMainColors.neutral.shade900,
             ),
@@ -241,6 +254,7 @@ class _MobileContainer extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: Spacings.xs),
             child: Text(
               title,
+              overflow: TextOverflow.ellipsis,
               style: TextStyles.headingMediumSemibold.copyWith(
                 color: ListoMainColors.neutral.shade900,
               ),
