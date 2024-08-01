@@ -1,3 +1,6 @@
+## 0.0.32+2
+* fix Cardlist and SearchBar
+
 ## 0.0.32+1
 * fix Title with dropdown
 

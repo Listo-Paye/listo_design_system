@@ -12,6 +12,7 @@ WidgetbookComponent cardsMolecule(BuildContext context) {
     usercaseWithMarkdown(
       "Card List",
       (context) => Container(
+          height: 500,
           decoration: BoxDecoration(
             color: ListoMainColors.primary.medium,
             borderRadius: BorderRadius.circular(8),
@@ -19,6 +20,7 @@ WidgetbookComponent cardsMolecule(BuildContext context) {
           child: const Center(
               child: SizedBox(
             width: 411,
+            height: 480,
             child: CardlistPresenter(),
           ))),
       "markdown/card_list.md",

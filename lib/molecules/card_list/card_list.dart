@@ -16,6 +16,7 @@ class CardList extends StatefulWidget {
 
 class _CardListState extends State<CardList> {
   late List<ListoCard> _filteredChildren;
+  String _searchText = "";
 
   @override
   void initState() {
@@ -26,6 +27,13 @@ class _CardListState extends State<CardList> {
   Iterable<ListoCard> filterChildren(String searchText) {
     return widget.children.where((element) =>
         element.getAllText().toLowerCase().contains(searchText.toLowerCase()));
+  }
+
+  int getCount() {
+    if (_filteredChildren.isEmpty) {
+      return 1;
+    }
+    return _filteredChildren.length;
   }
 
   @override
@@ -46,16 +54,19 @@ class _CardListState extends State<CardList> {
               hintText: widget.searchHintText,
               onChanged: (searchText) {
                 setState(() {
+                  _searchText = searchText;
                   _filteredChildren = filterChildren(searchText).toList();
                 });
               },
               onClear: () {
                 setState(() {
+                  _searchText = "";
                   _filteredChildren = widget.children;
                 });
               },
               onSearch: (searchText) {
                 setState(() {
+                  _searchText = searchText;
                   _filteredChildren = filterChildren(searchText).toList();
                 });
               },
@@ -63,14 +74,23 @@ class _CardListState extends State<CardList> {
               showSuggestions: false,
             ),
             const SizedBox(height: Spacings.xs),
-            ListView.separated(
-              separatorBuilder: (context, index) =>
-                  const SizedBox(height: Spacings.xs),
-              shrinkWrap: true,
-              itemCount: _filteredChildren.length,
-              itemBuilder: (context, index) {
-                return _filteredChildren[index];
-              },
+            Expanded(
+              child: ListView.separated(
+                separatorBuilder: (context, index) =>
+                    const SizedBox(height: Spacings.xs),
+                itemCount: getCount(),
+                itemBuilder: (context, index) {
+                  if (_filteredChildren.isEmpty) {
+                    return Expanded(
+                      child: Center(
+                        child:
+                            Text("Aucune correspondance pour '$_searchText'"),
+                      ),
+                    );
+                  }
+                  return _filteredChildren[index];
+                },
+              ),
             ),
           ],
         ),

@@ -36,12 +36,9 @@ class _ListoSearchBarState extends State<ListoSearchBar> {
 
   @override
   void dispose() {
-    Future.delayed(Duration.zero, () {
-      try {
-        widget.controller.removeListener(_onTextChanged);
-        widget.controller.dispose();
-      } catch (_) {}
-    });
+    try {
+      widget.controller.removeListener(_onTextChanged);
+    } catch (_) {}
     super.dispose();
   }
 
