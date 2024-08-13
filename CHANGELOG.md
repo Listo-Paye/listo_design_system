@@ -1,4 +1,7 @@
-## 0.0.32+2
+## 0.0.32+4
+* refactor adaptive master details phase 1
+
+## 0.0.32+3
 * fix Cardlist and SearchBar
 
 ## 0.0.32+1

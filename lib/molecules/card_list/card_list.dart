@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:listo_design_system/listo_design_system.dart';
 
-class CardList extends StatefulWidget {
+class CardList<T extends ListoCard> extends StatefulWidget {
   final String searchHintText;
-  final List<ListoCard> children;
+  final List<T> children;
   const CardList({
     super.key,
     required this.children,
@@ -11,11 +11,11 @@ class CardList extends StatefulWidget {
   });
 
   @override
-  State<CardList> createState() => _CardListState();
+  State<CardList> createState() => _CardListState<T>();
 }
 
-class _CardListState extends State<CardList> {
-  late List<ListoCard> _filteredChildren;
+class _CardListState<T extends ListoCard> extends State<CardList<T>> {
+  late List<T> _filteredChildren;
   String _searchText = "";
 
   @override
@@ -24,17 +24,12 @@ class _CardListState extends State<CardList> {
     _filteredChildren = widget.children;
   }
 
-  Iterable<ListoCard> filterChildren(String searchText) {
+  Iterable<T> filterChildren(String searchText) {
     return widget.children.where((element) =>
         element.getAllText().toLowerCase().contains(searchText.toLowerCase()));
   }
 
-  int getCount() {
-    if (_filteredChildren.isEmpty) {
-      return 1;
-    }
-    return _filteredChildren.length;
-  }
+  Widget getLoadingCard() => const Center(child: CircularProgressIndicator());
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +65,7 @@ class _CardListState extends State<CardList> {
                   _filteredChildren = filterChildren(searchText).toList();
                 });
               },
-              enabled: true,
+              enabled: widget.children.isNotEmpty,
               showSuggestions: false,
             ),
             const SizedBox(height: Spacings.xs),
@@ -78,15 +73,13 @@ class _CardListState extends State<CardList> {
               child: ListView.separated(
                 separatorBuilder: (context, index) =>
                     const SizedBox(height: Spacings.xs),
-                itemCount: getCount(),
+                itemCount:
+                    _filteredChildren.isEmpty ? 1 : _filteredChildren.length,
                 itemBuilder: (context, index) {
                   if (_filteredChildren.isEmpty) {
-                    return Expanded(
-                      child: Center(
-                        child:
-                            Text("Aucune correspondance pour '$_searchText'"),
-                      ),
-                    );
+                    return _searchText.isEmpty
+                        ? getLoadingCard()
+                        : _EmptyCard(_searchText);
                   }
                   return _filteredChildren[index];
                 },
@@ -96,5 +89,38 @@ class _CardListState extends State<CardList> {
         ),
       ),
     );
+  }
+}
+
+class LoadingCard extends ListoCard {
+  const LoadingCard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: CircularProgressIndicator(),
+    );
+  }
+
+  @override
+  String getAllText() {
+    return "";
+  }
+}
+
+class _EmptyCard extends ListoCard {
+  final String objectSearched;
+  const _EmptyCard(this.objectSearched);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text("Aucune correspondance pour '$objectSearched'"),
+    );
+  }
+
+  @override
+  String getAllText() {
+    return "";
   }
 }

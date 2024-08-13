@@ -1,6 +1,6 @@
 name: listo_design_system
 description: "Package contenant tout le système UX et UI de Listo Paye. Utilisez le sous-projet widgets_demo pour tester les widgets."
-version: 0.0.32+2
+version: 0.0.32+4
 homepage: https://design.listo.pro
 repository: https://github.com/Listo-Paye/listo_design_system
 
@@ -13,9 +13,10 @@ dependencies:
   flutter_animate: ^4.5.0
   flutter:
     sdk: flutter
-  rive: ^0.13.9
+  rive: ^0.13.12
   flutter_svg: ^2.0.10+1
   intl: ^0.19.0
+  skeletonizer: ^1.4.2
 
 dev_dependencies:
   flutter_test:

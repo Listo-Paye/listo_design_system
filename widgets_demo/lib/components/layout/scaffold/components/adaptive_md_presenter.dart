@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:listo_design_system/listo_design_system.dart';
 
-class AdaptiveMdPresenter extends StatelessWidget {
+class AdaptiveMdPresenter extends StatefulWidget {
   const AdaptiveMdPresenter({super.key});
+
+  @override
+  State<AdaptiveMdPresenter> createState() => _AdaptiveMdPresenterState();
+}
+
+class _AdaptiveMdPresenterState extends State<AdaptiveMdPresenter> {
+  List<Widget> columns = [];
 
   @override
   Widget build(BuildContext context) {
@@ -16,27 +22,36 @@ class AdaptiveMdPresenter extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: SizedBox(
           height: 400,
-          child: AdaptiveMasterDetails(
-            child: CardList(
-              searchHintText: "Rechercher kk1",
-              children: [
-                ClientCardInList(
-                  nomPrenomContrat: "FONTAINE Benoît Tech Lead",
-                  dateDebut: DateTime(2023, 10, 16),
-                  typeContrat: "CDI",
-                ),
-                ClientCardInList(
-                  nomPrenomContrat: "SEMERIA Thomas Ingénieur Logiciel",
-                  dateDebut: DateTime(2022, 07, 11),
-                  typeContrat: "CDI",
-                ),
-                ClientCardInList(
-                  nomPrenomContrat: "HUIBAN Raphael Développeur",
-                  dateDebut: DateTime(2024, 04, 1),
-                  typeContrat: "CDI",
-                ),
-              ],
+          child: AdaptiveMdd(
+            first: ClientCardList(
+              onClick: (np, dt, typ) {
+                var retour = ClientCard(
+                  nomPrenomContrat: np,
+                  dateDebut: dt,
+                  typeContrat: typ,
+                  chevron: Icons.close,
+                  onSelect: () {
+                    setState(() {
+                      columns = [];
+                    });
+                  },
+                );
+                setState(() {
+                  columns = [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        retour,
+                        const SizedBox(height: 8),
+                        const Expanded(child: VarAppCardList()),
+                      ],
+                    )
+                  ];
+                });
+              },
             ),
+            others: [...columns],
           ),
         ),
       ),
@@ -44,91 +59,77 @@ class AdaptiveMdPresenter extends StatelessWidget {
   }
 }
 
-class ClientCardInList extends ListoCard {
-  final String nomPrenomContrat;
-  final DateTime dateDebut;
-  final String typeContrat;
-  const ClientCardInList({
+class ClientCardList extends StatelessWidget {
+  void Function(
+    String nomPrenom,
+    DateTime dateDebut,
+    String typeContrat,
+  ) onClick;
+  ClientCardList({
     super.key,
-    required this.nomPrenomContrat,
-    required this.dateDebut,
-    required this.typeContrat,
+    required this.onClick,
   });
 
   @override
   Widget build(BuildContext context) {
-    return ClientCard(
-      nomPrenomContrat: nomPrenomContrat,
-      dateDebut: dateDebut,
-      typeContrat: typeContrat,
-      onSelect: () {
-        AdaptiveMasterDetails.navigate(
-            context,
-            (context) => Expanded(
-                  child: CardListSelected(
-                    nomPrenomContrat: nomPrenomContrat,
-                    dateDebut: dateDebut,
-                    typeContrat: typeContrat,
-                  ),
-                ));
-      },
+    return CardList(
+      searchHintText: "Rechercher kk1",
+      children: [
+        ClientCard(
+          nomPrenomContrat: "FONTAINE Benoît Tech Lead",
+          dateDebut: DateTime(2023, 10, 16),
+          typeContrat: "CDI",
+          onSelect: () {
+            onClick("FONTAINE Benoît", DateTime(2023, 10, 16), "CDI");
+          },
+        ),
+        ClientCard(
+          nomPrenomContrat: "SEMERIA Thomas Ingénieur Logiciel",
+          dateDebut: DateTime(2022, 07, 11),
+          typeContrat: "CDI",
+          onSelect: () {
+            onClick("SEMERIA Thomas", DateTime(2022, 07, 11), "CDI");
+          },
+        ),
+        ClientCard(
+          nomPrenomContrat: "HUIBAN Raphael Développeur",
+          dateDebut: DateTime(2024, 04, 1),
+          typeContrat: "CDI",
+          onSelect: () {
+            onClick("HUIBAN Raphael", DateTime(2024, 04, 1), "CDI");
+          },
+        ),
+      ],
     );
   }
-
-  @override
-  String getAllText() =>
-      '$nomPrenomContrat ${DateFormat('dd/MM/yyyy').format(dateDebut)} / $typeContrat';
 }
 
-class CardListSelected extends StatelessWidget {
-  final String nomPrenomContrat;
-  final DateTime dateDebut;
-  final String typeContrat;
-  const CardListSelected({
-    super.key,
-    required this.nomPrenomContrat,
-    required this.dateDebut,
-    required this.typeContrat,
-  });
+class VarAppCardList extends StatelessWidget {
+  const VarAppCardList({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return const CardList(
+      searchHintText: "Rechercher variable",
       children: [
-        Padding(
-          padding: const EdgeInsets.all(0),
-          child: ClientCard(
-            nomPrenomContrat: nomPrenomContrat,
-            dateDebut: dateDebut,
-            typeContrat: typeContrat,
-            chevron: Icons.close,
-            onSelect: () {
-              AdaptiveMasterDetails.pop(context);
-              AdaptiveMasterDetails.pop(context);
-            },
-          ),
-        ),
-        const SizedBox(height: Spacings.xs),
-        CardList(
-          searchHintText: "Rechercher",
-          children: [
-            VaInfoCard(
-              title: "brutCumuleGlissant12DerniersMois",
-              value: 3825.28,
-              type: VaInfoCardType.calculated,
-              onSelect: () {
-                AdaptiveMasterDetails.show(
-                    context,
-                    (context) => const Expanded(
-                          child: Center(child: Text("Bien joué !")),
-                        ));
-              },
-            ),
-          ],
-        ),
+        VaInfoCard(
+            title: 'Ma variable Applicative 1',
+            value: 817.2,
+            type: VaInfoCardType.calculated),
+        VaInfoCard(
+            title: 'VA Personnel',
+            value: 817.2,
+            type: VaInfoCardType.calculated),
+        VaInfoCard(
+            title: 'PMSS', value: 817.2, type: VaInfoCardType.calculated),
+        VaInfoCard(
+            title: 'Lorem Ipsum',
+            value: 817.2,
+            type: VaInfoCardType.calculated),
+        VaInfoCard(
+            title: 'Ma variable Applicative 2',
+            value: 817.2,
+            type: VaInfoCardType.calculated),
       ],
     );
   }

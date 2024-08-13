@@ -17,11 +17,16 @@ WidgetbookComponent cardsMolecule(BuildContext context) {
             color: ListoMainColors.primary.medium,
             borderRadius: BorderRadius.circular(8),
           ),
-          child: const Center(
+          child: Center(
               child: SizedBox(
             width: 411,
             height: 480,
-            child: CardlistPresenter(),
+            child: CardlistPresenter(
+              isLoading: context.knobs.boolean(
+                label: "Loading",
+                initialValue: false,
+              ),
+            ),
           ))),
       "markdown/card_list.md",
     ),

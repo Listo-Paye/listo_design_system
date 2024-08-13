@@ -104,27 +104,23 @@ class AdaptiveMasterDetailsState extends State<AdaptiveMasterDetails> {
             return (_third ?? _second ?? widget.child).animate().fadeIn();
           } else {
             return Row(
+              mainAxisSize: MainAxisSize.max,
               children: [
-                Flexible(
+                Expanded(
                   flex: 1,
                   child: Padding(
                     padding: const EdgeInsets.only(right: Spacings.sm),
                     child: widget.child,
                   ),
                 ),
-                Flexible(
+                Expanded(
                   flex: 2,
                   child: Row(
-                    children: AnimateList(
-                      interval: 100.ms,
-                      effects: [FadeEffect(duration: 500.ms)],
-                      autoPlay: true,
-                      children: [
-                        ..._children,
-                      ],
-                    ),
+                    children: [
+                      ..._children,
+                    ],
                   ),
-                )
+                ),
               ],
             );
           }
