@@ -1,3 +1,6 @@
+## 0.0.32+5
+* remove unused dependencies
+
 ## 0.0.32+4
 * refactor adaptive master details phase 1
 
