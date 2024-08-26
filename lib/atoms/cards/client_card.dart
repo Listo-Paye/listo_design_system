@@ -6,15 +6,13 @@ class ClientCard extends ListoCard {
   final String nomPrenomContrat;
   final DateTime dateDebut;
   final String typeContrat;
-  final IconData chevron;
-  final void Function()? onSelect;
   const ClientCard({
     super.key,
     required this.nomPrenomContrat,
     required this.dateDebut,
     required this.typeContrat,
-    this.chevron = Icons.chevron_right,
-    this.onSelect,
+    super.chevron,
+    super.onSelect,
   });
 
   @override

@@ -12,16 +12,14 @@ class VaInfoCard extends ListoCard {
   final double value;
   final VaInfoCardType type;
   final String? subtitle;
-  final IconData chevron;
-  final void Function()? onSelect;
   const VaInfoCard({
     super.key,
     required this.title,
     required this.value,
     required this.type,
     this.subtitle,
-    this.chevron = Icons.chevron_right,
-    this.onSelect,
+    super.chevron,
+    super.onSelect,
   });
 
   @override
@@ -117,7 +115,7 @@ class VaInfoCard extends ListoCard {
 
   @override
   String getAllText() {
-    return '$title $formatedValue ${subtitle ?? ''}';
+    return '$title $formatedValue ${subtitle ?? ''} ${type.label}';
   }
 }
 

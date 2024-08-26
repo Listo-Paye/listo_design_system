@@ -1,3 +1,7 @@
+## 0.0.33
+* Refactor ListoCards & update documentation 
+* fixed depecrated web configuration
+
 ## 0.0.32+5
 * remove unused dependencies
 
@@ -30,7 +34,7 @@
 * Add ClientCard
 
 ## 0.0.26
-* Fixed sub-menu nivigation selection
+* Fixed sub-menu navigation selection
 
 ## 0.0.25
 * Fixed adaptive design for datatable

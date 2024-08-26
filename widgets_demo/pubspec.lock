@@ -176,14 +176,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.2.1"
-  graphs:
-    dependency: transitive
-    description:
-      name: graphs
-      sha256: aedc5a15e78fc65a6e23bcd927f24c64dd995062bcd1ca6eda65a3cff92a4d19
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.3.1"
   http:
     dependency: transitive
     description:
@@ -262,7 +254,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.32+3"
+    version: "0.0.32+5"
   markdown:
     dependency: transitive
     description:
@@ -399,30 +391,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
-  rive:
-    dependency: transitive
-    description:
-      name: rive
-      sha256: b45de4f0053e380302a7c37c0e7c7e734127d238eed23a85fe3a4b0b6faa8a5a
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.13.12"
-  rive_common:
-    dependency: transitive
-    description:
-      name: rive_common
-      sha256: "77311538b149263d34dc29cde4e608953c2d4451233efdb874ea9f08910769ac"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.4.10"
-  skeletonizer:
-    dependency: transitive
-    description:
-      name: skeletonizer
-      sha256: "3b202e4fa9c49b017d368fb0e570d4952bcd19972b67b2face071bdd68abbfae"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.4.2"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -629,5 +597,5 @@ packages:
     source: hosted
     version: "6.5.0"
 sdks:
-  dart: ">=3.4.0 <4.0.0"
+  dart: ">=3.5.0 <4.0.0"
   flutter: ">=3.22.0"

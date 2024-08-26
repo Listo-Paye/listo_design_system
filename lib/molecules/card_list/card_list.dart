@@ -110,7 +110,9 @@ class LoadingCard extends ListoCard {
 
 class _EmptyCard extends ListoCard {
   final String objectSearched;
-  const _EmptyCard(this.objectSearched);
+  const _EmptyCard(
+    this.objectSearched,
+  ) : super();
 
   @override
   Widget build(BuildContext context) {
