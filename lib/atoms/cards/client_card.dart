@@ -19,7 +19,7 @@ class ClientCard extends ListoCard {
   Widget build(BuildContext context) {
     return Card(
       elevation: 0,
-      color: Colors.white,
+      color: isSelected ? ListoMainColors.primary.light : Colors.white,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(4)),
       ),

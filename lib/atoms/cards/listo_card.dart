@@ -5,9 +5,11 @@ import '../../themes/spacing.dart';
 abstract class ListoCard extends StatelessWidget {
   final IconData chevron;
   final void Function()? onSelect;
+  final bool isSelected;
   const ListoCard({
     super.key,
     this.chevron = Icons.chevron_right,
+    this.isSelected = false,
     this.onSelect,
   });
 

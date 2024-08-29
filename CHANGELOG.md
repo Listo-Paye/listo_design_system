@@ -1,3 +1,6 @@
+## 0.0.33+1
+* Add selection state on listo cards
+
 ## 0.0.33
 * Refactor ListoCards & update documentation 
 * fixed depecrated web configuration
