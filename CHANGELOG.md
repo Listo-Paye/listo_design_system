@@ -1,4 +1,4 @@
-## 0.0.33+1
+## 0.0.33+2
 * Add selection state on listo cards
 
 ## 0.0.33

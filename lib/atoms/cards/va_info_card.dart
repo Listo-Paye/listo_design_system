@@ -18,6 +18,7 @@ class VaInfoCard extends ListoCard {
     required this.value,
     required this.type,
     this.subtitle,
+    super.isSelected = false,
     super.chevron,
     super.onSelect,
   });

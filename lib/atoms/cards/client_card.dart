@@ -11,6 +11,7 @@ class ClientCard extends ListoCard {
     required this.nomPrenomContrat,
     required this.dateDebut,
     required this.typeContrat,
+    super.isSelected = false,
     super.chevron,
     super.onSelect,
   });
