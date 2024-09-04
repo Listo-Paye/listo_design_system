@@ -37,6 +37,10 @@ class ClientCardPresenter extends StatelessWidget {
                 label: "Type de contrat",
                 initialValue: "CDI",
               ),
+              isSelected: context.knobs.boolean(
+                label: "Sélectionné",
+                initialValue: false,
+              ),
             ),
           ),
         ),

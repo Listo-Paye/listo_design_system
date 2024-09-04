@@ -1,5 +1,6 @@
-## 0.0.33+2
+## 0.0.33+3
 * Add selection state on listo cards
+* Fix adaptive design for Mdd
 
 ## 0.0.33
 * Refactor ListoCards & update documentation 

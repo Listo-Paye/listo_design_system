@@ -14,40 +14,38 @@ class AdaptiveMdd extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        if (constraints.maxWidth < 600) {
-          return (others.isNotEmpty ? others.last : first).animate().fadeIn();
-        }
-        return Row(
-          children: [
-            Flexible(
-              flex: 1,
-              child: Padding(
-                padding: const EdgeInsets.only(right: Spacings.sm),
-                child: first,
-              ),
+    var width = MediaQuery.of(context).size.width;
+
+    if (width <= 600) {
+      return (others.isNotEmpty ? others.last : first).animate().fadeIn();
+    }
+    return Row(
+      children: [
+        Flexible(
+          flex: 1,
+          child: Padding(
+            padding: const EdgeInsets.only(right: Spacings.sm),
+            child: first,
+          ),
+        ),
+        Flexible(
+          flex: 2,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            children: AnimateList(
+              interval: 100.ms,
+              effects: [FadeEffect(duration: 500.ms)],
+              autoPlay: true,
+              children: [
+                ...others.isNotEmpty
+                    ? others.map((widget) => Expanded(child: widget))
+                    : [const _EmptyFrame()],
+              ],
             ),
-            Flexible(
-              flex: 2,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.max,
-                children: AnimateList(
-                  interval: 100.ms,
-                  effects: [FadeEffect(duration: 500.ms)],
-                  autoPlay: true,
-                  children: [
-                    ...others.isNotEmpty
-                        ? others.map((widget) => Expanded(child: widget))
-                        : [const _EmptyFrame()],
-                  ],
-                ),
-              ),
-            )
-          ],
-        );
-      },
+          ),
+        )
+      ],
     );
   }
 }
