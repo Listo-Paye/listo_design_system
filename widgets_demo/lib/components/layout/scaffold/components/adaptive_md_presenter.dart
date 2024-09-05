@@ -24,10 +24,12 @@ class _AdaptiveMdPresenterState extends State<AdaptiveMdPresenter> {
           height: 400,
           child: AdaptiveMdd(
             first: ClientCardList(
-              onClick: (np, dt, typ) {
+              onClick: (np, ct, dt, df, typ) {
                 var retour = ClientCard(
-                  nomPrenomContrat: np,
+                  nom: np,
+                  contrat: ct,
                   dateDebut: dt,
+                  dateFin: df,
                   typeContrat: typ,
                   chevron: Icons.close,
                   onSelect: () {
@@ -62,7 +64,9 @@ class _AdaptiveMdPresenterState extends State<AdaptiveMdPresenter> {
 class ClientCardList extends StatelessWidget {
   void Function(
     String nomPrenom,
+    String contrat,
     DateTime dateDebut,
+    DateTime? dateFin,
     String typeContrat,
   ) onClick;
   ClientCardList({
@@ -76,27 +80,49 @@ class ClientCardList extends StatelessWidget {
       searchHintText: "Rechercher kk1",
       children: [
         ClientCard(
-          nomPrenomContrat: "FONTAINE Benoît Tech Lead",
+          nom: "FONTAINE Benoît",
+          contrat: "Tech Lead",
           dateDebut: DateTime(2023, 10, 16),
           typeContrat: "CDI",
           onSelect: () {
-            onClick("FONTAINE Benoît", DateTime(2023, 10, 16), "CDI");
+            onClick(
+              "FONTAINE Benoît",
+              "Tech Lead",
+              DateTime(2023, 10, 16),
+              null,
+              "CDI",
+            );
           },
         ),
         ClientCard(
-          nomPrenomContrat: "SEMERIA Thomas Ingénieur Logiciel",
+          nom: "SEMERIA Thomas",
+          contrat: "Ingénieur Logiciel",
           dateDebut: DateTime(2022, 07, 11),
+          dateFin: DateTime(2024, 12, 31),
           typeContrat: "CDI",
           onSelect: () {
-            onClick("SEMERIA Thomas", DateTime(2022, 07, 11), "CDI");
+            onClick(
+              "SEMERIA Thomas",
+              "Ingénieur Logiciel",
+              DateTime(2022, 07, 11),
+              DateTime(2024, 12, 31),
+              "CDD",
+            );
           },
         ),
         ClientCard(
-          nomPrenomContrat: "HUIBAN Raphael Développeur",
+          nom: "HUIBAN Raphael",
+          contrat: "Développeur",
           dateDebut: DateTime(2024, 04, 1),
           typeContrat: "CDI",
           onSelect: () {
-            onClick("HUIBAN Raphael", DateTime(2024, 04, 1), "CDI");
+            onClick(
+              "HUIBAN Raphael",
+              "Développeur",
+              DateTime(2024, 04, 1),
+              null,
+              "CDI",
+            );
           },
         ),
       ],

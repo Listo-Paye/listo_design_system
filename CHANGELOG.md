@@ -1,4 +1,5 @@
-## 0.0.33+3
+## 0.0.33+4
+* Upgrade ClientCard
 * Add selection state on listo cards
 * Fix adaptive design for Mdd
 

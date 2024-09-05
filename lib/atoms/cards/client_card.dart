@@ -3,14 +3,18 @@ import 'package:intl/intl.dart';
 import 'package:listo_design_system/listo_design_system.dart';
 
 class ClientCard extends ListoCard {
-  final String nomPrenomContrat;
+  final String nom;
+  final String contrat;
   final DateTime dateDebut;
+  final DateTime? dateFin;
   final String typeContrat;
   const ClientCard({
     super.key,
-    required this.nomPrenomContrat,
+    required this.nom,
+    required this.contrat,
     required this.dateDebut,
     required this.typeContrat,
+    this.dateFin,
     super.isSelected = false,
     super.chevron,
     super.onSelect,
@@ -37,7 +41,7 @@ class ClientCard extends ListoCard {
           child: Padding(
             padding: const EdgeInsets.all(Spacings.xs),
             child: SizedBox(
-              height: 40,
+              height: 57,
               child: Row(
                 children: [
                   Expanded(
@@ -45,13 +49,19 @@ class ClientCard extends ListoCard {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          nomPrenomContrat,
+                          nom,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyles.bodyMediumSemibold
                               .copyWith(color: Colors.black),
                         ),
                         Text(
-                          '${DateFormat('dd/MM/yyyy').format(dateDebut)} / $typeContrat',
+                          contrat,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyles.bodySmall
+                              .copyWith(color: Colors.black),
+                        ),
+                        Text(
+                          label,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyles.bodySmall.copyWith(
                               color: ListoMainColors.neutral.shade500),
@@ -76,7 +86,17 @@ class ClientCard extends ListoCard {
     );
   }
 
+  String get label {
+    List<String> labels = [
+      DateFormat('dd/MM/yyyy').format(dateDebut),
+    ];
+    if (dateFin != null) {
+      labels.add(DateFormat('dd/MM/yyyy').format(dateFin!));
+    }
+    labels.add(typeContrat);
+    return labels.join(' - ');
+  }
+
   @override
-  String getAllText() =>
-      '$nomPrenomContrat ${DateFormat('dd/MM/yyyy').format(dateDebut)} / $typeContrat';
+  String getAllText() => '$nom $contrat $label';
 }
