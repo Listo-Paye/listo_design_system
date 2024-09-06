@@ -27,7 +27,6 @@ class _AdaptiveMdPresenterState extends State<AdaptiveMdPresenter> {
               onClick: (np, ct, dt, df, typ) {
                 var retour = ClientCard(
                   nom: np,
-                  contrat: ct,
                   dateDebut: dt,
                   dateFin: df,
                   typeContrat: typ,
@@ -81,7 +80,6 @@ class ClientCardList extends StatelessWidget {
       children: [
         ClientCard(
           nom: "FONTAINE Benoît",
-          contrat: "Tech Lead",
           dateDebut: DateTime(2023, 10, 16),
           typeContrat: "CDI",
           onSelect: () {
@@ -96,7 +94,6 @@ class ClientCardList extends StatelessWidget {
         ),
         ClientCard(
           nom: "SEMERIA Thomas",
-          contrat: "Ingénieur Logiciel",
           dateDebut: DateTime(2022, 07, 11),
           dateFin: DateTime(2024, 12, 31),
           typeContrat: "CDI",
@@ -112,7 +109,6 @@ class ClientCardList extends StatelessWidget {
         ),
         ClientCard(
           nom: "HUIBAN Raphael",
-          contrat: "Développeur",
           dateDebut: DateTime(2024, 04, 1),
           typeContrat: "CDI",
           onSelect: () {

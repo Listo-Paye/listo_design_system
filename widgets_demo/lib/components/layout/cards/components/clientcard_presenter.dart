@@ -21,36 +21,38 @@ class ClientCardPresenter extends StatelessWidget {
         child: Center(
           child: SizedBox(
             width: 411,
-            child: ClientCard(
-              onSelect: useVoid ? () {} : null,
-              nom: context.knobs.string(
-                label: "Nom et prénom",
-                initialValue: "Nom Prénom",
-              ),
-              contrat: context.knobs.string(
-                label: "Contrat",
-                initialValue: "Contrat",
-              ),
-              dateDebut: context.knobs.dateTime(
-                label: "Date de début de contrat",
-                initialValue: DateTime.now(),
-                start: DateTime(2001),
-                end: DateTime.now(),
-              ),
-              dateFin: context.knobs.dateTimeOrNull(
-                label: "Date de fin de contrat",
-                start: DateTime(2001),
-                end: DateTime.now(),
-                initialValue: null,
-              ),
-              typeContrat: context.knobs.string(
-                label: "Type de contrat",
-                initialValue: "CDI",
-              ),
-              isSelected: context.knobs.boolean(
-                label: "Sélectionné",
-                initialValue: false,
-              ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ClientCard(
+                  onSelect: useVoid ? () {} : null,
+                  nom: context.knobs.string(
+                    label: "Nom et prénom",
+                    initialValue: "Nom Prénom",
+                  ),
+                  dateDebut: context.knobs.dateTime(
+                    label: "Date de début de contrat",
+                    initialValue: DateTime.now(),
+                    start: DateTime(2001),
+                    end: DateTime.now(),
+                  ),
+                  dateFin: context.knobs.dateTimeOrNull(
+                    label: "Date de fin de contrat",
+                    start: DateTime(2001),
+                    end: DateTime.now(),
+                    initialValue: null,
+                  ),
+                  typeContrat: context.knobs.string(
+                    label: "Type de contrat",
+                    initialValue: "CDI",
+                  ),
+                  isSelected: context.knobs.boolean(
+                    label: "Sélectionné",
+                    initialValue: false,
+                  ),
+                ),
+              ],
             ),
           ),
         ),

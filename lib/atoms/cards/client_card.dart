@@ -4,14 +4,12 @@ import 'package:listo_design_system/listo_design_system.dart';
 
 class ClientCard extends ListoCard {
   final String nom;
-  final String contrat;
   final DateTime dateDebut;
   final DateTime? dateFin;
   final String typeContrat;
   const ClientCard({
     super.key,
     required this.nom,
-    required this.contrat,
     required this.dateDebut,
     required this.typeContrat,
     this.dateFin,
@@ -40,45 +38,36 @@ class ClientCard extends ListoCard {
           onTap: onSelect,
           child: Padding(
             padding: const EdgeInsets.all(Spacings.xs),
-            child: SizedBox(
-              height: 57,
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          nom,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyles.bodyMediumSemibold
-                              .copyWith(color: Colors.black),
-                        ),
-                        Text(
-                          contrat,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyles.bodySmall
-                              .copyWith(color: Colors.black),
-                        ),
-                        Text(
-                          label,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyles.bodySmall.copyWith(
-                              color: ListoMainColors.neutral.shade500),
-                        ),
-                      ],
-                    ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        nom,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyles.bodyMediumSemibold
+                            .copyWith(color: Colors.black),
+                      ),
+                      Text(
+                        label,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyles.bodySmall
+                            .copyWith(color: ListoMainColors.neutral.shade500),
+                      ),
+                    ],
                   ),
-                  const RowSeparator(),
-                  Padding(
-                    padding: const EdgeInsets.all(Spacings.xs),
-                    child: Icon(
-                      chevron,
-                      color: ListoMainColors.secondary.base,
-                    ),
+                ),
+                const RowSeparator(),
+                Padding(
+                  padding: const EdgeInsets.all(Spacings.xs),
+                  child: Icon(
+                    chevron,
+                    color: ListoMainColors.secondary.base,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
@@ -98,5 +87,5 @@ class ClientCard extends ListoCard {
   }
 
   @override
-  String getAllText() => '$nom $contrat $label';
+  String getAllText() => '$nom $label';
 }

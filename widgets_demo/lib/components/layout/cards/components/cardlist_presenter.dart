@@ -13,21 +13,18 @@ class CardlistPresenter extends StatelessWidget {
   final cards = [
     ClientCard(
       nom: 'Benoît FONTAINE',
-      contrat: 'Tech Lead',
       dateDebut: DateTime(2023, 10, 16),
       typeContrat: "CDI",
       onSelect: () {},
     ),
     ClientCard(
       nom: "SEMERIA Thomasl",
-      contrat: "Ingénieur Logiciel",
       dateDebut: DateTime(2022, 07, 11),
       typeContrat: "CDI",
       onSelect: () {},
     ),
     ClientCard(
       nom: "HUIBAN Raphael",
-      contrat: "Développeur",
       dateDebut: DateTime(2024, 04, 1),
       typeContrat: "CDD",
       onSelect: () {},
