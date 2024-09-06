@@ -68,22 +68,7 @@ class VaInfoCard extends ListoCard {
                           .copyWith(color: ListoMainColors.neutral.shade900),
                     ),
                     const RowSeparator(),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: Spacings.sm, vertical: Spacings.xs),
-                      decoration: BoxDecoration(
-                        color: type.color,
-                        borderRadius: const BorderRadius.all(
-                            Radius.circular(Radiuses.md)),
-                      ),
-                      child: Text(
-                        type.label,
-                        style: TextStyles.bodyMediumSemibold.copyWith(
-                          color: Colors.white,
-                          fontSize: 14,
-                        ),
-                      ),
-                    ),
+                    type.toTag(),
                     const RowSeparator(),
                     Icon(
                       chevron,
@@ -120,14 +105,54 @@ class VaInfoCard extends ListoCard {
   }
 }
 
+class VaTypeTag extends StatelessWidget {
+  final VaInfoCardType type;
+  final bool large;
+  const VaTypeTag({
+    super.key,
+    required this.type,
+    this.large = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(
+          horizontal: Spacings.sm, vertical: Spacings.xs),
+      decoration: BoxDecoration(
+        color: type.color,
+        borderRadius: const BorderRadius.all(Radius.circular(Radiuses.md)),
+      ),
+      child: Text(
+        large ? type.largeLabel : type.label,
+        semanticsLabel: type.largeLabel,
+        style: TextStyles.bodyMediumSemibold.copyWith(
+          color: Colors.white,
+          fontSize: 14,
+        ),
+      ),
+    );
+  }
+}
+
 enum VaInfoCardType {
-  manual('S'),
-  calculated('C');
+  manual('S', 'Saisi'),
+  calculated('C', 'Calculé');
 
   final String label;
-  const VaInfoCardType(this.label);
+  final String largeLabel;
+  const VaInfoCardType(this.label, this.largeLabel);
 
   Color get color => this == VaInfoCardType.manual
       ? ListoMainColors.error.dark
       : ListoMainColors.primary.dark;
+}
+
+extension VaInfoCardTypeExtension on VaInfoCardType {
+  Widget toTag({bool large = false}) {
+    return VaTypeTag(
+      type: this,
+      large: large,
+    );
+  }
 }
