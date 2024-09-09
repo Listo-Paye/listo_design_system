@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:listo_design_system/themes/colors.dart';
 
 enum ButtonType {
-  filled,
+  primary,
+  secondary,
 }
 
 class Button extends StatelessWidget {
@@ -16,7 +17,7 @@ class Button extends StatelessWidget {
 
   const Button({
     super.key,
-    this.style = ButtonType.filled,
+    this.style = ButtonType.primary,
     required this.onPressed,
     this.width,
     this.height,
@@ -46,7 +47,7 @@ class Button extends StatelessWidget {
       width: width,
       height: height,
       child: switch (style) {
-        ButtonType.filled => FilledButton(
+        ButtonType.primary => FilledButton(
             onPressed: onPressedOrNull,
             style: ButtonStyle(
               backgroundColor: WidgetStateProperty.resolveWith(
@@ -55,6 +56,18 @@ class Button extends StatelessWidget {
                     : ListoMainColors.neutral.shade200,
               ),
               foregroundColor: WidgetStateProperty.all(Colors.white),
+            ),
+            child: getContent(),
+          ),
+        ButtonType.secondary => OutlinedButton(
+            onPressed: onPressedOrNull,
+            style: ButtonStyle(
+              backgroundColor: WidgetStateProperty.all(Colors.white),
+              foregroundColor: WidgetStateProperty.resolveWith(
+                (states) => enabled
+                    ? ListoMainColors.primary.base
+                    : ListoMainColors.neutral.shade300,
+              ),
             ),
             child: getContent(),
           ),

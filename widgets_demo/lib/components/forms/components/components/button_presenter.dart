@@ -1,12 +1,7 @@
-# Utiliser les boutons
+import 'package:flutter/material.dart';
+import 'package:listo_design_system/listo_design_system.dart';
+import 'package:widgetbook/widgetbook.dart';
 
-Les boutons sont des éléments qui permettent d'effectuer une action. Ils sont utilisés pour valider un formulaire, pour naviguer vers une autre page, etc.
-
-## Utilisation
-
-Pour utiliser un bouton, il faut utiliser le widget `Button` :
-
-```dart
 class ButtonPresenter extends StatelessWidget {
   final String title;
   final ButtonType type;
@@ -31,10 +26,15 @@ class ButtonPresenter extends StatelessWidget {
               image: const Icon(
                 Icons.login,
               ),
-              width: 150,
+              width: context.knobs.double.slider(
+                  label: "Largeur", initialValue: 200, min: 150, max: 700),
               onPressed: () {},
-              enabled: true,
-              text: "Button",
+              enabled: context.knobs.boolean(
+                label: "Enabled",
+                initialValue: true,
+              ),
+              text:
+                  context.knobs.string(label: "Texte", initialValue: "Button"),
             ),
           ),
         )
@@ -42,4 +42,3 @@ class ButtonPresenter extends StatelessWidget {
     );
   }
 }
-```

@@ -2,6 +2,8 @@ export 'adaptive/adaptive_module.dart';
 export 'alert.dart';
 export 'button.dart';
 export 'cards/cards_module.dart';
+export 'form_panel.dart';
+export 'inputs/inputs_module.dart';
 export 'labels/labels_module.dart';
 export 'progress_bar.dart';
 export 'search/search_module.dart';

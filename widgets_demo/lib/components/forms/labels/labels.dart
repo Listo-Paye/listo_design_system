@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgets_demo/use_case_with_markdown.dart';
 
-import 'components/all_in_one.dart';
 import 'components/amount_title_presenter.dart';
 import 'components/title_label_presenter.dart';
 import 'components/va_tag_presenter.dart';
@@ -23,11 +22,6 @@ WidgetbookComponent labelsMolecule(BuildContext context) {
       usercaseWithMarkdown(
         'VaTag',
         (context) => const VaTagPresenter(),
-        "markdown/molecule_labels.md",
-      ),
-      usercaseWithMarkdown(
-        'All In One',
-        (context) => const AllInOne(),
         "markdown/molecule_labels.md",
       ),
     ],

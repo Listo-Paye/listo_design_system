@@ -45,7 +45,22 @@ class _AdaptiveMdPresenterState extends State<AdaptiveMdPresenter> {
                       children: [
                         retour,
                         const SizedBox(height: 8),
-                        const Expanded(child: VarAppCardList()),
+                        Expanded(child: VarAppCardList(onClick: () {
+                          setState(
+                            () {
+                              var cols = [...columns];
+                              columns = [
+                                cols.first,
+                                Expanded(
+                                  child: Container(
+                                    alignment: Alignment.topCenter,
+                                    child: UpdateOrViewVA(),
+                                  ),
+                                ),
+                              ];
+                            },
+                          );
+                        })),
                       ],
                     )
                   ];
@@ -127,32 +142,114 @@ class ClientCardList extends StatelessWidget {
 }
 
 class VarAppCardList extends StatelessWidget {
-  const VarAppCardList({super.key});
+  void Function() onClick;
+  VarAppCardList({super.key, required this.onClick});
 
   @override
   Widget build(BuildContext context) {
-    return const CardList(
+    return CardList(
       searchHintText: "Rechercher variable",
       children: [
         VaInfoCard(
             title: 'Ma variable Applicative 1',
             value: 817.2,
-            type: VaInfoCardType.calculated),
+            type: VaInfoCardType.calculated,
+            onSelect: onClick),
         VaInfoCard(
-            title: 'VA Personnel',
-            value: 817.2,
-            type: VaInfoCardType.calculated),
+          title: 'VA Personnel',
+          value: 817.2,
+          type: VaInfoCardType.calculated,
+          onSelect: onClick,
+        ),
         VaInfoCard(
-            title: 'PMSS', value: 817.2, type: VaInfoCardType.calculated),
+          title: 'PMSS',
+          value: 817.2,
+          type: VaInfoCardType.calculated,
+          onSelect: onClick,
+        ),
         VaInfoCard(
-            title: 'Lorem Ipsum',
-            value: 817.2,
-            type: VaInfoCardType.calculated),
+          title: 'Lorem Ipsum',
+          value: 817.2,
+          type: VaInfoCardType.calculated,
+          onSelect: onClick,
+        ),
         VaInfoCard(
-            title: 'Ma variable Applicative 2',
-            value: 817.2,
-            type: VaInfoCardType.calculated),
+          title: 'Ma variable Applicative 2',
+          value: 817.2,
+          type: VaInfoCardType.calculated,
+          onSelect: onClick,
+        ),
       ],
+    );
+  }
+}
+
+class UpdateOrViewVA extends StatelessWidget {
+  const UpdateOrViewVA({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: Card(
+        color: Colors.white,
+        margin: const EdgeInsets.all(0),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: Spacings.xs,
+            horizontal: Spacings.md,
+          ),
+          child: ListView(
+            children: [
+              const SizedBox(height: Spacings.sm),
+              const FormTitle(data: "PMSS salarié"),
+              const SizedBox(height: Spacings.sm),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  const AmountTitle(amount: 3864),
+                  const SizedBox(width: Spacings.sm),
+                  VaInfoCardType.calculated.toTag(large: true),
+                ],
+              ),
+              const SizedBox(height: Spacings.sm),
+              const FormNote(
+                label: "Règle de calcul",
+                value: "PMSS Légal * coefficient de proratisation",
+              ),
+              const SizedBox(height: Spacings.md),
+              const FormPanel(
+                title: "Modifier la variable",
+                children: [
+                  InputAmount(
+                    hintText: "Montant",
+                  ),
+                  TextArea(hintText: "Commentaire"),
+                ],
+              ),
+              const SizedBox(height: Spacings.sm),
+              Row(
+                children: [
+                  Expanded(
+                    child: Button(
+                      onPressed: () {},
+                      text: "Fermer",
+                      style: ButtonType.secondary,
+                    ),
+                  ),
+                  const SizedBox(width: Spacings.sm),
+                  Expanded(
+                    child: Button(
+                      onPressed: () {},
+                      text: "Enregistrer",
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
