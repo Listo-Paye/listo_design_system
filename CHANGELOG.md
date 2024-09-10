@@ -1,3 +1,7 @@
+## 0.1.1
+* Fixed SearchBar width issue
+* Fixed Text Overflow in Buttons and VaTags
+
 ## 0.1.0
 * Add Form labels
 * Add Form Containers

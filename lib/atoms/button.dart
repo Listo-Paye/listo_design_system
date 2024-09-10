@@ -35,7 +35,12 @@ class Button extends StatelessWidget {
             padding: const EdgeInsets.only(right: 8.0),
             child: image,
           ),
-        Text(text),
+        Flexible(
+          child: Text(
+            text,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
       ],
     );
   }

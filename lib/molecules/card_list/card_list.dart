@@ -45,28 +45,34 @@ class _CardListState<T extends ListoCard> extends State<CardList<T>> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ListoSearchAnchor(
-              hintText: widget.searchHintText,
-              onChanged: (searchText) {
-                setState(() {
-                  _searchText = searchText;
-                  _filteredChildren = filterChildren(searchText).toList();
-                });
-              },
-              onClear: () {
-                setState(() {
-                  _searchText = "";
-                  _filteredChildren = widget.children;
-                });
-              },
-              onSearch: (searchText) {
-                setState(() {
-                  _searchText = searchText;
-                  _filteredChildren = filterChildren(searchText).toList();
-                });
-              },
-              enabled: widget.children.isNotEmpty,
-              showSuggestions: false,
+            Row(
+              children: [
+                Expanded(
+                  child: ListoSearchAnchor(
+                    hintText: widget.searchHintText,
+                    onChanged: (searchText) {
+                      setState(() {
+                        _searchText = searchText;
+                        _filteredChildren = filterChildren(searchText).toList();
+                      });
+                    },
+                    onClear: () {
+                      setState(() {
+                        _searchText = "";
+                        _filteredChildren = widget.children;
+                      });
+                    },
+                    onSearch: (searchText) {
+                      setState(() {
+                        _searchText = searchText;
+                        _filteredChildren = filterChildren(searchText).toList();
+                      });
+                    },
+                    enabled: widget.children.isNotEmpty,
+                    showSuggestions: false,
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: Spacings.xs),
             Expanded(
