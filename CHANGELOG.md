@@ -1,3 +1,6 @@
+## 0.1.1+1
+* Add enabled property to Inputs
+
 ## 0.1.1
 * Fixed SearchBar width issue
 * Fixed Text Overflow in Buttons and VaTags

@@ -12,6 +12,7 @@ class BaseInputText extends StatelessWidget {
   final void Function(String)? onChanged;
   final TextInputType? keyboardType;
   final int? maxLines;
+  final bool enabled;
   const BaseInputText({
     super.key,
     this.hintText = '',
@@ -21,6 +22,7 @@ class BaseInputText extends StatelessWidget {
     this.decoration = const InputDecoration(),
     this.keyboardType,
     this.maxLines,
+    this.enabled = true,
   });
 
   @override
@@ -28,6 +30,7 @@ class BaseInputText extends StatelessWidget {
     return Container(
       color: ListoMainColors.primary.ultraLight,
       child: TextField(
+        enabled: enabled,
         maxLines: maxLines,
         keyboardType: keyboardType,
         decoration: decoration.copyWith(
