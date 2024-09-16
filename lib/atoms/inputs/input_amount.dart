@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:intl/intl.dart';
 
 import '../../themes/colors.dart';
 import 'base_input_text.dart';
@@ -26,9 +25,7 @@ class InputAmount extends StatelessWidget {
       enabled: enabled,
       keyboardType: const TextInputType.numberWithOptions(decimal: true),
       hintText: hintText,
-      initialValue: (initialValue == null)
-          ? null
-          : AmountFormatter.formatter.format(initialValue),
+      initialValue: initialValue?.toString().replaceAll(".", ","),
       formatters: [AmountFormatter()],
       decoration: InputDecoration(
         prefixIcon: const Icon(Icons.euro),
@@ -38,7 +35,7 @@ class InputAmount extends StatelessWidget {
         if (value.isEmpty) {
           onChanged?.call(null);
         } else {
-          onChanged?.call(AmountFormatter.formatter.parse(value));
+          onChanged?.call(double.parse(value));
         }
       },
     );
@@ -46,23 +43,26 @@ class InputAmount extends StatelessWidget {
 }
 
 class AmountFormatter extends TextInputFormatter {
-  static get formatter => NumberFormat.decimalPatternDigits(
-        locale: 'fr_FR',
-        decimalDigits: 2,
-      );
-
   @override
   TextEditingValue formatEditUpdate(
       TextEditingValue oldValue, TextEditingValue newValue) {
-    if (newValue.text.isEmpty) {
-      return newValue.copyWith(text: '');
+    if (newValue.text.isEmpty || newValue.text == oldValue.text) {
+      return newValue;
     }
-    var value = formatter.tryParse(newValue.text)?.toDouble();
+    var text = newValue.text.replaceAll(".", ",");
+    if (text.contains(",")) {
+      var parts = text.split(",");
+      if (parts.length > 2) {
+        return oldValue;
+      }
+      if (parts[1].length > 2) {
+        return oldValue;
+      }
+    }
+    var value = double.tryParse(newValue.text.replaceAll(",", "."));
     if (value == null) {
       return oldValue;
     }
-    return newValue.copyWith(
-      text: formatter.format(value),
-    );
+    return newValue.copyWith(text: newValue.text.replaceAll(".", ","));
   }
 }

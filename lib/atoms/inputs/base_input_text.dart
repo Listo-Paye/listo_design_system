@@ -8,22 +8,24 @@ class BaseInputText extends StatelessWidget {
   final String hintText;
   final List<TextInputFormatter> formatters;
   final InputDecoration decoration;
-  final String? initialValue;
   final void Function(String)? onChanged;
   final TextInputType? keyboardType;
   final int? maxLines;
   final bool enabled;
-  const BaseInputText({
+  late final TextEditingController controller;
+  BaseInputText({
     super.key,
     this.hintText = '',
-    this.initialValue,
+    String? initialValue,
     this.onChanged,
     this.formatters = const [],
     this.decoration = const InputDecoration(),
     this.keyboardType,
     this.maxLines,
     this.enabled = true,
-  });
+  }) {
+    controller = TextEditingController(text: initialValue);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,8 +45,10 @@ class BaseInputText extends StatelessWidget {
         ),
         textAlignVertical: (maxLines != null) ? TextAlignVertical.top : null,
         inputFormatters: [...formatters],
-        onChanged: onChanged,
-        controller: TextEditingController(text: initialValue),
+        controller: controller,
+        onChanged: (_) {
+          onChanged?.call(controller.text);
+        },
       ),
     );
   }

@@ -1,4 +1,4 @@
-## 0.1.1+1
+## 0.1.1+2
 * Add enabled property to Inputs
 
 ## 0.1.1
