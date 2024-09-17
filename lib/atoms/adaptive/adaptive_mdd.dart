@@ -51,7 +51,7 @@ class AdaptiveMdd extends StatelessWidget {
 }
 
 class _EmptyFrame extends StatelessWidget {
-  const _EmptyFrame({super.key});
+  const _EmptyFrame();
 
   @override
   Widget build(BuildContext context) {

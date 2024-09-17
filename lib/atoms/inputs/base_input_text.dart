@@ -33,7 +33,6 @@ class BaseInputText extends StatefulWidget {
 
 class _BaseInputTextState extends State<BaseInputText> {
   late final TextEditingController _controller;
-  String _text = '';
 
   @override
   void initState() {
@@ -41,7 +40,6 @@ class _BaseInputTextState extends State<BaseInputText> {
         TextEditingController(
           text: widget.initialValue,
         );
-    _text = widget.initialValue ?? "";
     super.initState();
   }
 
@@ -66,9 +64,6 @@ class _BaseInputTextState extends State<BaseInputText> {
         inputFormatters: [...widget.formatters],
         controller: _controller,
         onChanged: (value) {
-          setState(() {
-            _text = value;
-          });
           widget.onChanged?.call(value);
         },
       ),

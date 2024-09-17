@@ -54,7 +54,7 @@ class _AdaptiveMdPresenterState extends State<AdaptiveMdPresenter> {
                                 Expanded(
                                   child: Container(
                                     alignment: Alignment.topCenter,
-                                    child: UpdateOrViewVA(),
+                                    child: const UpdateOrViewVA(),
                                   ),
                                 ),
                               ];
@@ -76,14 +76,14 @@ class _AdaptiveMdPresenterState extends State<AdaptiveMdPresenter> {
 }
 
 class ClientCardList extends StatelessWidget {
-  void Function(
+  final void Function(
     String nomPrenom,
     String contrat,
     DateTime dateDebut,
     DateTime? dateFin,
     String typeContrat,
   ) onClick;
-  ClientCardList({
+  const ClientCardList({
     super.key,
     required this.onClick,
   });
@@ -142,8 +142,8 @@ class ClientCardList extends StatelessWidget {
 }
 
 class VarAppCardList extends StatelessWidget {
-  void Function() onClick;
-  VarAppCardList({super.key, required this.onClick});
+  final void Function() onClick;
+  const VarAppCardList({super.key, required this.onClick});
 
   @override
   Widget build(BuildContext context) {

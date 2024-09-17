@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:listo_design_system/themes/colors.dart';
 
 class FormContainer extends StatelessWidget {
-  Widget child;
+  final Widget child;
 
-  FormContainer({super.key, required this.child});
+  const FormContainer({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
