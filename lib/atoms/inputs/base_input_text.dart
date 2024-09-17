@@ -4,27 +4,45 @@ import 'package:flutter/services.dart';
 import '../../themes/colors.dart';
 import '../../themes/spacing.dart';
 
-class BaseInputText extends StatelessWidget {
+class BaseInputText extends StatefulWidget {
   final String hintText;
   final List<TextInputFormatter> formatters;
   final InputDecoration decoration;
+  final String? initialValue;
   final void Function(String)? onChanged;
   final TextInputType? keyboardType;
   final int? maxLines;
   final bool enabled;
-  late final TextEditingController controller;
-  BaseInputText({
+  final TextEditingController? controller;
+  const BaseInputText({
     super.key,
     this.hintText = '',
-    String? initialValue,
+    this.initialValue,
     this.onChanged,
     this.formatters = const [],
     this.decoration = const InputDecoration(),
     this.keyboardType,
     this.maxLines,
     this.enabled = true,
-  }) {
-    controller = TextEditingController(text: initialValue);
+    this.controller,
+  });
+
+  @override
+  State<BaseInputText> createState() => _BaseInputTextState();
+}
+
+class _BaseInputTextState extends State<BaseInputText> {
+  late final TextEditingController _controller;
+  String _text = '';
+
+  @override
+  void initState() {
+    _controller = widget.controller ??
+        TextEditingController(
+          text: widget.initialValue,
+        );
+    _text = widget.initialValue ?? "";
+    super.initState();
   }
 
   @override
@@ -32,22 +50,26 @@ class BaseInputText extends StatelessWidget {
     return Container(
       color: ListoMainColors.primary.ultraLight,
       child: TextField(
-        enabled: enabled,
-        maxLines: maxLines,
-        keyboardType: keyboardType,
-        decoration: decoration.copyWith(
-          labelText: hintText,
-          alignLabelWithHint: maxLines != null,
+        enabled: widget.enabled,
+        maxLines: widget.maxLines,
+        keyboardType: widget.keyboardType,
+        decoration: widget.decoration.copyWith(
+          labelText: widget.hintText,
+          alignLabelWithHint: widget.maxLines != null,
           contentPadding: const EdgeInsets.symmetric(
             horizontal: Spacings.sm,
             vertical: Spacings.xs,
           ),
         ),
-        textAlignVertical: (maxLines != null) ? TextAlignVertical.top : null,
-        inputFormatters: [...formatters],
-        controller: controller,
-        onChanged: (_) {
-          onChanged?.call(controller.text);
+        textAlignVertical:
+            (widget.maxLines != null) ? TextAlignVertical.top : null,
+        inputFormatters: [...widget.formatters],
+        controller: _controller,
+        onChanged: (value) {
+          setState(() {
+            _text = value;
+          });
+          widget.onChanged?.call(value);
         },
       ),
     );

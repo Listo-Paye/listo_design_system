@@ -21,7 +21,7 @@ class InputAmount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseInputText(
-      key: key ?? ValueKey('InputAmount_$hintText'),
+      key: ValueKey('InputAmount_$hintText'),
       enabled: enabled,
       keyboardType: const TextInputType.numberWithOptions(decimal: true),
       hintText: hintText,
@@ -35,7 +35,7 @@ class InputAmount extends StatelessWidget {
         if (value.isEmpty) {
           onChanged?.call(null);
         } else {
-          onChanged?.call(double.parse(value));
+          onChanged?.call(double.parse(value.replaceAll(",", ".")));
         }
       },
     );

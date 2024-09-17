@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:listo_design_system/listo_design_system.dart';
 
-class InputPresenter extends StatelessWidget {
+class InputPresenter extends StatefulWidget {
   const InputPresenter({super.key});
 
+  @override
+  State<InputPresenter> createState() => _InputPresenterState();
+}
+
+class _InputPresenterState extends State<InputPresenter> {
   @override
   Widget build(BuildContext context) {
     return Padding(

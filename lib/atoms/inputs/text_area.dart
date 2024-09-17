@@ -18,7 +18,7 @@ class TextArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseInputText(
-      key: key ?? ValueKey('TextArea_$hintText'),
+      key: ValueKey('TextArea_$hintText'),
       enabled: enabled,
       hintText: hintText,
       initialValue: initialValue,

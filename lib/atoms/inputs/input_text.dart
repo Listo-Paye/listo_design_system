@@ -18,7 +18,7 @@ class InputText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseInputText(
-      key: key ?? ValueKey('InputText_$hintText'),
+      key: ValueKey('InputText_$hintText'),
       enabled: enabled,
       hintText: hintText,
       initialValue: initialValue,
