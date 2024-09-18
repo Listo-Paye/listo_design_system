@@ -18,10 +18,15 @@ class _CardListState<T extends ListoCard> extends State<CardList<T>> {
   late List<T> _filteredChildren;
   String _searchText = "";
 
+  final _controller = ScrollController();
+
   @override
   void initState() {
     super.initState();
     _filteredChildren = widget.children;
+    Future.delayed(const Duration(milliseconds: 300), () {
+      scrollToSelected();
+    });
   }
 
   Iterable<T> filterChildren(String searchText) {
@@ -30,6 +35,19 @@ class _CardListState<T extends ListoCard> extends State<CardList<T>> {
   }
 
   Widget getLoadingCard() => const Center(child: CircularProgressIndicator());
+
+  void scrollToSelected() {
+    var index = _filteredChildren.indexWhere((element) => element.isSelected);
+    if (index < 0 || index >= _filteredChildren.length) return;
+
+    var offset = index * 64.0;
+
+    _controller.animateTo(
+      offset,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +95,7 @@ class _CardListState<T extends ListoCard> extends State<CardList<T>> {
             const SizedBox(height: Spacings.xs),
             Expanded(
               child: ListView.separated(
+                controller: _controller,
                 separatorBuilder: (context, index) =>
                     const SizedBox(height: Spacings.xs),
                 itemCount:

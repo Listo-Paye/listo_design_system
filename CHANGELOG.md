@@ -1,5 +1,6 @@
-## 0.1.1+3
+## 0.1.1+4
 * Add enabled property to Inputs
+* CardList auto-scroll on select
 
 ## 0.1.1
 * Fixed SearchBar width issue
