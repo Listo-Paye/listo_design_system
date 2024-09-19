@@ -1,3 +1,6 @@
+## 0.2.0
+* Add upload button with Dialog
+
 ## 0.1.1+4
 * Add enabled property to Inputs
 * CardList auto-scroll on select
