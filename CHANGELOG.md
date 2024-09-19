@@ -1,4 +1,4 @@
-## 0.2.0
+## 0.2.0+1
 * Add upload button with Dialog
 
 ## 0.1.1+4
