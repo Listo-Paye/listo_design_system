@@ -1,4 +1,4 @@
-library listo_design_system;
+library;
 
 import 'package:flutter/material.dart';
 
