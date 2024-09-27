@@ -3,6 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:widgets_demo/use_case_with_markdown.dart';
 
 import 'components/amount_title_presenter.dart';
+import 'components/form_labels.dart';
 import 'components/title_label_presenter.dart';
 import 'components/va_tag_presenter.dart';
 
@@ -23,6 +24,11 @@ WidgetbookComponent labelsMolecule(BuildContext context) {
         'VaTag',
         (context) => const VaTagPresenter(),
         "markdown/molecule_labels.md",
+      ),
+      usercaseWithMarkdown(
+        'FormLabels',
+        (context) => const FormLabels(),
+        "markdown/form_labels.md",
       ),
     ],
   );

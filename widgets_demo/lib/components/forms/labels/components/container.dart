@@ -3,15 +3,16 @@ import 'package:listo_design_system/themes/colors.dart';
 
 class FormContainer extends StatelessWidget {
   final Widget child;
+  final double? height;
 
-  const FormContainer({super.key, required this.child});
+  const FormContainer({super.key, required this.child, this.height = 300});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Container(
-        height: 300,
+        height: height,
         decoration: BoxDecoration(
           color: ListoMainColors.primary.medium,
           borderRadius: BorderRadius.circular(8),
