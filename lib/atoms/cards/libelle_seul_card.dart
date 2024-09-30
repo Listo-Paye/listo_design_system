@@ -5,6 +5,9 @@ class LibelleSeulCard extends ListoCard {
   final String libelle;
   const LibelleSeulCard({
     super.key,
+    super.chevron = Icons.chevron_right,
+    super.isSelected = false,
+    super.onSelect,
     required this.libelle,
   });
 

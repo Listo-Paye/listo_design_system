@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:listo_design_system/themes/colors.dart';
+import 'package:listo_design_system/listo_design_system.dart';
 
 import 'form_base_labels.dart';
 
