@@ -37,11 +37,14 @@ class LibelleSeulCard extends ListoCard {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        libelle,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyles.bodyMediumSemibold
-                            .copyWith(color: Colors.black),
+                      Tooltip(
+                        message: libelle,
+                        child: Text(
+                          libelle,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyles.bodyMediumSemibold
+                              .copyWith(color: Colors.black),
+                        ),
                       ),
                     ],
                   ),
