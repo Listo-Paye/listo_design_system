@@ -1,9 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:listo_design_system/themes/colors.dart';
+import 'package:listo_design_system/listo_design_system.dart';
 
 enum ButtonType {
   primary,
   secondary,
+}
+
+class ButtonStyles {
+  static final ButtonStyle primary = ButtonStyle(
+    backgroundColor: WidgetStateProperty.all(ListoMainColors.primary.base),
+    foregroundColor: WidgetStateProperty.all(Colors.white),
+    shape: WidgetStateProperty.all(
+      RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(Spacings.xs),
+      ),
+    ),
+  );
+
+  static final ButtonStyle secondary = ButtonStyle(
+    backgroundColor: WidgetStateProperty.all(Colors.white),
+    foregroundColor: WidgetStateProperty.all(ListoMainColors.primary.base),
+    shape: WidgetStateProperty.all(
+      RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(Spacings.xs),
+      ),
+    ),
+  );
 }
 
 class Button extends StatelessWidget {
@@ -45,38 +67,44 @@ class Button extends StatelessWidget {
     );
   }
 
+  Widget getButton() {
+    if (!enabled) {
+      return FilledButton(
+          onPressed: null,
+          style: ButtonStyle(
+            backgroundColor:
+                WidgetStateProperty.all(ListoMainColors.neutral.shade200),
+            foregroundColor:
+                WidgetStateProperty.all(ListoMainColors.neutral.shade400),
+            shape: WidgetStateProperty.all(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(Spacings.xs),
+              ),
+            ),
+          ),
+          child: getContent());
+    }
+
+    return switch (style) {
+      ButtonType.primary => FilledButton(
+          onPressed: onPressed,
+          style: ButtonStyles.primary,
+          child: getContent(),
+        ),
+      ButtonType.secondary => OutlinedButton(
+          onPressed: onPressed,
+          style: ButtonStyles.secondary,
+          child: getContent(),
+        ),
+    };
+  }
+
   @override
   Widget build(BuildContext context) {
-    var onPressedOrNull = enabled ? onPressed : null;
     return SizedBox(
       width: width,
       height: height,
-      child: switch (style) {
-        ButtonType.primary => FilledButton(
-            onPressed: onPressedOrNull,
-            style: ButtonStyle(
-              backgroundColor: WidgetStateProperty.resolveWith(
-                (states) => enabled
-                    ? ListoMainColors.primary.base
-                    : ListoMainColors.neutral.shade200,
-              ),
-              foregroundColor: WidgetStateProperty.all(Colors.white),
-            ),
-            child: getContent(),
-          ),
-        ButtonType.secondary => OutlinedButton(
-            onPressed: onPressedOrNull,
-            style: ButtonStyle(
-              backgroundColor: WidgetStateProperty.all(Colors.white),
-              foregroundColor: WidgetStateProperty.resolveWith(
-                (states) => enabled
-                    ? ListoMainColors.primary.base
-                    : ListoMainColors.neutral.shade300,
-              ),
-            ),
-            child: getContent(),
-          ),
-      },
+      child: getButton(),
     );
   }
 }

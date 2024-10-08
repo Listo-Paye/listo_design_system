@@ -1,3 +1,6 @@
+## 0.2.2
+* Update upload button with Dialog
+
 ## 0.2.1+2
 * Add FormLabels
 
