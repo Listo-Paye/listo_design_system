@@ -1,3 +1,6 @@
+## 0.2.3
+* Updated upload dialog with upload progress and error handling
+
 ## 0.2.2
 * Update upload button with Dialog
 

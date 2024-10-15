@@ -1,24 +1,26 @@
-import 'dart:typed_data';
-
-import 'package:dotted_border/dotted_border.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:listo_design_system/listo_design_system.dart';
-import 'package:super_drag_and_drop/super_drag_and_drop.dart';
+import 'package:listo_design_system/molecules/upload/list_item_download.dart';
 import 'package:path/path.dart' as path;
 
-import 'list_item_download.dart';
+import 'upload_area.dart';
+import 'file_list.dart';
+import 'custom_file_wrapper.dart';
 
 class UploadDialog extends StatefulWidget {
   final UploadConfig config;
   final List<String>? allowedExtensions;
-  final Function(List<CustomFile> files) onUpload;
+  final VoidCallback? onClose;
+  final Function(List<CustomFile>) onUpload;
+  final UploadController controller;
 
   const UploadDialog({
     super.key,
     required this.config,
     required this.onUpload,
+    required this.controller,
     this.allowedExtensions,
+    this.onClose,
   });
 
   @override
@@ -26,85 +28,94 @@ class UploadDialog extends StatefulWidget {
 }
 
 class _UploadDialogState extends State<UploadDialog> {
-  final List<CustomFile> _files = [];
-  bool _isDragging = false;
+  final List<CustomFileWrapper> _files = [];
 
-  static const double _minHeight = 250.0;
-  static const double _maxHeight = 450.0;
-  static const double _baseHeight = 250.0;
-  static const double _fileItemHeight = 60.0;
-
-  double _calculateDialogHeight() {
-    final contentHeight = _baseHeight + (_files.length * _fileItemHeight);
-    return contentHeight.clamp(_minHeight, _maxHeight);
+  @override
+  void initState() {
+    super.initState();
+    _setupController();
   }
 
-  Future<void> _selectFiles() async {
-    final result = await FilePicker.platform.pickFiles(allowMultiple: true);
-    if (result != null) {
-      setState(() {
-        for (final file in result.files) {
-          if (file.bytes != null &&
-              !_files.any((element) => element.name == file.name)) {
-            _files.add(CustomFile(
-              name: file.name,
-              bytes: file.bytes!,
-              size: file.size,
-            ));
-          }
-        }
-      });
-    }
+  void _setupController() {
+    widget.controller.onProgress = _updateUploadProgress;
+    widget.controller.onComplete = _markUploadComplete;
+    widget.controller.onError = _onError;
   }
 
-  _removeFile(String fileName) {
+  void _addFile(CustomFile file) {
+    if (_files.any((f) => f.file.name == file.name)) return;
+
+    final status = _getFileStatus(file.name);
     setState(() {
-      _files.removeWhere((element) => element.name == fileName);
+      _files.add(CustomFileWrapper(
+        file: file,
+        status: status,
+        errorMessage: status == UploadStatus.error
+            ? "Format de fichier non pris en compte"
+            : null,
+      ));
     });
   }
 
-  Future<void> _handlePerformDrop(PerformDropEvent event) async {
-    final items = event.session.items;
-    for (final item in items) {
-      final reader = item.dataReader;
-      reader?.getFile(null, (file) {
-        if (_files.any((element) => element.name == file.fileName)) {
-          return;
-        }
-
-        final stream = file.getStream();
-        final chunks = <Uint8List>[];
-        stream.listen(
-          (chunk) {
-            chunks.add(chunk);
-          },
-          onDone: () {
-            _addFileFromChunk(file.fileName ?? '', chunks);
-          },
-        );
-      });
-    }
-  }
-
-  void _addFileFromChunk(String fileName, List<Uint8List> chunks) {
-    final completeData = Uint8List.fromList(chunks.expand((x) => x).toList());
-    final newFile = CustomFile(
-      name: fileName,
-      bytes: completeData,
-      size: completeData.lengthInBytes,
-    );
+  void _removeFile(String fileName) {
     setState(() {
-      _files.add(newFile);
+      _files.removeWhere((f) => f.file.name == fileName);
     });
   }
 
-  bool isValidExtension(String fileName) {
+  UploadStatus _getFileStatus(String fileName) {
+    return _isValidExtension(fileName)
+        ? UploadStatus.loaded
+        : UploadStatus.error;
+  }
+
+  bool _isValidExtension(String fileName) {
     if (widget.allowedExtensions == null || widget.allowedExtensions!.isEmpty) {
       return true;
     }
-
     final extension = path.extension(fileName);
     return widget.allowedExtensions!.contains(extension);
+  }
+
+  void _updateUploadProgress(String fileName, double progress) {
+    if (!widget.controller.showProgress) return;
+    setState(() {
+      final file = _files.firstWhere((f) => f.file.name == fileName);
+      file.uploadProgress = progress;
+    });
+  }
+
+  void _markUploadComplete(String fileName) {
+    setState(() {
+      final file = _files.firstWhere((f) => f.file.name == fileName);
+      file.status = UploadStatus.uploadComplete;
+    });
+  }
+
+  void _onError(String fileName, String message) {
+    setState(() {
+      final file = _files.firstWhere((f) => f.file.name == fileName);
+      file.status = UploadStatus.error;
+      file.errorMessage = message;
+    });
+  }
+
+  void _startUploading() {
+    final filesToUpload = _files
+        .where((f) => f.status == UploadStatus.loaded)
+        .map((f) => f.file)
+        .toList();
+
+    widget.onUpload(filesToUpload);
+
+    setState(() {
+      for (var file in _files) {
+        if (file.status != UploadStatus.uploadComplete) {
+          file.status = UploadStatus.uploading;
+          file.uploadProgress = widget.controller.showProgress ? 0.0 : null;
+        }
+      }
+    });
   }
 
   @override
@@ -125,133 +136,35 @@ class _UploadDialogState extends State<UploadDialog> {
         height: _calculateDialogHeight(),
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             _buildHeader(),
             const SizedBox(height: Spacings.sm),
-            _buildUploadArea(),
+            UploadArea(
+              config: widget.config,
+              onFilesAdded: (files) => files.forEach(_addFile),
+            ),
             if (_files.isNotEmpty) ...[
-              const SizedBox(height: 4),
-              _buildFilesList(),
+              const SizedBox(height: Spacings.xs),
+              FileList(
+                files: _files,
+                onRemove: _removeFile,
+              ),
             ],
           ],
         ),
       ),
-      actions: [_buildActionButtons(context)],
+      actions: [_buildActionButtons()],
     );
   }
 
   Widget _buildHeader() {
     return Text(
       widget.config.modalTitle,
-      overflow: TextOverflow.ellipsis,
       style: TextStyles.headingMediumSemibold,
     );
   }
 
-  Widget _buildUploadArea() {
-    return Expanded(
-      child: DropRegion(
-        formats: Formats.standardFormats,
-        onDropOver: (event) {
-          setState(() => _isDragging = true);
-          return DropOperation.copy;
-        },
-        onDropLeave: (event) {
-          setState(() => _isDragging = false);
-        },
-        onPerformDrop: _handlePerformDrop,
-        child: DottedBorder(
-          color: Colors.black,
-          strokeWidth: 1,
-          dashPattern: [4, 4],
-          child: _buildUploadContent(),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildUploadContent() {
-    return Material(
-      color: _isDragging
-          ? ListoMainColors.primary.light
-          : ListoMainColors.primary.ultraLight,
-      child: InkWell(
-        highlightColor: ListoMainColors.primary.light,
-        splashColor: ListoMainColors.primary.light,
-        borderRadius: BorderRadius.circular(Radiuses.xs),
-        onTap: _selectFiles,
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              _buildUploadButton(),
-              const SizedBox(height: Spacings.xs),
-              _buildUploadSecondaryText(),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildUploadButton() {
-    return IntrinsicWidth(
-      child: OutlinedButton(
-        onPressed: _selectFiles,
-        style: ButtonStyles.secondary.copyWith(
-            backgroundColor: WidgetStateProperty.all(Colors.transparent)),
-        child: Row(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(right: Spacings.xs),
-              child: Icon(Icons.file_upload_outlined),
-            ),
-            Flexible(
-              child: Text(
-                widget.config.uploadAreaMainText,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildUploadSecondaryText() {
-    return Text(
-      widget.config.uploadAreaSecondaryText,
-      overflow: TextOverflow.ellipsis,
-      style: TextStyles.bodySmall.copyWith(
-        color: ListoMainColors.primary.materialColor.shade900,
-      ),
-    );
-  }
-
-  Widget _buildFilesList() {
-    return ConstrainedBox(
-      constraints: BoxConstraints(maxHeight: 220, minHeight: 60),
-      child: ListView.separated(
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        padding: const EdgeInsets.all(Spacings.xs),
-        itemCount: _files.length,
-        separatorBuilder: (context, index) => const SizedBox(height: 4),
-        itemBuilder: (context, index) => ListItemDownload(
-          status: isValidExtension(_files[index].name)
-              ? DownloadStatus.downloaded
-              : DownloadStatus.error,
-          fileName: _files[index].name,
-          onDelete: _removeFile,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildActionButtons(context) {
+  Widget _buildActionButtons() {
     return Row(
       children: [
         Expanded(
@@ -259,6 +172,7 @@ class _UploadDialogState extends State<UploadDialog> {
             style: ButtonType.secondary,
             text: widget.config.secondaryButtonText,
             onPressed: () {
+              widget.onClose?.call();
               Navigator.of(context).pop();
             },
           ),
@@ -268,15 +182,28 @@ class _UploadDialogState extends State<UploadDialog> {
           child: Button(
             style: ButtonType.primary,
             text: widget.config.primaryButtonText,
-            enabled: _files.isNotEmpty &&
-                _files.every((file) => isValidExtension(file.name)),
-            onPressed: () {
-              widget.onUpload(_files);
-              Navigator.of(context).pop();
-            },
+            enabled: _isPrimaryButtonEnabled(),
+            onPressed: _startUploading,
           ),
         ),
       ],
     );
+  }
+
+  bool _isPrimaryButtonEnabled() {
+    return _files.isNotEmpty &&
+        !_files.any((f) => f.status == UploadStatus.uploading) &&
+        !_files.any((f) => f.status == UploadStatus.error) &&
+        _files.any((f) => f.status == UploadStatus.loaded);
+  }
+
+  double _calculateDialogHeight() {
+    const double minHeight = 250.0;
+    const double maxHeight = 360.0;
+    const double baseHeight = 250.0;
+    const double fileItemHeight = 60.0;
+
+    final contentHeight = baseHeight + (_files.length * fileItemHeight);
+    return contentHeight.clamp(minHeight, maxHeight);
   }
 }
