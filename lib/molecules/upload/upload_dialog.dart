@@ -199,7 +199,7 @@ class _UploadDialogState extends State<UploadDialog> {
 
   double _calculateDialogHeight() {
     const double minHeight = 250.0;
-    const double maxHeight = 360.0;
+    const double maxHeight = 530.0;
     const double baseHeight = 250.0;
     const double fileItemHeight = 60.0;
 

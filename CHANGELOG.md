@@ -1,3 +1,6 @@
+## 0.2.3+1
+* fixed upload dialog height
+
 ## 0.2.3
 * Updated upload dialog with upload progress and error handling
 

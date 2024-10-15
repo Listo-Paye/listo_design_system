@@ -17,7 +17,7 @@ class FileList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
-      constraints: BoxConstraints(maxHeight: 220, minHeight: 60),
+      constraints: BoxConstraints(maxHeight: 350, minHeight: 60),
       child: ListView.separated(
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
