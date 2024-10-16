@@ -1,4 +1,5 @@
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/material.dart';
 
 var septeoLogo = SvgPicture.string("""
   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13,4 +14,7 @@ var septeoLogo = SvgPicture.string("""
         </clipPath>
     </defs>
   </svg>
-  """);
+  """,
+    semanticsLabel: 'Logo de Septeo',
+    key: const Key('septeoLogo')
+);
