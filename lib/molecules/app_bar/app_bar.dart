@@ -5,6 +5,7 @@ import 'package:listo_design_system/listo_design_system.dart';
 
 enum Variant { none }
 
+@Deprecated("Ce composant est déprécié. Merci d'utiliser plutôt `LogoAppBar`.")
 class ListoAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? firstName;
   final String? lastName;

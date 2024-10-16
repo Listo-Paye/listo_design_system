@@ -15,8 +15,11 @@ class HotReload extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Map<String, String> params =
+        Map.fromEntries(Uri.base.queryParameters.entries);
+    var path = params["path"] ?? 'accueil%2Freadme';
     return Widgetbook.material(
-      initialRoute: "/?path=accueil%2Freadme",
+      initialRoute: "/?path=$path",
       addons: [
         DeviceFrameAddon(devices: [
           ...Devices.android.all,
