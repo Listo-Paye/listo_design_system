@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:widgets_demo/use_case_with_markdown.dart';
 
 import 'components/saisie.dart';
 import 'labels/components/all_in_one.dart';
@@ -14,10 +13,6 @@ WidgetbookCategory formsCategory(BuildContext context) {
     searchbarAtom(context),
     labelsMolecule(context),
     tablesAndListsMolecule(context),
-    usercaseWithMarkdown(
-      'Exemple',
-      (context) => const AllInOne(),
-      "markdown/molecule_form_axample.md",
-    ),
+    allInOneComponent(context),
   ]);
 }

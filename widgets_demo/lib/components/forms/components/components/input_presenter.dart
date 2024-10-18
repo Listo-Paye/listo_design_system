@@ -34,8 +34,12 @@ class _InputPresenterState extends State<InputPresenter> {
                   children: const [
                     SizedBox(height: Spacings.sm),
                     FormNote(
-                      label: "Exemple",
-                      value: "Voici la liste des inputs disponibles",
+                      notes: [
+                        Note(
+                          label: "Exemple",
+                          value: "Voici la liste des inputs disponibles",
+                        ),
+                      ],
                     ),
                     SizedBox(height: Spacings.md),
                     FormPanel(

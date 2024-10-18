@@ -1,3 +1,6 @@
+## 0.2.4 
+* Updated FormNote
+
 ## 0.2.3+1
 * fixed upload dialog height
 

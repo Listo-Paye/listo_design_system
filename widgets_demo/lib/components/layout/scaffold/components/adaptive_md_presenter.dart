@@ -83,6 +83,7 @@ class ClientCardList extends StatelessWidget {
     DateTime? dateFin,
     String typeContrat,
   ) onClick;
+
   const ClientCardList({
     super.key,
     required this.onClick,
@@ -143,6 +144,7 @@ class ClientCardList extends StatelessWidget {
 
 class VarAppCardList extends StatelessWidget {
   final void Function() onClick;
+
   const VarAppCardList({super.key, required this.onClick});
 
   @override
@@ -214,8 +216,12 @@ class UpdateOrViewVA extends StatelessWidget {
               ),
               const SizedBox(height: Spacings.sm),
               const FormNote(
-                label: "Règle de calcul",
-                value: "PMSS Légal * coefficient de proratisation",
+                notes: [
+                  Note(
+                    label: "Règle de calcul",
+                    value: "PMSS Légal * coefficient de proratisation",
+                  ),
+                ],
               ),
               const SizedBox(height: Spacings.md),
               const FormPanel(
