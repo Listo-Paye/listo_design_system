@@ -7,6 +7,7 @@ import 'themes/main_theme.dart';
 export 'atoms/atoms_module.dart';
 export 'extensions/extensions_module.dart';
 export 'molecules/molecules_module.dart';
+export 'svg/svg_module.dart';
 export 'themes/themes_module.dart';
 
 class ListoDesignSystem {
