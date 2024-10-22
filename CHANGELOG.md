@@ -1,4 +1,4 @@
-## 0.3.0+1
+## 0.3.0+2
 * Set deprecated components to be removed in 0.4.0
   * CardList
   * ClientCard
