@@ -7,8 +7,8 @@ import 'components/cardlist_presenter.dart';
 import 'components/clientcard_presenter.dart';
 import 'components/va_info_card_presenter.dart';
 
-WidgetbookComponent cardsMolecule(BuildContext context) {
-  return WidgetbookComponent(name: "Cards", useCases: [
+WidgetbookComponent cardsDeprecated(BuildContext context) {
+  return WidgetbookComponent(name: "Cards V1", useCases: [
     usercaseWithMarkdown(
       "Card List",
       (context) => Container(

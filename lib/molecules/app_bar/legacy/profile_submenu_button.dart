@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:listo_design_system/listo_design_system.dart';
 
+@Deprecated("Ce composant est déprécié. Merci d'utiliser plutôt `LogoAppBar`.")
 class ProfileSubmenuButton extends StatelessWidget {
   final String? firstName;
   final String? lastName;

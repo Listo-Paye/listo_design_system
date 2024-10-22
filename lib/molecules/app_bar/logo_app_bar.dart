@@ -46,9 +46,15 @@ class LogoAppBar extends StatelessWidget implements PreferredSizeWidget {
   List<Widget> get _prefix {
     var prefix = <Widget>[];
     if (logo != null) {
-      prefix.add(Padding(
-        padding: const EdgeInsets.all(Spacings.xs),
-        child: Image(image: logo!, height: height),
+      prefix.add(Center(
+        child: Padding(
+          padding: const EdgeInsets.only(top: Spacings.xs),
+          child: Image(
+            image: logo!,
+            fit: BoxFit.contain,
+            height: 30,
+          ),
+        ),
       ));
     }
 

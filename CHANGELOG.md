@@ -1,3 +1,13 @@
+## 0.3.0
+* Set deprecated components to be removed in 0.4.0
+  * CardList
+  * ClientCard
+  * VaInfoCard
+  * AdaptiveMasterDetails
+  * ListoAppBar
+  * NavigationMenu
+* Add new LogoAppBar and Selection Button components
+
 ## 0.2.4 
 * Updated FormNote
 

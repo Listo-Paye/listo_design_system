@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:listo_design_system/molecules/navigation_menu/menu_icon.dart';
-import 'package:listo_design_system/themes/spacing.dart';
 import 'package:listo_design_system/listo_design_system.dart';
 
 enum Variant { none }
@@ -60,12 +58,13 @@ class ListoAppBar extends StatelessWidget implements PreferredSizeWidget {
                       leadingIcon: Icon(Icons.exit_to_app,
                           color: ListoMainColors.neutral[700]),
                       style: ButtonStyle(
-                        backgroundColor: const WidgetStatePropertyAll(Colors.white),
+                        backgroundColor:
+                            const WidgetStatePropertyAll(Colors.white),
                         elevation: const WidgetStatePropertyAll(0),
-                        padding: const WidgetStatePropertyAll(EdgeInsets.only(left: 12)),
-                        shape: WidgetStatePropertyAll(
-                            RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30))),
+                        padding: const WidgetStatePropertyAll(
+                            EdgeInsets.only(left: 12)),
+                        shape: WidgetStatePropertyAll(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30))),
                       ),
                       onPressed: onLogout,
                     ),
