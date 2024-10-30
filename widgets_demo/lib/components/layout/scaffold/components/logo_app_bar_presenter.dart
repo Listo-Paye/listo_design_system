@@ -23,8 +23,15 @@ class LogoAppBarPresenter extends StatelessWidget {
   }
 }
 
-class PresenterScaffold extends StatelessWidget {
+class PresenterScaffold extends StatefulWidget {
   const PresenterScaffold({super.key});
+
+  @override
+  State<PresenterScaffold> createState() => _PresenterScaffoldState();
+}
+
+class _PresenterScaffoldState extends State<PresenterScaffold> {
+   String selectedTab = "Salariés";
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +55,15 @@ class PresenterScaffold extends StatelessWidget {
                 : null,
           ),
         ],
-        title: Text('Listo'),
+        title: NavigationTabs(
+          selectedTab: selectedTab,
+          tabs: ["Salariés", "Entreprise"],
+          onTabSelected: (tab) {
+            setState(() {
+              selectedTab = tab;
+            });
+          },
+        ),
         logo: AssetImage('assets/images/logo.png'),
       ),
       body: Container(

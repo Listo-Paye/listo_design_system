@@ -1,3 +1,6 @@
+## 0.3.1
+* Add Popin and Navigation Tabs widgets
+
 ## 0.3.0+2
 * Set deprecated components to be removed in 0.4.0
   * CardList
