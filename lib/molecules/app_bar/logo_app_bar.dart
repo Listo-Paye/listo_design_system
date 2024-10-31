@@ -26,6 +26,7 @@ class LogoAppBar extends StatelessWidget implements PreferredSizeWidget {
       toolbarHeight: height,
       backgroundColor: Colors.white,
       elevation: elevation,
+      surfaceTintColor: Colors.white,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
