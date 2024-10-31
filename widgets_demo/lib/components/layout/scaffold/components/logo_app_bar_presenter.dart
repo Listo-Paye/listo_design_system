@@ -31,7 +31,7 @@ class PresenterScaffold extends StatefulWidget {
 }
 
 class _PresenterScaffoldState extends State<PresenterScaffold> {
-   String selectedTab = "Salariés";
+  String selectedTab = "Salariés";
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +64,13 @@ class _PresenterScaffoldState extends State<PresenterScaffold> {
             });
           },
         ),
+        endActions: [
+          Profil(
+            label: "admin",
+            onHelpPressed: () {},
+            onProfilPressed: () {},
+          ),
+        ],
         logo: AssetImage('assets/images/logo.png'),
       ),
       body: Container(

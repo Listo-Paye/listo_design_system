@@ -10,3 +10,4 @@ export 'search/search_module.dart';
 export 'tag.dart';
 export 'title_line.dart';
 export 'popin.dart';
+export 'profil.dart';

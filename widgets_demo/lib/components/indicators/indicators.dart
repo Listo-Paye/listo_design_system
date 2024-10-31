@@ -3,6 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 
 import 'alert.dart';
 import 'popin.dart';
+import 'profil.dart';
 import 'progress_bar.dart';
 
 WidgetbookCategory indicatorsCategory(BuildContext context) {
@@ -10,5 +11,6 @@ WidgetbookCategory indicatorsCategory(BuildContext context) {
     alertsAtom(context),
     progressBarAtom(context),
     popinAtom(context),
+    profilAtom(context),
   ]);
 }

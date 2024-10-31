@@ -1,3 +1,7 @@
+## 0.3.2
+* Add Profil widget
+
+
 ## 0.3.1
 * Add Popin and Navigation Tabs widgets
 
