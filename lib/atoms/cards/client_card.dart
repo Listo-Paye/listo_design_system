@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:listo_design_system/listo_design_system.dart';
 
+@Deprecated('Ce composant sera bientôt supprimé.')
 class ClientCard extends ListoCard {
   final String nom;
   final DateTime dateDebut;

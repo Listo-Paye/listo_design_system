@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:listo_design_system/listo_design_system.dart';
 
+@Deprecated('Ce composant sera bientôt supprimé pour une refonte complète.')
 class CardList<T extends ListoCard> extends StatefulWidget {
   final String searchHintText;
   final List<T> children;

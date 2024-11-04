@@ -7,6 +7,7 @@ import '../../themes/radius.dart';
 import '../../themes/spacing.dart';
 import '../../themes/text_style.dart';
 
+@Deprecated('Ce composant sera bientôt supprimé.')
 class VaInfoCard extends ListoCard {
   final String title;
   final double value;

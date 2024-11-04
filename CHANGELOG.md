@@ -1,6 +1,9 @@
+## 0.3.3
+* Add deprecated components
+* Update TitleLine
+
 ## 0.3.2
 * Add Profil widget
-
 
 ## 0.3.1
 * Add Popin and Navigation Tabs widgets

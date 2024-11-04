@@ -6,59 +6,17 @@ import 'package:widgets_demo/use_case_with_markdown.dart';
 WidgetbookComponent titleLine(BuildContext context) {
   return WidgetbookComponent(name: "TitleLine", useCases: [
     usercaseWithMarkdown(
-      "With Dropdown",
+      "Legacy",
       (context) {
         var title = context.knobs.string(
           label: 'Titre',
           initialValue: 'Établissement - Paramètres',
         );
-        var label = context.knobs.string(
-          label: 'Libellé',
-          initialValue: 'Période',
-        );
-        List<PeriodInput> values = [
-          const PeriodInput(id: "2024-07", value: "Juillet 2024 (En cours)"),
-          const PeriodInput(id: "2024-06", value: "Juin 2024"),
-          const PeriodInput(id: "2024-05", value: "Mai 2024"),
-          const PeriodInput(id: "2024-04", value: "Avril 2024"),
-          const PeriodInput(id: "2024-03", value: "Mars 2024"),
-          const PeriodInput(id: "2024-02", value: "Février 2024"),
-        ];
-        return Container(
-          height: 300,
-          decoration: BoxDecoration(
-            color: ListoMainColors.primary.ultraLight,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(Spacings.md),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TitleLine(
-                  title: title,
-                  label: label,
-                  selectedValue: values.first.value,
-                  values: values,
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-      "markdown/title_line_combo.md",
-    ),
-    usercaseWithMarkdown(
-      "With Label",
-      (context) {
-        var title = context.knobs.string(
-          label: 'Titre',
-          initialValue: 'Établissement - Paramètres',
-        );
-        var label = context.knobs.string(
+        var label = context.knobs.stringOrNull(
           label: 'Libellé',
           initialValue: 'Année en cours',
         );
-        var value = context.knobs.string(
+        var value = context.knobs.stringOrNull(
           label: 'Valeur',
           initialValue: '2024',
         );
@@ -74,8 +32,17 @@ WidgetbookComponent titleLine(BuildContext context) {
               children: [
                 TitleLine(
                   title: title,
-                  label: label,
-                  selectedValue: value,
+                  label: label ?? "",
+                  selectedValue: value ?? "",
+                  actions: [
+                    SizedBox(
+                      width: 100,
+                      child: Button(
+                        onPressed: () {},
+                        text: 'Submit',
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
