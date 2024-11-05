@@ -67,8 +67,9 @@ class _PresenterScaffoldState extends State<PresenterScaffold> {
         endActions: [
           Profil(
             label: "admin",
-            onHelpPressed: () {},
-            onProfilPressed: () {},
+            onHelp: () {},
+            onLogout: () {},
+            email: 'john.doe@septeo.com',
           ),
         ],
         logo: AssetImage('assets/images/logo.png'),

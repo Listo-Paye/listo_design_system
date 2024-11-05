@@ -1,6 +1,7 @@
-## 0.3.3
+## 0.3.3+1
 * Add deprecated components
 * Update TitleLine
+* Change Profile widget for logout
 
 ## 0.3.2
 * Add Profil widget

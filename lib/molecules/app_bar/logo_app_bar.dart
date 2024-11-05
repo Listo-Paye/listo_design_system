@@ -35,7 +35,7 @@ class LogoAppBar extends StatelessWidget implements PreferredSizeWidget {
           title,
           Spacer(),
           ..._suffix,
-          SizedBox(width: Spacings.lg)
+          SizedBox(width: Spacings.md)
         ],
       ),
     );

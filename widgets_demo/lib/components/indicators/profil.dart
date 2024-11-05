@@ -22,9 +22,10 @@ class PopinPresenter extends StatelessWidget {
     return Profil(
       label: "admin",
       // ignore: avoid_print
-      onHelpPressed: () => print("help"),
+      onHelp: () => print("help"),
       // ignore: avoid_print
-      onProfilPressed: () => print("profil"),
+      onLogout: () => print("profil"),
+      email: 'john.doe@septeo.com',
     );
   }
 }
