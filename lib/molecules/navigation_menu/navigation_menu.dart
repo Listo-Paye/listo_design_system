@@ -9,6 +9,7 @@ import 'menu_tile.dart';
 
 export 'destination_data.dart';
 
+@Deprecated('Ce composant sera bientôt supprimé pour une refonte complète.')
 class NavigationMenu extends StatefulWidget {
   final bool showMenuIcon;
   final Widget body;

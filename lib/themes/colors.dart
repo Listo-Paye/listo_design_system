@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+@Deprecated('Ce composant sera bientôt supprimé pour une refonte complète.')
 abstract final class ListoMainColors {
   static const ListoColor primary = ListoColor(0xFF2E3862, {
     ListoSwatch.base: Color(0xFF2E3862),
@@ -128,6 +129,7 @@ class ListoColor extends ColorSwatch<ListoSwatch> {
       );
 }
 
+@Deprecated('Ce composant sera bientôt supprimé pour une refonte complète.')
 enum ListoSwatch {
   base,
   darker,

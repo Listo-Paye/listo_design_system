@@ -17,20 +17,20 @@ class LogoAppBarPresenter extends StatelessWidget {
             width: 3,
           ),
         ),
-        child: PresenterScaffold(),
+        child: AppbarScaffold(),
       ),
     );
   }
 }
 
-class PresenterScaffold extends StatefulWidget {
-  const PresenterScaffold({super.key});
+class AppbarScaffold extends StatefulWidget {
+  const AppbarScaffold({super.key});
 
   @override
-  State<PresenterScaffold> createState() => _PresenterScaffoldState();
+  State<AppbarScaffold> createState() => _AppbarScaffoldState();
 }
 
-class _PresenterScaffoldState extends State<PresenterScaffold> {
+class _AppbarScaffoldState extends State<AppbarScaffold> {
   String selectedTab = "Salariés";
 
   @override

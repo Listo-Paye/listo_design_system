@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:listo_design_system/listo_design_system.dart';
 
+@Deprecated('Ce composant sera bientôt supprimé pour une refonte complète.')
 class AdaptiveMdd extends StatelessWidget {
   final Widget first;
   final List<Widget> others;

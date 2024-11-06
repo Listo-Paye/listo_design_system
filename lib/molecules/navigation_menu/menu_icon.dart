@@ -5,6 +5,7 @@ import '../../themes/colors.dart';
 import '../../themes/spacing.dart';
 import 'navigation_menu.dart';
 
+@Deprecated('Ce composant sera bientôt supprimé pour une refonte complète.')
 class MenuIcon extends StatelessWidget {
   const MenuIcon({super.key});
 

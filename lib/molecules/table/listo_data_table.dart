@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:listo_design_system/listo_design_system.dart';
 
+@Deprecated('Ce composant sera bientôt supprimé.')
 class ListoDataTable<T> extends StatefulWidget {
   final List<T> data;
   final Map<String, Widget Function(T)> formattedValues;

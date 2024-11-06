@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:listo_design_system/listo_design_system.dart';
 
+@Deprecated('Ce composant sera bientôt supprimé pour une refonte complète.')
 class AdaptiveMasterDetails extends StatefulWidget {
   final Widget child;
 

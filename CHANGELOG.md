@@ -1,3 +1,14 @@
+## 0.4.0
+* Remove deprecated components
+  * CardList
+  * ClientCard
+  * VaInfoCard
+  * AdaptiveMasterDetails
+  * ListoAppBar
+  * NavigationMenu
+* Add Layout system
+* Add Contracts Selector
+
 ## 0.3.3+2
 * Add deprecated components
 * Update TitleLine

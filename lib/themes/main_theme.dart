@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:listo_design_system/themes/colors.dart';
 import 'package:listo_design_system/themes/text_style.dart';
 
+@Deprecated('Ce composant sera bientôt supprimé pour une refonte complète.')
 final mainTheme = ThemeData(
     primarySwatch: ListoMainColors.primary.materialColor,
     primaryColor: ListoMainColors.primary.base,

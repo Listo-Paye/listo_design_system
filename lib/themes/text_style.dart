@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:listo_design_system/themes/colors.dart';
 
+@Deprecated('Ce composant sera bientôt supprimé pour une refonte complète.')
 abstract final class TextStyles {
   static final TextStyle bodySmall = TextStyle(
     fontSize: 12,

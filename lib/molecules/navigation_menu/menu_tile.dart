@@ -5,6 +5,7 @@ import 'package:listo_design_system/themes/spacing.dart';
 
 import 'destination_data.dart';
 
+@Deprecated('Ce composant sera bientôt supprimé pour une refonte complète.')
 class MenuTileController {
   late void Function() showLabel;
   late void Function() hideLabel;

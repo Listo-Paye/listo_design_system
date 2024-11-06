@@ -1,3 +1,4 @@
+@Deprecated('Ce composant sera bientôt supprimé pour une refonte complète.')
 abstract final class Spacings {
   static const double xs = 8;
   static const double sm = 16;
