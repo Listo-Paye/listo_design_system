@@ -1,4 +1,4 @@
-## 0.3.3+1
+## 0.3.3+2
 * Add deprecated components
 * Update TitleLine
 * Change Profile widget for logout

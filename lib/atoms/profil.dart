@@ -28,7 +28,6 @@ class Profil extends StatelessWidget {
             color: ListoMainColors.primary.base,
           ),
         ),
-        const SizedBox(width: Spacings.md),
         MenuAnchor(
           style: MenuStyle(
             backgroundColor: WidgetStatePropertyAll(Colors.white),
@@ -54,9 +53,8 @@ class Profil extends StatelessWidget {
                     SizedBox(height: Spacings.sm),
                     Text(
                       email,
-                      style: TextStyles.bodySmall.copyWith(
-                        color: ListoMainColors.neutral[700],
-                        fontWeight: FontWeight.w600,
+                      style: TextStyles.labelLarge.copyWith(
+                        color: ListoMainColors.neutral.shade900,
                       ),
                     ),
                     Container(
@@ -69,41 +67,39 @@ class Profil extends StatelessWidget {
                       ),
                       child: Text(
                         label.toLowerCase(),
-                        style: TextStyles.bodySmall.copyWith(
+                        style: TextStyles.headingSmall.copyWith(
                           color: ListoMainColors.neutral[700],
-                          fontWeight: FontWeight.w600,
+                          fontSize: 12,
                         ),
                       ),
                     ),
                     SizedBox(height: Spacings.sm),
                     Divider(),
+                    SizedBox(height: Spacings.xs),
                   ],
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(Spacings.sm),
-              child: MenuItemButton(
-                onPressed: onLogout,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.power_settings_new,
-                      color: ListoMainColors.primary.base,
+            MenuItemButton(
+              onPressed: onLogout,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.power_settings_new,
+                    color: ListoMainColors.primary.base,
+                  ),
+                  const SizedBox(width: Spacings.md),
+                  Text(
+                    'Déconnexion',
+                    style: TextStyles.labelLarge.copyWith(
+                      color: ListoMainColors.neutral.shade900,
                     ),
-                    const SizedBox(width: Spacings.md),
-                    Text(
-                      'Déconnexion',
-                      style: TextStyles.bodySmall.copyWith(
-                        color: ListoMainColors.neutral.shade900,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
+            SizedBox(height: Spacings.sm),
           ],
           builder: (_, controller, __) => IconButton(
             onPressed: () {
@@ -115,42 +111,9 @@ class Profil extends StatelessWidget {
             },
             splashColor: ListoMainColors.primary.ultraLight,
             hoverColor: Colors.transparent,
-            icon: Icon(
-              Icons.account_circle,
-              size: 38,
-              color: ListoMainColors.primary.base,
-            ),
+            icon: IconAccount(),
           ),
         ),
-        /*InkWell(
-          splashColor: ListoMainColors.primary.ultraLight,
-          hoverColor: Colors.transparent,
-          onTap: onProfilPressed,
-          child: Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: Spacings.xs),
-                decoration: BoxDecoration(
-                  color: ListoMainColors.secondary.light,
-                  borderRadius:
-                      const BorderRadius.all(Radius.circular(Radiuses.md)),
-                ),
-                child: Text(
-                  label.toLowerCase(),
-                  style: TextStyles.bodySmall.copyWith(
-                    color: ListoMainColors.neutral[700],
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-              Icon(
-                Icons.account_circle,
-                size: 38,
-                color: ListoMainColors.primary.base,
-              ),
-            ],
-          ),
-        ),*/
       ],
     );
   }
