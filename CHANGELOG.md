@@ -1,7 +1,9 @@
-## 0.5.0+1
+## 0.5.0+2
 * Add Charts
   * Pie 
-  * Chart container
+* Add Stats Containers
+  * For Pie Chart
+  * For key value stats
 
 ## 0.4.0
 * Remove deprecated components

@@ -3,40 +3,10 @@ import 'package:listo_design_system/listo_design_system.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgets_demo/use_case_with_markdown.dart';
 
-WidgetbookComponent pieChart(BuildContext context) {
-  return WidgetbookComponent(name: "Pie", useCases: [
+WidgetbookComponent containerChart(BuildContext context) {
+  return WidgetbookComponent(name: "Cadre", useCases: [
     usercaseWithMarkdown(
-      "Seul",
-      (context) {
-        return Container(
-          height: 300,
-          decoration: BoxDecoration(
-            color: ListoMainColors.primary.ultraLight,
-          ),
-          child: Padding(
-              padding: const EdgeInsets.all(Spacings.md),
-              child: Center(
-                child: ChartPie(items: [
-                  ChartPieItem(
-                    value: 19.3,
-                    title: 'Title 1',
-                  ),
-                  ChartPieItem(
-                    value: 30,
-                    title: 'Title 2',
-                  ),
-                  ChartPieItem(
-                    value: 50.7,
-                    title: 'Title 3',
-                  ),
-                ]),
-              )),
-        );
-      },
-      "markdown/charts_pie.md",
-    ),
-    usercaseWithMarkdown(
-      "Contenu",
+      "Pie",
       (context) {
         return Container(
           color: ListoMainColors.primary.ultraLight,
@@ -77,6 +47,35 @@ WidgetbookComponent pieChart(BuildContext context) {
         );
       },
       "markdown/charts_container_pie.md",
+    ),
+    usercaseWithMarkdown(
+      "Chiffres clé",
+      (context) {
+        return Container(
+          color: ListoMainColors.primary.ultraLight,
+          child: Center(
+            child: SizedBox(
+              width: 350,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(
+                  child: ChartContainer(
+                    buttonText: "Exporter les contrats (17)",
+                    buttonIcon: Icon(Icons.file_download_outlined),
+                    onButtonPressed: () {},
+                    title: "Contrats",
+                    child: ChiffreCleRow(items: [
+                      ChiffreCleItem(chiffre: 17, label: 'Salariés'),
+                      ChiffreCleItem(chiffre: 12, label: 'CDI'),
+                    ]),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+      "markdown/charts_container_indicateurs.md",
     ),
   ]);
 }
