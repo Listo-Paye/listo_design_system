@@ -1,3 +1,7 @@
+## 0.5.0
+* Add Charts
+  * Pie 
+
 ## 0.4.0
 * Remove deprecated components
   * CardList

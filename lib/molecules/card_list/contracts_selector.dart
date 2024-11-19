@@ -142,7 +142,7 @@ class _ElementCard extends StatelessWidget {
           border: Border(
             left: BorderSide(
               color: selected
-                  ? ListoMainColors.secondary.darker
+                  ? ListoMainColors.secondary.base
                   : Colors.transparent,
               width: 4,
             ),
@@ -155,7 +155,7 @@ class _ElementCard extends StatelessWidget {
             Container(
               width: 4,
               decoration: BoxDecoration(
-                color: ListoMainColors.secondary.darker,
+                color: ListoMainColors.secondary.base,
               ),
             ),
             SizedBox(
@@ -174,7 +174,7 @@ class _ElementCard extends StatelessWidget {
             indicator ?? const SizedBox(),
             Icon(
               Icons.chevron_right,
-              color: ListoMainColors.secondary.darker,
+              color: ListoMainColors.secondary.base,
             ),
           ],
         ),
