@@ -1,6 +1,7 @@
-## 0.5.0
+## 0.5.0+1
 * Add Charts
   * Pie 
+  * Chart container
 
 ## 0.4.0
 * Remove deprecated components

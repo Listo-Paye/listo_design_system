@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:listo_design_system/listo_design_system.dart';
 
 class ChartIndicator extends StatelessWidget {
   const ChartIndicator({
@@ -6,7 +7,7 @@ class ChartIndicator extends StatelessWidget {
     required this.color,
     required this.text,
     required this.isSquare,
-    this.size = 16,
+    this.size = 14,
     this.textColor,
   });
   final Color color;
@@ -32,9 +33,7 @@ class ChartIndicator extends StatelessWidget {
         ),
         Text(
           text,
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
+          style: TextStyles.bodySmall.copyWith(
             color: textColor,
           ),
         )
