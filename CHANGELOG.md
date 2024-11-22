@@ -1,9 +1,12 @@
-## 0.5.0+2
+## 0.5.0+3
 * Add Charts
   * Pie 
 * Add Stats Containers
   * For Pie Chart
   * For key value stats
+* Add Skeletons
+  * For Charts
+  * For Contract list
 
 ## 0.4.0
 * Remove deprecated components

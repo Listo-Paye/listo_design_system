@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:listo_design_system/listo_design_system.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class ContractsSelector extends StatefulWidget {
   /// Le nom donné aux objets de cette liste
@@ -47,7 +48,7 @@ class ContractsSelectorState extends State<ContractsSelector> {
               ),
             ),
           ],
-        ),
+        ).animate().fade(),
       ];
     });
   }
@@ -55,25 +56,25 @@ class ContractsSelectorState extends State<ContractsSelector> {
   @override
   void initState() {
     groups = [
-      _Groupe(
-        children: [
-          _ContractsSelectorTitle(
-            titre: _convertToTitleCase(widget.nom),
-          ),
-          SizedBox(
-            height: 10,
-            child: LinearProgressIndicator(
-              backgroundColor: ListoMainColors.neutral.shade100,
-              valueColor: AlwaysStoppedAnimation(
-                ListoMainColors.secondary.medium,
-              ),
-              borderRadius: BorderRadius.circular(Spacings.xs),
+      Skeletonizer(
+        child: _Groupe(
+          children: [
+            _ContractsSelectorTitle(
+              titre: "Tous des ${widget.nom}",
             ),
-          ),
-          _ContractsSelectorTitle(
-            titre: "Chargement en cours...",
-          ),
-        ],
+            _ElementCard(
+              selected: true,
+              child: _GroupedDataIconCard(
+                icon: Icon(
+                  Icons.home_outlined,
+                  color: ListoMainColors.primary.base,
+                ),
+                titre: "Tous les ${widget.nom}",
+                indicateur: "999",
+              ),
+            ),
+          ],
+        ),
       ),
     ];
     super.initState();
@@ -172,9 +173,11 @@ class _ElementCard extends StatelessWidget {
               width: Spacings.xs,
             ),
             indicator ?? const SizedBox(),
-            Icon(
-              Icons.chevron_right,
-              color: ListoMainColors.secondary.base,
+            Skeleton.keep(
+              child: Icon(
+                Icons.chevron_right,
+                color: ListoMainColors.secondary.base,
+              ),
             ),
           ],
         ),

@@ -39,10 +39,12 @@ class ChartPieItem {
 
 class ChartPie extends StatefulWidget {
   final List<ChartPieItem> items;
+  final bool isPercentage;
 
   const ChartPie({
     super.key,
     required this.items,
+    this.isPercentage = true,
   });
 
   @override
@@ -140,13 +142,15 @@ class ChartPieState extends State<ChartPie> {
       final radius = isTouched ? 50.0 : 40.0;
       const shadows = [Shadow(color: Colors.black, blurRadius: 2)];
       return _items[i].toPieChartSectionData(
-          radius: radius,
-          titleStyle: TextStyle(
-            fontSize: fontSize,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-            shadows: shadows,
-          ));
+        radius: radius,
+        titleStyle: TextStyle(
+          fontSize: fontSize,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+          shadows: shadows,
+        ),
+        unity: widget.isPercentage ? " %" : "",
+      );
     });
   }
 }
@@ -174,11 +178,12 @@ extension ChartPieItemMapper on ChartPieItem {
   PieChartSectionData toPieChartSectionData({
     double? radius,
     TextStyle? titleStyle,
+    String unity = " %",
   }) {
     return PieChartSectionData(
       color: color,
       value: value,
-      title: "${value.round()} %",
+      title: "${value.round()}$unity",
       radius: radius,
       titleStyle: titleStyle,
     );

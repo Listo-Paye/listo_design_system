@@ -6,12 +6,16 @@ class DashboardDesktop extends StatefulWidget {
   final Widget selector;
   final Widget? initialFrame;
   final Widget? initialBoard;
+  final double panelMaxWidth;
+  final double panelMinWidth;
 
   const DashboardDesktop({
     super.key,
     required this.selector,
     this.initialFrame,
     this.initialBoard,
+    this.panelMaxWidth = 400,
+    this.panelMinWidth = 200,
   });
 
   @override
@@ -43,6 +47,19 @@ class DashboardDesktopState extends State<DashboardDesktop> {
     super.initState();
   }
 
+  double get panelWidth {
+    var max = widget.panelMaxWidth;
+    var min = widget.panelMinWidth;
+    var width = MediaQuery.sizeOf(context).width * .3;
+    if (width > max) {
+      return max;
+    }
+    if (width < min) {
+      return min;
+    }
+    return width;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -55,31 +72,29 @@ class DashboardDesktopState extends State<DashboardDesktop> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
         children: [
-          Flexible(
-            flex: 1,
+          SizedBox(
+            width: panelWidth,
             child: Padding(
               padding: const EdgeInsets.only(right: Spacings.sm),
               child: widget.selector.animate().fade(),
             ),
           ),
-          Flexible(
-            flex: _board == null ? 3 : 2,
+          Expanded(
             child: AnimatedContainer(
               duration: 300.ms,
               child: _frame,
             ),
           ),
           AnimatedContainer(
-            duration: 300.ms,
-            child: (_board == null)
-                ? SizedBox()
-                : Flexible(
-                    flex: 1,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: Spacings.sm),
-                      child: _board!,
-                    ),
-                  ),
+            duration: 200.ms,
+            width: (_board == null || MediaQuery.sizeOf(context).width < 1200)
+                ? 0
+                : panelWidth,
+            child: _board
+                    ?.withPadding(const EdgeInsets.only(left: Spacings.sm))
+                    .animate()
+                    .scale() ??
+                SizedBox(),
           ),
         ],
       ),

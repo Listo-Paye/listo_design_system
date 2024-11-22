@@ -4,14 +4,14 @@ import 'package:listo_design_system/listo_design_system.dart';
 class ChartContainer extends StatelessWidget {
   final Widget child;
   final String buttonText;
-  final Icon buttonIcon;
+  final Icon? buttonIcon;
   final void Function() onButtonPressed;
   final String title;
   const ChartContainer({
     super.key,
     required this.child,
     required this.buttonText,
-    this.buttonIcon = const Icon(Icons.file_download_outlined),
+    this.buttonIcon,
     required this.onButtonPressed,
     required this.title,
   });
@@ -21,7 +21,7 @@ class ChartContainer extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Color(0xFFDCE4FD),
-        borderRadius: BorderRadius.circular(2),
+        borderRadius: BorderRadius.circular(8),
       ),
       child: Padding(
         padding: EdgeInsets.all(Spacings.sm),
