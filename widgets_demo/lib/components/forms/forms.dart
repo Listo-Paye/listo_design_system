@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 
+import 'components/checkbox.dart';
 import 'components/saisie.dart';
 import 'labels/components/all_in_one.dart';
 import 'labels/labels.dart';
@@ -14,5 +15,6 @@ WidgetbookCategory formsCategory(BuildContext context) {
     labelsMolecule(context),
     tablesAndListsMolecule(context),
     allInOneComponent(context),
+    checkbox(context),
   ]);
 }

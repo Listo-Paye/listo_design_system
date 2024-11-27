@@ -350,7 +350,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.5.0+2"
+    version: "0.6.0"
   markdown:
     dependency: transitive
     description:
@@ -507,10 +507,18 @@ packages:
     dependency: transitive
     description:
       name: septeo_design_system
-      sha256: ea626e2a5b1fc28fae5674f39c634f79648462f66ad24ed11484e68bb1091e89
+      sha256: "5835310a5e1a8eb41cd89950e58d3f604f2de1d2140714def92e2940e26c8716"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.2"
+    version: "0.0.3"
+  skeletonizer:
+    dependency: transitive
+    description:
+      name: skeletonizer
+      sha256: "3b202e4fa9c49b017d368fb0e570d4952bcd19972b67b2face071bdd68abbfae"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.4.2"
   sky_engine:
     dependency: transitive
     description: flutter
