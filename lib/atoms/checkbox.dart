@@ -6,10 +6,10 @@ class CheckBox extends StatelessWidget {
   final ValueChanged<bool?>? onChanged;
 
   const CheckBox({
-    Key? key,
+    super.key,
     required this.value,
     required this.onChanged,
-  }) : super(key: key);
+  });
 
   void _handleTap() {
     if (onChanged != null) {
@@ -48,9 +48,9 @@ class CheckBox extends StatelessWidget {
           height: 18,
           decoration: BoxDecoration(
             color: checkboxColor,
-            borderRadius: BorderRadius.circular(3),
+            borderRadius: BorderRadius.circular(SepteoSpacings.xxs),
             border: value == false || value == null
-                ? Border.all(color: SepteoColors.grey.shade200)
+                ? Border.all(color: SepteoColors.grey.shade200, width: 1)
                 : null,
           ),
           child: iconWidget,
