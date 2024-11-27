@@ -23,7 +23,7 @@ class PresenterScaffold extends StatelessWidget {
         logo: AssetImage('assets/images/logo.png'),
       ),
       body: Container(
-        color: ListoMainColors.primary.ultraLight,
+        color: SepteoColors.blue.shade50,
       ),
     );
   }

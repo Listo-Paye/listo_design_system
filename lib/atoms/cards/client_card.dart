@@ -23,7 +23,7 @@ class ClientCard extends ListoCard {
   Widget build(BuildContext context) {
     return Card(
       elevation: 0,
-      color: isSelected ? ListoMainColors.primary.light : Colors.white,
+      color: isSelected ? SepteoColors.blue.shade200 : Colors.white,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(4)),
       ),
@@ -32,13 +32,13 @@ class ClientCard extends ListoCard {
         label: getAllText(),
         button: true,
         child: InkWell(
-          hoverColor: ListoMainColors.primary.ultraLight,
-          highlightColor: ListoMainColors.primary.light,
-          splashColor: ListoMainColors.primary.light,
+          hoverColor: SepteoColors.blue.shade50,
+          highlightColor: SepteoColors.blue.shade200,
+          splashColor: SepteoColors.blue.shade200,
           borderRadius: BorderRadius.circular(4),
           onTap: onSelect,
           child: Padding(
-            padding: const EdgeInsets.all(Spacings.xs),
+            padding: const EdgeInsets.all(SepteoSpacings.xs),
             child: Row(
               children: [
                 Expanded(
@@ -48,24 +48,24 @@ class ClientCard extends ListoCard {
                       Text(
                         nom,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyles.bodyMediumSemibold
+                        style: SepteoTextStyles.bodySmallInterBold
                             .copyWith(color: Colors.black),
                       ),
                       Text(
                         label,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyles.bodySmall
-                            .copyWith(color: ListoMainColors.neutral.shade500),
+                        style: SepteoTextStyles.captionInter
+                            .copyWith(color: SepteoColors.grey.shade500),
                       ),
                     ],
                   ),
                 ),
                 const RowSeparator(),
                 Padding(
-                  padding: const EdgeInsets.all(Spacings.xs),
+                  padding: const EdgeInsets.all(SepteoSpacings.xs),
                   child: Icon(
                     chevron,
-                    color: ListoMainColors.secondary.base,
+                    color: SepteoColors.orange.shade600,
                   ),
                 ),
               ],

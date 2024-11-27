@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:listo_design_system/themes/colors.dart';
-import 'package:listo_design_system/themes/text_style.dart';
+import 'package:listo_design_system/listo_design_system.dart';
 
 class AmountTitle extends StatelessWidget {
   final double amount;
@@ -11,11 +10,7 @@ class AmountTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       formatedValue,
-      style: TextStyles.headingLarge.copyWith(
-        fontWeight: FontWeight.bold,
-        fontSize: 22,
-        color: ListoMainColors.neutral.shade900,
-      ),
+      style: SepteoTextStyles.headingSmallInterBold,
     );
   }
 

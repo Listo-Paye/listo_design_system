@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:listo_design_system/listo_design_system.dart';
 
-import '../../themes/colors.dart';
-import '../../themes/spacing.dart';
 
 class BaseInputText extends StatefulWidget {
   final String hintText;
@@ -46,7 +45,7 @@ class _BaseInputTextState extends State<BaseInputText> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: ListoMainColors.primary.ultraLight,
+      color: SepteoColors.blue.shade50,
       child: TextField(
         enabled: widget.enabled,
         maxLines: widget.maxLines,
@@ -55,8 +54,8 @@ class _BaseInputTextState extends State<BaseInputText> {
           labelText: widget.hintText,
           alignLabelWithHint: widget.maxLines != null,
           contentPadding: const EdgeInsets.symmetric(
-            horizontal: Spacings.sm,
-            vertical: Spacings.xs,
+            horizontal: SepteoSpacings.md,
+            vertical: SepteoSpacings.xs,
           ),
         ),
         textAlignVertical:

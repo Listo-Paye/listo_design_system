@@ -11,10 +11,10 @@ WidgetbookComponent pieChart(BuildContext context) {
         return Container(
           height: 300,
           decoration: BoxDecoration(
-            color: ListoMainColors.primary.ultraLight,
+            color: SepteoColors.blue.shade50,
           ),
           child: Padding(
-              padding: const EdgeInsets.all(Spacings.md),
+              padding: const EdgeInsets.all(SepteoSpacings.xl),
               child: Center(
                 child: ChartPie(items: [
                   ChartPieItem(
@@ -39,7 +39,7 @@ WidgetbookComponent pieChart(BuildContext context) {
       "Contenu",
       (context) {
         return Container(
-          color: ListoMainColors.primary.ultraLight,
+          color: SepteoColors.blue.shade50,
           child: Center(
             child: SizedBox(
               width: 350,
@@ -55,19 +55,19 @@ WidgetbookComponent pieChart(BuildContext context) {
                       ChartPieItem(
                           value: 50,
                           title: 'Calculé',
-                          color: ListoMainColors.primary.dark),
+                          color: SepteoColors.blue.shade600),
                       ChartPieItem(
                           value: 25,
                           title: 'Envoyé',
-                          color: ListoMainColors.success.dark),
+                          color: SepteoColors.green.shade600),
                       ChartPieItem(
                           value: 6,
                           title: 'Non calculé',
-                          color: ListoMainColors.error.dark),
+                          color: SepteoColors.red.shade600),
                       ChartPieItem(
                           value: 19,
                           title: 'En cours',
-                          color: ListoMainColors.warning.dark),
+                          color: SepteoColors.orange.shade600),
                     ]),
                   ),
                 ),

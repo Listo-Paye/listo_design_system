@@ -8,21 +8,21 @@ enum ButtonType {
 
 class ButtonStyles {
   static final ButtonStyle primary = ButtonStyle(
-    backgroundColor: WidgetStateProperty.all(ListoMainColors.primary.base),
+    backgroundColor: WidgetStateProperty.all(SepteoColors.blue.shade900),
     foregroundColor: WidgetStateProperty.all(Colors.white),
     shape: WidgetStateProperty.all(
       RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(Spacings.xs),
+        borderRadius: BorderRadius.circular(SepteoSpacings.xs),
       ),
     ),
   );
 
   static final ButtonStyle secondary = ButtonStyle(
     backgroundColor: WidgetStateProperty.all(Colors.white),
-    foregroundColor: WidgetStateProperty.all(ListoMainColors.primary.base),
+    foregroundColor: WidgetStateProperty.all(SepteoColors.blue.shade900),
     shape: WidgetStateProperty.all(
       RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(Spacings.xs),
+        borderRadius: BorderRadius.circular(SepteoSpacings.xs),
       ),
     ),
   );
@@ -61,6 +61,7 @@ class Button extends StatelessWidget {
           child: Text(
             text,
             overflow: TextOverflow.ellipsis,
+            // style: SepteoTextStyles.headingLargeInter,
           ),
         ),
       ],
@@ -73,12 +74,12 @@ class Button extends StatelessWidget {
           onPressed: null,
           style: ButtonStyle(
             backgroundColor:
-                WidgetStateProperty.all(ListoMainColors.neutral.shade200),
+                WidgetStateProperty.all(SepteoColors.grey.shade200),
             foregroundColor:
-                WidgetStateProperty.all(ListoMainColors.neutral.shade400),
+                WidgetStateProperty.all(SepteoColors.grey.shade400),
             shape: WidgetStateProperty.all(
               RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(Spacings.xs),
+                borderRadius: BorderRadius.circular(SepteoSpacings.xs),
               ),
             ),
           ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:listo_design_system/themes/colors.dart';
+import 'package:listo_design_system/listo_design_system.dart';
 
 class FormContainer extends StatelessWidget {
   final Widget child;
@@ -14,7 +14,7 @@ class FormContainer extends StatelessWidget {
       child: Container(
         height: height,
         decoration: BoxDecoration(
-          color: ListoMainColors.primary.medium,
+          color: SepteoColors.blue.shade300,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Center(

@@ -11,15 +11,15 @@ import 'package:listo_design_system/atoms/progress_bar.dart';
 
 var progressBar = ListoProgressBar(
     progress: 0.3,
-    backgroundColor: ListoMainColors.neutral.shade100,
+    backgroundColor: SepteoColors.grey.shade100,
     progressColor: ListoMainColors.primary.shade400,
-    errorColor: ListoMainColors.error.medium,
+    errorColor: SepteoColors.red.shade300,
     error: false,
 );
 ```
 
 Les valeurs par défaut sont les suivantes :
-* **backgroundColor**: `ListoMainColors.neutral.shade100`
+* **backgroundColor**: `SepteoColors.grey.shade100`
 * **progressColor**: `ListoMainColors.primary.shade400`
-* **errorColor**: `ListoMainColors.error.medium`
+* **errorColor**: `SepteoColors.red.shade300`
 * **error**: `false`

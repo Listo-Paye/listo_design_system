@@ -69,12 +69,12 @@ class ClientCard extends ListoCard {
         borderRadius: BorderRadius.all(Radius.circular(4)),
       ),
       child: InkWell(
-        hoverColor: ListoMainColors.primary.ultraLight,
-        highlightColor: ListoMainColors.primary.light,
-        splashColor: ListoMainColors.primary.light,
+        hoverColor: SepteoColors.blue.shade50,
+        highlightColor: SepteoColors.blue.shade200,
+        splashColor: SepteoColors.blue.shade200,
         onTap: onSelect,
         child: Padding(
-          padding: const EdgeInsets.all(Spacings.xs),
+          padding: const EdgeInsets.all(SepteoSpacings.xs),
           child: SizedBox(
             height: 40,
             child: Row(
@@ -85,22 +85,22 @@ class ClientCard extends ListoCard {
                     children: [
                       Text(
                         nomPrenomContrat,
-                        style: TextStyles.bodyMediumSemibold
+                        style: SepteoTextStyles.bodySmallInterBold
                             .copyWith(color: Colors.black),
                       ),
                       Text(
                         '${DateFormat('dd/MM/yyyy').format(dateDebut)} / $typeContrat',
-                        style: TextStyles.bodySmall
-                            .copyWith(color: ListoMainColors.neutral.shade500),
+                        style: SepteoTextStyles.captionInter
+                            .copyWith(color: SepteoColors.grey.shade500),
                       ),
                     ],
                   ),
                 ),
                 const SizedBox(
-                  width: Spacings.xs,
+                  width: SepteoSpacings.xs,
                 ),
                 const Padding(
-                  padding: EdgeInsets.all(Spacings.xs),
+                  padding: EdgeInsets.all(SepteoSpacings.xs),
                   child: Icon(Icons.chevron_right),
                 ),
               ],

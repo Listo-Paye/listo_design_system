@@ -41,7 +41,7 @@ class ContractsSelectorState extends State<ContractsSelector> {
               child: _GroupedDataIconCard(
                 icon: Icon(
                   Icons.home_outlined,
-                  color: ListoMainColors.primary.base,
+                  color: SepteoColors.blue.shade900,
                 ),
                 titre: "Tous les ${widget.nom}",
                 indicateur: elements.length.toString(),
@@ -67,7 +67,7 @@ class ContractsSelectorState extends State<ContractsSelector> {
               child: _GroupedDataIconCard(
                 icon: Icon(
                   Icons.home_outlined,
-                  color: ListoMainColors.primary.base,
+                  color: SepteoColors.blue.shade900,
                 ),
                 titre: "Tous les ${widget.nom}",
                 indicateur: "999",
@@ -84,22 +84,22 @@ class ContractsSelectorState extends State<ContractsSelector> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(Spacings.xs),
+        borderRadius: BorderRadius.circular(SepteoSpacings.xs),
         color: Colors.white,
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: Spacings.xs,
-          vertical: Spacings.sm,
+          horizontal: SepteoSpacings.xs,
+          vertical: SepteoSpacings.md,
         ),
         child: ListView.separated(
           itemBuilder: (context, index) => groups[index].animate().fade(
-                delay: Duration(
-                  milliseconds: index * 100,
-                ),
-              ),
+            delay: Duration(
+              milliseconds: index * 100,
+            ),
+          ),
           separatorBuilder: (_, __) => SizedBox(
-            height: Spacings.sm,
+            height: SepteoSpacings.md,
           ),
           itemCount: groups.length,
         ).animate().fade(duration: 100.ms),
@@ -139,11 +139,11 @@ class _ElementCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: ListoMainColors.primary.light,
+          color: SepteoColors.blue.shade200,
           border: Border(
             left: BorderSide(
               color: selected
-                  ? ListoMainColors.secondary.base
+                  ? SepteoColors.orange.shade400
                   : Colors.transparent,
               width: 4,
             ),
@@ -156,27 +156,27 @@ class _ElementCard extends StatelessWidget {
             Container(
               width: 4,
               decoration: BoxDecoration(
-                color: ListoMainColors.secondary.base,
+                color: SepteoColors.orange.shade400,
               ),
             ),
             SizedBox(
-              width: Spacings.xs,
+              width: SepteoSpacings.xs,
             ),
             Expanded(
               child: Padding(
                   padding: const EdgeInsets.symmetric(
-                    vertical: Spacings.xs,
+                    vertical: SepteoSpacings.xs,
                   ),
                   child: child),
             ),
             SizedBox(
-              width: Spacings.xs,
+              width: SepteoSpacings.xs,
             ),
             indicator ?? const SizedBox(),
             Skeleton.keep(
               child: Icon(
                 Icons.chevron_right,
-                color: ListoMainColors.secondary.base,
+                color: SepteoColors.orange.shade400,
               ),
             ),
           ],
@@ -203,27 +203,23 @@ class _GroupedDataIconCard extends StatelessWidget {
     if (icon != null) {
       elements.add(icon!);
       elements.add(SizedBox(
-        width: Spacings.xs,
+        width: SepteoSpacings.xs,
       ));
     }
     elements.add(Expanded(
       child: Text(
         titre,
-        style: TextStyles.labelLarge.copyWith(
-          color: ListoMainColors.neutral.shade900,
-          fontSize: 14,
-        ),
+        style: SepteoTextStyles.bodySmallInter,
         overflow: TextOverflow.ellipsis,
       ),
     ));
     if (indicateur.isNotEmpty) {
       elements.add(SizedBox(
-        width: Spacings.xs,
+        width: SepteoSpacings.xs,
       ));
       elements.add(Text(
         indicateur,
-        style: TextStyles.headingMediumSemibold.copyWith(
-          color: ListoMainColors.neutral.shade900,
+        style: SepteoTextStyles.bodyMediumInterBold.copyWith(
           fontSize: 17,
         ),
       ));
@@ -265,9 +261,7 @@ class _ContractsSelectorTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       titre,
-      style: TextStyles.bodyMediumSemibold.copyWith(
-        color: ListoMainColors.neutral.shade900,
-      ),
+      style: SepteoTextStyles.bodySmallInterBold,
     );
   }
 }

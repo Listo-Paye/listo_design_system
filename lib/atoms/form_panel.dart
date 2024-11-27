@@ -16,8 +16,8 @@ class FormPanel extends StatelessWidget {
     var list = [
       Text(
         title,
-        style: TextStyles.bodyLargeSemibold.copyWith(
-          color: ListoMainColors.primary.base,
+        style: SepteoTextStyles.bodyMediumInterBold.copyWith(
+          color: SepteoColors.blue.shade900,
         ),
       ),
       ...children,
@@ -26,18 +26,18 @@ class FormPanel extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.symmetric(
           horizontal: BorderSide(
-            color: ListoMainColors.neutral.shade500,
+            color: SepteoColors.grey.shade500,
             width: 1,
           ),
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(Spacings.sm),
+        padding: const EdgeInsets.all(SepteoSpacings.md),
         child: ListView.separated(
           itemBuilder: (context, index) => list[index],
           itemCount: list.length,
           separatorBuilder: (context, index) =>
-              const SizedBox(height: Spacings.md),
+              const SizedBox(height: SepteoSpacings.xl),
           shrinkWrap: true,
         ),
       ),

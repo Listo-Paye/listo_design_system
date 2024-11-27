@@ -42,7 +42,7 @@ class _NavigationMenuPresenterState extends State<NavigationMenuPresenter> {
             });
           },
           body: Container(
-            color: ListoMainColors.primary.ultraLight,
+            color: SepteoColors.blue.shade50,
           ),
           selectedDestinationLabel: selectedDestinationLabel,
           destinations: [

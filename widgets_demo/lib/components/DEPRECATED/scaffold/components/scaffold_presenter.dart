@@ -44,7 +44,7 @@ class ScaffoldPresenter extends StatelessWidget {
               print("Settings");
             },
             body: Container(
-              color: ListoMainColors.primary.ultraLight,
+              color: SepteoColors.blue.shade50,
             ),
             destinations: [
               DestinationData(icon: Icons.grid_view, label: "Tableau de bord"),

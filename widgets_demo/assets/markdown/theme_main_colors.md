@@ -1,27 +1,29 @@
 # Utilisation des couleurs
 
-Pour utiliser les couleurs, il faut directement les importer depuis le fichier `ListoMainColors` :
+Les couleurs de l'application sont définies dans le package `septeo_design_system`. Toutes les couleurs sont des `MaterialColor` et sont accessibles via la classe `SepteoColors`.
+
+## Couleurs de base
+
+La première couleur de base est la `blue` :
 
 ```dart
 import 'package:listo_design_system/themes/colors.dart';
 
-var colorBase = ListoMainColors.primary.base;
-var colorUltraLight = ListoMainColors.primary.ultraLight;
-var colorLight = ListoMainColors.primary.light;
-var colorMedium = ListoMainColors.primary.medium;
-var colorDark = ListoMainColors.primary.dark;
-var colorDarker = ListoMainColors.primary.darker;
+var colorBase = SepteoColors.blue.shade900;
 ```
 
-Vous pouvez aussi convertir ces couleurs en `MaterialColor` pour les utiliser dans les `ThemeData` :
+Cette couleur est utilisée pour les éléments de premier niveau de l'application, comme le titre de la page, le texte de l'application, etc.
+
+## Couleurs secondaires
+
+Les couleurs secondaires sont utilisées pour les éléments secondaires de l'application, comme les boutons, les cards, etc.
+La couleur `grey` est utilisée pour le texte.
 
 ```dart
-import 'package:flutter/material.dart';
-import 'package:listo_design_system/themes/colors.dart';
-
-var theme = ThemeData(
-  primarySwatch: ListoMainColors.primary.materialColor,
-  primaryColor: ListoMainColors.primary.base,
-  useMaterial3: true,
-);
+var orange = SepteoColors.orange.shade400;
+var green = SepteoColors.green.shade600;
+var red = SepteoColors.red.shade600;
+var grey = SepteoColors.grey.shade600;
+var purple = SepteoColors.purple.shade600;
+var yellow = SepteoColors.yellow.shade600;
 ```

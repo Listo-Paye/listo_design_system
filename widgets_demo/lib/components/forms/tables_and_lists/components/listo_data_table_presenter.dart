@@ -42,14 +42,14 @@ final formattedValues = <String, Widget Function(JourFerieTravaille)>{
   'Nom du jour férié': (JourFerieTravaille item) {
     return Text(
       item.nom,
-      style: TextStyles.bodyMediumSemibold
-          .copyWith(color: ListoMainColors.neutral[900]),
+      style: SepteoTextStyles.bodySmallInterBold
+          .copyWith(color: SepteoColors.grey.shade900),
     );
   },
   'Jour réel': (JourFerieTravaille item) {
     return Text(item.date.toIso8601String(),
-        style: TextStyles.bodyMedium
-            .copyWith(color: ListoMainColors.neutral[900]));
+        style: SepteoTextStyles.bodySmallInter
+            .copyWith(color: SepteoColors.grey.shade900));
   },
   'Jour travaillé': (JourFerieTravaille item) {
     if (item.solidarite) {
@@ -58,8 +58,8 @@ final formattedValues = <String, Widget Function(JourFerieTravaille)>{
           label: item.jourTravaille ? 'Oui' : 'Non',
           type: item.jourTravaille ? TagColors.success : TagColors.base,
         ),
-        const SizedBox(width: Spacings.sm),
-        Text('Journée de solidarité', style: TextStyles.bodyMediumSemibold)
+        const SizedBox(width: SepteoSpacings.md),
+        Text('Journée de solidarité', style: SepteoTextStyles.bodySmallInterBold)
       ]);
     }
 

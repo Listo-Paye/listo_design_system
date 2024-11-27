@@ -24,12 +24,12 @@ class ProgressBarPresenter extends StatelessWidget {
     final error = context.knobs.boolean(label: "Error", initialValue: false);
     final backgroundColor = context.knobs.color(
         label: "Background color",
-        initialValue: ListoMainColors.neutral.shade100);
+        initialValue: SepteoColors.grey.shade100);
     final progressColor = context.knobs.color(
         label: "Progress color",
-        initialValue: ListoMainColors.neutral.shade400);
+        initialValue: SepteoColors.grey.shade400);
     final errorColor = context.knobs.color(
-        label: "Error color", initialValue: ListoMainColors.error.medium);
+        label: "Error color", initialValue: SepteoColors.red.shade300);
 
     return Center(
       child: Column(children: [

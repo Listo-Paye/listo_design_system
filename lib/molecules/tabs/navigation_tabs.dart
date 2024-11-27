@@ -42,17 +42,17 @@ class _NavigationTabsState extends State<NavigationTabs> {
               InkWell(
                 key: _tabKeys[i],
                 onTap: () => widget.onTabSelected(widget.tabs[i]),
-                splashColor: ListoMainColors.primary.ultraLight,
+                splashColor: SepteoColors.blue.shade50,
                 hoverColor: Colors.transparent,
                 child: Padding(
-                  padding: const EdgeInsets.all(Spacings.sm),
+                  padding: const EdgeInsets.all(SepteoSpacings.md),
                   child: AnimatedDefaultTextStyle(
                     duration: const Duration(milliseconds: 200),
                     curve: Curves.easeInOut,
-                    style: TextStyles.bodyMediumSemibold.copyWith(
+                    style: SepteoTextStyles.bodySmallInterBold.copyWith(
                       color: widget.tabs[i] == widget.selectedTab
-                          ? ListoMainColors.secondary.base
-                          : ListoMainColors.neutral[700],
+                          ? SepteoColors.orange.shade600
+                          : SepteoColors.grey.shade700,
                     ),
                     child: Text(widget.tabs[i]),
                   ),
@@ -72,7 +72,7 @@ class _NavigationTabsState extends State<NavigationTabs> {
               width: _getSelectedTabWidth() * 0.5,
               height: 3,
               decoration: BoxDecoration(
-                color: ListoMainColors.secondary.base,
+                color: SepteoColors.orange.shade600,
                 borderRadius: BorderRadius.vertical(top: Radius.circular(100)),
               ),
             ),

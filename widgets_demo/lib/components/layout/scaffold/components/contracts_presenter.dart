@@ -30,7 +30,7 @@ class ContractsSelectorPresenter extends StatelessWidget {
           key: contractsKey,
         ),
         initialFrame: Container(
-          color: ListoMainColors.secondary.medium,
+          color: SepteoColors.orange.shade300,
         ),
       ),
     );

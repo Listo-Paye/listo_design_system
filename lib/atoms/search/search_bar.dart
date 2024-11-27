@@ -78,10 +78,10 @@ class _ListoSearchBarState extends State<ListoSearchBar> {
   @override
   Widget build(BuildContext context) {
     return SearchBar(
-      backgroundColor: WidgetStatePropertyAll(ListoMainColors.neutral[50]),
+      backgroundColor: WidgetStatePropertyAll(SepteoColors.grey.shade50),
       elevation: WidgetStateProperty.all(0),
       shape: WidgetStateProperty.all(RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(Radiuses.xs),
+        borderRadius: BorderRadius.circular(SepteoSpacings.xs),
       )),
       enabled: widget.enabled,
       hintText: widget.hintText,

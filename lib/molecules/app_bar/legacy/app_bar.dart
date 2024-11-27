@@ -34,7 +34,7 @@ class ListoAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: Builder(
         builder: (context) {
           return const Padding(
-            padding: EdgeInsets.only(left: Spacings.sm),
+            padding: EdgeInsets.only(left: SepteoSpacings.md),
             child: MenuIcon(),
           );
         },
@@ -56,7 +56,7 @@ class ListoAppBar extends StatelessWidget implements PreferredSizeWidget {
                     child: MenuItemButton(
                       key: const Key('logoutButton'),
                       leadingIcon: Icon(Icons.exit_to_app,
-                          color: ListoMainColors.neutral[700]),
+                          color: SepteoColors.grey.shade700),
                       style: ButtonStyle(
                         backgroundColor:
                             const WidgetStatePropertyAll(Colors.white),

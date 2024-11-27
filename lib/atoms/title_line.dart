@@ -56,14 +56,14 @@ class _TitleLineLabelMode extends StatelessWidget {
         label.isNotEmpty
             ? Padding(
                 padding: const EdgeInsets.only(
-                  top: Spacings.sm,
-                  bottom: Spacings.xs,
+                  top: SepteoSpacings.md,
+                  bottom: SepteoSpacings.xs,
                 ),
                 child: Text(
                   '$label :',
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyles.headingMediumSemibold.copyWith(
-                    color: ListoMainColors.neutral.shade400,
+                  style: SepteoTextStyles.bodyLargeInterBold.copyWith(
+                    color: SepteoColors.grey.shade400,
                   ),
                 ),
               )
@@ -71,15 +71,15 @@ class _TitleLineLabelMode extends StatelessWidget {
         selectedValue.isNotEmpty
             ? Padding(
                 padding: const EdgeInsets.only(
-                  top: Spacings.sm,
-                  bottom: Spacings.xs,
-                  left: Spacings.xs,
+                  top: SepteoSpacings.md,
+                  bottom: SepteoSpacings.xs,
+                  left: SepteoSpacings.xs,
                 ),
                 child: Text(
                   selectedValue,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyles.headingMediumSemibold.copyWith(
-                    color: ListoMainColors.neutral.shade900,
+                  style: SepteoTextStyles.bodyLargeInterBold.copyWith(
+                    color: SepteoColors.grey.shade900,
                   ),
                 ),
               )
@@ -109,16 +109,14 @@ class _DesktopContainer extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(
-            top: Spacings.sm,
-            bottom: Spacings.xs,
-            right: Spacings.sm,
+            top: SepteoSpacings.md,
+            bottom: SepteoSpacings.xs,
+            right: SepteoSpacings.md,
           ),
           child: Text(
             title,
             overflow: TextOverflow.ellipsis,
-            style: TextStyles.headingLarge.copyWith(
-              color: ListoMainColors.neutral.shade900,
-            ),
+            style: SepteoTextStyles.headingMediumInterBold,
           ),
         ),
         separator
@@ -126,12 +124,12 @@ class _DesktopContainer extends StatelessWidget {
                 width: 3,
                 height: 32,
                 decoration: BoxDecoration(
-                  color: ListoMainColors.neutral.shade400,
+                  color: SepteoColors.grey.shade400,
                 ),
               )
             : SizedBox(),
         const SizedBox(
-          width: Spacings.sm,
+          width: SepteoSpacings.md,
         ),
         child,
         const Spacer(),
@@ -156,22 +154,20 @@ class _MobileContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        top: Spacings.sm,
-        bottom: Spacings.xs,
-        right: Spacings.sm,
+        top: SepteoSpacings.md,
+        bottom: SepteoSpacings.xs,
+        right: SepteoSpacings.md,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(bottom: Spacings.xs),
+            padding: const EdgeInsets.only(bottom: SepteoSpacings.xs),
             child: Text(
               title,
               overflow: TextOverflow.ellipsis,
-              style: TextStyles.headingMediumSemibold.copyWith(
-                color: ListoMainColors.neutral.shade900,
-              ),
+              style: SepteoTextStyles.bodyLargeInterBold,
             ),
           ),
           child,

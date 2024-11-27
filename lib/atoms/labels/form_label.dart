@@ -17,9 +17,7 @@ class FormLabel extends StatelessWidget {
       hint: hint,
       child: Text(
         value ?? '-',
-        style: TextStyles.bodyLargeSemibold.copyWith(
-          color: ListoMainColors.neutral.shade900,
-        ),
+        style: SepteoTextStyles.bodyMediumInterBold,
       ),
     );
   }

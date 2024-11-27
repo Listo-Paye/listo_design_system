@@ -16,7 +16,7 @@ WidgetbookComponent mainTheme(BuildContext context) {
     ),
     usercaseWithMarkdown(
       "TexteStyles",
-      (context) => const TextsBrowser(),
+      (context) => const TypographyDocumentation(),
       "markdown/text_styles.md",
     ),
     usercaseWithMarkdown(

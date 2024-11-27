@@ -13,13 +13,13 @@ class RadiusBrowser extends StatelessWidget {
           width: 200,
           height: 60,
           decoration: BoxDecoration(
-            color: ListoMainColors.primary.medium,
-            borderRadius: BorderRadius.circular(Radiuses.xs),
+            color: SepteoColors.blue.shade300,
+            borderRadius: BorderRadius.circular(SepteoSpacings.xs),
           ),
           child: Center(
             child: Text(
               "XS",
-              style: TextStyles.bodyMedium,
+              style: SepteoTextStyles.bodySmallInter,
             ),
           ),
         ),
@@ -27,13 +27,13 @@ class RadiusBrowser extends StatelessWidget {
           width: 200,
           height: 60,
           decoration: BoxDecoration(
-            color: ListoMainColors.primary.medium,
-            borderRadius: BorderRadius.circular(Radiuses.sm),
+            color: SepteoColors.blue.shade300,
+            borderRadius: BorderRadius.circular(SepteoSpacings.sm),
           ),
           child: Center(
             child: Text(
               "SM",
-              style: TextStyles.bodyMedium,
+              style: SepteoTextStyles.bodySmallInter,
             ),
           ),
         ),
@@ -41,13 +41,13 @@ class RadiusBrowser extends StatelessWidget {
           width: 200,
           height: 60,
           decoration: BoxDecoration(
-            color: ListoMainColors.primary.medium,
-            borderRadius: BorderRadius.circular(Radiuses.md),
+            color: SepteoColors.blue.shade300,
+            borderRadius: BorderRadius.circular(SepteoSpacings.xl),
           ),
           child: Center(
             child: Text(
               "MD",
-              style: TextStyles.bodyMedium,
+              style: SepteoTextStyles.bodySmallInter,
             ),
           ),
         ),

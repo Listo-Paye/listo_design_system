@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:listo_design_system/svg/septeo_logo.dart';
-
-import '../../themes/colors.dart';
-import '../../themes/spacing.dart';
-import 'navigation_menu.dart';
+import 'package:listo_design_system/listo_design_system.dart';
 
 @Deprecated('Ce composant sera bientôt supprimé pour une refonte complète.')
 class MenuIcon extends StatelessWidget {
@@ -18,7 +14,7 @@ class MenuIcon extends StatelessWidget {
       hoverColor: Colors.transparent,
       focusColor: Colors.transparent,
       highlightColor: Colors.transparent,
-      splashColor: ListoMainColors.primary.ultraLight,
+      splashColor: SepteoColors.blue.shade50,
       splashFactory: InkSparkle.splashFactory,
       onTap: () {
         menu.toggleMenu();
@@ -32,7 +28,7 @@ class MenuIcon extends StatelessWidget {
     return Stack(
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: Spacings.xs),
+          padding: const EdgeInsets.only(left: SepteoSpacings.xs),
           child: Container(
             alignment: Alignment.centerLeft,
             child: _logoOrMenuIcon(context),

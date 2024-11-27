@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:listo_design_system/listo_design_system.dart';
 
-import '../../themes/colors.dart';
 import 'base_input_text.dart';
 
 class InputAmount extends StatelessWidget {
@@ -29,7 +29,7 @@ class InputAmount extends StatelessWidget {
       formatters: [AmountFormatter()],
       decoration: InputDecoration(
         prefixIcon: const Icon(Icons.euro),
-        prefixIconColor: ListoMainColors.primary.base,
+        prefixIconColor: SepteoColors.blue.shade900,
       ),
       onChanged: (value) {
         if (value.isEmpty) {

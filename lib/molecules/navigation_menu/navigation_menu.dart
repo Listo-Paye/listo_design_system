@@ -1,10 +1,8 @@
 // ignore_for_file: no_logic_in_create_state, must_be_immutable, library_private_types_in_public_api
 import 'package:flutter/material.dart';
-import 'package:listo_design_system/themes/spacing.dart';
+import 'package:listo_design_system/listo_design_system.dart';
 
 import 'collapse_state.dart';
-import 'destination_data.dart';
-import 'menu_icon.dart';
 import 'menu_tile.dart';
 
 export 'destination_data.dart';
@@ -129,10 +127,10 @@ class NavigationMenuState extends State<NavigationMenu> {
     super.initState();
     if (widget.showMenuIcon) {
       _header.add(const Padding(
-        padding: EdgeInsets.only(left: Spacings.md),
+        padding: EdgeInsets.only(left: SepteoSpacings.xl),
         child: MenuIcon(),
       ));
-      _header.add(const SizedBox(height: Spacings.sm));
+      _header.add(const SizedBox(height: SepteoSpacings.md));
     }
     if (_showRail) {
       openRail();
@@ -248,7 +246,7 @@ class NavigationMenuState extends State<NavigationMenu> {
       child: Row(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: Spacings.sm),
+            padding: const EdgeInsets.only(top: SepteoSpacings.md),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 300),
               width: _isCollapsed.width,

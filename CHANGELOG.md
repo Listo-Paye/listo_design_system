@@ -1,3 +1,6 @@
+## 0.6.0
+* Replaced local theme with septeo theme using septeo_design_system
+
 ## 0.5.0+3
 * Add Charts
   * Pie 

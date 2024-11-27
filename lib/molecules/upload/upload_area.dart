@@ -83,7 +83,7 @@ class _UploadAreaState extends State<UploadArea> {
           color: Colors.black,
           strokeWidth: 1,
           dashPattern: [4, 4],
-          padding: const EdgeInsets.all(Spacings.xs),
+          padding: const EdgeInsets.all(SepteoSpacings.xs),
           child: _buildUploadContent(),
         ),
       ),
@@ -93,19 +93,19 @@ class _UploadAreaState extends State<UploadArea> {
   Widget _buildUploadContent() {
     return Material(
       color: _isDragging
-          ? ListoMainColors.primary.light
-          : ListoMainColors.primary.ultraLight,
+          ? SepteoColors.blue.shade200
+          : SepteoColors.blue.shade50,
       child: InkWell(
-        highlightColor: ListoMainColors.primary.light,
-        splashColor: ListoMainColors.primary.light,
-        borderRadius: BorderRadius.circular(Radiuses.xs),
+        highlightColor: SepteoColors.blue.shade200,
+        splashColor: SepteoColors.blue.shade200,
+        borderRadius: BorderRadius.circular(SepteoSpacings.xs),
         onTap: _selectFiles,
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _buildUploadButton(),
-              const SizedBox(height: Spacings.xs),
+              const SizedBox(height: SepteoSpacings.xs),
               _buildUploadSecondaryText(),
             ],
           ),
@@ -124,7 +124,7 @@ class _UploadAreaState extends State<UploadArea> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(Icons.file_upload_outlined, size: 18),
-          const SizedBox(width: Spacings.xs),
+          const SizedBox(width: SepteoSpacings.xs),
           Text(widget.config.uploadAreaMainText),
         ],
       ),
@@ -134,8 +134,8 @@ class _UploadAreaState extends State<UploadArea> {
   Widget _buildUploadSecondaryText() {
     return Text(
       widget.config.uploadAreaSecondaryText,
-      style: TextStyles.bodySmall.copyWith(
-        color: ListoMainColors.primary.materialColor.shade900,
+      style: SepteoTextStyles.captionInter.copyWith(
+        color: SepteoColors.blue.shade900,
       ),
     );
   }

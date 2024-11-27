@@ -64,8 +64,8 @@ class DashboardDesktopState extends State<DashboardDesktop> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        horizontal: Spacings.lg,
-        vertical: Spacings.md,
+        horizontal: SepteoSpacings.xxl,
+        vertical: SepteoSpacings.xl,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -75,7 +75,7 @@ class DashboardDesktopState extends State<DashboardDesktop> {
           SizedBox(
             width: panelWidth,
             child: Padding(
-              padding: const EdgeInsets.only(right: Spacings.sm),
+              padding: const EdgeInsets.only(right: SepteoSpacings.md),
               child: widget.selector.animate().fade(),
             ),
           ),
@@ -91,9 +91,9 @@ class DashboardDesktopState extends State<DashboardDesktop> {
                 ? 0
                 : panelWidth,
             child: _board
-                    ?.withPadding(const EdgeInsets.only(left: Spacings.sm))
-                    .animate()
-                    .scale() ??
+                ?.withPadding(const EdgeInsets.only(left: SepteoSpacings.md))
+                .animate()
+                .scale() ??
                 SizedBox(),
           ),
         ],

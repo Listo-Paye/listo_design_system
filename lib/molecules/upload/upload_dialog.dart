@@ -122,14 +122,14 @@ class _UploadDialogState extends State<UploadDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(Radiuses.sm),
+        borderRadius: BorderRadius.circular(SepteoSpacings.sm),
       ),
       backgroundColor: Colors.white,
       contentPadding: const EdgeInsets.fromLTRB(
-        Spacings.lg,
-        Spacings.lg,
-        Spacings.lg,
-        Spacings.sm,
+        SepteoSpacings.xxl,
+        SepteoSpacings.xxl,
+        SepteoSpacings.xxl,
+        SepteoSpacings.md,
       ),
       content: SizedBox(
         width: 550,
@@ -138,13 +138,13 @@ class _UploadDialogState extends State<UploadDialog> {
           mainAxisSize: MainAxisSize.min,
           children: [
             _buildHeader(),
-            const SizedBox(height: Spacings.sm),
+            const SizedBox(height: SepteoSpacings.md),
             UploadArea(
               config: widget.config,
               onFilesAdded: (files) => files.forEach(_addFile),
             ),
             if (_files.isNotEmpty) ...[
-              const SizedBox(height: Spacings.xs),
+              const SizedBox(height: SepteoSpacings.xs),
               FileList(
                 files: _files,
                 onRemove: _removeFile,
@@ -160,7 +160,7 @@ class _UploadDialogState extends State<UploadDialog> {
   Widget _buildHeader() {
     return Text(
       widget.config.modalTitle,
-      style: TextStyles.headingMediumSemibold,
+      style: SepteoTextStyles.bodyLargeInterBold,
     );
   }
 
@@ -177,7 +177,7 @@ class _UploadDialogState extends State<UploadDialog> {
             },
           ),
         ),
-        const SizedBox(width: Spacings.xs),
+        const SizedBox(width: SepteoSpacings.xs),
         Expanded(
           child: Button(
             style: ButtonType.primary,

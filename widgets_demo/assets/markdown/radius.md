@@ -6,9 +6,9 @@ Pour utiliser les différentes valeurs de radius, il faut directement les import
 
 import 'package:listo_design_system/themes/radius.dart';
 
-var radiusSmall = Radiuses.xs;
-var radiusMedium = Radiuses.sm;
-var radiusLarge = Radiuses.md;
+var radiusSmall = SepteoSpacings.xs;
+var radiusMedium = SepteoSpacings.sm;
+var radiusLarge = SepteoSpacings.xl;
 
 ```
 

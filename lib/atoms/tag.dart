@@ -1,40 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:listo_design_system/listo_design_system.dart';
-import 'package:listo_design_system/themes/themes_module.dart';
 
 enum TagColors {
   ghost(
     backgroundColor: Colors.white,
-    textColor: ListoMainColors.neutral,
+    textColor: SepteoColors.grey,
     indexTextColor: 700,
   ),
   base(
-    backgroundColor: ListoMainColors.neutral,
-    textColor: ListoMainColors.neutral,
+    backgroundColor: SepteoColors.grey,
+    textColor: SepteoColors.grey,
     indexBackgroundColor: 100,
     indexTextColor: 700,
   ),
   danger(
-    backgroundColor: ListoMainColors.error,
-    textColor: ListoMainColors.error,
+    backgroundColor: SepteoColors.red,
+    textColor: SepteoColors.red,
     indexBackgroundColor: 400,
     indexTextColor: 100,
   ),
   info(
-    backgroundColor: ListoMainColors.info,
-    textColor: ListoMainColors.info,
+    backgroundColor: SepteoColors.blue,
+    textColor: SepteoColors.blue,
     indexBackgroundColor: 200,
     indexTextColor: 800,
   ),
   success(
-    backgroundColor: ListoMainColors.success,
-    textColor: ListoMainColors.success,
+    backgroundColor: SepteoColors.green,
+    textColor: SepteoColors.green,
     indexBackgroundColor: 200,
     indexTextColor: 800,
   ),
   warning(
-    backgroundColor: ListoMainColors.secondary,
-    textColor: ListoMainColors.secondary,
+    backgroundColor: SepteoColors.orange,
+    textColor: SepteoColors.orange,
     indexBackgroundColor: 200,
   ),
   ;
@@ -60,9 +59,6 @@ enum TagColors {
     }
     if (color is MaterialColor) {
       return color[index]!;
-    }
-    if (color is ListoColor) {
-      return color.materialColor[index]!;
     }
 
     return color;
@@ -103,13 +99,13 @@ class Tag extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         padding: const EdgeInsets.symmetric(
-            horizontal: Spacings.sm, vertical: Spacings.xs),
+            horizontal: SepteoSpacings.md, vertical: SepteoSpacings.xs),
         decoration: BoxDecoration(
           color: type.backgroundColor,
-          borderRadius: const BorderRadius.all(Radius.circular(Radiuses.md)),
+          borderRadius: const BorderRadius.all(Radius.circular(SepteoSpacings.xl)),
         ),
         child: Text(label,
-            style: TextStyles.labelLarge
+            style: SepteoTextStyles.bodyMediumInter
                 .copyWith(color: type.textColor, fontSize: 14)));
   }
 }

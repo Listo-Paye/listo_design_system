@@ -18,8 +18,8 @@ class FormBaseLabels extends StatelessWidget {
       children: [
         Text(
           hint,
-          style: TextStyles.bodySmall.copyWith(
-            color: ListoMainColors.neutral.shade500,
+          style: SepteoTextStyles.captionInter.copyWith(
+            color: SepteoColors.grey.shade500,
           ),
         ),
         child,

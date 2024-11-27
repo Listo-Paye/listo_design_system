@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:listo_design_system/themes/colors.dart';
 
 import 'color_container.dart';
 
 class ColorRow extends StatelessWidget {
   final String title;
   final ColorSwatch color;
+
   const ColorRow({
     super.key,
     required this.color,
@@ -15,26 +15,18 @@ class ColorRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Map<String, Color> colors = {};
-    if (color is ListoColor) {
-      for (var swatch in ListoSwatch.values) {
-        if (color[swatch] != null) {
-          colors.addEntries({swatch.toString(): color[swatch]!}.entries);
-        }
-      }
-    } else {
-      colors.addEntries({
-        "900": color[900]!,
-        "800": color[800]!,
-        "700": color[700]!,
-        "600": color[600]!,
-        "500": color[500]!,
-        "400": color[400]!,
-        "300": color[300]!,
-        "200": color[200]!,
-        "100": color[100]!,
-        "50": color[50]!,
-      }.entries);
-    }
+    colors.addEntries({
+      "900": color[900]!,
+      "800": color[800]!,
+      "700": color[700]!,
+      "600": color[600]!,
+      "500": color[500]!,
+      "400": color[400]!,
+      "300": color[300]!,
+      "200": color[200]!,
+      "100": color[100]!,
+      "50": color[50]!,
+    }.entries);
     return Column(
       children: [
         Text(

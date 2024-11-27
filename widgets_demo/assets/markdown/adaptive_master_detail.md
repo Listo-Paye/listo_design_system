@@ -26,8 +26,8 @@ class _AdaptiveMdPresenterState extends State<AdaptiveMdPresenter> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: ListoMainColors.primary.light,
-        borderRadius: BorderRadius.circular(Radiuses.xs),
+        color: SepteoColors.blue.shade200,
+        borderRadius: BorderRadius.circular(SepteoSpacings.xs),
       ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),

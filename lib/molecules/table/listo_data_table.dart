@@ -58,19 +58,18 @@ class _ListoDataTableState<T> extends State<ListoDataTable<T>> {
 
     return [
       const SizedBox(
-        height: Spacings.sm,
+        height: SepteoSpacings.md,
       ),
       Row(
         children: [
           Flexible(
             child: Text(
               widget.subtitle!,
-              style: TextStyles.bodyMediumSemibold
-                  .copyWith(color: ListoMainColors.primary),
+              style: SepteoTextStyles.bodySmallInterBold,
             ),
           ),
           const SizedBox(
-            width: Spacings.sm,
+            width: SepteoSpacings.md,
           ),
           if (widget.subtitleTagValue != null)
             Tag(
@@ -101,7 +100,7 @@ class _ListoDataTableState<T> extends State<ListoDataTable<T>> {
             color: Colors.white,
             child: Padding(
               padding: const EdgeInsets.symmetric(
-                  vertical: Spacings.sm, horizontal: Spacings.md),
+                  vertical: SepteoSpacings.md, horizontal: SepteoSpacings.xl),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -109,19 +108,19 @@ class _ListoDataTableState<T> extends State<ListoDataTable<T>> {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         widget.title,
-                        style: TextStyles.headingMediumSemibold,
+                        style: SepteoTextStyles.bodyLargeInterBold,
                       ),
                     ),
                     ..._buildSubtitle(),
                     const SizedBox(
-                      height: Spacings.sm,
+                      height: SepteoSpacings.md,
                     ),
                     Divider(
-                      color: ListoMainColors.neutral[100],
+                      color: SepteoColors.grey.shade100,
                       thickness: 1,
                     ),
                     const SizedBox(
-                      height: Spacings.sm,
+                      height: SepteoSpacings.md,
                     ),
                     DataTable(
                       sortColumnIndex: sortColumnIndex,
@@ -131,7 +130,7 @@ class _ListoDataTableState<T> extends State<ListoDataTable<T>> {
                                 label: Expanded(
                                   child: Text(
                                     key,
-                                    style: TextStyles.bodyMedium,
+                                    style: SepteoTextStyles.bodySmallInter,
                                   ),
                                 ),
                                 onSort: onSort,

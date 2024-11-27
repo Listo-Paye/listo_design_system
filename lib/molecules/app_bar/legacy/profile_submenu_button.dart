@@ -62,7 +62,7 @@ class ProfileSubmenuButton extends StatelessWidget {
       menuChildren: [
         MenuItemButton(
           leadingIcon:
-              Icon(Icons.password, color: ListoMainColors.neutral[700]),
+              Icon(Icons.password, color: SepteoColors.grey.shade700),
           style: const ButtonStyle(
             backgroundColor: WidgetStatePropertyAll(Colors.white),
             elevation: WidgetStatePropertyAll(0),
@@ -71,7 +71,7 @@ class ProfileSubmenuButton extends StatelessWidget {
           child: const Text('Changer de mot de passe'),
         ),
         MenuItemButton(
-          leadingIcon: Icon(Icons.logout, color: ListoMainColors.neutral[700]),
+          leadingIcon: Icon(Icons.logout, color: SepteoColors.grey.shade700),
           style: const ButtonStyle(
             backgroundColor: WidgetStatePropertyAll(Colors.white),
             elevation: WidgetStatePropertyAll(0),
@@ -85,18 +85,18 @@ class ProfileSubmenuButton extends StatelessWidget {
           CircleAvatar(
             child: Text(
               getInitials(),
-              style: TextStyles.bodyLarge,
+              style: SepteoTextStyles.bodyMediumInter,
             ),
           ),
-          const SizedBox(width: Spacings.sm),
-          Text(getUsername(), style: TextStyles.bodyLarge),
-          const SizedBox(width: Spacings.sm),
+          const SizedBox(width: SepteoSpacings.md),
+          Text(getUsername(), style: SepteoTextStyles.bodyMediumInter),
+          const SizedBox(width: SepteoSpacings.md),
           const Icon(Icons.arrow_drop_down),
         ]),
         handset: CircleAvatar(
           child: Text(
             getInitials(),
-            style: TextStyles.bodyLarge,
+            style: SepteoTextStyles.bodyMediumInter,
           ),
         ),
       ),

@@ -16,23 +16,23 @@ class _InputPresenterState extends State<InputPresenter> {
       child: Container(
         height: 600,
         decoration: BoxDecoration(
-          color: ListoMainColors.primary.light,
-          borderRadius: BorderRadius.circular(Spacings.xs),
+          color: SepteoColors.blue.shade200,
+          borderRadius: BorderRadius.circular(SepteoSpacings.xs),
         ),
         child: Center(
           child: SizedBox(
             width: 411,
             child: Card(
               color: Colors.white,
-              margin: const EdgeInsets.all(Spacings.sm),
+              margin: const EdgeInsets.all(SepteoSpacings.md),
               child: Padding(
                 padding: const EdgeInsets.symmetric(
-                  vertical: Spacings.xs,
-                  horizontal: Spacings.md,
+                  vertical: SepteoSpacings.xs,
+                  horizontal: SepteoSpacings.xl,
                 ),
                 child: ListView(
                   children: const [
-                    SizedBox(height: Spacings.sm),
+                    SizedBox(height: SepteoSpacings.md),
                     FormNote(
                       notes: [
                         Note(
@@ -41,7 +41,7 @@ class _InputPresenterState extends State<InputPresenter> {
                         ),
                       ],
                     ),
-                    SizedBox(height: Spacings.md),
+                    SizedBox(height: SepteoSpacings.xl),
                     FormPanel(
                       title: "Saisie de texte",
                       children: [

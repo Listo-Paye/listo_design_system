@@ -37,7 +37,7 @@ class ListoAppBarPresenter extends StatelessWidget {
             },
           ),
           body: Container(
-            color: ListoMainColors.primary.ultraLight,
+            color: SepteoColors.blue.shade50,
           ),
         ),
       ),

@@ -15,7 +15,7 @@ class VaInfoCardPresenter extends StatelessWidget {
       child: Container(
         height: 300,
         decoration: BoxDecoration(
-          color: ListoMainColors.primary.medium,
+          color: SepteoColors.blue.shade300,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Center(

@@ -38,15 +38,15 @@ class FormNote extends StatelessWidget {
         children: [
           Text(
             note.label,
-            style: TextStyles.bodySmall.copyWith(
-              color: ListoMainColors.primary.base,
+            style: SepteoTextStyles.captionInter.copyWith(
+              color: SepteoColors.blue.shade900,
               fontWeight: FontWeight.w600,
             ),
           ),
           Text(
             note.value,
-            style: TextStyles.bodyMedium.copyWith(
-              color: ListoMainColors.neutral.shade900,
+            style: SepteoTextStyles.bodySmallInter.copyWith(
+              color: SepteoColors.grey.shade900,
             ),
           )
         ],
@@ -63,17 +63,17 @@ class FormNote extends StatelessWidget {
       ),
       width: double.infinity,
       child: Padding(
-        padding: const EdgeInsets.all(Spacings.xs),
+        padding: const EdgeInsets.all(SepteoSpacings.xs),
         child: LayoutBuilder(builder: (context, constraints) {
           return Wrap(
             direction: Axis.vertical,
-            spacing: Spacings.xs,
+            spacing: SepteoSpacings.xs,
             children: [
               if (title != null)
                 Text(
                   title!,
-                  style: TextStyles.bodyLargeSemibold.copyWith(
-                    color: ListoMainColors.primary.base,
+                  style: SepteoTextStyles.bodyMediumInterBold.copyWith(
+                    color: SepteoColors.blue.shade900,
                   ),
                 ),
               ..._notes,
@@ -88,8 +88,8 @@ class FormNote extends StatelessWidget {
                     ),
                     child: Text(
                       action!.label,
-                      style: TextStyles.bodyMedium.copyWith(
-                        color: ListoMainColors.primary.base,
+                      style: SepteoTextStyles.bodySmallInter.copyWith(
+                        color: SepteoColors.blue.shade900,
                       ),
                     ),
                   ),

@@ -14,7 +14,7 @@ class SpacingRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: Spacings.xs),
+      padding: const EdgeInsets.only(bottom: SepteoSpacings.xs),
       child: Row(
         children: [
           Container(
@@ -25,7 +25,7 @@ class SpacingRow extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 20),
-          Text(title, style: TextStyles.bodyMedium),
+          Text(title, style: SepteoTextStyles.bodySmallInter),
         ],
       ),
     );

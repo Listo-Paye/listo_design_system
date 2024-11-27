@@ -3,10 +3,10 @@ Code source de notre exemple :
 Container(
   height: 300,
   decoration: BoxDecoration(
-    color: ListoMainColors.primary.ultraLight,
+    color: SepteoColors.blue.shade50,
   ),
   child: Padding(
-      padding: const EdgeInsets.all(Spacings.md),
+      padding: const EdgeInsets.all(SepteoSpacings.xl),
       child: Center(
         child: ChartPie(items: [
           ChartPieItem(

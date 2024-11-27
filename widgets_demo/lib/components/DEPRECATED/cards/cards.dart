@@ -14,7 +14,7 @@ WidgetbookComponent cardsDeprecated(BuildContext context) {
       (context) => Container(
           height: 500,
           decoration: BoxDecoration(
-            color: ListoMainColors.primary.medium,
+            color: SepteoColors.blue.shade300,
             borderRadius: BorderRadius.circular(8),
           ),
           child: Center(

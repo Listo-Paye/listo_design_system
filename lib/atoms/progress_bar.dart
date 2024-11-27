@@ -16,9 +16,9 @@ class ListoProgressBar extends StatelessWidget {
     errorColor,
     this.error = false,
   }) {
-    this.backgroundColor = backgroundColor ?? ListoMainColors.neutral.shade100;
-    this.progressColor = progressColor ?? ListoMainColors.neutral.shade400;
-    this.errorColor = errorColor ?? ListoMainColors.error.medium;
+    this.backgroundColor = backgroundColor ?? SepteoColors.grey.shade100;
+    this.progressColor = progressColor ?? SepteoColors.grey.shade400;
+    this.errorColor = errorColor ?? SepteoColors.red.shade300;
   }
 
   @override

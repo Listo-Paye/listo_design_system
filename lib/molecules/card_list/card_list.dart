@@ -56,11 +56,11 @@ class _CardListState<T extends ListoCard> extends State<CardList<T>> {
       elevation: 0,
       margin: EdgeInsets.zero,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(Radiuses.xs),
+        borderRadius: BorderRadius.circular(SepteoSpacings.xs),
       ),
       color: Colors.white,
       child: Padding(
-        padding: const EdgeInsets.all(Spacings.sm),
+        padding: const EdgeInsets.all(SepteoSpacings.md),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -93,12 +93,12 @@ class _CardListState<T extends ListoCard> extends State<CardList<T>> {
                 ),
               ],
             ),
-            const SizedBox(height: Spacings.xs),
+            const SizedBox(height: SepteoSpacings.xs),
             Expanded(
               child: ListView.separated(
                 controller: _controller,
                 separatorBuilder: (context, index) =>
-                    const SizedBox(height: Spacings.xs),
+                    const SizedBox(height: SepteoSpacings.xs),
                 itemCount:
                     _filteredChildren.isEmpty ? 1 : _filteredChildren.length,
                 itemBuilder: (context, index) {

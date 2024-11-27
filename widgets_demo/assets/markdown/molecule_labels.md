@@ -25,8 +25,8 @@ enum VaInfoCardType {
   const VaInfoCardType(this.label, this.largeLabel);
 
   Color get color => this == VaInfoCardType.manual
-      ? ListoMainColors.error.dark
-      : ListoMainColors.primary.dark;
+      ? SepteoColors.red.shade600
+      : SepteoColors.blue.shade600;
 }
 
 extension VaInfoCardTypeExtension on VaInfoCardType {

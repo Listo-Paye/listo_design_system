@@ -11,8 +11,8 @@ class ChiffreCle extends StatelessWidget {
       child: Center(
           child: Column(
         children: [
-          Text("${item.chiffre}", style: TextStyles.headingLarge),
-          Text(item.label, style: TextStyles.bodySmall),
+          Text("${item.chiffre}", style: SepteoTextStyles.headingMediumInter),
+          Text(item.label, style: SepteoTextStyles.captionInter),
         ],
       )),
     );

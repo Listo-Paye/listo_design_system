@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:listo_design_system/listo_design_system.dart';
 
-import '../../themes/spacing.dart';
 
 abstract class ListoCard extends StatelessWidget {
   final IconData chevron;
@@ -24,7 +24,7 @@ class RowSeparator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SizedBox(
-      width: Spacings.sm,
+      width: SepteoSpacings.md,
     );
   }
 }

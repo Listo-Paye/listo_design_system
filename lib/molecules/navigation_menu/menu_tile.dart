@@ -1,7 +1,6 @@
 // ignore_for_file: library_private_types_in_public_api
 import 'package:flutter/material.dart';
-import 'package:listo_design_system/themes/colors.dart';
-import 'package:listo_design_system/themes/spacing.dart';
+import 'package:listo_design_system/listo_design_system.dart';
 
 import 'destination_data.dart';
 
@@ -147,7 +146,7 @@ class MenuTileState extends State<MenuTile> {
                 duration: const Duration(milliseconds: 30),
                 width: (isSelected && !_isExpanded) ? 3 : 0,
                 height: 56,
-                color: ListoMainColors.primary.materialColor,
+                color: SepteoColors.blue.shade900,
               ),
               InkWell(
                 onTap: () {
@@ -165,9 +164,9 @@ class MenuTileState extends State<MenuTile> {
                 child: _showMenuIcon
                     ? Padding(
                         padding: const EdgeInsets.only(
-                          left: Spacings.md,
-                          top: Spacings.sm,
-                          bottom: Spacings.sm,
+                          left: SepteoSpacings.xl,
+                          top: SepteoSpacings.md,
+                          bottom: SepteoSpacings.md,
                         ),
                         child: Row(
                           children: [
@@ -179,7 +178,7 @@ class MenuTileState extends State<MenuTile> {
                               child: _showMenuIcon
                                   ? Icon(
                                       widget.destination.icon,
-                                      color: ListoMainColors.neutral.shade900,
+                                      color: SepteoColors.grey.shade900,
                                     )
                                   : const SizedBox(width: 0),
                             ),
@@ -195,8 +194,7 @@ class MenuTileState extends State<MenuTile> {
                                           .textTheme
                                           .bodyMedium
                                           ?.copyWith(
-                                            color: ListoMainColors
-                                                .neutral.shade900,
+                                            color: SepteoColors.grey.shade900,
                                           ),
                                     )
                                   : const SizedBox(width: 0),
@@ -219,7 +217,7 @@ class MenuTileState extends State<MenuTile> {
                                       isSelected
                                           ? Icons.arrow_drop_up
                                           : Icons.arrow_drop_down,
-                                      color: ListoMainColors.neutral.shade900,
+                                      color: SepteoColors.grey.shade900,
                                     )
                                   : const SizedBox(width: 0),
                             ),
@@ -260,7 +258,7 @@ class _ChildTile extends StatelessWidget {
           duration: const Duration(milliseconds: 30),
           width: isSelected ? 3 : 0,
           height: 56,
-          color: ListoMainColors.primary.materialColor,
+          color: SepteoColors.blue.shade900,
         ),
         InkWell(
           onTap: () {
@@ -268,22 +266,22 @@ class _ChildTile extends StatelessWidget {
           },
           child: Padding(
             padding: const EdgeInsets.only(
-              left: Spacings.lg,
-              top: Spacings.sm,
-              bottom: Spacings.sm,
+              left: SepteoSpacings.xxl,
+              top: SepteoSpacings.md,
+              bottom: SepteoSpacings.md,
             ),
             child: Row(
               children: [
                 const SizedBox(width: 10),
                 Icon(
                   destination.icon,
-                  color: ListoMainColors.neutral.shade900,
+                  color: SepteoColors.grey.shade900,
                 ),
                 const SizedBox(width: 10),
                 Text(
                   destination.label,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: ListoMainColors.neutral.shade900,
+                        color: SepteoColors.grey.shade900,
                       ),
                 ),
               ],

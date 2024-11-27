@@ -15,7 +15,7 @@ class FormKeyValueList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var border = BorderSide(color: ListoMainColors.primary.light, width: .4);
+    var border = BorderSide(color: SepteoColors.blue.shade200, width: .4);
     return FormBaseLabels(
       hint: hint,
       child: ListView.separated(
@@ -26,7 +26,7 @@ class FormKeyValueList extends StatelessWidget {
               flex: 2,
               child: Container(
                 decoration: BoxDecoration(
-                  color: ListoMainColors.primary.light,
+                  color: SepteoColors.blue.shade200,
                   border: Border(
                     top: border,
                     bottom: border,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:listo_design_system/themes/spacing.dart';
+import 'package:listo_design_system/listo_design_system.dart';
 
 class FormList extends StatelessWidget {
   final List<Widget> children;
@@ -12,7 +12,7 @@ class FormList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       itemBuilder: (context, index) => children[index],
-      separatorBuilder: (context, index) => const SizedBox(height: Spacings.xs),
+      separatorBuilder: (context, index) => const SizedBox(height: SepteoSpacings.xs),
       itemCount: children.length,
     );
   }

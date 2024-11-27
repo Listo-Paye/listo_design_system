@@ -21,11 +21,11 @@ class Profil extends StatelessWidget {
       children: [
         IconButton(
           onPressed: onHelp,
-          splashColor: ListoMainColors.primary.ultraLight,
+          splashColor: SepteoColors.blue.shade50,
           hoverColor: Colors.transparent,
           icon: Icon(
             Icons.help_outline,
-            color: ListoMainColors.primary.base,
+            color: SepteoColors.blue.shade900,
           ),
         ),
         MenuAnchor(
@@ -33,7 +33,7 @@ class Profil extends StatelessWidget {
             backgroundColor: WidgetStatePropertyAll(Colors.white),
             shape: WidgetStatePropertyAll(
               RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(Spacings.xs),
+                borderRadius: BorderRadius.circular(SepteoSpacings.xs),
               ),
             ),
           ),
@@ -41,41 +41,38 @@ class Profil extends StatelessWidget {
             SizedBox(
               width: 330,
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: Spacings.sm),
+                padding: EdgeInsets.symmetric(horizontal: SepteoSpacings.md),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: Spacings.sm),
+                    SizedBox(height: SepteoSpacings.md),
                     Text("Compte",
-                        style: TextStyles.headingLarge.copyWith(
-                          color: ListoMainColors.neutral.shade900,
+                        style: SepteoTextStyles.headingMediumInter.copyWith(
+                          color: SepteoColors.grey.shade900,
                         )),
-                    SizedBox(height: Spacings.sm),
+                    SizedBox(height: SepteoSpacings.md),
                     Text(
                       email,
-                      style: TextStyles.labelLarge.copyWith(
-                        color: ListoMainColors.neutral.shade900,
-                      ),
+                      style: SepteoTextStyles.bodyMediumInter,
                     ),
                     Container(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: Spacings.xs),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: SepteoSpacings.xs),
                       decoration: BoxDecoration(
-                        color: ListoMainColors.secondary.light,
+                        color: SepteoColors.orange.shade200,
                         borderRadius: const BorderRadius.all(
-                            Radius.circular(Radiuses.md)),
+                            Radius.circular(SepteoSpacings.xl)),
                       ),
                       child: Text(
                         label.toLowerCase(),
-                        style: TextStyles.headingSmall.copyWith(
-                          color: ListoMainColors.neutral[700],
-                          fontSize: 12,
+                        style: SepteoTextStyles.captionInter.copyWith(
+                          color: SepteoColors.grey.shade700,
                         ),
                       ),
                     ),
-                    SizedBox(height: Spacings.sm),
+                    SizedBox(height: SepteoSpacings.md),
                     Divider(),
-                    SizedBox(height: Spacings.xs),
+                    SizedBox(height: SepteoSpacings.xs),
                   ],
                 ),
               ),
@@ -87,19 +84,19 @@ class Profil extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.power_settings_new,
-                    color: ListoMainColors.primary.base,
+                    color: SepteoColors.blue.shade900,
                   ),
-                  const SizedBox(width: Spacings.md),
+                  const SizedBox(width: SepteoSpacings.xl),
                   Text(
                     'Déconnexion',
-                    style: TextStyles.labelLarge.copyWith(
-                      color: ListoMainColors.neutral.shade900,
+                    style: SepteoTextStyles.bodyMediumInter.copyWith(
+                      color: SepteoColors.grey.shade900,
                     ),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: Spacings.sm),
+            SizedBox(height: SepteoSpacings.md),
           ],
           builder: (_, controller, __) => IconButton(
             onPressed: () {
@@ -109,7 +106,7 @@ class Profil extends StatelessWidget {
                 controller.open();
               }
             },
-            splashColor: ListoMainColors.primary.ultraLight,
+            splashColor: SepteoColors.blue.shade50,
             hoverColor: Colors.transparent,
             icon: IconAccount(),
           ),

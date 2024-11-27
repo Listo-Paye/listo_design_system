@@ -52,7 +52,7 @@ class BaseInputText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: ListoMainColors.primary.ultraLight,
+      color: SepteoColors.blue.shade50,
       child: TextField(
         maxLines: maxLines,
         keyboardType: keyboardType,
@@ -60,8 +60,8 @@ class BaseInputText extends StatelessWidget {
           labelText: hintText,
           alignLabelWithHint: maxLines != null,
           contentPadding: const EdgeInsets.symmetric(
-            horizontal: Spacings.sm,
-            vertical: Spacings.xs,
+            horizontal: SepteoSpacings.md,
+            vertical: SepteoSpacings.xs,
           ),
         ),
         textAlignVertical: (maxLines != null) ? TextAlignVertical.top : null,
@@ -108,7 +108,7 @@ class InputAmount extends StatelessWidget {
       formatters: [AmountFormatter()],
       decoration: InputDecoration(
         prefixIcon: const Icon(Icons.euro),
-        prefixIconColor: ListoMainColors.primary.base,
+        prefixIconColor: SepteoColors.blue.shade900,
       ),
       onChanged: (value) {
         if (value.isEmpty) {

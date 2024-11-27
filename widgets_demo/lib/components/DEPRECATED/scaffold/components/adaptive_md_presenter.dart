@@ -15,8 +15,8 @@ class _AdaptiveMdPresenterState extends State<AdaptiveMdPresenter> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: ListoMainColors.primary.light,
-        borderRadius: BorderRadius.circular(Radiuses.xs),
+        color: SepteoColors.blue.shade200,
+        borderRadius: BorderRadius.circular(SepteoSpacings.xs),
       ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -198,23 +198,23 @@ class UpdateOrViewVA extends StatelessWidget {
         margin: const EdgeInsets.all(0),
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            vertical: Spacings.xs,
-            horizontal: Spacings.md,
+            vertical: SepteoSpacings.xs,
+            horizontal: SepteoSpacings.xl,
           ),
           child: ListView(
             children: [
-              const SizedBox(height: Spacings.sm),
+              const SizedBox(height: SepteoSpacings.md),
               const FormTitle(data: "PMSS salarié"),
-              const SizedBox(height: Spacings.sm),
+              const SizedBox(height: SepteoSpacings.md),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   const AmountTitle(amount: 3864),
-                  const SizedBox(width: Spacings.sm),
+                  const SizedBox(width: SepteoSpacings.md),
                   VaInfoCardType.calculated.toTag(large: true),
                 ],
               ),
-              const SizedBox(height: Spacings.sm),
+              const SizedBox(height: SepteoSpacings.md),
               const FormNote(
                 notes: [
                   Note(
@@ -223,7 +223,7 @@ class UpdateOrViewVA extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: Spacings.md),
+              const SizedBox(height: SepteoSpacings.xl),
               const FormPanel(
                 title: "Modifier la variable",
                 children: [
@@ -233,7 +233,7 @@ class UpdateOrViewVA extends StatelessWidget {
                   TextArea(hintText: "Commentaire"),
                 ],
               ),
-              const SizedBox(height: Spacings.sm),
+              const SizedBox(height: SepteoSpacings.md),
               Row(
                 children: [
                   Expanded(
@@ -243,7 +243,7 @@ class UpdateOrViewVA extends StatelessWidget {
                       style: ButtonType.secondary,
                     ),
                   ),
-                  const SizedBox(width: Spacings.sm),
+                  const SizedBox(width: SepteoSpacings.md),
                   Expanded(
                     child: Button(
                       onPressed: () {},

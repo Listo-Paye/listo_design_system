@@ -92,7 +92,7 @@ class AdaptiveMasterDetailsState extends State<AdaptiveMasterDetails> {
         (_, _) => [
             _second!,
             const SizedBox(
-              width: Spacings.sm,
+              width: SepteoSpacings.md,
             ),
             _third!
           ],
@@ -110,7 +110,7 @@ class AdaptiveMasterDetailsState extends State<AdaptiveMasterDetails> {
                 Expanded(
                   flex: 1,
                   child: Padding(
-                    padding: const EdgeInsets.only(right: Spacings.sm),
+                    padding: const EdgeInsets.only(right: SepteoSpacings.md),
                     child: widget.child,
                   ),
                 ),

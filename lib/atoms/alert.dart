@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:listo_design_system/themes/colors.dart';
-import 'package:listo_design_system/themes/spacing.dart';
+import 'package:listo_design_system/listo_design_system.dart';
 
 class ErrorAlert extends StatelessWidget {
   final String text;
@@ -17,7 +16,7 @@ class ErrorAlert extends StatelessWidget {
   Widget build(BuildContext context) {
     return Alert(
       text: text,
-      color: ListoMainColors.error,
+      color: SepteoColors.red,
       width: width,
       height: height,
     );
@@ -39,7 +38,7 @@ class SuccessAlert extends StatelessWidget {
   Widget build(BuildContext context) {
     return Alert(
       text: text,
-      color: ListoMainColors.success,
+      color: SepteoColors.green,
       width: width,
       height: height,
     );
@@ -61,7 +60,7 @@ class WarningAlert extends StatelessWidget {
   Widget build(BuildContext context) {
     return Alert(
       text: text,
-      color: ListoMainColors.warning,
+      color: SepteoColors.orange,
       width: width,
       height: height,
     );
@@ -83,7 +82,7 @@ class InfoAlert extends StatelessWidget {
   Widget build(BuildContext context) {
     return Alert(
       text: text,
-      color: ListoMainColors.info,
+      color: SepteoColors.blue,
       width: width,
       height: height,
     );
@@ -92,7 +91,7 @@ class InfoAlert extends StatelessWidget {
 
 class Alert extends StatelessWidget {
   final String text;
-  final ListoColor color;
+  final MaterialColor color;
   final double? width;
   final double? height;
   const Alert({
@@ -109,23 +108,23 @@ class Alert extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color: color.ultraLight,
+        color: color.shade50,
         borderRadius: BorderRadius.circular(5),
         border: Border.all(
-          color: color.medium,
+          color: color.shade300,
           width: 1,
         ),
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: Spacings.sm,
-          vertical: Spacings.xs,
+          horizontal: SepteoSpacings.md,
+          vertical: SepteoSpacings.xs,
         ),
         child: Center(
           child: Text(
             text,
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: color.darker,
+                  color: color.shade800,
                   fontWeight: FontWeight.w500,
                 ),
           ),

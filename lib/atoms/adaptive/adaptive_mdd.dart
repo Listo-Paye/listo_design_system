@@ -25,7 +25,7 @@ class AdaptiveMdd extends StatelessWidget {
         Flexible(
           flex: 1,
           child: Padding(
-            padding: const EdgeInsets.only(right: Spacings.sm),
+            padding: const EdgeInsets.only(right: SepteoSpacings.md),
             child: first,
           ),
         ),

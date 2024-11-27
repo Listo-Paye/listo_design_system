@@ -20,26 +20,26 @@ class FormPeriodLabel extends StatelessWidget {
     List<Widget> children = [
       Text(
         DateFormat('dd/MM/yyyy').format(startDate),
-        style: TextStyles.bodyLargeSemibold.copyWith(
-          color: ListoMainColors.neutral.shade900,
+        style: SepteoTextStyles.bodyMediumInterBold.copyWith(
+          color: SepteoColors.grey.shade900,
         ),
       ),
     ];
 
     if (endDate != null) {
       children.addAll([
-        const SizedBox(width: Spacings.xs),
+        const SizedBox(width: SepteoSpacings.xs),
         Text(
           '->',
-          style: TextStyles.bodyLargeSemibold.copyWith(
-            color: ListoMainColors.neutral.shade900,
+          style: SepteoTextStyles.bodyMediumInterBold.copyWith(
+            color: SepteoColors.grey.shade900,
           ),
         ),
-        const SizedBox(width: Spacings.xs),
+        const SizedBox(width: SepteoSpacings.xs),
         Text(
           DateFormat('dd/MM/yyyy').format(endDate!),
-          style: TextStyles.bodyLargeSemibold.copyWith(
-            color: ListoMainColors.neutral.shade900,
+          style: SepteoTextStyles.bodyMediumInterBold.copyWith(
+            color: SepteoColors.grey.shade900,
           ),
         ),
       ]);

@@ -41,7 +41,7 @@ class ListItemDownload extends StatelessWidget {
       child: Text(
         fileName,
         overflow: TextOverflow.ellipsis,
-        style: TextStyles.bodyMediumSemibold,
+        style: SepteoTextStyles.bodySmallInterBold,
       ),
     );
   }
@@ -49,7 +49,7 @@ class ListItemDownload extends StatelessWidget {
   Widget _buildEndIcon() {
     bool shouldPad = status == UploadStatus.uploading || status == UploadStatus.uploadComplete;
     return Padding(
-      padding: EdgeInsets.only(right: shouldPad ? Spacings.xs : 0),
+      padding: EdgeInsets.only(right: shouldPad ? SepteoSpacings.xs : 0),
       child: AnimatedSwitcher(
         duration: const Duration(milliseconds: 300),
         transitionBuilder: (Widget child, Animation<double> animation) {
@@ -64,7 +64,7 @@ class ListItemDownload extends StatelessWidget {
         child: status == UploadStatus.uploadComplete
             ? Icon(
                 Icons.check_circle_outline,
-                color: ListoMainColors.success.dark,
+                color: SepteoColors.green.shade600,
                 size: 25,
               )
             : status == UploadStatus.uploading
@@ -75,14 +75,14 @@ class ListItemDownload extends StatelessWidget {
                       value: uploadProgress,
                       strokeWidth: 3,
                       valueColor: AlwaysStoppedAnimation<Color>(
-                        ListoMainColors.primary.dark,
+                        SepteoColors.blue.shade600,
                       ),
                     ),
                   )
                 : IconButton(
                     icon: Icon(
                       Icons.delete_outline,
-                      color: ListoMainColors.neutral.shade400,
+                      color: SepteoColors.grey.shade400,
                       size: 25,
                     ),
                     onPressed: () => onDelete(fileName),
@@ -100,8 +100,8 @@ class ListItemDownload extends StatelessWidget {
           _buildTitle(),
           Text(
             errorMessage ?? "Quelque chose s'est mal passé",
-            style: TextStyles.bodySmall.copyWith(
-              color: ListoMainColors.secondary.base,
+            style: SepteoTextStyles.captionInter.copyWith(
+              color: SepteoColors.orange.shade600,
             ),
           ),
         ],
@@ -118,8 +118,8 @@ class ListItemDownload extends StatelessWidget {
           _buildTitle(),
           Text(
             _uploadProgressString,
-            style: TextStyles.bodySmall.copyWith(
-              color: ListoMainColors.info.dark,
+            style: SepteoTextStyles.captionInter.copyWith(
+              color: SepteoColors.blue.shade600,
             ),
           ),
         ],
@@ -144,15 +144,15 @@ class ListItemDownload extends StatelessWidget {
     return Container(
       height: 60,
       padding: const EdgeInsets.symmetric(
-          horizontal: Spacings.sm, vertical: Spacings.xs),
+          horizontal: SepteoSpacings.md, vertical: SepteoSpacings.xs),
       decoration: BoxDecoration(
         color: status == UploadStatus.error
-            ? ListoMainColors.secondary.ultraLight
+            ? SepteoColors.orange.shade50
             : Colors.transparent,
         border: Border.all(
             color: status == UploadStatus.error
-                ? ListoMainColors.secondary.darker
-                : ListoMainColors.neutral.shade400),
+                ? SepteoColors.orange.shade800
+                : SepteoColors.grey.shade400),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

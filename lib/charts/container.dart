@@ -24,13 +24,13 @@ class ChartContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       child: Padding(
-        padding: EdgeInsets.all(Spacings.sm),
+        padding: EdgeInsets.all(SepteoSpacings.md),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               title,
-              style: TextStyles.bodyMediumSemibold.copyWith(
+              style: SepteoTextStyles.bodySmallInterBold.copyWith(
                 color: Colors.black,
                 fontWeight: FontWeight.w700,
               ),
@@ -43,14 +43,14 @@ class ChartContainer extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: Text(
                   buttonText,
-                  style: TextStyles.bodyMedium.copyWith(
+                  style: SepteoTextStyles.bodySmallInter.copyWith(
                     color: Colors.black,
                   ),
                 ),
               ),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFFB9C7FB),
-                foregroundColor: ListoMainColors.primary.base,
+                foregroundColor: SepteoColors.blue.shade900,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),

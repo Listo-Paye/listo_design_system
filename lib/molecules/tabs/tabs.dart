@@ -18,12 +18,12 @@ class ListoTabsController extends StatelessWidget {
           Align(
             alignment: Alignment.centerLeft,
             child: TabBar(
-                unselectedLabelStyle: TextStyles.bodyLarge
-                    .copyWith(color: ListoMainColors.neutral[500]),
-                labelStyle: TextStyles.bodyLargeSemibold
-                    .copyWith(color: ListoMainColors.primary),
+                unselectedLabelStyle: SepteoTextStyles.bodyMediumInter
+                    .copyWith(color: SepteoColors.grey.shade500),
+                labelStyle: SepteoTextStyles.bodyMediumInterBold
+                    ,
                 dividerColor: Colors.transparent,
-                indicatorColor: ListoMainColors.primary,
+                indicatorColor: SepteoColors.blue.shade900,
                 isScrollable: true,
                 tabs: tabs.keys
                     .map((key) => Tab(

@@ -32,39 +32,39 @@ class _SelectionButtonState extends State<SelectionButton> {
         onPressed: widget.onPressed,
         style: ButtonStyle(
           padding: WidgetStateProperty.all(
-            EdgeInsets.only(right: Spacings.sm),
+            EdgeInsets.only(right: SepteoSpacings.md),
           ),
           backgroundColor: WidgetStateProperty.resolveWith(
             (states) {
               if (states.contains(WidgetState.hovered)) {
-                return ListoMainColors.primary.light;
+                return SepteoColors.blue.shade200;
               }
               return (widget.onPressed != null)
                   ? Colors.white
-                  : ListoMainColors.primary.ultraLight;
+                  : SepteoColors.blue.shade50;
             },
           ),
           foregroundColor: WidgetStateProperty.all(
-            ListoMainColors.neutral.shade900,
+            SepteoColors.grey.shade900,
           ),
           side: WidgetStateProperty.resolveWith((states) {
             if (states.contains(WidgetState.selected)) {
               return BorderSide(
-                color: ListoMainColors.secondary.dark,
+                color: SepteoColors.orange.shade600,
               );
             }
             if (states.contains(WidgetState.hovered)) {
               return BorderSide(
-                color: ListoMainColors.primary.light,
+                color: SepteoColors.blue.shade200,
               );
             }
             return BorderSide(
-              color: ListoMainColors.neutral.shade400,
+              color: SepteoColors.grey.shade400,
             );
           }),
           shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(Spacings.xs),
+              borderRadius: BorderRadius.circular(SepteoSpacings.xs),
             ),
           ),
         ),
@@ -93,8 +93,8 @@ class _SelectionButtonState extends State<SelectionButton> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(widget.title, style: TextStyles.headingMediumSemibold),
-                  Text(widget.subtitle, style: TextStyles.bodySmall),
+                  Text(widget.title, style: SepteoTextStyles.bodyLargeInterBold),
+                  Text(widget.subtitle, style: SepteoTextStyles.captionInter),
                 ],
               ),
             ],

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:listo_design_system/themes/colors.dart';
-
-import 'search_bar.dart';
+import 'package:listo_design_system/listo_design_system.dart';
 
 class ListoSearchAnchor extends StatefulWidget {
   final String hintText;
@@ -52,7 +50,7 @@ class _ListoSearchAnchorState extends State<ListoSearchAnchor> {
   Widget build(BuildContext context) {
     return SearchAnchor(
       isFullScreen: false,
-      viewBackgroundColor: ListoMainColors.neutral[50],
+      viewBackgroundColor: SepteoColors.grey.shade50,
       viewElevation: 0,
       viewShape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(6),

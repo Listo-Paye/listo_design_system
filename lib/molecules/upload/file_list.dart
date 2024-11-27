@@ -21,7 +21,7 @@ class FileList extends StatelessWidget {
       child: ListView.separated(
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
-        padding: const EdgeInsets.symmetric(vertical: Spacings.xs),
+        padding: const EdgeInsets.symmetric(vertical: SepteoSpacings.xs),
         itemCount: files.length,
         separatorBuilder: (context, index) => const SizedBox(height: 4),
         itemBuilder: (context, index) {

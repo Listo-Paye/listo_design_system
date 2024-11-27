@@ -44,8 +44,8 @@ class Popin extends StatelessWidget {
 
   Color get _primaryColor {
     return switch (type) {
-      PopinType.info => ListoMainColors.primary.base,
-      PopinType.danger => ListoMainColors.error.medium,
+      PopinType.info => SepteoColors.blue.shade900,
+      PopinType.danger => SepteoColors.red.shade300,
     };
   }
 
@@ -53,14 +53,14 @@ class Popin extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(Radiuses.sm),
+        borderRadius: BorderRadius.circular(SepteoSpacings.sm),
       ),
       backgroundColor: Colors.white,
       contentPadding: const EdgeInsets.fromLTRB(
-        Spacings.lg,
-        Spacings.lg,
-        Spacings.lg,
-        Spacings.sm,
+        SepteoSpacings.xxl,
+        SepteoSpacings.xxl,
+        SepteoSpacings.xxl,
+        SepteoSpacings.md,
       ),
       content: SizedBox(
         width: 450,
@@ -71,15 +71,15 @@ class Popin extends StatelessWidget {
               Icons.info_outline,
               size: 72,
             ),
-            const SizedBox(height: Spacings.sm),
+            const SizedBox(height: SepteoSpacings.md),
             Text(
               title,
-              style: TextStyles.headingMediumSemibold,
+              style: SepteoTextStyles.bodyLargeInterBold,
             ),
-            const SizedBox(height: Spacings.sm),
+            const SizedBox(height: SepteoSpacings.md),
             Text(
               message,
-              style: TextStyles.bodyLarge,
+              style: SepteoTextStyles.bodyMediumInter,
               textAlign: TextAlign.center,
             ),
           ],
@@ -97,7 +97,7 @@ class Popin extends StatelessWidget {
                 },
               ),
             ),
-            const SizedBox(width: Spacings.xs),
+            const SizedBox(width: SepteoSpacings.xs),
             Expanded(
               child: FilledButton(
                 style: ButtonStyles.primary.copyWith(

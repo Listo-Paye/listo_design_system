@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:listo_design_system/themes/text_style.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:widgetbook/widgetbook.dart';
+import 'package:listo_design_system/listo_design_system.dart';
 
 WidgetbookUseCase usercaseWithMarkdown(
   String title,
@@ -77,8 +77,8 @@ class _CardWithMarkdownState extends State<CardWithMarkdown> {
               shrinkWrap: true,
               data: mdData,
               styleSheet: MarkdownStyleSheet(
-                p: TextStyles.bodyMedium,
-                strong: TextStyles.bodyMediumSemibold,
+                p: SepteoTextStyles.bodySmallInter,
+                strong: SepteoTextStyles.bodySmallInterBold,
                 code: GoogleFonts.lato(
                   fontSize: 12,
                   fontWeight: FontWeight.bold,
@@ -89,14 +89,14 @@ class _CardWithMarkdownState extends State<CardWithMarkdown> {
                   color: Colors.grey[900],
                   borderRadius: BorderRadius.circular(5.0),
                 ),
-                checkbox: TextStyles.bodyMediumSemibold,
-                h1: TextStyles.headingLarge,
-                h2: TextStyles.headingMediumSemibold,
-                h3: TextStyles.headingMedium,
-                h4: TextStyles.bodyLargeSemibold,
-                h5: TextStyles.bodyLarge,
-                h6: TextStyles.bodyMediumSemibold,
-                listBullet: TextStyles.bodyMedium,
+                checkbox: SepteoTextStyles.bodySmallInterBold,
+                h1: SepteoTextStyles.headingMediumInter,
+                h2: SepteoTextStyles.bodyLargeInterBold,
+                h3: SepteoTextStyles.bodyLargeInter,
+                h4: SepteoTextStyles.bodyMediumInterBold,
+                h5: SepteoTextStyles.bodyMediumInter,
+                h6: SepteoTextStyles.bodySmallInterBold,
+                listBullet: SepteoTextStyles.bodySmallInter,
               ),
               onTapLink: (text, url, title) {
                 if (url != null) {

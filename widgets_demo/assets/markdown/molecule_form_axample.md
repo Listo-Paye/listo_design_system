@@ -13,39 +13,39 @@ class AllInOne extends StatelessWidget {
       child: Container(
         height: 600,
         decoration: BoxDecoration(
-          color: ListoMainColors.primary.light,
-          borderRadius: BorderRadius.circular(Spacings.xs),
+          color: SepteoColors.blue.shade200,
+          borderRadius: BorderRadius.circular(SepteoSpacings.xs),
         ),
         child: Center(
           child: SizedBox(
             width: 411,
             child: Card(
               color: Colors.white,
-              margin: const EdgeInsets.all(Spacings.sm),
+              margin: const EdgeInsets.all(SepteoSpacings.md),
               child: Padding(
                 padding: const EdgeInsets.symmetric(
-                  vertical: Spacings.xs,
-                  horizontal: Spacings.md,
+                  vertical: SepteoSpacings.xs,
+                  horizontal: SepteoSpacings.xl,
                 ),
                 child: ListView(
                   children: [
-                    const SizedBox(height: Spacings.sm),
+                    const SizedBox(height: SepteoSpacings.md),
                     const FormTitle(data: "PMSS salarié"),
-                    const SizedBox(height: Spacings.sm),
+                    const SizedBox(height: SepteoSpacings.md),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         const AmountTitle(amount: 3864),
-                        const SizedBox(width: Spacings.sm),
+                        const SizedBox(width: SepteoSpacings.md),
                         VaInfoCardType.calculated.toTag(large: true),
                       ],
                     ),
-                    const SizedBox(height: Spacings.sm),
+                    const SizedBox(height: SepteoSpacings.md),
                     const FormNote(
                       label: "Règle de calcul",
                       value: "PMSS Légal * coefficient de proratisation",
                     ),
-                    const SizedBox(height: Spacings.md),
+                    const SizedBox(height: SepteoSpacings.xl),
                     const FormPanel(
                       title: "Modifier la variable",
                       children: [
@@ -55,7 +55,7 @@ class AllInOne extends StatelessWidget {
                         TextArea(hintText: "Commentaire"),
                       ],
                     ),
-                    const SizedBox(height: Spacings.sm),
+                    const SizedBox(height: SepteoSpacings.md),
                     Row(
                       children: [
                         Expanded(
@@ -65,7 +65,7 @@ class AllInOne extends StatelessWidget {
                             style: ButtonType.secondary,
                           ),
                         ),
-                        const SizedBox(width: Spacings.sm),
+                        const SizedBox(width: SepteoSpacings.md),
                         Expanded(
                           child: Button(
                             onPressed: () {},

@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:listo_design_system/atoms/atoms_module.dart';
-import 'package:listo_design_system/themes/colors.dart';
-
-import '../../themes/radius.dart';
-import '../../themes/spacing.dart';
-import '../../themes/text_style.dart';
+import 'package:listo_design_system/listo_design_system.dart';
 
 @Deprecated('Ce composant sera bientôt supprimé.')
 class VaInfoCard extends ListoCard {
@@ -28,7 +23,7 @@ class VaInfoCard extends ListoCard {
   Widget build(BuildContext context) {
     return Card(
       elevation: 0,
-      color: isSelected ? ListoMainColors.primary.light : Colors.white,
+      color: isSelected ? SepteoColors.blue.shade200 : Colors.white,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(4)),
       ),
@@ -36,13 +31,13 @@ class VaInfoCard extends ListoCard {
         label: getAllText(),
         button: true,
         child: InkWell(
-          hoverColor: ListoMainColors.primary.ultraLight,
-          highlightColor: ListoMainColors.primary.light,
-          splashColor: ListoMainColors.primary.light,
+          hoverColor: SepteoColors.blue.shade50,
+          highlightColor: SepteoColors.blue.shade200,
+          splashColor: SepteoColors.blue.shade200,
           onTap: onSelect,
           borderRadius: BorderRadius.circular(4),
           child: Padding(
-            padding: const EdgeInsets.all(Spacings.xs),
+            padding: const EdgeInsets.all(SepteoSpacings.xs),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
@@ -56,32 +51,29 @@ class VaInfoCard extends ListoCard {
                       child: Text(
                         title,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyles.bodyMedium.copyWith(
-                          color: ListoMainColors.neutral.shade900,
-                        ),
+                        style: SepteoTextStyles.bodySmallInter,
                       ),
                     ),
                     const RowSeparator(),
                     Text(
                       formatedValue,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyles.bodyMediumSemibold
-                          .copyWith(color: ListoMainColors.neutral.shade900),
+                      style: SepteoTextStyles.bodySmallInterBold,
                     ),
                     const RowSeparator(),
                     type.toTag(),
                     const RowSeparator(),
                     Icon(
                       chevron,
-                      color: ListoMainColors.secondary.base,
+                      color: SepteoColors.orange.shade600,
                     ),
                   ],
                 ),
                 (subtitle != null)
                     ? Text(
                         subtitle!,
-                        style: TextStyles.bodySmall
-                            .copyWith(color: ListoMainColors.neutral.shade700),
+                        style: SepteoTextStyles.captionInter
+                            .copyWith(color: SepteoColors.grey.shade700),
                       )
                     : const SizedBox(
                         height: 0,
@@ -119,15 +111,15 @@ class VaTypeTag extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(
-          horizontal: Spacings.sm, vertical: Spacings.xs),
+          horizontal: SepteoSpacings.md, vertical: SepteoSpacings.xs),
       decoration: BoxDecoration(
         color: type.color,
-        borderRadius: const BorderRadius.all(Radius.circular(Radiuses.md)),
+        borderRadius: const BorderRadius.all(Radius.circular(SepteoSpacings.xl)),
       ),
       child: Text(
         large ? type.largeLabel : type.label,
         semanticsLabel: type.largeLabel,
-        style: TextStyles.bodyMediumSemibold.copyWith(
+        style: SepteoTextStyles.bodySmallInterBold.copyWith(
           color: Colors.white,
           fontSize: 14,
         ),
@@ -145,8 +137,8 @@ enum VaInfoCardType {
   const VaInfoCardType(this.label, this.largeLabel);
 
   Color get color => this == VaInfoCardType.manual
-      ? ListoMainColors.error.dark
-      : ListoMainColors.primary.dark;
+      ? SepteoColors.red.shade600
+      : SepteoColors.blue.shade600;
 }
 
 extension VaInfoCardTypeExtension on VaInfoCardType {

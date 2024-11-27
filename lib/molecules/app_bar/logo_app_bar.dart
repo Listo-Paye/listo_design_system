@@ -30,12 +30,12 @@ class LogoAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          SizedBox(width: Spacings.md),
+          SizedBox(width: SepteoSpacings.xl),
           ..._prefix,
           title,
           Spacer(),
           ..._suffix,
-          SizedBox(width: Spacings.sm),
+          SizedBox(width: SepteoSpacings.md),
         ],
       ),
     );
@@ -49,7 +49,7 @@ class LogoAppBar extends StatelessWidget implements PreferredSizeWidget {
     if (logo != null) {
       prefix.add(Center(
         child: Padding(
-          padding: const EdgeInsets.only(top: Spacings.xs),
+          padding: const EdgeInsets.only(top: SepteoSpacings.xs),
           child: Image(
             image: logo!,
             fit: BoxFit.contain,
@@ -60,13 +60,13 @@ class LogoAppBar extends StatelessWidget implements PreferredSizeWidget {
     }
 
     prefix.add(SizedBox(
-      width: Spacings.md,
+      width: SepteoSpacings.xl,
     ));
 
     for (var action in actions) {
       prefix.add(action);
       prefix.add(SizedBox(
-        width: Spacings.xs,
+        width: SepteoSpacings.xs,
       ));
     }
     return prefix;
@@ -76,7 +76,7 @@ class LogoAppBar extends StatelessWidget implements PreferredSizeWidget {
     var suffix = <Widget>[];
     for (var action in endActions) {
       suffix.add(SizedBox(
-        width: Spacings.md,
+        width: SepteoSpacings.xl,
       ));
       suffix.add(action);
     }

@@ -33,7 +33,7 @@ class ChartIndicator extends StatelessWidget {
         ),
         Text(
           text,
-          style: TextStyles.bodySmall.copyWith(
+          style: SepteoTextStyles.captionInter.copyWith(
             color: textColor,
           ),
         )

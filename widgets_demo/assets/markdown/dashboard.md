@@ -11,7 +11,7 @@ class DashboardPresenter extends StatelessWidget {
       child: DashboardDesktop(
         key: key,
         selector: Container(
-          color: ListoMainColors.primary.medium,
+          color: SepteoColors.blue.shade300,
           child: Center(
             child: Button(
                 width: 150,
@@ -20,7 +20,7 @@ class DashboardPresenter extends StatelessWidget {
                     key.currentState?.board = null;
                   } else {
                     key.currentState?.board = Container(
-                      color: ListoMainColors.info.medium,
+                      color: SepteoColors.blue.shade300,
                     );
                   }
                 },
@@ -28,7 +28,7 @@ class DashboardPresenter extends StatelessWidget {
           ),
         ),
         initialFrame: Container(
-          color: ListoMainColors.secondary.medium,
+          color: SepteoColors.orange.shade300,
         ),
       ),
     );
