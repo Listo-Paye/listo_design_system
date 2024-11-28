@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
+import 'package:widgets_demo/components/forms/components/checkboxs.dart';
 
-import 'components/checkbox.dart';
 import 'components/saisie.dart';
 import 'labels/components/all_in_one.dart';
 import 'labels/labels.dart';
