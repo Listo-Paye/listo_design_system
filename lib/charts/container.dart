@@ -71,7 +71,7 @@ class ChartContainer extends StatelessWidget {
                 : SizedBox(),
             secondaryButtonText.isNotEmpty
                 ? OutlinedButton.icon(
-                    onPressed: onButtonPressed,
+                    onPressed: onSecondaryButtonPressed,
                     icon: secondaryButtonIcon,
                     label: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10),

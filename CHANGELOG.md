@@ -1,8 +1,9 @@
-## 0.6.0+1
+## 0.6.0+2
 * Replaced local theme with septeo theme using septeo_design_system
 * Add Secondary Button on ChartContainer
 * Add tri state checkbox
 * Add CheckBoxWithText  widget
+* Update dependencies versions
 
 ## 0.5.0+3
 * Add Charts
