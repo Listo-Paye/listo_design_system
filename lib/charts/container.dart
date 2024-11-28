@@ -7,6 +7,9 @@ class ChartContainer extends StatelessWidget {
   final Icon? buttonIcon;
   final void Function() onButtonPressed;
   final String title;
+  final String secondaryButtonText;
+  final void Function()? onSecondaryButtonPressed;
+  final Icon? secondaryButtonIcon;
   const ChartContainer({
     super.key,
     required this.child,
@@ -14,6 +17,9 @@ class ChartContainer extends StatelessWidget {
     this.buttonIcon,
     required this.onButtonPressed,
     required this.title,
+    this.secondaryButtonText = "",
+    this.onSecondaryButtonPressed,
+    this.secondaryButtonIcon,
   });
 
   @override
@@ -58,6 +64,34 @@ class ChartContainer extends StatelessWidget {
                 shadowColor: Colors.transparent,
               ),
             ),
+            secondaryButtonText.isNotEmpty
+                ? SizedBox(
+                    height: SepteoSpacings.xs,
+                  )
+                : SizedBox(),
+            secondaryButtonText.isNotEmpty
+                ? OutlinedButton.icon(
+                    onPressed: onButtonPressed,
+                    icon: secondaryButtonIcon,
+                    label: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: Text(
+                        secondaryButtonText,
+                        style: SepteoTextStyles.bodySmallInter.copyWith(
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: SepteoColors.blue.shade900,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      minimumSize: Size(double.infinity, 40),
+                      shadowColor: Colors.transparent,
+                    ),
+                  )
+                : SizedBox(),
           ],
         ),
       ),
