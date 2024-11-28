@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:listo_design_system/listo_design_system.dart';
-import 'package:widgetbook/widgetbook.dart';
-import 'package:widgets_demo/use_case_with_markdown.dart';
 
 class TriStateCheckboxDemo extends StatefulWidget {
   const TriStateCheckboxDemo({Key? key}) : super(key: key);
@@ -14,7 +12,7 @@ class TriStateCheckboxDemoState extends State<TriStateCheckboxDemo> {
   bool? checkboxValue1 = false;
   bool? checkboxValue2;
   bool? checkboxValue3 = true;
-  bool? checkboxValue4 = false;
+  bool? checkboxValue4;
 
   // Fonctions de mise à jour pour chaque CheckBox
   void onCheckboxChanged1(bool? newValue) {
@@ -79,24 +77,9 @@ class TriStateCheckboxDemoState extends State<TriStateCheckboxDemo> {
         const SizedBox(width: 16),
         ElevatedButton(
           onPressed: resetCheckboxValue4,
-          child: const Text('Réinitialiser  à null'),
+          child: const Text('Repasser la valeur à null'),
         ),
       ],
     );
   }
-}
-
-WidgetbookComponent checkbox(BuildContext context) {
-  return WidgetbookComponent(
-    name: "CheckBoxs",
-    useCases: [
-      usercaseWithMarkdown(
-        "CheckBox",
-        (context) {
-          return const TriStateCheckboxDemo();
-        },
-        "markdown/checkbox.md",
-      ),
-    ],
-  );
 }

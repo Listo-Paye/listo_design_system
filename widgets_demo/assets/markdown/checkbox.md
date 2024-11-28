@@ -1,13 +1,13 @@
 # Utiliser les checkboxs
 
-Les `CheckBox` sont des éléments d'interface utilisateur qui permettent à l'utilisateur de sélectionner ou désélectionner une option. Elles peuvent être utilisées en version à 2 états (true/false) ou à 3 états (true/false/null), selon vos besoins.
+Les **CheckBox** sont des éléments d'interface utilisateur qui permettent à l'utilisateur de sélectionner ou désélectionner une option. Elles peuvent être utilisées en version à **2 états (true/false)** ou à **3 états (true/false/null)**, selon vos besoins.
 
 ## Utilisation
 
-Pour utiliser une `CheckBox`, vous devez utiliser le widget `CheckBox` du design system. Ce widget est contrôlé par son parent, ce qui signifie que vous gérez l'état de la `CheckBox` dans votre propre widget, en passant la valeur actuelle et une fonction de rappel pour les changements.
+Pour utiliser une **CheckBox**, vous devez utiliser le widget **CheckBox** du design system. Ce widget est contrôlé par son parent, ce qui signifie que vous gérez l'état de la **CheckBox** dans votre propre widget, en passant la valeur actuelle et une fonction de rappel pour les changements.
 ### Version 2 états
 
-Dans cette version, la CheckBox alterne entre true et false lorsque l'utilisateur clique dessus. Vous gérez l'état de la CheckBox dans votre widget en utilisant une variable de type bool.
+Dans cette version, la **CheckBox** alterne entre true et false lorsque l'utilisateur clique dessus. Vous gérez l'état de la **CheckBox** dans votre widget en utilisant une variable de type bool.
 ```dart
 import 'package:flutter/material.dart';
 import 'package:listo_design_system/atoms/checkbox.dart';
@@ -21,9 +21,11 @@ class _BinaryCheckboxDemoState extends State<BinaryCheckboxDemo> {
   bool isChecked = false;
 
   void _onCheckboxChanged(bool? newValue) {
-    setState(() {
-      isChecked = newValue ?? false; // Assure que isChecked est toujours true ou false
-    });
+    if (newValue != null) {
+      setState(() {
+        isChecked = newValue;
+      });
+    }
   }
 
   @override
@@ -35,12 +37,12 @@ class _BinaryCheckboxDemoState extends State<BinaryCheckboxDemo> {
   }
 }
 ```
- - **Variable d'état** : isChecked est de type bool et ne peut être que true ou false.
- - **Fonction onChanged** : Met à jour isChecked avec la nouvelle valeur reçue. L'opérateur ?? assure que isChecked n'est jamais null.
- - **Widget CheckBox** : Vous passez isChecked à la propriété value, et _onCheckboxChanged à la propriété onChanged.
+ - **Variable d'état** : **isChecked** est de type **bool** et ne peut être que **true** ou **false**.
+ - **Fonction onChanged** : Met à jour **isChecked** avec la nouvelle valeur reçue. L'opérateur ?? assure que **isChecked** n'est jamais **null**.
+ - **Widget CheckBox** : Vous passez **isChecked** à la propriété **value**, et _**onCheckboxChanged** à la propriété **onChanged**.
 ### Version 3 états
 
-Dans cette version, la CheckBox alterne entre true et false lorsqu'elle est cliquée, mais vous avez la possibilité de passer la valeur à null sous certaines conditions spécifiques de votre application.
+Dans cette version, la **CheckBox** alterne entre **true** et **false** lorsqu'elle est cliquée, mais vous avez la possibilité de passer la valeur à **null** sous certaines conditions spécifiques de votre application.
 
 ```dart
 import 'package:flutter/material.dart';
@@ -60,10 +62,11 @@ class _ConditionalCheckboxDemoState extends State<ConditionalCheckboxDemo> {
     });
   }
 
-  void _resetCheckboxValue() {
-    // if( Vos conditions pour passer la valeur à null) {
+  void _passCheckboxValueToNull() {
+    // if(Vos conditions pour passer la valeur à null) {
+    // Usage le plus courant, une liste d'enfants checkbox avec certains checkés et d'autres non
     setState(() {
-      checkboxValue = null;
+      checkboxValue = null; // Réinitialise la valeur à null
     });
     // }
   }
@@ -78,7 +81,7 @@ class _ConditionalCheckboxDemoState extends State<ConditionalCheckboxDemo> {
         ),
         SizedBox(height: 16),
         ElevatedButton(
-          onPressed: _resetCheckboxValue,
+          onPressed: _passCheckboxValueToNull,
           child: const Text('Réinitialiser la CheckBox à null'),
         ),
       ],
@@ -86,9 +89,9 @@ class _ConditionalCheckboxDemoState extends State<ConditionalCheckboxDemo> {
   }
 }
 ```
-
- - **Variable d'état** : checkboxValue est de type bool? et peut être true, false ou null.
- - **Fonction onChanged** : Met à jour checkboxValue avec la nouvelle valeur reçue.
- - **Fonction _resetCheckboxValue** : Assigne null à checkboxValue lorsqu'elle est appelée. Vous pouvez ajouter vos propres conditions avant de passer la valeur à null.
- - **Widget CheckBox** : Vous passez checkboxValue à la propriété value, et _onCheckboxChanged à la propriété onChanged.
- - **Bouton pour réinitialiser** : Un bouton permet de réinitialiser la CheckBox à null en appelant _resetCheckboxValue.
+## Explications
+ - **Variable d'état** : checkboxValue est de type **bool?** et peut être **true**, **false** ou **null**.
+ - **Fonction onChanged** : Met à jour **checkboxValue** avec la nouvelle valeur reçue.
+ - **Fonction __passCheckboxValueToNull** : Assigne **null** à **checkboxValue** lorsqu'elle est appelée. Vous pouvez ajouter vos propres conditions avant de passer la valeur à **null**.
+ - **Widget CheckBox** : Vous passez **checkboxValue** à la propriété **value**, et _**onCheckboxChanged** à la propriété **onChanged**.
+ - **Bouton pour réinitialiser** : Un bouton permet de réinitialiser la **CheckBox** à **null** en appelant _**_passCheckboxValueToNull**.
