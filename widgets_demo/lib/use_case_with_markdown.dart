@@ -1,11 +1,17 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_highlighter/flutter_highlighter.dart';
+import 'package:flutter_highlighter/themes/atom-one-dark.dart';
+import 'package:flutter_highlighter/themes/atom-one-light.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:listo_design_system/listo_design_system.dart';
+//ignore: depend_on_referenced_packages
+import 'package:markdown/markdown.dart' as md;
 import 'package:url_launcher/url_launcher.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:listo_design_system/listo_design_system.dart';
 
 WidgetbookUseCase usercaseWithMarkdown(
   String title,
@@ -76,6 +82,9 @@ class _CardWithMarkdownState extends State<CardWithMarkdown> {
             Markdown(
               shrinkWrap: true,
               data: mdData,
+              builders: {
+                'code': CodeElementBuilder(),
+              },
               styleSheet: MarkdownStyleSheet(
                 p: SepteoTextStyles.bodySmallInter,
                 strong: SepteoTextStyles.bodySmallInterBold,
@@ -83,10 +92,10 @@ class _CardWithMarkdownState extends State<CardWithMarkdown> {
                   fontSize: 12,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
-                  backgroundColor: Colors.grey[900],
+                  backgroundColor: Color(0xff282c34),
                 ),
                 codeblockDecoration: BoxDecoration(
-                  color: Colors.grey[900],
+                  color: Color(0xff282c34),
                   borderRadius: BorderRadius.circular(5.0),
                 ),
                 checkbox: SepteoTextStyles.bodySmallInterBold,
@@ -111,6 +120,41 @@ class _CardWithMarkdownState extends State<CardWithMarkdown> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class CodeElementBuilder extends MarkdownElementBuilder {
+  @override
+  Widget? visitElementAfter(md.Element element, TextStyle? preferredStyle) {
+    var language = '';
+
+    if (element.attributes['class'] != null) {
+      String lg = element.attributes['class'] as String;
+      language = lg.substring(9);
+    }
+    return HighlightView(
+      // The original code to be highlighted
+      element.textContent,
+
+      // Specify language
+      // It is recommended to give it a value for performance
+      language: language,
+
+      // Specify highlight theme
+      // All available themes are listed in `themes` folder
+      theme: MediaQueryData.fromView(
+                      RendererBinding.instance.renderViews.first.flutterView)
+                  .platformBrightness ==
+              Brightness.light
+          ? atomOneLightTheme
+          : atomOneDarkTheme,
+
+      // Specify padding
+      padding: const EdgeInsets.all(8),
+
+      // Specify text style
+      textStyle: GoogleFonts.robotoMono(),
     );
   }
 }
