@@ -34,7 +34,7 @@ class ContractsSelectorState extends State<ContractsSelector> {
         _Groupe(
           children: [
             _ContractsSelectorTitle(
-              titre: "Tous des ${widget.nom}",
+              titre: "Tous les ${widget.nom}",
             ),
             _ElementCard(
               selected: true,
@@ -60,7 +60,7 @@ class ContractsSelectorState extends State<ContractsSelector> {
         child: _Groupe(
           children: [
             _ContractsSelectorTitle(
-              titre: "Tous des ${widget.nom}",
+              titre: "Tous les ${widget.nom}",
             ),
             _ElementCard(
               selected: true,
@@ -94,10 +94,10 @@ class ContractsSelectorState extends State<ContractsSelector> {
         ),
         child: ListView.separated(
           itemBuilder: (context, index) => groups[index].animate().fade(
-            delay: Duration(
-              milliseconds: index * 100,
-            ),
-          ),
+                delay: Duration(
+                  milliseconds: index * 100,
+                ),
+              ),
           separatorBuilder: (_, __) => SizedBox(
             height: SepteoSpacings.md,
           ),
@@ -142,9 +142,8 @@ class _ElementCard extends StatelessWidget {
           color: SepteoColors.blue.shade200,
           border: Border(
             left: BorderSide(
-              color: selected
-                  ? SepteoColors.orange.shade400
-                  : Colors.transparent,
+              color:
+                  selected ? SepteoColors.orange.shade400 : Colors.transparent,
               width: 4,
             ),
           ),

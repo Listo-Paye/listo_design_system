@@ -1,4 +1,4 @@
-## 0.6.0+2
+## 0.6.0+4
 * Replaced local theme with septeo theme using septeo_design_system
 * Add Secondary Button on ChartContainer
 * Add tri state checkbox
