@@ -12,7 +12,7 @@ import 'upload/upload.dart';
 WidgetbookCategory formsCategory(BuildContext context) {
   return WidgetbookCategory(name: "Formulaires", children: [
     uploadComponent(context),
-    affiliationOc(context),
+    affiliationGarantie(context),
     searchbarAtom(context),
     labelsMolecule(context),
     tablesAndListsMolecule(context),

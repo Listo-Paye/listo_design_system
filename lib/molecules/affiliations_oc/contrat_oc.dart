@@ -50,11 +50,11 @@ class ContratsOrganismeComplementaireState
             style: SepteoTextStyles.bodySmallInterBold,
           ),
         ),
-        SizedBox(height: SepteoSpacings.xs),
+        SizedBox(height: SepteoSpacings.xxs),
         Column(
           children: _contrat.garanties.map((garantie) {
             return Padding(
-              padding: const EdgeInsets.only(bottom: SepteoSpacings.xs),
+              padding: const EdgeInsets.only(bottom: SepteoSpacings.xxs),
               child: CheckBoxWithText(
                 value: garantie.souscrit,
                 onChanged: (newValue) =>

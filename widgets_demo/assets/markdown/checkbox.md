@@ -92,6 +92,6 @@ class _ConditionalCheckboxDemoState extends State<ConditionalCheckboxDemo> {
 ## Explications
  - **Variable d'état** : checkboxValue est de type **bool?** et peut être **true**, **false** ou **null**.
  - **Fonction onChanged** : Met à jour **checkboxValue** avec la nouvelle valeur reçue.
- - **Fonction __passCheckboxValueToNull** : Assigne **null** à **checkboxValue** lorsqu'elle est appelée. Vous pouvez ajouter vos propres conditions avant de passer la valeur à **null**.
+ - **Fonction passCheckboxValueToNull** : Assigne **null** à **checkboxValue** lorsqu'elle est appelée. Vous pouvez ajouter vos propres conditions avant de passer la valeur à **null**.
  - **Widget CheckBox** : Vous passez **checkboxValue** à la propriété **value**, et _**onCheckboxChanged** à la propriété **onChanged**.
  - **Bouton pour réinitialiser** : Un bouton permet de réinitialiser la **CheckBox** à **null** en appelant _**_passCheckboxValueToNull**.

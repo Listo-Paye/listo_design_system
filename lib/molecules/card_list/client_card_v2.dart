@@ -22,6 +22,7 @@ class ClientCardV2 extends StatelessWidget {
             child: Card(
               color: SepteoColors.grey.shade100,
               margin: EdgeInsets.zero,
+              elevation: 0,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(SepteoSpacings.xxs),
               ),

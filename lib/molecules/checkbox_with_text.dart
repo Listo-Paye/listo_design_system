@@ -96,7 +96,12 @@ class CheckBoxWithTextState extends State<CheckBoxWithText> {
               border: Border.all(color: borderColor, width: borderWidth),
               borderRadius: BorderRadius.circular(SepteoSpacings.xxs),
             ),
-            padding: const EdgeInsets.all(SepteoSpacings.xs),
+            padding: const EdgeInsets.only(
+              left: SepteoSpacings.xs,
+              right: SepteoSpacings.xs,
+              top: 6,
+              bottom: 6,
+            ),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [

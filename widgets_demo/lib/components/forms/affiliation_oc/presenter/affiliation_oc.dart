@@ -4,16 +4,16 @@ import 'package:listo_design_system/molecules/affiliations_oc/affiliations_garan
 import 'package:listo_design_system/molecules/affiliations_oc/contrat_oc_entity.dart';
 import 'package:listo_design_system/molecules/affiliations_oc/employee.dart';
 
-class GestionAffiliationsFormPresenter extends StatefulWidget {
-  const GestionAffiliationsFormPresenter({super.key});
+class AffiliationGarantieFormPresenter extends StatefulWidget {
+  const AffiliationGarantieFormPresenter({super.key});
 
   @override
-  GestionAffiliationsFormPresenterState createState() =>
-      GestionAffiliationsFormPresenterState();
+  AffiliationGarantieFormPresenterState createState() =>
+      AffiliationGarantieFormPresenterState();
 }
 
-class GestionAffiliationsFormPresenterState
-    extends State<GestionAffiliationsFormPresenter> {
+class AffiliationGarantieFormPresenterState
+    extends State<AffiliationGarantieFormPresenter> {
   // Simulation des données de l'employé
   final EmployeeForAffiliationOc fakeEmployee = EmployeeForAffiliationOc(
     nom: 'Norris',

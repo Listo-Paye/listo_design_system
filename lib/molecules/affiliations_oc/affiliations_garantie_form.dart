@@ -68,7 +68,10 @@ class AffiliationGarantieFormState extends State<AffiliationGarantieForm> {
         child: Padding(
           padding: const EdgeInsets.all(SepteoSpacings.md),
           child: Container(
-            color: Colors.white,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(SepteoSpacings.sm),
+            ),
             child: Padding(
               padding: const EdgeInsets.all(SepteoSpacings.xl),
               child: SingleChildScrollView(
@@ -99,9 +102,8 @@ class AffiliationGarantieFormState extends State<AffiliationGarantieForm> {
                               newValue, 'mutuelle');
                         },
                       ),
-                      SizedBox(height: SepteoSpacings.sm),
                     ],
-                    const SizedBox(height: SepteoSpacings.md),
+                    const SizedBox(height: SepteoSpacings.xs),
                     Semantics(
                       header: true,
                       child: Text('Contrats de prévoyance',
@@ -117,7 +119,6 @@ class AffiliationGarantieFormState extends State<AffiliationGarantieForm> {
                               newValue, 'prévoyance');
                         },
                       ),
-                      SizedBox(height: SepteoSpacings.sm),
                     ],
                     SizedBox(height: SepteoSpacings.sm),
                     // Boutons d'action
@@ -131,7 +132,7 @@ class AffiliationGarantieFormState extends State<AffiliationGarantieForm> {
                             onPressed: _handleReset,
                           ),
                         ),
-                        SizedBox(width: SepteoSpacings.md),
+                        SizedBox(width: SepteoSpacings.sm),
                         Expanded(
                           child: Button(
                             style: ButtonType.primary,
