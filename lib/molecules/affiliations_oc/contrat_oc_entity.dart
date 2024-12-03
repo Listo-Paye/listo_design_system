@@ -1,18 +1,20 @@
-class ContratsOcdata {
+class ContratOc {
+  final String type;
   final String libelleContrat;
-  final List<Garanties> garanties;
+  final List<GarantieContratOc> garanties;
 
-  ContratsOcdata({
+  ContratOc({
     required this.libelleContrat,
+    required this.type,
     required this.garanties,
   });
 }
 
-class Garanties {
+class GarantieContratOc {
   final String libelleGarantie;
-  final bool souscrit;
+  bool souscrit;
 
-  Garanties({
+  GarantieContratOc({
     required this.libelleGarantie,
     required this.souscrit,
   });

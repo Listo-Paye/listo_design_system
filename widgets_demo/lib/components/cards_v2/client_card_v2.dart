@@ -7,7 +7,7 @@ import 'package:widgets_demo/use_case_with_markdown.dart';
 WidgetbookComponent clientCardV2(BuildContext context) {
   return WidgetbookComponent(name: "Client Card", useCases: [
     usercaseWithMarkdown("Client Card V2", (context) {
-      final employee = EmployeeData(
+      final employee = EmployeeForAffiliationOc(
         nom: 'Norris',
         prenom: 'Chuck',
         dateDebut: '01/01/2023',

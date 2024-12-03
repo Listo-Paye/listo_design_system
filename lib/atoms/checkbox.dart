@@ -29,7 +29,7 @@ class CheckBox extends StatelessWidget {
     Widget? iconWidget;
 
     if (value == null) {
-      checkboxColor = SepteoColors.blue.shade700; // Couleur pour l'état null
+      checkboxColor = SepteoColors.blue.shade700;
       iconWidget = Icon(Icons.remove, color: Colors.white, size: 14);
     } else if (value == true) {
       checkboxColor = SepteoColors.blue.shade900;

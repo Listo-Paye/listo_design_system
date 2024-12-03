@@ -1,11 +1,11 @@
-class EmployeeData {
+class EmployeeForAffiliationOc {
   final String nom;
   final String prenom;
   final String dateFin;
   final String dateDebut;
   final String type;
 
-  EmployeeData({
+  EmployeeForAffiliationOc({
     required this.nom,
     required this.prenom,
     required this.dateFin,
