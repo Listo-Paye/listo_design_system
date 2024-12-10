@@ -3,9 +3,9 @@ import 'package:listo_design_system/listo_design_system.dart';
 import 'package:listo_design_system/molecules/upload/list_item_download.dart';
 import 'package:path/path.dart' as path;
 
-import 'upload_area.dart';
-import 'file_list.dart';
 import 'custom_file_wrapper.dart';
+import 'file_list.dart';
+import 'upload_area.dart';
 
 class UploadDialog extends StatefulWidget {
   final UploadConfig config;
@@ -127,9 +127,21 @@ class _UploadDialogState extends State<UploadDialog> {
       backgroundColor: Colors.white,
       contentPadding: const EdgeInsets.fromLTRB(
         SepteoSpacings.xxl,
-        SepteoSpacings.xxl,
+        SepteoSpacings.xxxs,
         SepteoSpacings.xxl,
         SepteoSpacings.md,
+      ),
+      icon: MouseRegion(
+        cursor: SystemMouseCursors.click, // Définit le curseur cliquable
+        child: GestureDetector(
+          onTap: () {
+            _closeModale();
+          },
+          child: Align(
+            alignment: Alignment.topRight,
+            child: Icon(Icons.close),
+          ),
+        ),
       ),
       content: SizedBox(
         width: 550,
@@ -158,9 +170,17 @@ class _UploadDialogState extends State<UploadDialog> {
   }
 
   Widget _buildHeader() {
-    return Text(
-      widget.config.modalTitle,
-      style: SepteoTextStyles.bodyLargeInterBold,
+    return Stack(
+      children: [
+        // Le titre centré ou aligné à gauche
+        Align(
+          alignment: Alignment.bottomLeft,
+          child: Text(
+            widget.config.modalTitle,
+            style: SepteoTextStyles.bodyLargeInterBold,
+          ),
+        ),
+      ],
     );
   }
 
@@ -172,8 +192,7 @@ class _UploadDialogState extends State<UploadDialog> {
             style: ButtonType.secondary,
             text: widget.config.secondaryButtonText,
             onPressed: () {
-              widget.onClose?.call();
-              Navigator.of(context).pop();
+              _closeModale();
             },
           ),
         ),
@@ -205,5 +224,10 @@ class _UploadDialogState extends State<UploadDialog> {
 
     final contentHeight = baseHeight + (_files.length * fileItemHeight);
     return contentHeight.clamp(minHeight, maxHeight);
+  }
+
+  void _closeModale() {
+    widget.onClose?.call();
+    Navigator.of(context).pop();
   }
 }
