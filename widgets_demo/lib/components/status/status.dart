@@ -3,7 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:widgets_demo/components/status/service_status/service_status.dart';
 
 WidgetbookCategory statusServiceCategory(BuildContext context) {
-  return WidgetbookCategory(name: "Status", children: [
+  return WidgetbookCategory(name: "Environment", children: [
     statusService(context),
   ]);
 }

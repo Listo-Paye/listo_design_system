@@ -1,3 +1,8 @@
+## 0.6.0+6
+* Add close button on Upload modale
+* Add lighter blue focus color on CheckBoxWithText
+* Add ServicesStatus Widget, to show microservices status by environment
+
 ## 0.6.0+5
 * Replaced local theme with septeo theme using septeo_design_system
 * Add Secondary Button on ChartContainer

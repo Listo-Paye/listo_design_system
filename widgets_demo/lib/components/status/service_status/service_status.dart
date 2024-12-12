@@ -42,12 +42,12 @@ WidgetbookComponent statusService(BuildContext context) {
   ];
 
   return WidgetbookComponent(
-    name: "Status service",
+    name: "Status",
     useCases: [
       usercaseWithMarkdown(
-        "Statut des services",
+        "ServicesStatus",
         (context) {
-          return EnvironmentsPresenter(environments: environments);
+          return ServicesStatusPresenter(environments: environments);
         },
         "markdown/status_service.md",
       ),

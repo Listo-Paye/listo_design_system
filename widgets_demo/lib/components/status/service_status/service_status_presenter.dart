@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:listo_design_system/molecules/status_service/environment.dart';
 
-class EnvironmentsPresenter extends StatelessWidget {
+class ServicesStatusPresenter extends StatelessWidget {
   final List<Environment> environments;
 
-  const EnvironmentsPresenter({super.key, required this.environments});
+  const ServicesStatusPresenter({super.key, required this.environments});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class EnvironmentsPresenter extends StatelessWidget {
       child: ListView(
         shrinkWrap: true,
         children: environments
-            .map((env) => EnvironmentWidget(
+            .map((env) => ServicesStatus(
                 environment: env,
                 areHealthy: env.services.every((service) => service.isHealthy)))
             .toList(),

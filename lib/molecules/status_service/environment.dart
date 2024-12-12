@@ -15,18 +15,18 @@ class Environment {
   Environment({required this.name, required this.services});
 }
 
-class EnvironmentWidget extends StatefulWidget {
+class ServicesStatus extends StatefulWidget {
   final Environment environment;
   final bool areHealthy;
 
-  const EnvironmentWidget(
+  const ServicesStatus(
       {super.key, required this.environment, required this.areHealthy});
 
   @override
-  EnvironmentWidgetState createState() => EnvironmentWidgetState();
+  ServicesStatusState createState() => ServicesStatusState();
 }
 
-class EnvironmentWidgetState extends State<EnvironmentWidget>
+class ServicesStatusState extends State<ServicesStatus>
     with SingleTickerProviderStateMixin {
   bool _isExpanded = false;
   late AnimationController _controller;
