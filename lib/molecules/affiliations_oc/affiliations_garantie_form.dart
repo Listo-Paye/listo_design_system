@@ -3,7 +3,7 @@ import 'package:listo_design_system/listo_design_system.dart';
 
 class AffiliationGarantieForm extends StatefulWidget {
   final EmployeeForAffiliationOc employee;
-  final List<ContratOc> contrats;
+  final List<ContratOcWithGaranties> contrats;
   final void Function(String contratLibelle, String garantieLibelle,
       bool newValue, String type) onUpdateGarantie;
   final VoidCallback onReset;
@@ -23,7 +23,7 @@ class AffiliationGarantieForm extends StatefulWidget {
 }
 
 class AffiliationGarantieFormState extends State<AffiliationGarantieForm> {
-  late List<ContratOc> _contrats;
+  late List<ContratOcWithGaranties> _contrats;
 
   @override
   void initState() {
@@ -59,73 +59,85 @@ class AffiliationGarantieFormState extends State<AffiliationGarantieForm> {
     final contratsMutuelle =
         _contrats.where((c) => c.type == 'mutuelle').toList();
     final contratsPrevoyance =
-        _contrats.where((c) => c.type == 'prévoyance').toList();
+        _contrats.where((c) => c.type == 'prevoyance').toList();
 
-    return Semantics(
-      container: true,
+    return SingleChildScrollView(
       child: Container(
         color: SepteoColors.blue.shade50,
-        child: Padding(
-          padding: const EdgeInsets.all(SepteoSpacings.md),
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(SepteoSpacings.sm),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(SepteoSpacings.xl),
-              child: SingleChildScrollView(
+        padding: const EdgeInsets.all(SepteoSpacings.md),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(SepteoSpacings.sm),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(SepteoSpacings.xl),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: SepteoSpacings.xxs),
                     Semantics(
                       header: true,
-                      child: Text('Gérer les affiliations',
-                          style: SepteoTextStyles.bodyLargeInterBold),
+                      child: Text(
+                        'Gérer les affiliations',
+                        style: SepteoTextStyles.bodyLargeInterBold,
+                      ),
                     ),
                     SizedBox(height: SepteoSpacings.lg),
                     ClientCardV2(employee: widget.employee),
                     const SizedBox(height: SepteoSpacings.md),
-                    Semantics(
-                      header: true,
-                      child: Text('Contrats de mutuelle',
-                          style: SepteoTextStyles.bodySmallInter),
-                    ),
-                    const SizedBox(height: SepteoSpacings.xxs),
-                    for (var contrat in contratsMutuelle) ...[
-                      ContratsOrganismeComplementaire(
-                        contrat: contrat,
-                        onUpdateGarantie:
-                            (contratLibelle, garantieLibelle, newValue) {
-                          _handleUpdateGarantie(contratLibelle, garantieLibelle,
-                              newValue, 'mutuelle');
-                        },
+                    if (contratsMutuelle.isNotEmpty) ...[
+                      Semantics(
+                        header: true,
+                        child: Text(
+                          'Contrats de mutuelle',
+                          style: SepteoTextStyles.bodySmallInter,
+                        ),
                       ),
+                      const SizedBox(height: SepteoSpacings.xxs),
+                      for (var contrat in contratsMutuelle) ...[
+                        ContratsOrganismeComplementaire(
+                          contrat: contrat,
+                          onUpdateGarantie:
+                              (contratLibelle, garantieLibelle, newValue) {
+                            _handleUpdateGarantie(contratLibelle,
+                                garantieLibelle, newValue, 'mutuelle');
+                          },
+                        ),
+                      ],
                     ],
                     const SizedBox(height: SepteoSpacings.xs),
-                    Semantics(
-                      header: true,
-                      child: Text('Contrats de prévoyance',
-                          style: SepteoTextStyles.bodySmallInter),
-                    ),
-                    const SizedBox(height: SepteoSpacings.xxs),
-                    for (var contrat in contratsPrevoyance) ...[
-                      ContratsOrganismeComplementaire(
-                        contrat: contrat,
-                        onUpdateGarantie:
-                            (contratLibelle, garantieLibelle, newValue) {
-                          _handleUpdateGarantie(contratLibelle, garantieLibelle,
-                              newValue, 'prévoyance');
-                        },
+                    if (contratsPrevoyance.isNotEmpty) ...[
+                      Semantics(
+                        header: true,
+                        child: Text(
+                          'Contrats de prévoyance',
+                          style: SepteoTextStyles.bodySmallInter,
+                        ),
                       ),
+                      const SizedBox(height: SepteoSpacings.xxs),
+                      for (var contrat in contratsPrevoyance) ...[
+                        ContratsOrganismeComplementaire(
+                          contrat: contrat,
+                          onUpdateGarantie:
+                              (contratLibelle, garantieLibelle, newValue) {
+                            _handleUpdateGarantie(contratLibelle,
+                                garantieLibelle, newValue, 'prévoyance');
+                          },
+                        ),
+                      ],
                     ],
                     SizedBox(height: SepteoSpacings.sm),
                     // Boutons d'action
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // spacing: SepteoSpacings.sm,
+                      // runSpacing: SepteoSpacings.sm,
                       children: [
                         Expanded(
+                          // width: 150,
                           child: Button(
                             style: ButtonType.secondary,
                             text: 'Annuler',
@@ -134,6 +146,7 @@ class AffiliationGarantieFormState extends State<AffiliationGarantieForm> {
                         ),
                         SizedBox(width: SepteoSpacings.sm),
                         Expanded(
+                          // width: 150,
                           child: Button(
                             style: ButtonType.primary,
                             text: 'Enregistrer',
@@ -147,7 +160,7 @@ class AffiliationGarantieFormState extends State<AffiliationGarantieForm> {
                 ),
               ),
             ),
-          ),
+          ],
         ),
       ),
     );

@@ -8,4 +8,6 @@ export 'card_list/card_list_module.dart';
 export 'checkbox_with_text.dart';
 export 'navigation_menu/menu_icon.dart';
 export 'navigation_menu/navigation_menu.dart';
+export 'status_service/environment.dart';
+export 'status_service/micro_service_status.dart';
 export 'upload/upload_module.dart';

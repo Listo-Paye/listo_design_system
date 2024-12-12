@@ -23,45 +23,56 @@ class AffiliationGarantieFormPresenterState
     type: 'CDD',
   );
 
-  late List<ContratOc> fakeContrats;
+  late List<ContratOcWithGaranties> fakeContrats;
 
   @override
   void initState() {
     super.initState();
     fakeContrats = [
-      ContratOc(
-        libelleContrat: 'ALAN1',
+      ContratOcWithGaranties(
+        id: 'udhfiuds',
+        libelleContrat: 'Mutuelle Benefiz',
         type: 'mutuelle',
         garanties: [
-          GarantieContratOc(libelleGarantie: 'Option 1', souscrit: true),
-          GarantieContratOc(libelleGarantie: 'Option 2', souscrit: false),
-        ],
-      ),
-      ContratOc(
-        libelleContrat: 'ALAN2',
-        type: 'mutuelle',
-        garanties: [
-          GarantieContratOc(libelleGarantie: 'Option 1', souscrit: false),
-          GarantieContratOc(libelleGarantie: 'Benefiz', souscrit: true),
-        ],
-      ),
-      ContratOc(
-        libelleContrat: 'ALAN1',
-        type: 'prévoyance',
-        garanties: [
-          GarantieContratOc(libelleGarantie: 'Cadre TA (1/3)', souscrit: false),
-          GarantieContratOc(libelleGarantie: 'Cadre TB (2/3)', souscrit: true),
-        ],
-      ),
-      ContratOc(
-        libelleContrat: 'ALAN2',
-        type: 'prévoyance',
-        garanties: [
           GarantieContratOc(
-              libelleGarantie: 'Non cadre TA (1/2)', souscrit: true),
+              id: '1', libelleGarantie: 'Assuré seul', souscrit: true),
           GarantieContratOc(
-              libelleGarantie: 'Prévoyance Ensemble du personnel',
+              id: '2',
+              libelleGarantie: 'Assuré avec conjoint',
               souscrit: false),
+        ],
+      ),
+      ContratOcWithGaranties(
+        id: 'udhfiuds',
+        libelleContrat: 'Mutuelle MACIF',
+        type: 'mutuelle',
+        garanties: [
+          GarantieContratOc(
+              id: '3', libelleGarantie: 'Assuré seul', souscrit: false),
+          GarantieContratOc(
+              id: '4', libelleGarantie: 'Assuré avec conjoint', souscrit: true),
+        ],
+      ),
+      ContratOcWithGaranties(
+        id: 'udhfiuds',
+        libelleContrat: 'Prévoyance AG2R',
+        type: 'prévoyance',
+        garanties: [
+          GarantieContratOc(
+              id: '5',
+              libelleGarantie: 'X pourcent  du plafond SS Assure 18',
+              souscrit: false),
+          GarantieContratOc(id: '6', libelleGarantie: 'TAPrev', souscrit: true),
+        ],
+      ),
+      ContratOcWithGaranties(
+        id: 'udhfiuds',
+        libelleContrat: 'Prévoyance MMA',
+        type: 'prévoyance',
+        garanties: [
+          GarantieContratOc(id: '7', libelleGarantie: 'TBPrev', souscrit: true),
+          GarantieContratOc(
+              id: '8', libelleGarantie: 'TAPrev', souscrit: false),
         ],
       ),
     ];

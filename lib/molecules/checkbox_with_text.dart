@@ -73,7 +73,7 @@ class CheckBoxWithTextState extends State<CheckBoxWithText> {
 
     if (_focusNode.hasFocus) {
       // Modifier la couleur et l'épaisseur de la bordure lorsque le widget est focalisé
-      borderColor = SepteoColors.blue.shade900;
+      borderColor = SepteoColors.blue.shade500;
       borderWidth = 2.0; // Bordure plus épaisse lorsque focalisé
     } else if (widget.value == null) {
       borderColor = SepteoColors.blue.shade700;

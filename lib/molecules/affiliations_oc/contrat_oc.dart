@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:listo_design_system/listo_design_system.dart';
 
 class ContratsOrganismeComplementaire extends StatefulWidget {
-  final ContratOc contrat;
+  final ContratOcWithGaranties contrat;
   final void Function(
           String contratLibelle, String garantieLibelle, bool newValue)
       onUpdateGarantie;
@@ -20,7 +20,7 @@ class ContratsOrganismeComplementaire extends StatefulWidget {
 
 class ContratsOrganismeComplementaireState
     extends State<ContratsOrganismeComplementaire> {
-  late ContratOc _contrat;
+  late ContratOcWithGaranties _contrat;
 
   @override
   void initState() {
