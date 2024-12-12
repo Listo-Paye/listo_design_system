@@ -6,7 +6,7 @@ import 'upload_dialog.dart';
 class UploadButton extends StatelessWidget {
   final UploadConfig config;
   final List<String>? allowedExtensions;
-  final VoidCallback? onClose;
+  final Future<void> Function()? onClose;
   final UploadController controller;
   final Function(List<CustomFile> files) onUpload;
 

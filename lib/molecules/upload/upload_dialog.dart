@@ -10,7 +10,7 @@ import 'upload_area.dart';
 class UploadDialog extends StatefulWidget {
   final UploadConfig config;
   final List<String>? allowedExtensions;
-  final VoidCallback? onClose;
+  final Future<void> Function()? onClose;
   final Function(List<CustomFile>) onUpload;
   final UploadController controller;
 
@@ -120,57 +120,53 @@ class _UploadDialogState extends State<UploadDialog> {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(SepteoSpacings.sm),
-      ),
-      backgroundColor: Colors.white,
-      contentPadding: const EdgeInsets.fromLTRB(
-        SepteoSpacings.xxl,
-        SepteoSpacings.xxxs,
-        SepteoSpacings.xxl,
-        SepteoSpacings.md,
-      ),
-      icon: MouseRegion(
-        cursor: SystemMouseCursors.click, // Définit le curseur cliquable
-        child: GestureDetector(
-          onTap: () {
-            _closeModale();
-          },
-          child: Align(
-            alignment: Alignment.topRight,
-            child: Icon(Icons.close),
+    return PopScope<bool>(
+      onPopInvokedWithResult: (didPop, result) async {
+        if (didPop) {
+          await widget.onClose?.call();
+        }
+      },
+      child: AlertDialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(SepteoSpacings.sm),
+        ),
+        backgroundColor: Colors.white,
+        contentPadding: const EdgeInsets.fromLTRB(
+          SepteoSpacings.xxl,
+          SepteoSpacings.xxl,
+          SepteoSpacings.xxl,
+          SepteoSpacings.md,
+        ),
+        content: SizedBox(
+          width: 550,
+          height: _calculateDialogHeight(),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              _buildHeader(),
+              const SizedBox(height: SepteoSpacings.md),
+              UploadArea(
+                config: widget.config,
+                onFilesAdded: (files) => files.forEach(_addFile),
+              ),
+              if (_files.isNotEmpty) ...[
+                const SizedBox(height: SepteoSpacings.xs),
+                FileList(
+                  files: _files,
+                  onRemove: _removeFile,
+                ),
+              ],
+            ],
           ),
         ),
+        actions: [_buildActionButtons()],
       ),
-      content: SizedBox(
-        width: 550,
-        height: _calculateDialogHeight(),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _buildHeader(),
-            const SizedBox(height: SepteoSpacings.md),
-            UploadArea(
-              config: widget.config,
-              onFilesAdded: (files) => files.forEach(_addFile),
-            ),
-            if (_files.isNotEmpty) ...[
-              const SizedBox(height: SepteoSpacings.xs),
-              FileList(
-                files: _files,
-                onRemove: _removeFile,
-              ),
-            ],
-          ],
-        ),
-      ),
-      actions: [_buildActionButtons()],
     );
   }
 
   Widget _buildHeader() {
-    return Stack(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         // Le titre centré ou aligné à gauche
         Align(
@@ -178,6 +174,22 @@ class _UploadDialogState extends State<UploadDialog> {
           child: Text(
             widget.config.modalTitle,
             style: SepteoTextStyles.bodyLargeInterBold,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: SepteoSpacings.xs),
+          child: MouseRegion(
+            cursor: SystemMouseCursors.click, // Définit le curseur cliquable
+            child: GestureDetector(
+              onTap: () {
+                _closeModale();
+              },
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Icon(Icons.close,
+                    key: Key('${widget.runtimeType.toString()}_closeIcon')),
+              ),
+            ),
           ),
         ),
       ],
@@ -226,8 +238,12 @@ class _UploadDialogState extends State<UploadDialog> {
     return contentHeight.clamp(minHeight, maxHeight);
   }
 
-  void _closeModale() {
-    widget.onClose?.call();
+  void _pop() {
     Navigator.of(context).pop();
+  }
+
+  Future<void> _closeModale() async {
+    await widget.onClose?.call();
+    _pop();
   }
 }
