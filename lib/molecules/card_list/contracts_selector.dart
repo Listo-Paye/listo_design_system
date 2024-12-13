@@ -3,6 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:listo_design_system/listo_design_system.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
+//ignore_for_file: unused_element
 class ContractsSelector extends StatefulWidget {
   /// Le nom donné aux objets de cette liste
   /// Doit être au pluriel
