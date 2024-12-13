@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:listo_design_system/molecules/affiliations_oc/affiliations_garantie_form.dart';
 import 'package:listo_design_system/molecules/affiliations_oc/contrat_oc_entity.dart';
@@ -99,19 +98,7 @@ class AffiliationGarantieFormPresenterState
     });
   }
 
-  void _onSave() {
-    // Logique d'enregistrement des données
-    if (kDebugMode) {
-      print('Enregistrement des affiliations:');
-    }
-    for (var contrat in fakeContrats) {
-      print('Contrat ${contrat.libelleContrat} (${contrat.type}):');
-      for (var garantie in contrat.garanties) {
-        print(
-            ' - ${garantie.libelleGarantie}: ${garantie.souscrit ? "souscrit" : "non souscrit"}');
-      }
-    }
-  }
+  void _onSave() {}
 
   @override
   Widget build(BuildContext context) {

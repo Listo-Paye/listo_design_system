@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:listo_design_system/listo_design_system.dart';
 
 class TriStateCheckboxDemo extends StatefulWidget {
-  const TriStateCheckboxDemo({Key? key}) : super(key: key);
+  const TriStateCheckboxDemo({super.key});
 
   @override
   TriStateCheckboxDemoState createState() => TriStateCheckboxDemoState();
