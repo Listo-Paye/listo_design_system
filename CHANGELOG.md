@@ -1,4 +1,4 @@
-## 0.6.0+6
+## 0.6.0+7
 * Add close button on Upload modale
 * Add lighter blue focus color on CheckBoxWithText
 * Add ServicesStatus Widget, to show microservices status by environment
