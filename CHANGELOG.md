@@ -1,3 +1,7 @@
+## 0.6.0+8
+* Style correction for AffiliationGarantieForm and update model
+* Fix FilePicker dependencies
+
 ## 0.6.0+7
 * Add close button on Upload modale
 * Add lighter blue focus color on CheckBoxWithText
