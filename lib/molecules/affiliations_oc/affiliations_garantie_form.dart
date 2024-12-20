@@ -64,7 +64,8 @@ class AffiliationGarantieFormState extends State<AffiliationGarantieForm> {
     return SingleChildScrollView(
       child: Container(
         color: SepteoColors.blue.shade50,
-        padding: const EdgeInsets.all(SepteoSpacings.md),
+        padding: const EdgeInsets.fromLTRB(
+            0, 0, SepteoSpacings.md, SepteoSpacings.md),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -89,14 +90,14 @@ class AffiliationGarantieFormState extends State<AffiliationGarantieForm> {
                     SizedBox(height: SepteoSpacings.lg),
                     ClientCardV2(employee: widget.employee),
                     const SizedBox(height: SepteoSpacings.md),
-                    if (contratsMutuelle.isNotEmpty) ...[
-                      Semantics(
-                        header: true,
-                        child: Text(
-                          'Contrats de mutuelle',
-                          style: SepteoTextStyles.bodySmallInter,
-                        ),
+                    Semantics(
+                      header: true,
+                      child: Text(
+                        'Contrats de mutuelle',
+                        style: SepteoTextStyles.bodySmallInter,
                       ),
+                    ),
+                    if (contratsMutuelle.isNotEmpty) ...[
                       const SizedBox(height: SepteoSpacings.xxs),
                       for (var contrat in contratsMutuelle) ...[
                         ContratsOrganismeComplementaire(
@@ -108,16 +109,30 @@ class AffiliationGarantieFormState extends State<AffiliationGarantieForm> {
                           },
                         ),
                       ],
+                    ] else ...[
+                      SizedBox(height: SepteoSpacings.xs),
+                      Center(
+                        child: Semantics(
+                          header: true,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 20, bottom: 20),
+                            child: Text(
+                              'Il n\'y a pas de contrat de mutuelle actif. Veuillez le paramétrer dans les paramètres de l\'établissement',
+                              style: SepteoTextStyles.bodySmallInter,
+                            ),
+                          ),
+                        ),
+                      )
                     ],
                     const SizedBox(height: SepteoSpacings.xs),
-                    if (contratsPrevoyance.isNotEmpty) ...[
-                      Semantics(
-                        header: true,
-                        child: Text(
-                          'Contrats de prévoyance',
-                          style: SepteoTextStyles.bodySmallInter,
-                        ),
+                    Semantics(
+                      header: true,
+                      child: Text(
+                        'Contrats de prévoyance',
+                        style: SepteoTextStyles.bodySmallInter,
                       ),
+                    ),
+                    if (contratsPrevoyance.isNotEmpty) ...[
                       const SizedBox(height: SepteoSpacings.xxs),
                       for (var contrat in contratsPrevoyance) ...[
                         ContratsOrganismeComplementaire(
@@ -129,6 +144,20 @@ class AffiliationGarantieFormState extends State<AffiliationGarantieForm> {
                           },
                         ),
                       ],
+                    ] else ...[
+                      SizedBox(height: SepteoSpacings.xs),
+                      Center(
+                        child: Semantics(
+                          header: true,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 20, bottom: 20),
+                            child: Text(
+                              'Il n\'y a pas de contrat de prévoyance actif. Veuillez le paramétrer dans les paramètres de l\'établissement',
+                              style: SepteoTextStyles.bodySmallInter,
+                            ),
+                          ),
+                        ),
+                      )
                     ],
                     SizedBox(height: SepteoSpacings.sm),
                     // Boutons d'action

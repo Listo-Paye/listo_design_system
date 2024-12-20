@@ -14,7 +14,7 @@ class ClientCardV2 extends StatelessWidget {
     return Focus(
       child: Semantics(
         label:
-            '${employee.nom} ${employee.prenom}, Contrat : ${employee.type}, du ${employee.dateDebut} au ${employee.dateFin}',
+            '${employee.nom}, Contrat : ${employee.type}, du ${employee.dateDebut} au ${employee.dateFin}',
         child: LayoutBuilder(builder: (context, constraints) {
           return SizedBox(
             height: 62,
@@ -35,7 +35,7 @@ class ClientCardV2 extends StatelessWidget {
                     Flexible(
                       flex: 1,
                       child: Text(
-                        '${employee.nom} ${employee.prenom}',
+                        employee.nom,
                         style: SepteoTextStyles.bodySmallInter.copyWith(
                             fontWeight: FontWeight.w600,
                             color: SepteoColors.grey.shade900),

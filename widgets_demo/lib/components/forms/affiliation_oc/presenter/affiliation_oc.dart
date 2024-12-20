@@ -15,8 +15,7 @@ class AffiliationGarantieFormPresenterState
     extends State<AffiliationGarantieFormPresenter> {
   // Simulation des données de l'employé
   final EmployeeForAffiliationOc fakeEmployee = EmployeeForAffiliationOc(
-    nom: 'Norris',
-    prenom: 'Chuck',
+    nom: 'Norris Chuck',
     dateDebut: '01/01/2023',
     dateFin: '31/12/2023',
     type: 'CDD',

@@ -7,8 +7,7 @@ WidgetbookComponent clientCardV2(BuildContext context) {
   return WidgetbookComponent(name: "Client Card", useCases: [
     usercaseWithMarkdown("Client Card V2", (context) {
       final employee = EmployeeForAffiliationOc(
-        nom: 'Norris',
-        prenom: 'Chuck',
+        nom: 'Norris Chuck',
         dateDebut: '01/01/2023',
         dateFin: '31/12/2023',
         type: 'CDD',
