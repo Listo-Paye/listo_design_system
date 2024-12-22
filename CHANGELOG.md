@@ -1,3 +1,6 @@
+## 0.6.1
+* Add Menu for desktop dashboard
+
 ## 0.6.0+9
 * Style correction for AffiliationGarantieForm and update model
 * Fix FilePicker dependencies

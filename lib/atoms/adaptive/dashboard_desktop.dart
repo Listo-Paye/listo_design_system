@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:listo_design_system/listo_design_system.dart';
 
+import 'menu/menu_desktop.dart';
+
 class DashboardDesktop extends StatefulWidget {
   final Widget selector;
   final Widget? initialFrame;
@@ -17,6 +19,26 @@ class DashboardDesktop extends StatefulWidget {
     this.panelMaxWidth = 400,
     this.panelMinWidth = 200,
   });
+
+  factory DashboardDesktop.withMenu({
+    Key? key,
+    required String title,
+    required List<MenuElement> items,
+    String? selectedRoute,
+    Widget? initialFrame,
+    Widget? initialBoard,
+  }) {
+    return DashboardDesktop(
+      selector: MenuDesktop(
+        title: title,
+        items: items,
+        selectedRoute: selectedRoute,
+      ),
+      key: key,
+      initialFrame: initialFrame,
+      initialBoard: initialBoard,
+    );
+  }
 
   @override
   State<DashboardDesktop> createState() => DashboardDesktopState();
@@ -91,9 +113,10 @@ class DashboardDesktopState extends State<DashboardDesktop> {
                 ? 0
                 : panelWidth,
             child: _board
-                ?.withPadding(const EdgeInsets.only(left: SepteoSpacings.md))
-                .animate()
-                .scale() ??
+                    ?.withPadding(
+                        const EdgeInsets.only(left: SepteoSpacings.md))
+                    .animate()
+                    .scale() ??
                 SizedBox(),
           ),
         ],
