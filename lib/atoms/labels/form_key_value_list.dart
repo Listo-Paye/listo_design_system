@@ -23,7 +23,6 @@ class FormKeyValueList extends StatelessWidget {
         itemBuilder: (context, index) => Row(
           children: [
             Expanded(
-              flex: 2,
               child: Container(
                 decoration: BoxDecoration(
                   color: SepteoColors.blue.shade200,
@@ -49,30 +48,28 @@ class FormKeyValueList extends StatelessWidget {
                 ),
               ),
             ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                alignment: Alignment.centerRight,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border(
-                    top: border,
-                    bottom: border,
-                    right: border,
-                  ),
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(8),
-                    bottomRight: Radius.circular(8),
-                  ),
+            Container(
+              alignment: Alignment.centerRight,
+              width: 80,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border(
+                  top: border,
+                  bottom: border,
+                  right: border,
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 8.0),
-                  child: Text(
-                    values.values.elementAt(index),
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(8),
+                  bottomRight: Radius.circular(8),
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: Text(
+                  values.values.elementAt(index),
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
                   ),
                 ),
               ),

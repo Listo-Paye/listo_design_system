@@ -10,6 +10,8 @@ class DashboardDesktop extends StatefulWidget {
   final Widget? initialBoard;
   final double panelMaxWidth;
   final double panelMinWidth;
+  final double? maxSelectorWidth;
+  final double forceRatio;
 
   const DashboardDesktop({
     super.key,
@@ -18,6 +20,8 @@ class DashboardDesktop extends StatefulWidget {
     this.initialBoard,
     this.panelMaxWidth = 400,
     this.panelMinWidth = 200,
+    this.maxSelectorWidth,
+    this.forceRatio = .3,
   });
 
   factory DashboardDesktop.withMenu({
@@ -37,6 +41,9 @@ class DashboardDesktop extends StatefulWidget {
       key: key,
       initialFrame: initialFrame,
       initialBoard: initialBoard,
+      panelMaxWidth: 800,
+      maxSelectorWidth: 300,
+      forceRatio: .4,
     );
   }
 
@@ -72,7 +79,7 @@ class DashboardDesktopState extends State<DashboardDesktop> {
   double get panelWidth {
     var max = widget.panelMaxWidth;
     var min = widget.panelMinWidth;
-    var width = MediaQuery.sizeOf(context).width * .3;
+    var width = MediaQuery.sizeOf(context).width * widget.forceRatio;
     if (width > max) {
       return max;
     }
@@ -95,7 +102,10 @@ class DashboardDesktopState extends State<DashboardDesktop> {
         mainAxisSize: MainAxisSize.max,
         children: [
           SizedBox(
-            width: panelWidth,
+            width: (widget.maxSelectorWidth != null &&
+                    panelWidth > widget.maxSelectorWidth!)
+                ? widget.maxSelectorWidth
+                : panelWidth,
             child: Padding(
               padding: const EdgeInsets.only(right: SepteoSpacings.md),
               child: widget.selector.animate().fade(),

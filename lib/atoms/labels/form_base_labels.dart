@@ -21,6 +21,7 @@ class FormBaseLabels extends StatelessWidget {
           style: SepteoTextStyles.captionInter.copyWith(
             color: SepteoColors.grey.shade500,
           ),
+          overflow: TextOverflow.ellipsis,
         ),
         child,
       ],

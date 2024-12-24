@@ -1,4 +1,4 @@
-## 0.6.1
+## 0.6.1+1
 * Add Menu for desktop dashboard
 
 ## 0.6.0+9
