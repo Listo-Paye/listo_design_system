@@ -1,3 +1,6 @@
+## 0.6.1+2
+* Correction of ContratsOrganismeComplementaire onUpdateGarantie property name
+
 ## 0.6.1+1
 * Add Menu for desktop dashboard
 
