@@ -54,7 +54,7 @@ class AffiliationGarantieFormPresenterState
       ContratOcWithGaranties(
         id: 'udhfiuds',
         libelleContrat: 'Prévoyance AG2R',
-        type: 'prévoyance',
+        type: 'prevoyance',
         garanties: [
           GarantieContratOc(
               id: '5',
@@ -66,7 +66,7 @@ class AffiliationGarantieFormPresenterState
       ContratOcWithGaranties(
         id: 'udhfiuds',
         libelleContrat: 'Prévoyance MMA',
-        type: 'prévoyance',
+        type: 'prevoyance',
         garanties: [
           GarantieContratOc(id: '7', libelleGarantie: 'TBPrev', souscrit: true),
           GarantieContratOc(

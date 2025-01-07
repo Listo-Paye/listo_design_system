@@ -140,7 +140,7 @@ class AffiliationGarantieFormState extends State<AffiliationGarantieForm> {
                           onUpdateGarantie:
                               (contratLibelle, garantieLibelle, newValue) {
                             _handleUpdateGarantie(contratLibelle,
-                                garantieLibelle, newValue, 'prévoyance');
+                                garantieLibelle, newValue, 'prevoyance');
                           },
                         ),
                       ],
