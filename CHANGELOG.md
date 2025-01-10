@@ -1,4 +1,4 @@
-## 0.6.1+2
+## 0.6.1+3
 * Correction of ContratsOrganismeComplementaire onUpdateGarantie property name
 
 ## 0.6.1+1
