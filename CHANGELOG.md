@@ -1,3 +1,6 @@
+## 0.6.1+4
+* Fix size constraints on Pie Chart
+
 ## 0.6.1+3
 * Correction of ContratsOrganismeComplementaire onUpdateGarantie property name
 
