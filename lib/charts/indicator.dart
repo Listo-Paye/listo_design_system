@@ -31,10 +31,12 @@ class ChartIndicator extends StatelessWidget {
         const SizedBox(
           width: 4,
         ),
-        Text(
-          text,
-          style: SepteoTextStyles.captionInter.copyWith(
-            color: textColor,
+        Flexible(
+          child: Text(
+            text,
+            style: SepteoTextStyles.captionInter.copyWith(
+              color: textColor,
+            ),
           ),
         )
       ],

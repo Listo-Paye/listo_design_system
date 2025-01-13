@@ -84,53 +84,64 @@ class ChartPieState extends State<ChartPie> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        const SizedBox(
-          height: 18,
-        ),
-        Expanded(
-          child: AspectRatio(
-            aspectRatio: 1,
-            child: PieChart(
-              PieChartData(
-                pieTouchData: PieTouchData(
-                  touchCallback: (FlTouchEvent event, pieTouchResponse) {
-                    setState(() {
-                      if (!event.isInterestedForInteractions ||
-                          pieTouchResponse == null ||
-                          pieTouchResponse.touchedSection == null) {
-                        touchedIndex = -1;
-                        return;
-                      }
-                      touchedIndex =
-                          pieTouchResponse.touchedSection!.touchedSectionIndex;
-                    });
-                  },
+    return Column(
+      spacing: 14,
+      children: [
+        SizedBox(),
+        Row(
+          children: <Widget>[
+            // const SizedBox(
+            //   width: 10,
+            // ),
+            Expanded(
+              child: AspectRatio(
+                aspectRatio: 1,
+                child: PieChart(
+                  PieChartData(
+                    pieTouchData: PieTouchData(
+                      touchCallback: (FlTouchEvent event, pieTouchResponse) {
+                        setState(() {
+                          if (!event.isInterestedForInteractions ||
+                              pieTouchResponse == null ||
+                              pieTouchResponse.touchedSection == null) {
+                            touchedIndex = -1;
+                            return;
+                          }
+                          touchedIndex = pieTouchResponse
+                              .touchedSection!.touchedSectionIndex;
+                        });
+                      },
+                    ),
+                    borderData: FlBorderData(
+                      show: false,
+                    ),
+                    sectionsSpace: 0,
+                    centerSpaceRadius: 40,
+                    sections: showingSections(),
+                  ),
                 ),
-                borderData: FlBorderData(
-                  show: false,
-                ),
-                sectionsSpace: 0,
-                centerSpaceRadius: 40,
-                sections: showingSections(),
               ),
             ),
-          ),
-        ),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            ..._items.toChartIndicator(),
+            SizedBox(width: 10),
             SizedBox(
-              height: 18,
+              width: 150, // Définissez la largeur maximale souhaitée
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  ..._items.toChartIndicator(),
+                  SizedBox(
+                    height: 18,
+                  ),
+                ],
+              ),
             ),
+            // const SizedBox(
+            //   width: 10,
+            // ),
           ],
         ),
-        const SizedBox(
-          width: 28,
-        ),
+        SizedBox(),
       ],
     );
   }
