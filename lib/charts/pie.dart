@@ -90,9 +90,6 @@ class ChartPieState extends State<ChartPie> {
         SizedBox(),
         Row(
           children: <Widget>[
-            // const SizedBox(
-            //   width: 10,
-            // ),
             Expanded(
               child: AspectRatio(
                 aspectRatio: 1,
@@ -136,9 +133,6 @@ class ChartPieState extends State<ChartPie> {
                 ],
               ),
             ),
-            // const SizedBox(
-            //   width: 10,
-            // ),
           ],
         ),
         SizedBox(),
