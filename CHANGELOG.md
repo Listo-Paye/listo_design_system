@@ -1,4 +1,4 @@
-## 0.6.1+4
+## 0.6.1+5
 * Fix size constraints on Pie Chart
 
 ## 0.6.1+3
