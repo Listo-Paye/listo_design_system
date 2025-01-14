@@ -117,7 +117,7 @@ class AffiliationGarantieFormState extends State<AffiliationGarantieForm> {
                           child: Padding(
                             padding: const EdgeInsets.only(top: 20, bottom: 20),
                             child: Text(
-                              'Il n\'y a pas de contrat de mutuelle actif. Veuillez le paramétrer dans les paramètres de l\'établissement',
+                              'Aucun contrat de mutuelle actif.',
                               style: SepteoTextStyles.bodySmallInter,
                             ),
                           ),
@@ -152,7 +152,7 @@ class AffiliationGarantieFormState extends State<AffiliationGarantieForm> {
                           child: Padding(
                             padding: const EdgeInsets.only(top: 20, bottom: 20),
                             child: Text(
-                              'Il n\'y a pas de contrat de prévoyance actif. Veuillez le paramétrer dans les paramètres de l\'établissement',
+                              'Aucun contrat de prévoyance actif.',
                               style: SepteoTextStyles.bodySmallInter,
                             ),
                           ),
