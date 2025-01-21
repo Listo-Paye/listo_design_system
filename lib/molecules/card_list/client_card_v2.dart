@@ -44,10 +44,16 @@ class ClientCardV2 extends StatelessWidget {
                     Flexible(
                       flex: 1,
                       child: Text(
-                        '${employee.dateDebut} - ${employee.dateFin} - ${employee.type}',
+                        // 1) On stocke la dateDebut dans une variable locale
+                        // 2) On ajoute " - dateFin" seulement si dateFin n’est pas vide
+                        // 3) On termine par " - type"
+                        '${employee.dateDebut}'
+                        '${employee.dateFin.isNotEmpty ? ' - ${employee.dateFin}' : ''} '
+                        '- ${employee.type}',
                         style: SepteoTextStyles.captionInter.copyWith(
-                            fontWeight: FontWeight.w400,
-                            color: SepteoColors.grey.shade500),
+                          fontWeight: FontWeight.w400,
+                          color: SepteoColors.grey.shade500,
+                        ),
                       ),
                     ),
                   ],
