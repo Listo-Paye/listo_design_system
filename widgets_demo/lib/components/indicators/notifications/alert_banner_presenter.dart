@@ -5,10 +5,10 @@ import 'package:widgets_demo/use_case_with_markdown.dart';
 
 WidgetbookComponent alertBannerComponent(BuildContext context) {
   return WidgetbookComponent(
-    name: "Alert Banner",
+    name: "Notifications",
     useCases: [
       usercaseWithMarkdown(
-        "Demo Alert Banner",
+        "Notification bandeau",
         (context) {
           return const AlertBannerPresenter();
         },
