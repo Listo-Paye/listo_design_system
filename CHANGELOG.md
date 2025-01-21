@@ -1,3 +1,6 @@
+## 0.6.1+6
+* Add notifications widget AlertBanner 
+
 ## 0.6.1+5
 * Fix size constraints on Pie Chart
 
