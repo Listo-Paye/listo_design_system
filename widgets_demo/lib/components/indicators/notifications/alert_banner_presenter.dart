@@ -30,8 +30,8 @@ class _AlertBannerPresenterState extends State<AlertBannerPresenter> {
 
   void _showAlert({
     required AlertStatus status,
-    required String text,
-    String? title,
+    required String title,
+    String? text,
   }) {
     late final AlertBanner newBanner;
 
@@ -87,7 +87,7 @@ class _AlertBannerPresenterState extends State<AlertBannerPresenter> {
               ElevatedButton(
                 onPressed: () => _showAlert(
                   status: AlertStatus.warning,
-                  text: "Attention, vérifiez vos informations.",
+                  title: "Attention, vérifiez vos informations.",
                 ),
                 child: const Text("Show warning alert (no title)"),
               ),
@@ -97,7 +97,7 @@ class _AlertBannerPresenterState extends State<AlertBannerPresenter> {
               ElevatedButton(
                 onPressed: () => _showAlert(
                   status: AlertStatus.error,
-                  text: "Une erreur est survenue.",
+                  title: "Une erreur est survenue.",
                 ),
                 child: const Text("Show error alert (no title)"),
               ),

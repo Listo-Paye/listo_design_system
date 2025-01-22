@@ -6,16 +6,16 @@ import 'package:listo_design_system/listo_design_system.dart';
 enum AlertStatus { success, info, warning, error }
 
 class AlertBanner extends StatefulWidget {
-  final String? title;
-  final String text;
+  final String title;
+  final String? text;
   final AlertStatus status;
   final Duration duration;
   final VoidCallback? onClose;
 
   const AlertBanner({
     super.key,
-    this.title,
-    required this.text,
+    this.text,
+    required this.title,
     required this.status,
     required this.duration,
     this.onClose,
@@ -74,40 +74,45 @@ class _AlertBannerState extends State<AlertBanner>
   Widget build(BuildContext context) {
     final Color backgroundColor = _getBackgroundColorFromStatus(widget.status);
     final Color textColor = _getTextColorFromStatus(widget.status);
+    final Color borderColor = _getBorderColorFromStatus(widget.status);
 
     return Semantics(
-      liveRegion: true, // Indique que ce widget doit être lu en temps réel.
-      label: _buildSemanticsLabel(), // Label pour le lecteur d'écran.
-      child: SizedBox(
-        width: double.infinity,
-        height: 74, // Hauteur fixe demandée
-        child: SlideTransition(
-          position: _slideAnimation,
-          child: Material(
-            borderRadius: BorderRadius.circular(SepteoSpacings.xxs),
-            child: Container(
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.circular(SepteoSpacings.xxs),
-              ),
-              padding: const EdgeInsets.all(SepteoSpacings.sm), // 12 px
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  // Partie gauche : soit titre + texte, soit juste texte
-                  Expanded(
-                    child: widget.title != null
-                        ? _buildTitleAndText(textColor)
-                        : _buildCenteredText(textColor),
-                  ),
-                  // Bouton de fermeture
-                  IconButton(
-                    icon: Icon(Icons.close, color: textColor),
-                    onPressed: _closeBanner,
-                    tooltip:
-                        "Fermer la notification", // Tooltip pour l'accessibilité
-                  ),
-                ],
+      liveRegion: true,
+      label: _buildSemanticsLabel(),
+      child: Container(
+        padding: const EdgeInsets.only(
+            top: SepteoSpacings.lg,
+            left: SepteoSpacings.xxl,
+            right: SepteoSpacings.xxl),
+        child: SizedBox(
+          width: double.infinity,
+          height: 74,
+          child: SlideTransition(
+            position: _slideAnimation,
+            child: Material(
+              borderRadius: BorderRadius.circular(SepteoSpacings.xxs),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: backgroundColor,
+                  border: Border.all(color: borderColor, width: 1),
+                  borderRadius: BorderRadius.circular(SepteoSpacings.xxs),
+                ),
+                padding: const EdgeInsets.all(SepteoSpacings.sm),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      child: widget.text != null
+                          ? _buildTitleAndText(textColor)
+                          : _buildCenteredTitle(textColor),
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.close, color: textColor),
+                      onPressed: _closeBanner,
+                      tooltip: "Fermer la notification",
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -116,16 +121,14 @@ class _AlertBannerState extends State<AlertBanner>
     );
   }
 
-  /// Crée un label descriptif pour les lecteurs d'écran
   String _buildSemanticsLabel() {
     final typeLabel = _mapStatusToString(widget.status);
-    if (widget.title != null) {
+    if (widget.text != null) {
       return "$typeLabel: ${widget.title}. ${widget.text}";
     }
-    return "$typeLabel: ${widget.text}";
+    return "$typeLabel: ${widget.title}";
   }
 
-  /// Méthode pour mapper le statut à une description textuelle
   String _mapStatusToString(AlertStatus status) {
     switch (status) {
       case AlertStatus.success:
@@ -139,15 +142,13 @@ class _AlertBannerState extends State<AlertBanner>
     }
   }
 
-  /// Si un titre est fourni, on l’affiche au-dessus du texte,
-  /// tous deux alignés sur la gauche.
   Widget _buildTitleAndText(Color textColor) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
-          widget.title!,
+          widget.title,
           style: SepteoTextStyles.bodySmallInter.copyWith(
             color: textColor,
             fontWeight: FontWeight.w700,
@@ -155,7 +156,7 @@ class _AlertBannerState extends State<AlertBanner>
         ),
         const SizedBox(height: 2),
         Text(
-          widget.text,
+          widget.text!,
           style: SepteoTextStyles.bodySmallInter.copyWith(
             color: textColor,
             fontWeight: FontWeight.w400,
@@ -165,11 +166,10 @@ class _AlertBannerState extends State<AlertBanner>
     );
   }
 
-  /// Sinon, on centre le texte verticalement/horizontalement
-  Widget _buildCenteredText(Color textColor) {
+  Widget _buildCenteredTitle(Color textColor) {
     return Center(
       child: Text(
-        widget.text,
+        widget.title,
         style: SepteoTextStyles.bodySmallInter.copyWith(
           color: textColor,
           fontWeight: FontWeight.w400,
@@ -179,7 +179,6 @@ class _AlertBannerState extends State<AlertBanner>
     );
   }
 
-  /// Sélection de la couleur de fond en fonction du statut.
   Color _getBackgroundColorFromStatus(AlertStatus status) {
     switch (status) {
       case AlertStatus.success:
@@ -193,7 +192,6 @@ class _AlertBannerState extends State<AlertBanner>
     }
   }
 
-  /// Sélection de la couleur du texte en fonction du statut.
   Color _getTextColorFromStatus(AlertStatus status) {
     switch (status) {
       case AlertStatus.success:
@@ -204,6 +202,19 @@ class _AlertBannerState extends State<AlertBanner>
         return SepteoColors.orange.shade800;
       case AlertStatus.error:
         return SepteoColors.red.shade800;
+    }
+  }
+
+  Color _getBorderColorFromStatus(AlertStatus status) {
+    switch (status) {
+      case AlertStatus.success:
+        return SepteoColors.green.shade400;
+      case AlertStatus.info:
+        return SepteoColors.purple.shade400;
+      case AlertStatus.warning:
+        return SepteoColors.orange.shade400;
+      case AlertStatus.error:
+        return SepteoColors.red.shade600;
     }
   }
 }
