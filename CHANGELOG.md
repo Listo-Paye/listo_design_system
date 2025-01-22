@@ -1,4 +1,4 @@
-## 0.6.1+6
+## 0.6.1+7
 * Add notifications widget AlertBanner 
 
 ## 0.6.1+5
