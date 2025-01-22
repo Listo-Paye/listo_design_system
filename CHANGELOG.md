@@ -1,3 +1,6 @@
+## 0.6.1+8
+* Add border and padding to AlertBanner 
+
 ## 0.6.1+7
 * Add notifications widget AlertBanner 
 
