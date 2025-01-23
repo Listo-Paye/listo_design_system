@@ -1,4 +1,4 @@
-## 0.6.1+8
+## 0.6.1+9
 * Add border and padding to AlertBanner 
 
 ## 0.6.1+7
