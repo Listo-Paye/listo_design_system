@@ -1,3 +1,8 @@
+## 0.7.0
+* Deprecate Button widget
+* Add DSSButton widget from septeo_design_system
+* Removed font since they are loaded from septeo_design_system
+
 ## 0.6.1+9
 * Add border and padding to AlertBanner 
 
