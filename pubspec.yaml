@@ -22,7 +22,7 @@ dependencies:
   path: ^1.9.0
   fl_chart: ^0.70.2
   skeletonizer: ^1.4.3
-  septeo_design_system: ^0.0.5+3
+  septeo_design_system: ^0.1.0+1
 
 dev_dependencies:
   flutter_test:

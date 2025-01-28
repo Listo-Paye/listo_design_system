@@ -4,7 +4,8 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:widgets_demo/components/forms/components/components/input_presenter.dart';
 import 'package:widgets_demo/use_case_with_markdown.dart';
 
-import 'components/button_presenter.dart';
+import '../../DEPRECATED/forms/components/button_presenter.dart';
+import 'components/dss_button_presenter.dart';
 
 WidgetbookComponent searchbarAtom(BuildContext context) {
   return WidgetbookComponent(name: "Saisie", useCases: [
@@ -32,19 +33,8 @@ WidgetbookComponent searchbarAtom(BuildContext context) {
     ),
     usercaseWithMarkdown(
       "Boutons",
-      (context) => const Center(
-        child: Column(
-          children: [
-            ButtonPresenter(),
-            SizedBox(height: 16),
-            ButtonPresenter(
-              title: "Secondary",
-              type: ButtonType.secondary,
-            ),
-          ],
-        ),
-      ),
-      "markdown/atome_button.md",
+      (context) => const DSSButtonPresenter(),
+      "markdown/dss_button.md",
     ),
     usercaseWithMarkdown(
       "Saisie de texte",

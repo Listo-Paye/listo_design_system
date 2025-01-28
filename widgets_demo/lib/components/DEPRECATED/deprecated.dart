@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 import 'cards/cards.dart';
+import 'forms/forms.dart';
 import 'scaffold/app_bar.dart';
 import 'theme/main_theme.dart';
 
@@ -10,5 +11,6 @@ WidgetbookCategory deprecatedCategory(BuildContext context) {
     cardsDeprecated(context),
     navigationDeprecated(context),
     mainTheme(context),
+    formsDeprecated(context),
   ]);
 }

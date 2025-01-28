@@ -28,6 +28,7 @@ class ButtonStyles {
   );
 }
 
+@Deprecated('use [DSSButton] instead')
 class Button extends StatelessWidget {
   final String text;
   final Icon? image;
