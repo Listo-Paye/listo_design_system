@@ -366,7 +366,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.6.1+9"
+    version: "0.7.0+1"
   markdown:
     dependency: transitive
     description:
@@ -523,10 +523,10 @@ packages:
     dependency: transitive
     description:
       name: septeo_design_system
-      sha256: "14c7db56b0344ef97ae6e0af59998855fb7b28c3a0901b391d15740b3cea8b1b"
+      sha256: "7342467c6232c0c0efaa00595be165082234a8ecfc585681728e508c760580a8"
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.0+1"
+    version: "0.1.0+3"
   skeletonizer:
     dependency: transitive
     description:

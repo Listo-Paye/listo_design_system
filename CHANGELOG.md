@@ -1,4 +1,4 @@
-## 0.7.0
+## 0.7.0+1
 * Deprecate Button widget
 * Add DSSButton widget from septeo_design_system
 * Removed font since they are loaded from septeo_design_system
