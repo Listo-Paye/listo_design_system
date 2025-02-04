@@ -46,7 +46,7 @@ class ConfirmationModal extends StatelessWidget {
               child: IconButton(
                 icon: const Icon(Icons.close),
                 onPressed: () {
-                  // Navigator.of(context).pop();
+                  Navigator.of(context).pop();
                   onClose();
                 },
               ),
@@ -85,7 +85,10 @@ class ConfirmationModal extends StatelessWidget {
                       child: Button(
                         style: ButtonType.secondary,
                         text: secondaryButtonLabel ?? 'Annuler',
-                        onPressed: secondaryButtonAction,
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                          secondaryButtonAction();
+                        },
                         enabled: !(isDisabledSecondaryButton ?? false),
                       ),
                     ),
