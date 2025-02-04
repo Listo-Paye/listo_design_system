@@ -1,3 +1,6 @@
+## 0.7.0+2
+* Add confirmation modale widget
+* 
 ## 0.7.0+1
 * Deprecate Button widget
 * Add DSSButton widget from septeo_design_system
