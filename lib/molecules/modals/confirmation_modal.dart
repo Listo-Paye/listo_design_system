@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:listo_design_system/listo_design_system.dart';
 
-class CustomModal extends StatelessWidget {
+class ConfirmationModal extends StatelessWidget {
   final bool withLogo;
   final String title;
   final String body;
@@ -13,7 +13,7 @@ class CustomModal extends StatelessWidget {
   final VoidCallback primaryButtonAction;
   final VoidCallback secondaryButtonAction;
 
-  const CustomModal({
+  const ConfirmationModal({
     super.key,
     required this.withLogo,
     required this.title,

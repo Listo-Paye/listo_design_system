@@ -1,6 +1,6 @@
-# CustomModal
+# ConfirmationModal
 
-La `CustomModal` est un composant qui affiche une fenêtre modale afin de confirmer une action ou d’informer l’utilisateur. Elle peut s’utiliser avec ou sans logo.
+La `ConfirmationModal` est un composant qui affiche une fenêtre modale afin de confirmer une action ou d’informer l’utilisateur. Elle peut s’utiliser avec ou sans logo.
 
 ## Présentation
 
@@ -40,7 +40,7 @@ void _showCustomModal({required bool withLogo}) {
     context: context,
     barrierDismissible: false,
     builder: (dialogContext) {
-      return CustomModal(
+      return ConfirmationModal(
         withLogo: withLogo,
         title: withLogo ? "Modale avec logo" : "Modale sans logo",
         body: "Voici le texte explicatif de la modale.",

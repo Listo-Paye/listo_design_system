@@ -1,1 +1,1 @@
-export 'modal.dart';
+export 'confirmation_modal.dart';

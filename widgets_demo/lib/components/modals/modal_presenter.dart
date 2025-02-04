@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:listo_design_system/molecules/modals/modal.dart';
+import 'package:listo_design_system/listo_design_system.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 import '../../use_case_with_markdown.dart';
@@ -32,7 +32,7 @@ class _ModalPresenterState extends State<ModalPresenter> {
       context: context,
       barrierDismissible: false,
       builder: (dialogContext) {
-        return CustomModal(
+        return ConfirmationModal(
           withLogo: withLogo,
           title: withLogo ? "Modale avec logo" : "Modale sans logo",
           body: "Voici le texte explicatif de la modale.",
