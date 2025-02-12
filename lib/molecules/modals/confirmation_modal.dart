@@ -46,8 +46,10 @@ class ConfirmationModal extends StatelessWidget {
               child: IconButton(
                 icon: const Icon(Icons.close),
                 onPressed: () {
-                  Navigator.of(context).pop();
-                  onClose();
+                  if (isDisabledPrimaryButton == false) {
+                    Navigator.of(context).pop();
+                    onClose();
+                  }
                 },
               ),
             ),
