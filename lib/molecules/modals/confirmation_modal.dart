@@ -35,7 +35,7 @@ class ConfirmationModal extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       child: Container(
-        width: 508, // Largeur fixe
+        width: 508,
         padding: const EdgeInsets.all(SepteoSpacings.xxl),
         child: Stack(
           clipBehavior: Clip.none,
