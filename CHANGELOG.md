@@ -1,4 +1,4 @@
-## 0.7.0+4
+## 0.7.0+5
 * Disable cross icon onClose function when primary button disabled
 
 ## 0.7.0+3
