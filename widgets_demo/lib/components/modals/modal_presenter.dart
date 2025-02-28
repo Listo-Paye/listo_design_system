@@ -45,7 +45,9 @@ class _ModalPresenterState extends State<ModalPresenter> {
                   isLoading = true;
                 });
                 Future.delayed(const Duration(seconds: 2), () {
-                  Navigator.of(dialogContext).pop();
+                  if (ctx.mounted) {
+                    Navigator.of(dialogContext).pop();
+                  }
                 });
               },
               onCancel: () {
@@ -79,7 +81,9 @@ class _ModalPresenterState extends State<ModalPresenter> {
                   isDisabled = true;
                 });
                 Future.delayed(const Duration(seconds: 2), () {
-                  Navigator.of(dialogContext).pop();
+                  if (ctx.mounted) {
+                    Navigator.of(dialogContext).pop();
+                  }
                 });
               },
               onCancel: () {

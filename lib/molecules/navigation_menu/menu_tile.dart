@@ -2,8 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:listo_design_system/listo_design_system.dart';
 
-import 'destination_data.dart';
-
 @Deprecated('Ce composant sera bientôt supprimé pour une refonte complète.')
 class MenuTileController {
   late void Function() showLabel;

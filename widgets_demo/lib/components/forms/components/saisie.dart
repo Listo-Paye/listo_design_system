@@ -4,7 +4,6 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:widgets_demo/components/forms/components/components/input_presenter.dart';
 import 'package:widgets_demo/use_case_with_markdown.dart';
 
-import '../../DEPRECATED/forms/components/button_presenter.dart';
 import 'components/dss_button_presenter.dart';
 
 WidgetbookComponent searchbarAtom(BuildContext context) {
