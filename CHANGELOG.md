@@ -1,3 +1,6 @@
+## 0.7.0+6
+* Add loading mode and update properties for confirmation modale
+
 ## 0.7.0+5
 * Disable cross icon onClose function when primary button disabled
 
