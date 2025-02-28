@@ -1,4 +1,4 @@
-## 0.7.0+6
+## 0.7.0+7
 * Add loading mode and update properties for confirmation modale
 
 ## 0.7.0+5
