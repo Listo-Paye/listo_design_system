@@ -11,9 +11,9 @@ import 'layout/layout.dart';
 
 List<WidgetbookCategory> componentCategories(BuildContext context) {
   return [
-    mmodalsCategory(context),
     layoutCategory(context),
     formsCategory(context),
+    dialogsCategory(context),
     indicatorsCategory(context),
     chartsCategory(context),
     cardsV2Category(context),

@@ -1,49 +1,91 @@
 import 'package:flutter/material.dart';
 import 'package:listo_design_system/listo_design_system.dart';
 import 'package:widgetbook/widgetbook.dart';
-
-import '../../use_case_with_markdown.dart';
+import 'package:widgets_demo/use_case_with_markdown.dart';
 
 WidgetbookComponent confirmationModalComponent(BuildContext context) {
   return WidgetbookComponent(
-    name: "Modals",
+    name: "Modales",
     useCases: [
       usercaseWithMarkdown(
-        "Custom Modal",
+        "Confirmation Modal",
         (context) {
           return const ModalPresenter();
         },
-        "markdown/modal.md",
+        "markdown/confirmation_modal.md",
       ),
     ],
   );
 }
 
 class ModalPresenter extends StatefulWidget {
-  const ModalPresenter({Key? key}) : super(key: key);
+  const ModalPresenter({super.key});
 
   @override
   State<ModalPresenter> createState() => _ModalPresenterState();
 }
 
 class _ModalPresenterState extends State<ModalPresenter> {
-  void _showCustomModal({required bool withLogo}) {
+  void _showModalWithLoader() {
     showDialog<void>(
       context: context,
       barrierDismissible: false,
       builder: (dialogContext) {
-        return ConfirmationModal(
-          withLogo: withLogo,
-          title: withLogo ? "Modale avec logo" : "Modale sans logo",
-          body: "Voici le texte explicatif de la modale.",
-          onClose: () {
-            Navigator.of(dialogContext).pop();
+        bool isLoading = false;
+        return StatefulBuilder(
+          builder: (ctx, setState) {
+            return ConfirmationModal(
+              withLogo: true,
+              title: "Modale avec loader",
+              message:
+                  "Cliquez sur 'Enregistrer' pour valider avec affichage d'un loader.",
+              isLoading: isLoading,
+              onValidate: () {
+                setState(() {
+                  isLoading = true;
+                });
+                Future.delayed(const Duration(seconds: 2), () {
+                  Navigator.of(dialogContext).pop();
+                });
+              },
+              onCancel: () {
+                Navigator.of(dialogContext).pop();
+              },
+            );
           },
-          secondaryButtonAction: () {
-            Navigator.of(dialogContext).pop();
-          },
-          primaryButtonAction: () {
-            Navigator.of(dialogContext).pop();
+        );
+      },
+    );
+  }
+
+  void _showModalWithoutLoader() {
+    showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (dialogContext) {
+        bool isDisabled = false;
+        return StatefulBuilder(
+          builder: (ctx, setState) {
+            return ConfirmationModal(
+              withLogo: false,
+              title: "Modale sans loader",
+              message:
+                  "Cliquez sur 'Enregistrer' pour valider sans affichage de loader",
+              isDisabledCloseIcon: isDisabled,
+              isDisabledCancelButton: isDisabled,
+              isDisabledValidateButton: isDisabled,
+              onValidate: () {
+                setState(() {
+                  isDisabled = true;
+                });
+                Future.delayed(const Duration(seconds: 2), () {
+                  Navigator.of(dialogContext).pop();
+                });
+              },
+              onCancel: () {
+                Navigator.of(dialogContext).pop();
+              },
+            );
           },
         );
       },
@@ -60,13 +102,13 @@ class _ModalPresenterState extends State<ModalPresenter> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: () => _showCustomModal(withLogo: true),
-              child: const Text("Afficher modale avec logo"),
+              onPressed: _showModalWithLoader,
+              child: const Text("Modale avec loader"),
             ),
             const SizedBox(width: 20),
             ElevatedButton(
-              onPressed: () => _showCustomModal(withLogo: false),
-              child: const Text("Afficher modale sans logo"),
+              onPressed: _showModalWithoutLoader,
+              child: const Text("Modale sans loader"),
             ),
           ],
         ),
